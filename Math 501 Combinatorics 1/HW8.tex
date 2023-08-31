@@ -1,0 +1,159 @@
+\documentclass[12pt]{amsart}
+% packages
+\usepackage{graphicx}
+\usepackage{setspace}
+\usepackage{amssymb,amsmath,amsthm,amsfonts,amscd}
+\usepackage{hyperref}
+\usepackage{color}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{enumitem}
+\usepackage[retainorgcmds]{IEEEtrantools}
+\usepackage[notref,notcite,final]{showkeys}
+\usepackage[final]{pdfpages}
+\usepackage{fancyhdr}
+\usepackage{upgreek}
+\usepackage{multicol}
+\usepackage{fontawesome}
+% set margin as 0.75in
+\usepackage[margin=0.75in]{geometry}
+
+% tikz-related settings
+\usepackage{tikz}
+\usepackage{tikz-cd}
+\usetikzlibrary{cd}
+
+% theorem environments with italic font
+\newtheorem{thm}{Theorem}[section]
+\newtheorem*{thm*}{Theorem}
+\newtheorem{lemma}[thm]{Lemma}
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem{claim}[thm]{Claim}
+\newtheorem{corollary}[thm]{Corollary}
+\newtheorem{conjecture}[thm]{Conjecture}
+\newtheorem{question}[thm]{Question}
+\newtheorem{procedure}[thm]{Procedure}
+\newtheorem{assumption}[thm]{Assumption}
+
+% theorem environments with roman font (use lower-case version in body
+% of text, e.g., \begin{example} rather than \begin{Example})
+\newtheorem{Definition}[thm]{Definition}
+\newenvironment{definition}
+{\begin{Definition}\rm}{\end{Definition}}
+\newtheorem{Example}[thm]{Example}
+\newenvironment{example}
+{\begin{Example}\rm}{\end{Example}}
+
+\theoremstyle{definition}
+\newtheorem{remark}[thm]{\textbf{Remark}}
+
+% special sets
+\newcommand{\A}{\mathbb{A}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\cals}{\mathcal{S}}
+\newcommand{\ZZ}{\mathbb{Z}_{\ge 0}}
+\newcommand{\cala}{\mathcal{A}}
+\newcommand{\calb}{\mathcal{B}}
+\newcommand{\cald}{\mathcal{D}}
+\newcommand{\calh}{\mathcal{H}}
+\newcommand{\call}{\mathcal{L}}
+\newcommand{\calr}{\mathcal{R}}
+\newcommand{\la}{\mathbf{a}}
+\newcommand{\lgl}{\mathfrak{gl}}
+\newcommand{\lsl}{\mathfrak{sl}}
+\newcommand{\lieg}{\mathfrak{g}}
+
+% math operators
+\DeclareMathOperator{\kernel}{\mathrm{ker}}
+\DeclareMathOperator{\image}{\mathrm{im}}
+\DeclareMathOperator{\rad}{\mathrm{rad}}
+\DeclareMathOperator{\id}{\mathrm{id}}
+\DeclareMathOperator{\hum}{[\mathrm{Hum}]}
+\DeclareMathOperator{\eh}{[\mathrm{EH}]}
+\DeclareMathOperator{\lcm}{\mathrm{lcm}}
+\DeclareMathOperator{\Aut}{\mathrm{Aut}}
+\DeclareMathOperator{\Inn}{\mathrm{Inn}}
+\DeclareMathOperator{\Out}{\mathrm{Out}}
+\DeclareMathOperator{\Gal}{\mathrm{Gal}}
+
+
+% frequently used shorthands
+\newcommand{\ra}{\rightarrow}
+\newcommand{\se}{\subseteq}
+\newcommand{\ip}[1]{\langle#1\rangle}
+\newcommand{\dual}{^*}
+\newcommand{\inverse}{^{-1}}
+\newcommand{\norm}[2]{\|#1\|_{#2}}
+\newcommand{\abs}[1]{\lvert #1 \rvert}
+\newcommand{\Abs}[1]{\bigg| #1 \bigg|}
+\newcommand\bm[1]{\begin{bmatrix}#1\end{bmatrix}}
+\newcommand{\op}{\text{op}}
+
+% nicer looking empty set
+\let\oldemptyset\emptyset
+\let\emptyset\varnothing
+
+\setlist[enumerate,1]{topsep=1em,leftmargin=1.8em, itemsep=0.5em, label=\textup{(}\arabic*\textup{)}}
+\setlist[enumerate,2]{topsep=0.5em,leftmargin=3em, itemsep=0.3em}
+
+%pagestyle
+%\pagestyle{fancy} 
+
+\begin{document}
+\begin{center}
+    \textsc{Math 501. HW 7\\ Ian Jorquera\\ Collaborators: Kylie and others...}
+\end{center}
+\vspace{1em}
+% See http://www.mathematicalgemstones.com/maria/Math501Fall22.php
+% for problems
+
+% sage: https://sagecell.sagemath.org/
+
+\begin{itemize}
+
+\item[(2)] 
+\begin{enumerate}[label=(\alph*)]
+    \item For $n=0$ there are zero graphs on zero vertices and so zero planed trees on zero vertices.\\For $n=1$ there is only 1 labeled tree and the only cyclic labeling is the empty cycle. So there is $1$ labeled planed tree on $1$ vertex. For $n=2$ there is $1$ labeled tree and each labeling will be a $1$-cycle, so there is only $1$ labeled planed tree.\\ For $n=3$ there are $3$ labeled trees, where in each labeling each node will have 1 possible cyclic order(either a $1$-cycle or $2$-cycle). so there are $3$ trees.\\ For $n=4$, there are 2 tree isomorphism classes the line and the $3$-pointed star. The line has $8$ labelings and every node will have an ordering that is a $2$ cycle or $1$ cycle so there are only $8$ labeled planed trees for the line. For the $3$ sided start there are $4$ labelings where each leaf node has a $1$-cycle order and the center has a $3$-cycle, of which there are $2$ such cycles per labeling. Meaning there are $8$ labeled plane trees foe the star and so there are $16$ total labeled plane tree with $4$ vertices.\\
+    Finally for $n=5$ there are $3$ tree isomorphism classes the line the Y and the star. The line has $60$ labelings with determined cyclic labels. the $Y$ has $60$ labelings but the node at the fork will have a $3$-cycle labeling meaning there are $2$ planed trees per labeling, and so there are $120$ labeled planed trees. And for the star there are $5$ labeling and each leaf node has a $1$-cycle order and the center has a $4$ cycle of which there are $6$ cyclic orderings, meaning for the star there are $30$ labeled plane trees. So there are a total of $210$.\\
+
+    S0 the first $6$ terms of the generating function are $0+x+x^2+3x^3+16x^4+210x^5$
+    \item %(1+) (2 points)
+    Consider the derivative species $\mathcal{PL}'$ where $\mathcal{PL}'(L)$ is the set of labeled planed trees on the set $L\cup \{*\}$. Now consider the product of species $\mathcal{X}\cdot\mathcal{PL}'$, and two sets $L,M$ of cardinality $n$ and a bijection $\pi:L\ra M$ between them. 
+    \begin{equation*}
+        \mathcal{X}\cdot\mathcal{PL}'(L)=
+        \{(A_1,A_2,\alpha_1,\alpha_2)| A_1\cup A_2=L, A_1\cap A_2=\emptyset,\alpha_1\in \mathcal{X}(A_1), \alpha_2\in \mathcal{PL}'(A_2)\}
+    \end{equation*}
+    
+    Recall that $\mathcal{X}$ is the species such that $\mathcal{X}(L)=L$ when $|L|=1$ and $\mathcal{X}(L)=\emptyset$ otherwise. So we know that $\mathcal{X}\cdot\mathcal{PL}'(L)$ is the set 
+    $$\mathcal{X}\cdot\mathcal{PL}'(L)=\{(\{i\},A_2,\{i\},\alpha_2)| \{i\}\cup A_2=L, i\not\in A_2, \alpha_2\in \mathcal{PL}'(A_2)\}$$
+    Which is in bijection with the set $\{(i, \alpha)|i\in L, \alpha\in \mathcal{PL}'(L-\{i\})\}=\{(i, \alpha)|i\in L, \alpha\in\mathcal{PL}(L-\{i\}+\{*\})\}$ which are labeled planar trees with a distinguished element $i$(that is the vertex labeled $*$ in the tree will be given the label $i$). These are therefore in bijection with $\mathcal{R}(L)$, the labeled rooted planar trees with the labels of $L$, because the distinguished element $i$ is our root. Furthermore notice that the relabeling $\mathcal{X}\cdot\mathcal{PL}'\pi$ will map $i\mapsto \pi(i)$ and $\alpha\mapsto \mathcal{PL}'\pi(\alpha)$ which is the relabeling on the tree according to $\pi$, that maps $*\mapsto *$. Effectively this permutes all labels according to $\pi$ while keeping the underlying unlabeled tree the same(the location of the root), which is the same as $R\pi$ which presumable permutes all labels.\\ % maybe make comment that this process is reversable and so bijection
+    
+    %Formally we have that the species $\mathcal{X}\cdot\mathcal{PL}'$ and $\mathcal{R}$ are equivalent as there is a natural isomorphism(the bijective mapping described above, which we will call $\eta_L:\mathcal{X}\cdot\mathcal{PL}'(L)\ra \mathcal{R}$) between them such that $\mathcal{R}\pi\circ \eta_L$ maps labeled plane trees with a distinguished element first to labeled rooted plane tree on the set $L$ and then to labeled rooted plane tree on the set $M$. This is the same as the map $\eta_M\circ \mathcal{X}\cdot\mathcal{PL}'\pi$ which maps labeled plane trees with a distinguished element on the set $L$ to labeled plane trees with a distinguished element on the set $M$ which then maps to labeled rooted plane tree on the set $M$. Because the maps $\mathcal{R}\pi$ and $\mathcal{X}\cdot\mathcal{PL}'\pi$ map according to $\pi$ we know these two compositions are the same.\\
+
+    \item %(2-) (3 points)
+    From part b we know that $\mathcal{R}=\mathcal{X}\cdot\mathcal{PL}'$ as species, which means to show $\mathcal{R}=\mathcal{X}\cdot(\mathcal{C}\circ\mathcal{T})$ as species we need only show that $\mathcal{PL}'=\mathcal{C}\circ\mathcal{T}$ as species. To see this consider a finite set $L$. Notice that $(\mathcal{C}\circ\mathcal{T})(L)$ is the set of partitions of $L$ such that each blocks is given a $\mathcal{T}$ structure and the blocks them selves are given a $\mathcal{C}$ structure. Now we will connect the roots of each $\mathcal{T}$ block to a new vertex $*$ and it will be given the cyclic label according to the $\mathcal{C}$ structure, the cycle of the root vertices of the $\mathcal{T}$ structures in the $\mathcal{C}$ structure. Furthermore any other node $v$ in this constructed tree is contained in a $\mathcal{T}$ structure meaning it has a linear order of its children $c_1,c_2,\dots,c_k$, we will then give it the cyclic order $(g\;c_1\;c_2\;\dots\;c_k)$ where $g$ is the parent vertex of $v$(or the vertex $*$ if $v$ is the root). This means the resulting constructed tree is a labeled planar graph with the labels $L+\{*\}$, as every node has a cycle ordering of its neighbors, as so is in bijection with the species $\mathcal{PL}'$ on the set $L$. Finally to see that the relabeling are the same notice that for a bijection $\pi:L\ra M$ we have that each $\mathcal{T}$ structure is mapped according to $\mathcal{T}\pi$ which is a relabeling of the vertices according to $\pi$. This means in the constructed tree all nodes except $*$ are relabeled according to $\pi$, and $*$ is fixed. This is precisely the relabeling rule for $\mathcal{PL}'$. So $\mathcal{PL}'=\mathcal{C}\circ\mathcal{T}$ as species\\
+
+    Here we will follow a similar construction to the above: Consider a set $L$. Notice that $(\mathcal{L}\circ\mathcal{T})(L)$ is the set of partitions of $L$ such that each blocks is given a $\mathcal{T}$ structure and the blocks them selves are given a $\mathcal{L}$ structure. Now we will connect the roots of each $\mathcal{T}$ block to a new vertex $*$ and it will be given the linear ordering according to the $\mathcal{L}$ structure, the linear order of the root vertices of the $\mathcal{T}$ structures in the $\mathcal{L}$ structure. This gives us a new Tree with linear orderings on the child vertices, such that $*$ is the root node(that is $*$ is the root node in the context of the linear orders). Now with the product $\mathcal{X}$ we are effectively creating pairs $(i, T)$ where $T$ is a tree on the vertices $[n]-\{i\}+\{*\}$ with each node given a linear order of its children with respect to the root node being $*$. We can then give $*$ the label $i$ making $i$ the root node and so the resulting tree is a rooted tree with linear orderings on the child nodes. Finally to see that the relabeling are the same notice that for a bijection $\pi:L\ra M$ we have that $i\mapsto \pi(i)$ and each $\mathcal{L}\circ\mathcal{T}$ structure is mapped as expected, with the labels on each $\mathcal{T}$ structure being mapped according to $\pi$ and the linear label for $*$ being mapped according to $\mathcal{L}\pi$, which permutes the labels according to $\pi$. In this case we have that $*$ is fixed. This has the same affect as relabeling the labels of a rooted tree with linear ordering, which would permute the labels according to $\pi$ so $\mathcal{T}=\mathcal{X}\cdot (\mathcal{L}\circ \mathcal{T})$.\\
+
+    %\item %(2+) (4 points) % did for 2d part 1. But dont want to do for 2d part 2.
+    
+\end{enumerate}
+    
+    \item[(10)] %(2-) (3 points)
+    Consider the equation $x^2C(x)=C(x)-1$ and with the substitution $\hat{C}(x)=C(x)-1$ we have the relation $x(\hat{C}(x)+1)^2=\hat{C}(x)$, which means the inverse function of $\hat{C}(x)$ is the function $f(x)=\frac{x}{(x+1)^2}$. We can then find 
+    $$\frac{1}{f(x)^2}=x^{-n}(x+1)^{2n}=x^{-n}\sum_{k=0}^\infty {2n\choose k}x^k$$
+    Notice that the $x^{-1}$ term occurs when $k=n-1$ and has the coefficient ${2n\choose n-1}$. And so $$\hat{C}(x)=\sum_{n=1}^\infty \frac{1}{n}{2n\choose n-1}x^n=\sum_{n=1}^\infty \frac{1}{n}\frac{2n!}{(n-1)!(n+1)!}x^n=\sum_{n=1}^\infty \frac{1}{n+1}\frac{2n!}{(n)!(n)!}x^n=\sum_{n=1}^\infty \frac{1}{n+1}{2n\choose n}x^n$$
+    Becasue we have the substituition $C(x)=\hat{C}(x)+1$ we know that $$C(x)\sum_{n=0}^\infty \frac{1}{n+1}{2n\choose n}x^n$$
+    And so $\displaystyle{C_n=\frac{1}{n+1}{2n\choose n}}$
+
+
+\end{itemize}
+
+\end{document}
+
+

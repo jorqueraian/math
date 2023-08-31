@@ -1,0 +1,161 @@
+\documentclass[12pt]{amsart}
+% packages
+\usepackage{graphicx}
+\usepackage{setspace}
+\usepackage{amssymb,amsmath,amsthm,amsfonts,amscd}
+\usepackage{hyperref}
+\usepackage{color}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{enumitem}
+\usepackage[retainorgcmds]{IEEEtrantools}
+\usepackage[notref,notcite,final]{showkeys}
+\usepackage[final]{pdfpages}
+\usepackage{fancyhdr}
+\usepackage{upgreek}
+\usepackage{multicol}
+\usepackage{fontawesome}
+\usepackage{halloweenmath}
+% set margin as 0.75in
+\usepackage[margin=0.75in]{geometry}
+
+% tikz-related settings
+\usepackage{tkz-berge}
+\usetikzlibrary{calc,quotes}
+\usetikzlibrary{arrows.meta}
+\usetikzlibrary{positioning, automata}
+\usetikzlibrary{decorations.pathreplacing}
+
+%% For table
+\usepackage{tikz}
+\usetikzlibrary{tikzmark}
+
+% theorem environments with italic font
+\newtheorem{thm}{Theorem}[section]
+\newtheorem*{thm*}{Theorem}
+\newtheorem{lemma}[thm]{Lemma}
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem{claim}[thm]{Claim}
+\newtheorem{corollary}[thm]{Corollary}
+\newtheorem{conjecture}[thm]{Conjecture}
+\newtheorem{question}[thm]{Question}
+\newtheorem{procedure}[thm]{Procedure}
+\newtheorem{assumption}[thm]{Assumption}
+
+% theorem environments with roman font (use lower-case version in body
+% of text, e.g., \begin{example} rather than \begin{Example})
+\newtheorem{Definition}[thm]{Definition}
+\newenvironment{definition}
+{\begin{Definition}\rm}{\end{Definition}}
+\newtheorem{Example}[thm]{Example}
+\newenvironment{example}
+{\begin{Example}\rm}{\end{Example}}
+
+\theoremstyle{definition}
+\newtheorem{remark}[thm]{\textbf{Remark}}
+
+% special sets
+\newcommand{\A}{\mathbb{A}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\cals}{\mathcal{S}}
+\newcommand{\ZZ}{\mathbb{Z}_{\ge 0}}
+\newcommand{\cala}{\mathcal{A}}
+\newcommand{\calb}{\mathcal{B}}
+\newcommand{\cald}{\mathcal{D}}
+\newcommand{\calh}{\mathcal{H}}
+\newcommand{\call}{\mathcal{L}}
+\newcommand{\calr}{\mathcal{R}}
+\newcommand{\la}{\mathbf{a}}
+\newcommand{\lgl}{\mathfrak{gl}}
+\newcommand{\lsl}{\mathfrak{sl}}
+\newcommand{\lieg}{\mathfrak{g}}
+
+% math operators
+\DeclareMathOperator{\kernel}{\mathrm{ker}}
+\DeclareMathOperator{\image}{\mathrm{im}}
+\DeclareMathOperator{\rad}{\mathrm{rad}}
+\DeclareMathOperator{\id}{\mathrm{id}}
+\DeclareMathOperator{\hum}{[\mathrm{Hum}]}
+\DeclareMathOperator{\eh}{[\mathrm{EH}]}
+\DeclareMathOperator{\lcm}{\mathrm{lcm}}
+\DeclareMathOperator{\Aut}{\mathrm{Aut}}
+\DeclareMathOperator{\Inn}{\mathrm{Inn}}
+\DeclareMathOperator{\Out}{\mathrm{Out}}
+\DeclareMathOperator{\Gal}{\mathrm{Gal}}
+
+
+% frequently used shorthands
+\newcommand{\ra}{\rightarrow}
+\newcommand{\se}{\subseteq}
+\newcommand{\ip}[1]{\langle#1\rangle}
+\newcommand{\dual}{^*}
+\newcommand{\inverse}{^{-1}}
+\newcommand{\norm}[2]{\|#1\|_{#2}}
+\newcommand{\abs}[1]{\lvert #1 \rvert}
+\newcommand{\Abs}[1]{\bigg| #1 \bigg|}
+\newcommand\bm[1]{\begin{bmatrix}#1\end{bmatrix}}
+\newcommand{\op}{\text{op}}
+
+% nicer looking empty set
+\let\oldemptyset\emptyset
+\let\emptyset\varnothing
+
+%the var phi gang
+\let\oldphi\phi
+\let\phi\varphi
+
+\setlist[enumerate,1]{topsep=1em,leftmargin=1.8em, itemsep=0.5em, label=\textup{(}\arabic*\textup{)}}
+\setlist[enumerate,2]{topsep=0.5em,leftmargin=3em, itemsep=0.3em}
+
+%pagestyle
+%\pagestyle{fancy} 
+
+\begin{document}
+\begin{center}
+    \textsc{Math 501. HW 12\\ Ian Jorquera\\ Collaborators: Kelsey}
+\end{center}
+\vspace{1em}
+% See http://www.mathematicalgemstones.com/maria/Math501Fall22.php
+% for problems
+
+% sage: https://sagecell.sagemath.org/
+\begin{itemize}
+
+\item[(2)]
+\begin{enumerate}[label=(\alph*)]
+    \item % (1+) (2 points)
+    Consider a locally finite poset $P$ and its corresponding incidence algebra $I(P)$. Consider an element $f:Int(P)\ra \C$ such that $f(x,x)=0$ for some $x\in P$. Notice that in this case for any element $g:Int(P)\ra \C$, we have that $f* g(x,x)=\sum_{y\in[x,x]}f(x,y)g(y,x)=f(x,x)g(x,x)=0$ meaning $f* g\neq \delta$, and so no inverse under convolution exists.\\ 
+    Now consider an element $f:Int(P)\ra \C$ such $f(x,x)\neq 0$ for all $x\in P$. And consider the function $g:Int(P)\ra \C$ such that $g(x,x)=\frac{1}{f(x,x)}$ for all $x\in P$ and $g(x,z)=\frac{-1}{f(x,x)}\sum_{y\in(x,z]}f(x,y)g(y,z)$. Notice that in this case $f*g(x,x)=f(x,x)\frac{1}{f(x,x)}=1$ and for any $x<z$ we have that $g(x,z)=\frac{-1}{f(x,x)}\sum_{y\in(x,z]}f(x,y)g(y,z)$ which means that $f(x,x)g(x,z)=-\sum_{y\in(x,z]}f(x,y)g(y,z)$ and so $f*g(x,z)=\sum_{y\in[x,z]}f(x,y)g(y,z)=0$ meaning $g$ is a right inverse of $f$.\\
+
+    The same is true about left inverses that $f(x,x)\neq 0$ for all $x\in P$ if and only if $f$ has a left inverse $g$. Notice that we can construct an inverse $g$ in a similar way such that $g(x,x)=\frac{1}{f(x,x)}$ for all $x\in P$ and $g(x,z)=\frac{-1}{f(x,x)}\sum_{y\in(x,z]}g(x,y)f(y,x)$. Notice that in this case $g*f(x,x)=\frac{1}{f(x,x)}f(x,x)=1$ and for any $x<z$ we have that $g(x,z)=\frac{-1}{f(x,x)}\sum_{y\in(x,z]}g(x,y)f(y,z)$ which means that $g(x,z)f(x,x)=-\sum_{y\in(x,z]}g(x,y)f(y,z)$ and so $g*f(x,z)=\sum_{y\in[x,z]}g(x,y)f(y,z)=0$.\\
+
+    \item %(2-) (3 points)
+    Now we have shown that $f(x,x)\neq 0$ for all $x\in P$ if and only if $f$ has a right inverse $g$. Now we will show that a right inverse is also a left inverse. So assume that $f*g=\delta$ which implies that $g*f*g=g$. And from above we know that $g(x,x)\neq 0$ for all $x\in P$ meaning it has a right inverse $h$. This gives us that $g*f*g*h=g*f=\delta=g*h$ meaning $g*f=\delta$. And so $g$ is also a left inverse of $f$.\\
+    
+    In part (a) we showed that $f(x,x)\neq 0$ for all $x\in P$ if and only if $f$ has a left inverse $g$. Now we will show that left inverses are also right inverse. Assume that we have a left inverse $g$ of $f$, that is $g*f=\delta$. For the same reason as before we know that $g(x,x)\neq 0$ for all $x\in P$, meaning it must have a left inverse $h$ and so $g*f=\delta$ means that $g*f*g=g$ and therefore  $h*g*f*g=f*g=\delta=h*g$, which shows that $f*g=\delta$.\\
+\end{enumerate}
+
+\item[(5)] % (2) (3 points)
+Here we will construct a bijection $\phi$ between ballot sequences of length $2n$ and linear extension of $[2]\times [n]\ra [2n]$. Here we will consider a ballot sequence of $2n$ to be a rearrangement of the string $1^n2^n$ such that any substring is a rearrangment of $1^\ell2^k$ where $k\leq\ell$ that is there are always at least as many $1$s as there are $2$s. Furthermore for any such substring we will define the notation $n_1(i):=\ell$ and $n_2(i):=k$ to count the number of $1$s and $2$s in the substring of length $i$. And notice that any linear extension $[2]\times [n]\ra [n]$ would preserve the relations $(1,i)<(1,i+1)$ and $(2,i)<(2,i+1)$ for any $1\leq i<n$, and $(1,i)<(2,i)$ for any $1\leq i\leq n$.\\
+
+We will first contract a map $\phi$ from ballot sequences to linear extensions, first consider a fixed ballot sequence, $b_1b_2b_3\dots b_{2n}$. We will construct a bijection such that this string maps to the linear extension of $f:[2]\times [n]\ra [2n]$ where $b_i$ corresponds to the mapping $(1,n_1(i))\ra i$ if $b_i=1$ and $(2,n_2(i))\ra i$ if $b_i=2$. Notice first that this map is a well defined bijection as $(j,k)\mapsto i$ when the $i$th character in the ballot sequence is the $k$th $j\in\{1,2\}$. The $k$th $j$ happens once per ballot sequence and all $i\in[2n]$ have a corresponding input. And because $|[2]\times [n]|=|2n|$ we know this map is a bijection. To see that this map is a linear extension notice that for any elements $(1,i)\leq (1,j)$ (which means $i\leq j$) in the poset $[2]\times[n]$ we know that the position of the $i$th $1$ must be less then or equal to the position of the $j$th $1$ and so $f((1,i))\leq f((1,j))$. For the same reason we know that $(2,i)\leq (2,j)\Rightarrow f((2,i))\leq ((2,j))$. Furthermore consider element $(1,i)< (2,i)$ We know that the position of the $i$th $1$ in the ballot sequence must be before the position of the $i$th $2$ otherwise the original string would not be a ballot sequence meaning $f((1,i)<f (2,i))$. And so we have a linear extension.\\
+
+Now we will construct map $\phi^{-1}$ that maps linear extensions to ballot sequences. consider a linear extension $f:[2]\times [n]\ra [2n]$ and we will construct the string $b_1b_2b_2\dotsb_{2n}$ where $b_i=1$ if $(1,k)\mapsto i$ and $b_i=2$ if $(2,k)\mapsto i$. This effectively tells us that the $k$th $1$ is at position $f((1,k))$, and from the relations of $[2]\times[n]$ we know that the $(1,i)<(2,i)$ which means that the $i$th $1$ occurs before the $i$th 2, meaning any constructed sequence is a ballot sequence.\\
+
+Finally notice that these are inverses, as for any ballot sequence $\phi$ gives us $(j,k)\mapsto i$ when the $i$th character in the ballot sequence is the $k$th $j\in\{1,2\}$, and  $\phi^{-1}$ gives us the $i$th character in the ballot sequence being the $k$th $j\in\{1,2\}$. And alternatively for any linear extension, $f$ where $(j,k)\mapsto i$ we construct a ballot sequence with the $i$th character in the ballot sequence being the $k$th $j\in\{1,2\}$ with  $\phi^{-1}$. And then $\phi$ gives us $(j,k)\mapsto i$ when the $i$th character in the ballot sequence is the $k$th $j\in\{1,2\}$ resulting in the original linear extension.\\ % this is shit
+
+\item[(7)] %(1+)(2 points)
+
+In this case recall that $\zeta^2(x,z)=\sum_{y\in[x,z]}1\cdot 1=|[x,z]|$. And so to find a recursion for the inverse $\mu^2$ we know that $\delta(x,x)=1 = \zeta^2*\mu^2(x,x)=|[x,x]|\mu^2(x,x)$ and so $\mu^2(x,x)=1$. We also have that for any $x<z$ that $\delta(x,z)=0=\zeta^2*\mu^2(x,z)=\sum_{y\in[x,z]}|[x,y]|\mu^2(y,z)$. And we can take out the term with $\mu^2(x,z)$ to find that $\mu^2(x,z)=-\sum_{y\in(x,z]}|[x,y]|\mu^2(y,z)$.\\
+  
+
+\end{itemize}
+
+\end{document}
+
+

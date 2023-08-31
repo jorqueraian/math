@@ -1,0 +1,170 @@
+\documentclass[12pt]{amsart}
+% packages
+\usepackage{graphicx}
+\usepackage{setspace}
+\usepackage{amssymb,amsmath,amsthm,amsfonts,amscd}
+\usepackage{hyperref}
+\usepackage{color}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{enumitem}
+\usepackage[retainorgcmds]{IEEEtrantools}
+\usepackage[notref,notcite,final]{showkeys}
+\usepackage[final]{pdfpages}
+\usepackage{fancyhdr}
+\usepackage{upgreek}
+\usepackage{multicol}
+\usepackage{fontawesome}
+% set margin as 0.75in
+\usepackage[margin=0.75in]{geometry}
+
+% tikz-related settings
+\usepackage{tikz}
+\usepackage{tikz-cd}
+\usetikzlibrary{cd}
+
+% theorem environments with italic font
+\newtheorem{thm}{Theorem}[section]
+\newtheorem*{thm*}{Theorem}
+\newtheorem{lemma}[thm]{Lemma}
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem{claim}[thm]{Claim}
+\newtheorem{corollary}[thm]{Corollary}
+\newtheorem{conjecture}[thm]{Conjecture}
+\newtheorem{question}[thm]{Question}
+\newtheorem{procedure}[thm]{Procedure}
+\newtheorem{assumption}[thm]{Assumption}
+
+% theorem environments with roman font (use lower-case version in body
+% of text, e.g., \begin{example} rather than \begin{Example})
+\newtheorem{Definition}[thm]{Definition}
+\newenvironment{definition}
+{\begin{Definition}\rm}{\end{Definition}}
+\newtheorem{Example}[thm]{Example}
+\newenvironment{example}
+{\begin{Example}\rm}{\end{Example}}
+
+\theoremstyle{definition}
+\newtheorem{remark}[thm]{\textbf{Remark}}
+
+% special sets
+\newcommand{\A}{\mathbb{A}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\cals}{\mathcal{S}}
+\newcommand{\ZZ}{\mathbb{Z}_{\ge 0}}
+\newcommand{\cala}{\mathcal{A}}
+\newcommand{\calb}{\mathcal{B}}
+\newcommand{\cald}{\mathcal{D}}
+\newcommand{\calh}{\mathcal{H}}
+\newcommand{\call}{\mathcal{L}}
+\newcommand{\calr}{\mathcal{R}}
+\newcommand{\la}{\mathbf{a}}
+\newcommand{\lgl}{\mathfrak{gl}}
+\newcommand{\lsl}{\mathfrak{sl}}
+\newcommand{\lieg}{\mathfrak{g}}
+
+% math operators
+\DeclareMathOperator{\kernel}{\mathrm{ker}}
+\DeclareMathOperator{\image}{\mathrm{im}}
+\DeclareMathOperator{\rad}{\mathrm{rad}}
+\DeclareMathOperator{\id}{\mathrm{id}}
+\DeclareMathOperator{\hum}{[\mathrm{Hum}]}
+\DeclareMathOperator{\eh}{[\mathrm{EH}]}
+\DeclareMathOperator{\lcm}{\mathrm{lcm}}
+\DeclareMathOperator{\Aut}{\mathrm{Aut}}
+\DeclareMathOperator{\Inn}{\mathrm{Inn}}
+\DeclareMathOperator{\Out}{\mathrm{Out}}
+\DeclareMathOperator{\Gal}{\mathrm{Gal}}
+
+
+% frequently used shorthands
+\newcommand{\ra}{\rightarrow}
+\newcommand{\se}{\subseteq}
+\newcommand{\ip}[1]{\langle#1\rangle}
+\newcommand{\dual}{^*}
+\newcommand{\inverse}{^{-1}}
+\newcommand{\norm}[2]{\|#1\|_{#2}}
+\newcommand{\abs}[1]{\lvert #1 \rvert}
+\newcommand{\Abs}[1]{\bigg| #1 \bigg|}
+\newcommand\bm[1]{\begin{bmatrix}#1\end{bmatrix}}
+\newcommand{\op}{\text{op}}
+
+% nicer looking empty set
+\let\oldemptyset\emptyset
+\let\emptyset\varnothing
+
+\setlist[enumerate,1]{topsep=1em,leftmargin=1.8em, itemsep=0.5em, label=\textup{(}\arabic*\textup{)}}
+\setlist[enumerate,2]{topsep=0.5em,leftmargin=3em, itemsep=0.3em}
+
+%pagestyle
+%\pagestyle{fancy} 
+
+\begin{document}
+\begin{center}
+    \textsc{Math 501. HW 6\\ Ian Jorquera\\ Collaborators: Kylie, Jake, Clare}
+\end{center}
+\vspace{1em}
+% See http://www.mathematicalgemstones.com/maria/Math501Fall22.php
+% for problems
+
+% sage: https://sagecell.sagemath.org/
+
+\begin{itemize}
+
+\item[(4)] % (2+) (4 points)
+Let $C(x)$ be the generating function for the Catalan numbers and notice that 
+$$\frac{d}{dx}\left[ x\cdot C(x) \right]=\frac{d}{dx}\left[ x\cdot \sum_{n=0}^{\infty} \frac{1}{n+1} {2n \choose n}x^{n} \right]=\frac{d}{dx} \left[ \sum_{n=0}^{\infty} \frac{1}{n+1} {2n \choose n}x^{n+1} \right] = \sum_{n=0}^{\infty} {2n \choose n}x^{n}$$\faHandLizardO
+
+Furthermore notice that
+$$\left(\sum_{n=0}^{\infty} {2n \choose n}x^{n}\right)\left(\sum_{n=0}^{\infty} {2n \choose n}x^{n}\right)=\sum_{n=0}^{\infty} \left(\sum_{k=0}^n {2k \choose k}{2(n-k) \choose (n-k)}\right)x^n$$
+And recall that $C(x)=\frac{1-\sqrt{1-4x}}{2x}$ meaning $\frac{d}{dx}\left[ x\cdot C(x) \right]=\frac{d}{dx}\left[ \frac{1-\sqrt{1-4x}}{2} \right]=\frac{1}{\sqrt{1-4x}}$. And so we know that $\frac{d}{dx}\left[ x\cdot C(x) \right]\cdot \frac{d}{dx}\left[ x\cdot C(x) \right]=\frac{1}{1-4x}=\sum_{n=0}^\infty4^nx^n$. And because there generating functions are the same we know that there coefficients are the same, meaning 
+$$\sum_{k=0}^n {2k \choose k}{2(n-k) \choose (n-k)}=4^n$$\\
+
+\item[(6)] % (2-) (3 points)
+Fix $n$, we will define $C_n$ to be the number of triangulations of an $(n+2)$-gon. Consider an $(n+2)$-gon whose edges are labeled from $1$ to $n+2$ clockwise. And consider the triangle $\triangle{12k}$(which has $1$ triangulation) for some $3\leq k\leq n+2$. Notice that this splits the $n+2$-gon into two polygons: a $(k-1)$-gon contain the points $2,3,4,\dots,k$ and an $(n-k+2)$-gon containing the points $1,k,k+1,\dots,n+2$. And we will consider the number of triangulations that contain the triangle $\triangle 12k$: these are the number of triangulations of $(k-1)$-gon, $C_{k-3}$, times the number of triangulations of the $(n-k+4)$-gon, $C_{n-k+2}$.\\
+
+Notice that any triangulation must contain a triangle with the edge $12$. This means any triangulation must contain a triangle $\triangle 12k$ for some $3\leq k\leq n+2$. furthermore any triangulation contain the triangle $\triangle 12k$ will not contain the triangle $12\ell$ for $3\leq \ell\leq n+2$ and $\ell\neq k$. If $\triangle12k$ was a triangle in the triangulation then the edges $1k$ and $2k$ would exist in the triangulation. This means if the triangle $\triangle 12\ell$ also exists then the edges $1\ell$ and $2\ell$ would exist in the triangulation. Notice that for $1\ell$ and $2k$ to not intersect we would need that $\ell\leq k$. Additionally for $2\ell$ and $1k$ to not intersect we would need that $\ell\geq k$, and so $\ell=k$.\\
+
+This means to count the total number of triangulations we can iterate $k$ over $3\leq k\leq n+2$, counting the number of triangulation in the $(k-1)$-gon, $C_{k-3}$, and the $(n-k+4)$-gon, $C_{n-k+2}$ on either side of the triangle $\triangle{12k}$. This give us the sum
+$$C_n=\sum_{k=3}^{n+2}C_{k-3}C_{n-k+2}$$
+where we can shift the iterator to start at $0$ and go to $n-1$ where we have
+$$C_n=\sum_{k=0}^{n-1}C_{k}C_{n-k-1}$$
+which is exactly the recursion for the Catalan numbers. Finally notice that for $n=0$, we have that there is $1$ triangulation as there is $1$ way to draw $0$ lines. So the number of triangulations of a $(n+2)$-gon is counted by the $n$th Catalan number\\
+
+\item[(8)] 
+Consider a derangement $\pi\in S_{[n]}$ written in cycle notation. We know that the element $n$ must be in at least a $2$-cycle, as a $1$-cycle would be a fixed. Assume first that $n$ is contained in a $2$-cycle $(i\;n)$ for $1\leq i\leq n-1$. In this case we can remove both the elements $i$ and $n$ and we would be left with a new derangement $\pi'\in S_{[n]-\{i,n\}}$ where $\pi=\pi' (i\;n)$. There are $D_{n-2}$ such possible derangements, and furthermore there are $n-1$ possibilities for $i$, meaning there are $(n-1)D_{n-2}$ possible derangements in $S_{[n]}$ with $n$ in an $2$-cycle. Now consider the case that $n$ is contained in a $k$-cycle where $k\geq 3$, meaning we would have the cycle $(\cdots\; i \; n \; j \; \cdots)$ for $1\leq i\neq j \leq n-1$. This would mean that by removing $n$, we would be left with a $(k-1)$-cycle $\pi'\in S_{[n-1]}$ such that $\pi=\pi'(i\;n\;j)$. There are $D_{n-1}$ such permutations $\pi'$ and then there are $n-1$ ways to construct the $3$-cycle $(i\;n\;j)$, because there are $n-1$ possibilities for $i$, and $j$ is determined by $\pi'$ and $i$ ($j=\pi'(i)$). This gives us the following recurrence 
+$$D_{n+1}=nD_{n}+nD_{n-1}$$
+Furthermore notice that $D_0=1$, as the empty permutation has no fixed points and $D_1=0$, because the permutation of $\{1\}$ fixes $1$.\\
+
+Now notice that we can use the derivative of the exponential generating function for $D_n$ to find that
+$$D'(x)=\sum_{n=0}^{\infty}\frac{D_{n+1}}{n!}x^n =\sum_{n=1}^{\infty}\frac{nD_{n}}{n!}x^n+\sum_{n=1}^{\infty}\frac{nD_{n-1}}{n!}x^n$$
+We will start the sums at $n=1$ on the right hand side because there is a factor of $n$ in each term making the $n=0$ term zero. Now notice that 
+$$xD'(x)=\sum_{n=0}^{\infty}\frac{D_{n+1}}{n!}x^{n+1}=\sum_{n=1}^{\infty}\frac{D_{n}}{(n-1)!}x^{n}=\sum_{n=1}^{\infty}\frac{nD_{n}}{n!}x^{n}$$
+
+Similarly notice that 
+$$xD(x)=x\sum_{n=0}^{\infty}\frac{D_{n}}{n!}x^{n}=\sum_{n=0}^{\infty}\frac{D_{n}}{n!}x^{n+1}=\sum_{n=1}^{\infty}\frac{D_{n-1}}{(n-1)!}x^{n}=\sum_{n=1}^{\infty}\frac{nD_{n-1}}{n!}x^{n}$$
+This gives us the differential equations 
+$$D'(x)=xD'(x)+xD(x)$$
+Which gives us the relation
+$$\frac{D'(x)}{D(x)}=\frac{x}{1-x}$$
+And we can integrate both sides to find that
+$$\ln(D(x))=1-x-\ln(1-x)+C=1-x+\ln((1-x)^{-1})+C$$
+$$D(x)=e^{1-x+\ln((1-x)^{-1})+C}=\frac{e^{1-x+C}}{1-x}=\frac{C_2e^{-x}}{1-x}$$
+And because $D(0)=D_0=1$ we know that $C_2=1$ so
+$$\sum_{n=0}^{\infty} \frac{D_n}{n!}x^n=\frac{e^{-x}}{1-x}$$
+
+
+
+
+
+
+\end{itemize}
+
+\end{document}
+
+

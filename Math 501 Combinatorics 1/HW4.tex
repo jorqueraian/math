@@ -1,0 +1,151 @@
+\documentclass[12pt]{amsart}
+% packages
+\usepackage{graphicx}
+\usepackage{setspace}
+\usepackage{amssymb,amsmath,amsthm,amsfonts,amscd}
+\usepackage{hyperref}
+\usepackage{color}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{enumitem}
+\usepackage[retainorgcmds]{IEEEtrantools}
+\usepackage[notref,notcite,final]{showkeys}
+\usepackage[final]{pdfpages}
+\usepackage{fancyhdr}
+\usepackage{upgreek}
+\usepackage{multicol}
+% set margin as 0.75in
+\usepackage[margin=0.75in]{geometry}
+
+% tikz-related settings
+\usepackage{tikz}
+\usepackage{tikz-cd}
+\usetikzlibrary{cd}
+
+% theorem environments with italic font
+\newtheorem{thm}{Theorem}[section]
+\newtheorem*{thm*}{Theorem}
+\newtheorem{lemma}[thm]{Lemma}
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem{claim}[thm]{Claim}
+\newtheorem{corollary}[thm]{Corollary}
+\newtheorem{conjecture}[thm]{Conjecture}
+\newtheorem{question}[thm]{Question}
+\newtheorem{procedure}[thm]{Procedure}
+\newtheorem{assumption}[thm]{Assumption}
+
+% theorem environments with roman font (use lower-case version in body
+% of text, e.g., \begin{example} rather than \begin{Example})
+\newtheorem{Definition}[thm]{Definition}
+\newenvironment{definition}
+{\begin{Definition}\rm}{\end{Definition}}
+\newtheorem{Example}[thm]{Example}
+\newenvironment{example}
+{\begin{Example}\rm}{\end{Example}}
+
+\theoremstyle{definition}
+\newtheorem{remark}[thm]{\textbf{Remark}}
+
+% special sets
+\newcommand{\A}{\mathbb{A}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\cals}{\mathcal{S}}
+\newcommand{\ZZ}{\mathbb{Z}_{\ge 0}}
+\newcommand{\cala}{\mathcal{A}}
+\newcommand{\calb}{\mathcal{B}}
+\newcommand{\cald}{\mathcal{D}}
+\newcommand{\calh}{\mathcal{H}}
+\newcommand{\call}{\mathcal{L}}
+\newcommand{\calr}{\mathcal{R}}
+\newcommand{\la}{\mathbf{a}}
+\newcommand{\lgl}{\mathfrak{gl}}
+\newcommand{\lsl}{\mathfrak{sl}}
+\newcommand{\lieg}{\mathfrak{g}}
+
+% math operators
+\DeclareMathOperator{\kernel}{\mathrm{ker}}
+\DeclareMathOperator{\image}{\mathrm{im}}
+\DeclareMathOperator{\rad}{\mathrm{rad}}
+\DeclareMathOperator{\id}{\mathrm{id}}
+\DeclareMathOperator{\hum}{[\mathrm{Hum}]}
+\DeclareMathOperator{\eh}{[\mathrm{EH}]}
+\DeclareMathOperator{\lcm}{\mathrm{lcm}}
+\DeclareMathOperator{\Aut}{\mathrm{Aut}}
+\DeclareMathOperator{\Inn}{\mathrm{Inn}}
+\DeclareMathOperator{\Out}{\mathrm{Out}}
+\DeclareMathOperator{\Gal}{\mathrm{Gal}}
+
+
+% frequently used shorthands
+\newcommand{\ra}{\rightarrow}
+\newcommand{\se}{\subseteq}
+\newcommand{\ip}[1]{\langle#1\rangle}
+\newcommand{\dual}{^*}
+\newcommand{\inverse}{^{-1}}
+\newcommand{\norm}[2]{\|#1\|_{#2}}
+\newcommand{\abs}[1]{\lvert #1 \rvert}
+\newcommand{\Abs}[1]{\bigg| #1 \bigg|}
+\newcommand\bm[1]{\begin{bmatrix}#1\end{bmatrix}}
+\newcommand{\op}{\text{op}}
+
+% nicer looking empty set
+\let\oldemptyset\emptyset
+\let\emptyset\varnothing
+
+\setlist[enumerate,1]{topsep=1em,leftmargin=1.8em, itemsep=0.5em, label=\textup{(}\arabic*\textup{)}}
+\setlist[enumerate,2]{topsep=0.5em,leftmargin=3em, itemsep=0.3em}
+
+%pagestyle
+%\pagestyle{fancy} 
+
+\begin{document}
+\begin{center}
+    \textsc{Math 501. HW 4\\ Ian Jorquera\\ Colaborators: Kaylee, Clare}
+\end{center}
+\vspace{1em}
+% See http://www.mathematicalgemstones.com/maria/Math501Fall22.php
+% for problems
+
+% sage: https://sagecell.sagemath.org/
+
+The word \textit{qount} may be used through out this assignment to mean ``count with $q$s"
+\begin{itemize}
+\item[(3)] % (2) [3 points]
+Let $R$ be a non-commutative ring over $\R$(A non-commutative $\R$-algebra). Let $x,y\in R$ such that $yx=qxy$ for $q\in\R$. Now fix $n$ as a positive integer. And consider the weight function $\text{inv}:\{x,y\}^n\ra \Z$ such that for a rearrangement $w$, $\text{inv}(w)=\#\{(i,j)| i<j, w_i=y, w_j=x\}$ (Notice that $\text{inv}(w)=\text{inv}(w')$ where $w'$ is created by bijectivily mapping $x\mapsto 0$ and $y\mapsto 1$, and $\text{inv}(w')$ is the number of inversions in the binary string. This means that $\text{inv}$ defined here, and $\text{inv}$ on binary strings have the same $q$-analog). 
+Now consider any product of $x$s and $y$s(a rearrangement $w$ of $x^ky^{n-k}$ for some $k$) and consider some $x$: the number of inversions that $x$ has corresponds to the number of $y$s to its left. This means that to shift any $x$ all the way over to the left we will need to make the multiplication $yx=qxy$ for each inversion that $x$ has. 
+So the total number of multiplications that need to be preformed to rewrite this expression as $q^\ell x^k y^{n-k}$ is equal to the number of inversions in the original rearrangement(so $\ell=\text{inv}(w)$). \\
+
+The product $(x+y)^n$ represents the sum of all possible products of $x$ and $y$ such that the number of $x$s and $y$s is $n$. So now fix the positive integer $k$ and we will consider the number of products with $k$ $x$s (or the number of rearrangements of the word $x^ky^{n-k}$). We can use the following $q$-analog to 
+\textit{qount} the rearrangements by the number of inversions. This gives us $\sum_{w\in x^ky^{n-k}}q^{\text{inv}(w)} ={\textbf{n}\choose \textbf{k}}$. 
+A term $Aq^\ell$ in the $q$-analog means there are $A$ products with $k$ $x$s in our expanded sum that have $\ell$ total inversions, and by the above this means that the sum of all term with $\ell$ inversions can be written as $Aq^\ell x^ky^{n-k}$. And so the sum of all terms with $k$ $x$s can be written as $\sum_{w\in x^ky^{n-k}}q^{\text{inv}(w)}x^ky^{n-k} ={\textbf{n}\choose \textbf{k}}x^ky^{n-k}$. So then summing over all terms we get that $(x+y)^n=\sum_{k=0}^{n}{\textbf{n}\choose \textbf{k}}x^ky^{n-k}$ \\
+
+\item[(4)] (2+) [4 points]
+% goal: show exist bijection $\psi:S_n\ra S_n$ such that $des(\psi(\pi))=exc(\pi)$  Consider the map 
+Recall that any permutation can be written as the product of disjoint cycles.
+Let $w\in S_n$ written in list notation as $w_1,w_2,\dots,w_n$. And consider the inverse of Foata's second Bijection, the map $\varphi^{-1}:S_n\ra S_n$ such that $\varphi^{-1}(w_1,w_2,\dots,w_n)= (w_1\;w_2\;\dots\;w_{k_1})(w_{k_1+1}\;w_{k_1+2}\;\dots\;w_{k_2})\dots (w_{k_{\ell-1}+1}\;\dots\; w_{k_\ell})$ such that $w_{k_{i}+1}>w_{j}$ for all $1\leq j<k_{i}+1$ and $w_{k_{i}+1}>w_{k_{i}+j}$ such that $k_i+1<k_i+j\leq k_{i+1}$. That is we are effectively adding parenthesis to the list notation to turn it into cycle notation. We are doing this such that the resulting cycle notation has elements in cycles shifted so they start with the biggest element in the cycle and the cycles are ordered by the size of their biggest (therefore leading) element(This format is called standard form and each permutation can be written uniquely in standard form). This describes Foata's second bijection. Now consider the map $b:S_n\ra S_n$. Which maps a permutation in standard form to permutations such that each cycle is flipped, that is the cycle $(\pi_1\;\pi_2\;\dots\; \pi_k)$ is mapped to $(\pi_k\;\pi_{k-1}\;\dots\; \pi_1)$. Furthermore notice that this is a bijection with the inverse $b$. Notice that for any cycle $b(b((\pi_1\;\pi_2\;\dots\; \pi_k)))=b((\pi_k\;\pi_{k-1}\;\dots\; \pi_1))=(\pi_1\;\pi_2\;\dots\; \pi_k)$. This means that the composition $\varphi^{-1}\circ b$ is a bijection by the transitivity of bijections.\\
+
+Now consider again a permutation $w\in S_n$ written in list notation as $w_1,w_2,\dots,w_n$. And assume that $w_i,w_{i+1}$ is a descent, meaning $w_i>w_{i+1}$. This means that over $\varphi^{-1}$ we will have a distinct cycle $(\dots w_{i}\;w_{i+1}\;\dots)$ and over the bijection $b$ we would have $(\dots w_{i+1}\;w_{i}\;\dots)$, meaning $w_{i+1}\mapsto w_{i}$ which is an excedance, as $w_{i+1}<w_{i}$. Now assume that $w_i,w_{i+1}$ is an ascent, meaning $w_i<w_{i+1}$, such that $w_{i+1}$ is not the maximum element in $w_1,\dots,w_{i+j}$. 
+This means that over the Foata Bijection that we will have a cycle $(\dots w_{i}\;w_{i+1}\;\dots)$ and over the bijection $b$ we would have $(\dots w_{i+1}\;w_{i}\;\dots)$, meaning $w_{i+1}\mapsto w_{i}$ which is not an excedance, as $w_{i+1}>w_{i}$. 
+Now assume that that $w_i,w_{i+1}$ is an ascent, meaning $w_i<w_{i+1}$, such that $w_{i+1}$ is the maximum element in $w_1,\dots,w_{i+j}$. This would mean with the $\varphi^{-1}\circ b(w)$(and after a shifting of the cycles) could be written with two disjoint cycles such that $(\dots w_{i})(w_{i+1}\dots)$. In this case we have 
+the cycle $(w_{i+1}\;\dots\;w_{\ell})$. In the construction of the Foata bijection and the bijection $b$ we know that $w_{i+1}$ is the biggest element in the cycle so $w_{i+1}>w_\ell$ (and $w_{i+1}=w_\ell$ in the case of a $1$-cycle) so no excedence is creates. \\
+
+So we can conclude that for any permutation $w\in S_n$ we have that $\text{exc}(b\circ\varphi^{-1}(w))=\text{des}(w)$. Therefore $\text{des}$ and $\text{exc}$ are qounted the same, and so equidistributed.\\
+
+%Finally we must show that no new unexpected excedances are added. Any excedance is a mapping in our permutation $w$ where $i\mapsto w_i$ such that $w_i>i$, In cycle notation this occurs in two instances. First when a cycle looks like $(\dots w_{i}\;w_{i+1}\;\dots)$ such that $w_{i+1}>w_i$. 
+%In these cases we have accounted for all possible situations. Additionally we may have $(w_{i}\;\dots\;w_{i+1})$ where $w_{i}>w_{i+1}$. However this 
+%is not possible as in the construction of the Foata bijection and the bijection $b$ we know that $w_{i+1}$ is the biggest element in the cycle so $w_{i+1}>w_i$ (and $w_{i+1}=w_i$ in the case of a $1$-cycle) so it can not be an excedance.
+%So we can conclude that for any permutation $w\in S_n$ we have that $\text{exc}(b\circ\varphi^{-1}(w))=\text{des}(w)$. Therefore $\text{des}$ and $\text{exc}$ are qounted the same, and so equidistributed.\\
+
+\item[(5a)]
+Recall that ${\textbf{n}\choose \lambda}$ qounts the number of inversions in the rearrangements of $1^{\lambda_{1}}2^{\lambda_{2}}\dots k^{\lambda_{k}}$(The $q$-analog of the rearrangements of $1^{\lambda_{1}}2^{\lambda_{2}}\dots k^{\lambda_{k}}$ counting the number of inversions). Now fix $i$ and we will consider the rearrangements of $1^{\lambda_{1}}2^{\lambda_{2}}\dots i^{\lambda_i-1}\dots k^{\lambda_{k}}$ with an additional $i$ at the end. First we know that the $q$-analog qounting the number of inversions of the possible rearrangements of $1^{\lambda_{1}}2^{\lambda_{2}}\dots i^{\lambda_i-1}\dots k^{\lambda_{k}}$ is ${\textbf{n}\choose \lambda^{(i)}}$, where $\lambda^{(i)}$ was defined as $\lambda^{(i)}=(\lambda_1,\dots\lambda_i-1,\dots,\lambda_k)$. We need to additionally qount the number of inversions created by fixing $i$ to the end of the string. Notice that $i$ will create an inversion with $\lambda_{i+1}+\lambda_{i+2}+\dots+\lambda_{k}$ characters in the string, as these represent the number of characters between $i+1$ and $k$ that are to the left of our fixed $i$. This can all be written as $n-\lambda_1-\lambda_2-\dots-\lambda_i$ inversions. This means for the rearrangements of $1^{\lambda_{1}}2^{\lambda_{2}}\dots i^{\lambda_i-1}\dots k^{\lambda_{k}}$ with an additional $i$ at the end, the $q$-analog qounting the number of inversions is $q^{n-\lambda_1-\lambda_2-\dots-\lambda_i}{\textbf{n}\choose \lambda^{(i)}}$. We can then sum over all $i$, which is effectivily picking the last character in the rearrangement of $1^{\lambda_{1}}2^{\lambda_{2}}\dots k^{\lambda_{k}}$ to get the $q$-analog qounting the number of inversions ${\textbf{n}\choose \lambda}=\sum_{i=1}^k q^{n-\lambda_1-\lambda_2-\dots-\lambda_i}{\textbf{n}\choose \lambda^{(i)}}$
+
+\end{itemize}
+
+\end{document}
+
+

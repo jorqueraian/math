@@ -1,0 +1,158 @@
+\documentclass[12pt]{amsart}
+% packages
+\usepackage{graphicx}
+\usepackage{setspace}
+\usepackage{amssymb,amsmath,amsthm,amsfonts,amscd}
+\usepackage{hyperref}
+\usepackage{color}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{enumitem}
+\usepackage[retainorgcmds]{IEEEtrantools}
+\usepackage[notref,notcite,final]{showkeys}
+\usepackage[final]{pdfpages}
+\usepackage{fancyhdr}
+\usepackage{upgreek}
+\usepackage{multicol}
+% set margin as 0.75in
+\usepackage[margin=0.75in]{geometry}
+
+% tikz-related settings
+\usepackage{tikz}
+\usepackage{tikz-cd}
+\usetikzlibrary{cd}
+
+% theorem environments with italic font
+\newtheorem{thm}{Theorem}[section]
+\newtheorem*{thm*}{Theorem}
+\newtheorem{lemma}[thm]{Lemma}
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem{claim}[thm]{Claim}
+\newtheorem{corollary}[thm]{Corollary}
+\newtheorem{conjecture}[thm]{Conjecture}
+\newtheorem{question}[thm]{Question}
+\newtheorem{procedure}[thm]{Procedure}
+\newtheorem{assumption}[thm]{Assumption}
+
+% theorem environments with roman font (use lower-case version in body
+% of text, e.g., \begin{example} rather than \begin{Example})
+\newtheorem{Definition}[thm]{Definition}
+\newenvironment{definition}
+{\begin{Definition}\rm}{\end{Definition}}
+\newtheorem{Example}[thm]{Example}
+\newenvironment{example}
+{\begin{Example}\rm}{\end{Example}}
+
+\theoremstyle{definition}
+\newtheorem{remark}[thm]{\textbf{Remark}}
+
+% special sets
+\newcommand{\A}{\mathbb{A}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\cals}{\mathcal{S}}
+\newcommand{\ZZ}{\mathbb{Z}_{\ge 0}}
+\newcommand{\cala}{\mathcal{A}}
+\newcommand{\calb}{\mathcal{B}}
+\newcommand{\cald}{\mathcal{D}}
+\newcommand{\calh}{\mathcal{H}}
+\newcommand{\call}{\mathcal{L}}
+\newcommand{\calr}{\mathcal{R}}
+\newcommand{\la}{\mathbf{a}}
+\newcommand{\lgl}{\mathfrak{gl}}
+\newcommand{\lsl}{\mathfrak{sl}}
+\newcommand{\lieg}{\mathfrak{g}}
+
+% math operators
+\DeclareMathOperator{\kernel}{\mathrm{ker}}
+\DeclareMathOperator{\image}{\mathrm{im}}
+\DeclareMathOperator{\rad}{\mathrm{rad}}
+\DeclareMathOperator{\id}{\mathrm{id}}
+\DeclareMathOperator{\hum}{[\mathrm{Hum}]}
+\DeclareMathOperator{\eh}{[\mathrm{EH}]}
+\DeclareMathOperator{\lcm}{\mathrm{lcm}}
+\DeclareMathOperator{\Aut}{\mathrm{Aut}}
+\DeclareMathOperator{\Inn}{\mathrm{Inn}}
+\DeclareMathOperator{\Out}{\mathrm{Out}}
+\DeclareMathOperator{\Gal}{\mathrm{Gal}}
+
+
+% frequently used shorthands
+\newcommand{\ra}{\rightarrow}
+\newcommand{\se}{\subseteq}
+\newcommand{\ip}[1]{\langle#1\rangle}
+\newcommand{\dual}{^*}
+\newcommand{\inverse}{^{-1}}
+\newcommand{\norm}[2]{\|#1\|_{#2}}
+\newcommand{\abs}[1]{\lvert #1 \rvert}
+\newcommand{\Abs}[1]{\bigg| #1 \bigg|}
+\newcommand\bm[1]{\begin{bmatrix}#1\end{bmatrix}}
+\newcommand{\op}{\text{op}}
+
+% nicer looking empty set
+\let\oldemptyset\emptyset
+\let\emptyset\varnothing
+
+\setlist[enumerate,1]{topsep=1em,leftmargin=1.8em, itemsep=0.5em, label=\textup{(}\arabic*\textup{)}}
+\setlist[enumerate,2]{topsep=0.5em,leftmargin=3em, itemsep=0.3em}
+
+%pagestyle
+%\pagestyle{fancy} 
+
+\begin{document}
+\begin{center}
+    \textsc{Math 501. HW 5\\ Ian Jorquera\\ Colaborators: King Gizzard and the Lizard Wizard\footnote{Much of the inspiration for my work came to me while listening to this band. So its only right that I credit them.}}, Jake, Ignacio, Clare
+\end{center}
+\vspace{1em}
+% See http://www.mathematicalgemstones.com/maria/Math501Fall22.php
+% for problems
+
+% sage: https://sagecell.sagemath.org/
+
+\begin{itemize}
+
+\item[(4)] % (1+) (2) points
+Consider the sequence $a_n=n^2$ and its generating function $\displaystyle{\sum_{n=0}^{\infty}n^2x^n}$. Recall that $\displaystyle{\frac{1}{1-x}}=\displaystyle{\sum_{n=0}^{\infty}x^n}$ and that $\displaystyle{x\frac{d}{dx}\left[\sum_{n=0}^{\infty}x^n \right]}=\displaystyle{\sum_{n=0}^{\infty}nx^n}$. And we can repeat this to find that $\displaystyle{x\frac{d}{dx}\left[\sum_{n=0}^{\infty}nx^n\right]}=\displaystyle{\sum_{n=0}^{\infty}n^2x^n}$. So to find the closed form for this generating function we can apply the same operations to the closed form $\frac{1}{1-x}$. Where we find that $\displaystyle{\sum_{n=0}^{\infty}n^2x^n}=\displaystyle{x\frac{d}{dx}\left[x\frac{d}{dx}\left[\frac{1}{1-x} \right] \right]}=\displaystyle{x\frac{d}{dx}\left[ \frac{x}{(1-x)^2} \right]}=\frac{x^2+x}{(1-x)^3}$.\\
+
+\item[(7)] %(2) (3 points) 
+First consider a permutation $\pi\in S_n$ such that $\pi_1=1$ and $\pi_n=n$ and $|\pi_i-\pi_{i+1}|\leq 2$ for all $i\leq n-1$. Notice that this gives two possible values for $\pi_{n-1}$. Either $\pi_{n-1}=n-1$ or $\pi_{n-1}=n-2$. First notice that in the case that $\pi_{n-1}=n-2$, there are three options for $\pi_{n-2}$, either $n-4$, $n-3$, or $n-1$. Notice that in the case of $\pi_{n-2}=n-3$ we would have the permutation in list notation $\pi_1,\pi_2,\dots,\pi_{n-3},n-3,n-2,n$. And there would exist some $i\leq n-3$ where $\pi_i=n-1$. And $|\pi_{i-1}-\pi_i|\leq 2$, but not possible values would satisfy this(as the only values that would are $n$, $n-2$, and $n-3$) all of which already exist in the list notation. So $\pi_{n-2}\neq n-3$. 
+Notice that in the case of $\pi_{n-2}=n-4$ we would have the permutation in list notation $\pi_1,\pi_2,\dots,\pi_{n-3},n-4,n-2,n$. And there would exist some $i\leq n-4$ where $\pi_i=n-1$(notice that $i\neq n-3$ as $|(n-1)-(n-4)|=3$). And $|\pi_{i-1}-\pi_i|\leq 2$, This would force $\pi_{i-1}=n-3$ as no other values could be used here. And additionally $|\pi_{i}-\pi_{i+1}|\leq 2$, but no possible values would satisfy this(as the only values that would are $n$, $n-2$, and $n-3$). So $\pi_{n-2}\neq n-4$. Finally notice that when $\pi_{n-1}=n-2$ that if $\pi_{n-2}=n-1$ then $\pi_{n-3}=n-3$. So would make the subword $\pi_1,\dots,\pi_i{n-3}$ would be a permutation of $S_{n-3}$ satisfyin the above conditions.\\
+
+Let $R_n$ count the number of permutations $\pi\in S_n$ such that $\pi_1=1$ and $\pi_n=n$ and $|\pi_i-\pi_{i+1}|\leq 2$ for all $i\leq n-1$. As noted above this can be split into two cases. First the case where $\pi_{n-1}=n-1$: which fixes the $n-1$ element and so is equivalent to counting the number of permutations in $S_{n-1}$ such that $\pi_1=1$ and $\pi_{n-1}=n-1$ and $|\pi_i-\pi_{i+1}|\leq 2$ for all $i\leq n-2$, which is just $R_{n-1}$. The second case is when $\pi_{n-1}=n-2$, which would mean $\pi_{n-2}=n-1$ and $\pi_{n-3}=n-3$. Notice that the number of permutations in this case is equal to $R_{n-3}$ as this is the number of permutations from $S_{n-3}$ that fix $\pi_1=1$ and $\pi_n=n$ and satisfy $|\pi_i-\pi_{i+1}|\leq 2$ for all $i\leq n-4$. Notice that $R_0=0$(although there is 1 permutation on $0$ elements it does not fix the first and last element), and $R_1=1$ as there is one permutation the identity permutation. Similarly $R_2=1$ as there is only one element that fixes $\pi_1=1$ and $\pi_2=2$, the identity.\\
+
+Now to find an explicit generating function consider 
+
+\begin{align*}{2}
+    R(x)&=x+x^2+x^3+2x^4+\dots+R_nx^n+\dots\\
+    -xR(x)&=\;\;\;\;\;-x^2-x^3-x^4-\dots-R_{n-1}x^n+\dots\\
+    -x^3R(x)&=\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;-\,x^4-\dots-R_{n-3}x^n+\dots
+\end{align*}
+Which gives us
+    $$(1-x-x^3)R(x)=-x$$
+And so $R(x)=\displaystyle{\frac{x}{1-x-x^3}}$.\\
+    
+
+
+\item[(8)] % (2) (3 points)
+Consider the infinite product $\displaystyle{\prod_{k=1}^\infty\frac{1}{1-x^ky}}$ were we can rewrite each term of the product, for some fixed $k$, as $\displaystyle{\frac{1}{1-x^ky}}=\displaystyle{\sum_{n=0}^\infty (x^k)^ny^n}$ a generating function over the variable $y$. Notice that each term in this generating function is of the form $x^{nk}y^n$ which counts the number of elements $nk$ put into $n$ blocks each of size $k$. The coefficient is $1$ as we are not concerned by which elements are put in which blocks, so there is only ever one way to do this. Therefore by taking the product of these generating functions for all $k\geq 0$ we add together the exponents which effectively add together the total number of non-zero blocks(the $y$ exponent) and the the total number of elements(the $x$ exponent). This counts the number of ways to partitions sets of different sizes as we add together all the terms with the same $x$ and $y$ exponents, which then counts the number of ways to partition a set. As this tells us the number of ways to choose blocks of different sizes. Notice that in this construction the term $Ax^n y^\ell$ counts the number of ways, $A$, to partition a set of size $n$ into $\ell$ non-empty blocks. So we know that $\displaystyle{\sum_{n,\ell}p(n,\ell)x^ny^\ell}=\displaystyle{\prod_{k=1}^\infty\frac{1}{1-x^ky}}$.\\
+
+\item[(9)] % (2-) (3 points)
+Fix $n$ and recall that from the binomial theorem that
+$$(1+x)^n={\sum_{k=0}^n{n\choose k}x^k}={\sum_{k=0}^\infty{n\choose k}x^k}$$
+Similarly we have that $$(1+x)^n(1+x)^n={(1+x)^{2n}}={\sum_{k=0}^{2n}{2n\choose k}x^k}={\sum_{k=0}^\infty{2n\choose k}x^k}$$
+Now consider the same product but this time we will multiply the generating functions as a convolution
+$$(1+x)^n(1+x)^n={\left(\sum_{k=0}^\infty{n\choose k}x^k\right)\left(\sum_{k=0}^\infty{n\choose k}x^k\right)}={\sum_{k=0}^\infty\left(\sum_{j=0}^n{n\choose j}{n\choose k-j}\right)x^k}$$
+Now in both generating function for $(1+x)^n(1+x)^n=(1+x)^{2n}$ we will look at the coefficients of $x^n$, that is we are looking only at the term in the sum where $k=n$. This gives us the term 
+$${{2n\choose n}x^n}$$
+from the first sum and from the second sum we have the term $${\left(\sum_{j=0}^n{n\choose j}{n\choose n-j}\right)x^n}={\left(\sum_{j=0}^n{n\choose j}^2\right)x^n}={\left(\sum_{k=0}^n{n\choose k}^2\right)x^n}$$ And because these are both the $x^n$ terms of the same generating function we know that $\displaystyle{\sum_{k=0}^n{n\choose k}^2}=\displaystyle{{2n\choose n}}$.\\
+
+
+\end{itemize}
+
+\end{document}
+
+

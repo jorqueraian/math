@@ -1,0 +1,165 @@
+\documentclass[12pt]{amsart}
+% packages
+\usepackage{graphicx}
+\usepackage{setspace}
+\usepackage{amssymb,amsmath,amsthm,amsfonts,amscd}
+\usepackage{hyperref}
+\usepackage{color}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{enumitem}
+\usepackage[retainorgcmds]{IEEEtrantools}
+\usepackage[notref,notcite,final]{showkeys}
+\usepackage[final]{pdfpages}
+\usepackage{fancyhdr}
+\usepackage{upgreek}
+\usepackage{multicol}
+% set margin as 0.75in
+\usepackage[margin=0.75in]{geometry}
+
+% tikz-related settings
+\usepackage{tikz}
+\usepackage{tikz-cd}
+\usetikzlibrary{cd}
+
+% theorem environments with italic font
+\newtheorem{thm}{Theorem}[section]
+\newtheorem*{thm*}{Theorem}
+\newtheorem{lemma}[thm]{Lemma}
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem{claim}[thm]{Claim}
+\newtheorem{corollary}[thm]{Corollary}
+\newtheorem{conjecture}[thm]{Conjecture}
+\newtheorem{question}[thm]{Question}
+\newtheorem{procedure}[thm]{Procedure}
+\newtheorem{assumption}[thm]{Assumption}
+
+% theorem environments with roman font (use lower-case version in body
+% of text, e.g., \begin{example} rather than \begin{Example})
+\newtheorem{Definition}[thm]{Definition}
+\newenvironment{definition}
+{\begin{Definition}\rm}{\end{Definition}}
+\newtheorem{Example}[thm]{Example}
+\newenvironment{example}
+{\begin{Example}\rm}{\end{Example}}
+
+\theoremstyle{definition}
+\newtheorem{remark}[thm]{\textbf{Remark}}
+
+% special sets
+\newcommand{\A}{\mathbb{A}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\cals}{\mathcal{S}}
+\newcommand{\ZZ}{\mathbb{Z}_{\ge 0}}
+\newcommand{\cala}{\mathcal{A}}
+\newcommand{\calb}{\mathcal{B}}
+\newcommand{\cald}{\mathcal{D}}
+\newcommand{\calh}{\mathcal{H}}
+\newcommand{\call}{\mathcal{L}}
+\newcommand{\calr}{\mathcal{R}}
+\newcommand{\la}{\mathbf{a}}
+\newcommand{\lgl}{\mathfrak{gl}}
+\newcommand{\lsl}{\mathfrak{sl}}
+\newcommand{\lieg}{\mathfrak{g}}
+
+% math operators
+\DeclareMathOperator{\kernel}{\mathrm{ker}}
+\DeclareMathOperator{\image}{\mathrm{im}}
+\DeclareMathOperator{\rad}{\mathrm{rad}}
+\DeclareMathOperator{\id}{\mathrm{id}}
+\DeclareMathOperator{\hum}{[\mathrm{Hum}]}
+\DeclareMathOperator{\eh}{[\mathrm{EH}]}
+\DeclareMathOperator{\lcm}{\mathrm{lcm}}
+\DeclareMathOperator{\Aut}{\mathrm{Aut}}
+\DeclareMathOperator{\Inn}{\mathrm{Inn}}
+\DeclareMathOperator{\Out}{\mathrm{Out}}
+\DeclareMathOperator{\Gal}{\mathrm{Gal}}
+
+
+% frequently used shorthands
+\newcommand{\ra}{\rightarrow}
+\newcommand{\se}{\subseteq}
+\newcommand{\ip}[1]{\langle#1\rangle}
+\newcommand{\dual}{^*}
+\newcommand{\inverse}{^{-1}}
+\newcommand{\norm}[2]{\|#1\|_{#2}}
+\newcommand{\abs}[1]{\lvert #1 \rvert}
+\newcommand{\Abs}[1]{\bigg| #1 \bigg|}
+\newcommand\bm[1]{\begin{bmatrix}#1\end{bmatrix}}
+\newcommand{\op}{\text{op}}
+
+% nicer looking empty set
+\let\oldemptyset\emptyset
+\let\emptyset\varnothing
+
+\setlist[enumerate,1]{topsep=1em,leftmargin=1.8em, itemsep=0.5em, label=\textup{(}\arabic*\textup{)}}
+\setlist[enumerate,2]{topsep=0.5em,leftmargin=3em, itemsep=0.3em}
+
+%pagestyle
+%\pagestyle{fancy} 
+
+\begin{document}
+\begin{center}
+    \textsc{Math 501. HW 1\\ Ian Jorquera\\ Collaborations: Clare Jones}
+\end{center}
+
+\vspace{1em}
+% See http://www.mathematicalgemstones.com/maria/Math501Fall22.php
+% for problems
+
+% sage: https://sagecell.sagemath.org/
+
+\begin{itemize}
+\item[(1)] % (2+) [4 points]
+For each problem we have the choice to pick or not to pick the problem. This means for any problem with $k$ points we can create the generating function $(1+x^k)$ which represents the option of not picking the problem with $1$ and picking the problem with $x^k$. So the factorization of our generating function is 
+$$a_n=(1+x^2)^{16}(1+x^3)^{2}(1+x^4)^{2}(1+x^8)^2$$
+
+At this point to compute $a_{10}$ we can multiple out our generating function and get the coeffecient of $x^{10}$, which represent the exact number of subset of the homework problems whose total number of points equals $10$. We find that $a_{10}=5658$.\\
+
+% sage code
+% R.<x> = PolynomialRing(QQ)
+% poly = (1+x^2)^16*(1+x^3)^2*(1+x^4)^2*(1+x^8)^2; poly
+
+\item[(2)] % (1+) [2 points]
+Let $f:A\ra B$ be a bijection between sets $A$ and $B$. Now let $g:B\ra A$ be a function where an element $b\mapsto a$ where $f(a)=b$. First we know that such an $a$ exists by the surjectivity of $f$. Similarly we know that $a$ is unique by injectivity of $f$ as any elements in $A$ that map to the element $b$ are the same. Now we will show $g$ is the inverse of $f$. Notice first that for any element $a\in A$ where $f$ maps $a\mapsto b$ that $g(f(a))=g(b)=f(a)$. Now consider any element $b\in B$ along with the unique $a\in A$ where $a\mapsto b$ with $f$. Notice that $f(g(b))=f(a)=b$. And so $g$ is the inverse of $f$.\\
+
+Now let $f:A\ra B$ be a function between the sets $A$ and $B$ with the function $g:B\ra A$ such that $f(g(b))=b$ for any $b\in B$ and $g(f(a))=a$ for any $a\in A$. Consider any two elements $a_1,a_2\in A$ such that $f(a_1)=f(a_2)$. Notice that this means $g(f(a_1))=g(f(a_2))$ and so $a_1=a_2$. So $f$ is injective. Now consider an element $b\in B$ and notice that $g(b)\in A$ such that $f(g(b))=b$, meaning $f$ is surjective.\\
+
+\item[(4)] % (1+) [2 points]
+
+
+Notice that because we can only step north or east and we must pass through $(3,3)$ we can split this problem into two smaller problems, first the problem of going from $(0,0)$ to $(3,3)$ and then the problem of going from $(3,3)$ to $(6,6)$ which are both the same problem. Notice that to get to $(3,3)$ we will have to step north $3$ times and east $3$ times. Meaning there will be a total of $6$ steps, and $3$ will be north, so there are ${6 \choose 3}= 20$ possible paths, or assignments of the three "up"s.
+\iffalse Now we can write this problem as a recurrence. So let $R(i,j)$ represents the number of paths from $(i,j)$ to $(3,3)$. For our initial conditions we have that $R(i,j)=1$ if either $i$ or $j$ is $1$ and then for any arbitrary $R(i,j)=R(i+1,j)+R(i,j+1)$. We can this fill this into a $4\times 4$ table
+
+\begin{center}
+\begin{tabular}{ |c|c|c|c| } 
+ \hline
+ 1 & 1 & 1 & 1 \\ 
+ \hline
+ 4 & 3 & 2 & 1 \\
+ \hline
+ 10 & 6 & 3 & 1 \\
+ \hline
+ 20 & 10 & 4 & 1 \\
+ \hline
+\end{tabular}
+\end{center}
+
+And then we can extract $R(0,0)=20$.\fi 
+And because we need to repeat this process again, between $(3,3)$ and $(6,6)$ we know that there are must be $20\cdot 20=400$ possible paths and bpth problems are independent of each other.\\
+
+
+\item[(10)] % (2-) [3 points]
+Let $R(n)$ represent the number of subsets of $\left[n\right]$ with non consecutive integers, with initial condition $R(0)=1$(the only subset of $\emptyset$ is $\emptyset$) and $R(1)=2$(the subsets of $\{1\}$ are $\emptyset$ and $\{1\}$). In general we can create a recurrence relation for $R(n)$ that counts the number of subsets of $[n]$ with no consecutive integer, by splitting the possible subsets by whether or not they include $n$. If $n$ is included then $n-1$ is not included and so there are $R(n-2)$ possible subsets. And if $n$ is not included then we can still include $n-1$ meaning the number of possible subsets is equal to $R(n-1)$. Therefore in general we can say that $R(n)=R(n-1)+R(n-2)$ for $n>1$. Notice this follow the Fibonacci sequence, where $R(n)=F_{n+2}=F_{n+1}+F_{n}$ with the initial conditions $R(0)=F_2=1$ and $R(1)=F_3=2$.
+
+
+\end{itemize}
+
+\end{document}
+
+

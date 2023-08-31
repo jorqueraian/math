@@ -1,0 +1,144 @@
+\documentclass[12pt]{amsart}
+% packages
+\usepackage{graphicx}
+\usepackage{setspace}
+\usepackage{amssymb,amsmath,amsthm,amsfonts,amscd}
+\usepackage{hyperref}
+\usepackage{color}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{enumitem}
+\usepackage[retainorgcmds]{IEEEtrantools}
+\usepackage[notref,notcite,final]{showkeys}
+\usepackage[final]{pdfpages}
+\usepackage{fancyhdr}
+\usepackage{upgreek}
+\usepackage{multicol}
+% set margin as 0.75in
+\usepackage[margin=0.75in]{geometry}
+
+% tikz-related settings
+\usepackage{tikz}
+\usepackage{tikz-cd}
+\usetikzlibrary{cd}
+
+% theorem environments with italic font
+\newtheorem{thm}{Theorem}[section]
+\newtheorem*{thm*}{Theorem}
+\newtheorem{lemma}[thm]{Lemma}
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem{claim}[thm]{Claim}
+\newtheorem{corollary}[thm]{Corollary}
+\newtheorem{conjecture}[thm]{Conjecture}
+\newtheorem{question}[thm]{Question}
+\newtheorem{procedure}[thm]{Procedure}
+\newtheorem{assumption}[thm]{Assumption}
+
+% theorem environments with roman font (use lower-case version in body
+% of text, e.g., \begin{example} rather than \begin{Example})
+\newtheorem{Definition}[thm]{Definition}
+\newenvironment{definition}
+{\begin{Definition}\rm}{\end{Definition}}
+\newtheorem{Example}[thm]{Example}
+\newenvironment{example}
+{\begin{Example}\rm}{\end{Example}}
+
+\theoremstyle{definition}
+\newtheorem{remark}[thm]{\textbf{Remark}}
+
+% special sets
+\newcommand{\A}{\mathbb{A}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\cals}{\mathcal{S}}
+\newcommand{\ZZ}{\mathbb{Z}_{\ge 0}}
+\newcommand{\cala}{\mathcal{A}}
+\newcommand{\calb}{\mathcal{B}}
+\newcommand{\cald}{\mathcal{D}}
+\newcommand{\calh}{\mathcal{H}}
+\newcommand{\call}{\mathcal{L}}
+\newcommand{\calr}{\mathcal{R}}
+\newcommand{\la}{\mathbf{a}}
+\newcommand{\lgl}{\mathfrak{gl}}
+\newcommand{\lsl}{\mathfrak{sl}}
+\newcommand{\lieg}{\mathfrak{g}}
+
+% math operators
+\DeclareMathOperator{\kernel}{\mathrm{ker}}
+\DeclareMathOperator{\image}{\mathrm{im}}
+\DeclareMathOperator{\rad}{\mathrm{rad}}
+\DeclareMathOperator{\id}{\mathrm{id}}
+\DeclareMathOperator{\hum}{[\mathrm{Hum}]}
+\DeclareMathOperator{\eh}{[\mathrm{EH}]}
+\DeclareMathOperator{\lcm}{\mathrm{lcm}}
+\DeclareMathOperator{\Aut}{\mathrm{Aut}}
+\DeclareMathOperator{\Inn}{\mathrm{Inn}}
+\DeclareMathOperator{\Out}{\mathrm{Out}}
+\DeclareMathOperator{\Gal}{\mathrm{Gal}}
+\DeclareMathOperator{\End}{\mathrm{End}}
+
+
+% frequently used shorthands
+\newcommand{\ra}{\rightarrow}
+\newcommand{\se}{\subseteq}
+\newcommand{\ip}[1]{\langle#1\rangle}
+\newcommand{\dual}{^*}
+\newcommand{\inverse}{^{-1}}
+\newcommand{\norm}[2]{\|#1\|_{#2}}
+\newcommand{\abs}[1]{\lvert #1 \rvert}
+\newcommand{\Abs}[1]{\bigg| #1 \bigg|}
+\newcommand\bm[1]{\begin{bmatrix}#1\end{bmatrix}}
+\newcommand{\op}{\text{op}}
+
+% nicer looking empty set
+\let\oldemptyset\emptyset
+\let\emptyset\varnothing
+
+\setlist[enumerate,1]{topsep=1em,leftmargin=1.8em, itemsep=0.5em, label=\textup{(}\arabic*\textup{)}}
+\setlist[enumerate,2]{topsep=0.5em,leftmargin=3em, itemsep=0.3em}
+
+
+%pagestyle
+%\pagestyle{fancy} 
+
+\begin{document}
+\begin{center}
+    \textsc{Linear Algebra. HW 2\\ Ian Jorquera\\ Colaborators: Kaylee, Daniel, Sarah, Kylie}
+\end{center}
+\vspace{1em}
+
+\begin{itemize}
+\item[(3.2)]
+% this is just 4th iso theorem?
+%Thm: Let $S$ be a subspace of $V$. Then the function that assigns to each intermediate subspace $S\se T\se V$ the subspace $T/S$ of $V/S$ is an order preserving (with respect to set inclusion)
+% one-to-one correspondence between the set of all subspaces of $V$ containing $S$ and the set of all subspaces of $V/S$.
+A proof that the correspondence is surjective is provided in the book. However I will still provide a proof for my self. Let $V$ be a vector space with a subspace $S$. Let $X=\{u+S|u\in U\}$ be a subspace of $V/S$, for some subset $U\se V$. And let $T=\bigcup_{u\in U}(u+S)$ be the union of all cosets in $X$. Now let $x,y\in T$. This means that $x\in u+S$ for some $u\in U$. Recall this implies that $x=u+s$ for some $s\in S$ and that $u=x-s$ so $x\in x-s+S=x+S\in X$. Similarly $y\in y+S$ where $y+S\in X$. Furthermore because $X$ is a subspace we know that $rx+S$ and $x+y+S$ are in $X$, for $r\in \Omega$. And because $S$ is a subspace we know that $0\in S$ and so $rx+0\in T$ and $x+y+0\in T$. Therefore $T$ is a subspace of $V$ containing $S$. Finally we must show that $T/S=X$. Notice that for any $t+S\in T/S$ we have that $t\in T$ and so $t+S\in X$. Conversely for $u+S\in X$, we have that $u\in T$ and so $u+S\in T/S$.\\
+
+Now we will show that this is a one-to-one(Pronounced: Injective) correspondence. Now consider two subsets $S\leq T_1,T_2\leq V$ such that $T_1/S=T_2/S$. WLOG let $t_1\in T_1$ which means $t_1+S\in T_1/S$, we therefore also know that $t_1+S\in T_2/S$, meaning we may write $t_1+S=t_2+S$ for some $t_2\in T_2$. This means that $t_1-t_2\in S$ and so $t_1-t_2+t_2=t_1\in S$. A similar argument can be made to conclude that for any $t_2\in T_2$ that $t_2\in T_1$. So $T_1=T_2$.\\
+
+Finally we will show this correspondence is order preserving. Consider the subspaces $S\leq T_1\leq T_2\leq V$. So consider any element $t_1+S\in T_1/S$, for some element $t_1\in T_1\se T_2$. We know that $t_1\in T_2$, so $t_1+S\in T_2/S$. So $T_1/S\se T_2/S$.\\
+
+\item[(3.3)] % 
+The first isomorphism theorem follows as a corollary from theorem 3.4 in the book. However I still provide a complete proof\\
+Let $\tau:V\ra W$ be a linear transform. And consider the map $\tau':V/\kernel \tau\ra W$ such that $\tau'(v+\kernel \tau)=\tau(v)$. First we will show that $\tau'$ is well defined. So consider an element $v+\kernel\tau=v+k+\kernel\tau$ for any $k\in\kernel\tau$. Notice that $\tau'(v+\kernel\tau)=\tau(v)=\tau(v)+\tau(k)=\tau(v+k)=\tau'(v+k+\kernel\tau)$. Because any element in $v+\kernel\tau$ is written as a sum $v+k$, the map $\tau'$ is well-defined. Now we will show that $\tau'$ is a linear transform, that is it preserves addition and $\Omega$-actions. So consider the cosets $u+\kernel\tau ,v+\kernel\tau \in V/\kernel\tau$ and $w\in \Omega$ and notice that $\tau'(u+\kernel\tau +w(v+\kernel\tau))=\tau'(u+\kernel\tau +wv+\kernel\tau)=\tau'(u+wv+\kernel\tau)=\tau(u+wv)=\tau(u)+w\tau(v)=\tau'(u+\kernel\tau)+w\tau'(v+\kernel\tau)$.\\
+
+Now we will show that $\tau'$ is an isomorphism, that is it is a bijection onto its image. First consider two elements $u+\kernel\tau ,v+\kernel\tau \in V/\kernel\tau$ such that $\tau'(u+\kernel\tau)=\tau'(v+\kernel\tau)$. This means that $\tau'(u+\kernel\tau)=\tau(u)=\tau(v)=\tau'(v+\kernel\tau)$. And so $0=\tau(u)-\tau(v)=\tau(u-v)$. This means that $u-v\in\kernel\tau$ and so $u+\kernel\tau=v+\kernel\tau$. Thus $\tau'$ is injective.\\
+
+Now consider an element $\tau(v)\in\image\tau$ for some $v\in V$. Notice that $v+\kernel\tau$ is an element of $V/\kernel\tau$  such that $\tau'(v+\kernel\tau)=\tau(v)$. Therefore $\tau'$ is a bijection onto the $\image\tau$, making $V/\kernel\tau\approx\image\tau$.
+\\
+\item[(3.7)] % 
+Let $\tau\in \End_{\Omega}(V)$. And let $S\leq V$, were we will define the map $\tau':V/S\ra V/S$ where $\tau'(v+S)=\tau(v)+S$. Notice that for this function to be well-defined it would satisfy that $\tau'(v+S)=\tau'(v+s+S)$, for any element $v+S\in V/S$ and any $s\in S$. This means that $\tau(v)+S=\tau(v+s)+S=\tau(v)+\tau(s)+S$. And so $0+S=\tau(v)+\tau(s)+S-(\tau(v)+S)=\tau(s)+S$. This is the case if and only if $\tau(s)\in S$. Meaning $\tau'$ is well defined if and only if $\tau(s)\in S$ or $\tau(S)\se S$.\\
+
+Now if $\tau'$ is well-defined we will show it is also a linear transform. So consider two elements $v+S,u+S\in V/S$ as well as an operator $w\in\Omega$. Notice that $\tau'(v+S+w(u+S))=\tau'(v+S+wu+S))=\tau'(v+wu+S)=\tau(v+wu)+S=\tau(v)+w\tau(u)+S=\tau(v)+S+w\tau(u)+S=\tau'(v+S)+w\tau'(u+S)$. This means that $\tau'$ is in fact a linear transform.\\
+
+Furthermore consider the elements $v+S\in V/S$ such that $\tau'(v+S)=0+S$. In these cases we know that $0+S=\tau'(v+S)=\tau(v)+S$, which means that $\tau(v)\in S$ and so $\kernel\tau'=\{v+S|\tau(v)\in S\}$. % Can i go farther here?
+Also notice that $\image\tau'=\{\tau'(v+S)|v\in V\}=\{\tau(v)+S|v\in V\}$. Notice that these $\tau(v)$ are precisely the image of $\tau$, so $\image\tau'=\{\tau(v)+S|\tau(v)\in \image\tau\}=\image\tau/S=\tau(V)/S$
+\end{itemize}
+
+\end{document}
+
+

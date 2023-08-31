@@ -1,0 +1,165 @@
+\documentclass[12pt]{amsart}
+% packages
+\usepackage{graphicx}
+\usepackage{setspace}
+\usepackage{amssymb,amsmath,amsthm,amsfonts,amscd}
+\usepackage{hyperref}
+\usepackage{color}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{enumitem}
+\usepackage[retainorgcmds]{IEEEtrantools}
+\usepackage[notref,notcite,final]{showkeys}
+\usepackage[final]{pdfpages}
+\usepackage{fancyhdr}
+\usepackage{upgreek}
+\usepackage{multicol}
+\usepackage{fontawesome}
+\usepackage{halloweenmath}
+% set margin as 0.75in
+\usepackage[margin=0.75in]{geometry}
+
+% tikz-related settings
+\usepackage{tkz-berge}
+\usetikzlibrary{calc,quotes}
+\usetikzlibrary{arrows.meta}
+\usetikzlibrary{positioning, automata}
+\usetikzlibrary{decorations.pathreplacing}
+
+%% For table
+\usepackage{tikz}
+\usetikzlibrary{tikzmark}
+
+% theorem environments with italic font
+\newtheorem{thm}{Theorem}[section]
+\newtheorem*{thm*}{Theorem}
+\newtheorem{lemma}[thm]{Lemma}
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem{claim}[thm]{Claim}
+\newtheorem{corollary}[thm]{Corollary}
+\newtheorem{conjecture}[thm]{Conjecture}
+\newtheorem{question}[thm]{Question}
+\newtheorem{procedure}[thm]{Procedure}
+\newtheorem{assumption}[thm]{Assumption}
+
+% theorem environments with roman font (use lower-case version in body
+% of text, e.g., \begin{example} rather than \begin{Example})
+\newtheorem{Definition}[thm]{Definition}
+\newenvironment{definition}
+{\begin{Definition}\rm}{\end{Definition}}
+\newtheorem{Example}[thm]{Example}
+\newenvironment{example}
+{\begin{Example}\rm}{\end{Example}}
+
+\theoremstyle{definition}
+\newtheorem{remark}[thm]{\textbf{Remark}}
+
+% special sets
+\newcommand{\A}{\mathbb{A}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\cals}{\mathcal{S}}
+\newcommand{\ZZ}{\mathbb{Z}_{\ge 0}}
+\newcommand{\cala}{\mathcal{A}}
+\newcommand{\calb}{\mathcal{B}}
+\newcommand{\cald}{\mathcal{D}}
+\newcommand{\calh}{\mathcal{H}}
+\newcommand{\call}{\mathcal{L}}
+\newcommand{\calr}{\mathcal{R}}
+\newcommand{\la}{\mathbf{a}}
+\newcommand{\lgl}{\mathfrak{gl}}
+\newcommand{\lsl}{\mathfrak{sl}}
+\newcommand{\lieg}{\mathfrak{g}}
+
+% math operators
+\DeclareMathOperator{\kernel}{\mathrm{ker}}
+\DeclareMathOperator{\image}{\mathrm{im}}
+\DeclareMathOperator{\rad}{\mathrm{rad}}
+\DeclareMathOperator{\id}{\mathrm{id}}
+\DeclareMathOperator{\hum}{[\mathrm{Hum}]}
+\DeclareMathOperator{\eh}{[\mathrm{EH}]}
+\DeclareMathOperator{\lcm}{\mathrm{lcm}}
+\DeclareMathOperator{\Aut}{\mathrm{Aut}}
+\DeclareMathOperator{\Inn}{\mathrm{Inn}}
+\DeclareMathOperator{\Out}{\mathrm{Out}}
+\DeclareMathOperator{\Gal}{\mathrm{Gal}}
+
+
+% frequently used shorthands
+\newcommand{\ra}{\rightarrow}
+\newcommand{\se}{\subseteq}
+\newcommand{\ip}[1]{\langle#1\rangle}
+\newcommand{\dual}{^*}
+\newcommand{\inverse}{^{-1}}
+\newcommand{\norm}[2]{\|#1\|_{#2}}
+\newcommand{\abs}[1]{\lvert #1 \rvert}
+\newcommand{\Abs}[1]{\bigg| #1 \bigg|}
+\newcommand\bm[1]{\begin{bmatrix}#1\end{bmatrix}}
+\newcommand{\op}{\text{op}}
+
+% nicer looking empty set
+\let\oldemptyset\emptyset
+\let\emptyset\varnothing
+
+\setlist[enumerate,1]{topsep=1em,leftmargin=1.8em, itemsep=0.5em, label=\textup{(}\arabic*\textup{)}}
+\setlist[enumerate,2]{topsep=0.5em,leftmargin=3em, itemsep=0.3em}
+
+%pagestyle
+%\pagestyle{fancy} 
+
+\begin{document}
+\begin{center}
+    \textsc{Math 501. HW $10$\\ Ian Jorquera\\ Collaborators: Clare, Ignacio}
+\end{center}
+\vspace{1em}
+% See http://www.mathematicalgemstones.com/maria/Math501Fall22.php
+% for problems
+
+% sage: https://sagecell.sagemath.org/
+\begin{itemize}[align=left]
+
+\item[\textbf{Problem $3$}]\;\\\\ % (2+) (4 points)
+This problem I follow the process from Stanley question 5.66. Consider the complete bipartite graph $K_{m,n}$, which can be split into two sets of the vertices: a set $L$ containing $n$ vertices and a set $R$ containing $m$ such that both sets have induced subraphs with no edges. Consider the Laplacian matrix of the complete bipartite graph $K_{m,n}$ which is the following 
+$$L(K_{m,n})=\begin{pmatrix}
+    m& 0 & 0 & \dots & 0 & -1 & -1 & -1 & \dots & -1\\
+    0& m & 0 & \dots & 0 & -1 & -1 & -1 & \dots & -1\\
+    0& 0 & m & \dots & 0 & -1 & -1 & -1 & \dots & -1\\
+    0& 0 & 0 &\ddots & 0 & -1 & -1 & -1 & \dots & -1\\
+    0& 0 & 0 & \dots & m & -1 & -1 & -1 & \dots & -1\\
+    -1 & -1& -1  & \dots & -1 & n& 0 & 0 & \dots & 0\\
+    -1 & -1& -1  & \dots & -1 & 0& n & 0 & \dots & 0\\
+    -1 & -1& -1  & \dots & -1 & 0& 0 & n & \dots & 0\\
+    -1 & -1& -1  & \dots & -1 & 0& 0 & 0 &\ddots & 0\\
+    -1 & -1& -1  & \dots & -1 & 0& 0 & 0 & \dots & n\\
+\end{pmatrix}$$
+such that there are $n$ rows with $m$ on the diagonal and $m$ rows with $n$ on the diagonal. This is because the graph is bipartite and so there are only edges between the set $L$ and $R$ and each node is connected with all nodes from the opposite set. From the matrix we can determine that $m$ is an eigenvalue with multiplicity $n-1$ because $\begin{pmatrix} 0&\dots &0& 1&-1&0&\dots&0 \end{pmatrix}^\intercal$ is an eigenvector with eigenvalue $m$ when the value $1$ is in the row $i$ where $1\leq i\leq n-1$ and the value $-1$ is in the next row. We also know that $n$ is an eigenvalue with multiplicity $m-1$ because $\begin{pmatrix} 0&\dots &0& 1&-1&0&\dots&0 \end{pmatrix}^\intercal$ is an eigenvector with eigenvalue $n$ when the value $1$ is in the row $i$ where $n+1\leq i\leq n+m-1$ and the value $-1$ is in the next row. 
+We also know that $\begin{pmatrix} 1&1& \dots&1 \end{pmatrix}^\intercal$ is an Eigenvector with eigenvalue $0$, as each row of the matrix adds to zero. This accounts for $n+m-1$ eigenvalues. We can determine the last by looking at the trace of the matrix $\text{tr}( L(K_{m,n}))=nm+mn$ and the sum of the eigenvalues which is $m(n-1)+n(m-1)+0$. Because the trace is equal to the sum of the eigenvalues we know that the last eigenvalue must be $m+n$. Finally using the second part of Theorem 5.6.8 in Stanley Volume 2 we know that the determinant of the deleted Laplacian is the product of the nonzero eigenvalues of the Laplacian divided by the number of vertices. Meaning the number of spanning trees in $K_{n,m}$ is $\det(L(K_{m,n}))=\frac{1}{m+n}m\cdots m\cdot n\cdots n\cdot (n+m)=m^{n-1}n^{m-1}$.\\
+    
+
+\item[\textbf{Problem $7$}]\;\\\\ % (2+) (4 points)
+First we will show that $R(3,4)>8$ by showing that $K_8$ does not work. Consider the complete graph $K_8$ such that the edges $\{i,i+1\}$ is colored yellow for all $1\leq i\leq 8$, as well as the edge $\{1,8\}$, which colors the edges in the outer ring yellow. Addition color the edges $\{i,i+4\}$ yellow for $1\leq i\leq 4$. And then color all remaining edges blue. Notice that in this case there are no yellow $3$-cliques by construction. Furthermore notice that there are no blue $4$-cliques. This follow from the fact that there are not subsets of $4$ vertices that dont contain a yellow edge. To see this assume WLOG that $1$ is in some subset $S$ of vertices such that none are connected by a yellow edge. This would mean that the vertices $2,5,8$ can not be in $S$. This leave the remaining vertices $3,4,6,7$, but we can not select both $3,4$ or both of $6,7$ meaning there is a maximum of $3$ vertices that aren't connected by a yellow edge. So not blue $4$-clique exists.\\
+
+Now to show that $R(3,4)=9$ we will consider three cases. Consider some edge coloring. First consider the case that there exists some node with $4$ or more edges colored yellow. In this case WLOG we will assume that this vertex is $1$ and the edges are $1,2$; $1,3$; $1,4$; $1,5$. Becasue $R(2,4)=4$ this leaves two cases for the induced subgraph (isomorphic to $K_4$) on the vertices $\{2,3,4,5\}$. Either that at least $1$ edge $i,j$ is colored yellow, in which case the vertices $1,i,j$ would be a $3$-clique or that none are colored yellow, meaning the vertices $2,3,4,5$ form a blue $4$-clique. In both cases there will always be a coloring satisfying $R(3,4)$.\\
+
+The second case is the case that there exists a node with less then $3$ yellow edges, which is equivalent to $6$ or more blue edges. In this case WLOG we will assume that this vertex is $1$ and the edges are $1,2$; $1,3$; $1,4$; $1,5$, $1,6$, $1,7$ are colored blue. Because $R(3,3)=6$ we know that the induced subgraph on $\{2,3,4,5,6,7\}$ which is isomorphic to $K_6$ will have either a blue $3$-clique which means that with the vertex $1$ there would be a blue $4$-clique or there will be a yellow $3$-clique. Either way any coloring will satisfy $R(3,4)$.\\
+
+Finally consider the case that every node has exactly $5$ blue edges and $3$ yellow edges. Now if we sum the number of edges connected to each of the $9$ nodes we would find that there are $45$ such edges. But because each edge has $2$ nodes we would count each edge twice in this process. But because $2\nmid 45$ we know that there can not exist a graph on $9$ nodes such that every node has exactly $5$ (blue) edges. So we have considered all cases, meaning $R(3,4)=9$.\\
+
+\item[\textbf{Problem $9$}]\;\\\\ % (2) (3 points)
+First we will show that a $k$-regular bipartite graph must have the same number of vertices of each color is a $2$-coloring. Consider a $2$ coloring with vertex sets $L$ and $R$ colored blue and red respectively. We know that the sum of edges incident to vertices in $L$ must equal the sum of edges incident to vertices in $R$, as all edges exist only between the sets $L$ and $R$. That means the sum of the degrees of each vertex must be the same for sets $L$ and $R$: that is 
+$$\sum_{v\in L}deg(v)=\sum_{v\in R}deg(v)$$ 
+Furthermore we know that every vertex has degree $k$ meaning there must be $\displaystyle{\frac{\sum_{v\in L}deg(v)}{k}}$ vertices in $L$ and $\displaystyle{\frac{\sum_{v\in R}deg(v)}{k}}$ vertices in $R$. And so $|L|=|R|$.\\
+
+Now to see that $k$-regular bipartite graphs have perfect matching consider a subset $L'\se L$. And consider its neighborhood $N_G(L')$. And assume that that $|N_G(L')|< |L'|$. 
+First we know that $|L'|>k$ as any single vertex in $L'$ will be connected to $k$ vertices in $R$ meaning $|N_G(L')|\geq k$. In this case notice that if $|L'|=n$ and $|N_G(L')|=m$ such that $k\leq m<n$ then there would be $kn$ edges going from the $n$ nodes of $L'$ to $m<n$ nodes of $|N_G(L')|$. This would then require by the pigeon hole principle that there would be at least one vertex in $N_G(L')$ that would have degree more then $k$, which is a falsity. 
+So $|N_G(L')|\geq |L'|$ meaning by Hall's Halloween Candy Lemma there must exist a matching that saturates $L$. This then means there would be an edge for each vertex in $L$ and because as argued previously $|L|=|R|$ there would be an edge incident on ever node in $R$. So there must exist a matching that saturates all vertices in the $k$-regular bipartite graph, so there is a perfect matching.
+
+\end{itemize}
+
+\end{document}
+
+

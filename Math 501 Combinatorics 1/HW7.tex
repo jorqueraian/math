@@ -1,0 +1,170 @@
+\documentclass[12pt]{amsart}
+% packages
+\usepackage{graphicx}
+\usepackage{setspace}
+\usepackage{amssymb,amsmath,amsthm,amsfonts,amscd}
+\usepackage{hyperref}
+\usepackage{color}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{enumitem}
+\usepackage[retainorgcmds]{IEEEtrantools}
+\usepackage[notref,notcite,final]{showkeys}
+\usepackage[final]{pdfpages}
+\usepackage{fancyhdr}
+\usepackage{upgreek}
+\usepackage{multicol}
+\usepackage{fontawesome}
+% set margin as 0.75in
+\usepackage[margin=0.75in]{geometry}
+
+% tikz-related settings
+\usepackage{tikz}
+\usepackage{tikz-cd}
+\usetikzlibrary{cd}
+
+% theorem environments with italic font
+\newtheorem{thm}{Theorem}[section]
+\newtheorem*{thm*}{Theorem}
+\newtheorem{lemma}[thm]{Lemma}
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem{claim}[thm]{Claim}
+\newtheorem{corollary}[thm]{Corollary}
+\newtheorem{conjecture}[thm]{Conjecture}
+\newtheorem{question}[thm]{Question}
+\newtheorem{procedure}[thm]{Procedure}
+\newtheorem{assumption}[thm]{Assumption}
+
+% theorem environments with roman font (use lower-case version in body
+% of text, e.g., \begin{example} rather than \begin{Example})
+\newtheorem{Definition}[thm]{Definition}
+\newenvironment{definition}
+{\begin{Definition}\rm}{\end{Definition}}
+\newtheorem{Example}[thm]{Example}
+\newenvironment{example}
+{\begin{Example}\rm}{\end{Example}}
+
+\theoremstyle{definition}
+\newtheorem{remark}[thm]{\textbf{Remark}}
+
+% special sets
+\newcommand{\A}{\mathbb{A}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\cals}{\mathcal{S}}
+\newcommand{\ZZ}{\mathbb{Z}_{\ge 0}}
+\newcommand{\cala}{\mathcal{A}}
+\newcommand{\calb}{\mathcal{B}}
+\newcommand{\cald}{\mathcal{D}}
+\newcommand{\calh}{\mathcal{H}}
+\newcommand{\call}{\mathcal{L}}
+\newcommand{\calr}{\mathcal{R}}
+\newcommand{\la}{\mathbf{a}}
+\newcommand{\lgl}{\mathfrak{gl}}
+\newcommand{\lsl}{\mathfrak{sl}}
+\newcommand{\lieg}{\mathfrak{g}}
+
+% math operators
+\DeclareMathOperator{\kernel}{\mathrm{ker}}
+\DeclareMathOperator{\image}{\mathrm{im}}
+\DeclareMathOperator{\rad}{\mathrm{rad}}
+\DeclareMathOperator{\id}{\mathrm{id}}
+\DeclareMathOperator{\hum}{[\mathrm{Hum}]}
+\DeclareMathOperator{\eh}{[\mathrm{EH}]}
+\DeclareMathOperator{\lcm}{\mathrm{lcm}}
+\DeclareMathOperator{\Aut}{\mathrm{Aut}}
+\DeclareMathOperator{\Inn}{\mathrm{Inn}}
+\DeclareMathOperator{\Out}{\mathrm{Out}}
+\DeclareMathOperator{\Gal}{\mathrm{Gal}}
+
+
+% frequently used shorthands
+\newcommand{\ra}{\rightarrow}
+\newcommand{\se}{\subseteq}
+\newcommand{\ip}[1]{\langle#1\rangle}
+\newcommand{\dual}{^*}
+\newcommand{\inverse}{^{-1}}
+\newcommand{\norm}[2]{\|#1\|_{#2}}
+\newcommand{\abs}[1]{\lvert #1 \rvert}
+\newcommand{\Abs}[1]{\bigg| #1 \bigg|}
+\newcommand\bm[1]{\begin{bmatrix}#1\end{bmatrix}}
+\newcommand{\op}{\text{op}}
+
+% nicer looking empty set
+\let\oldemptyset\emptyset
+\let\emptyset\varnothing
+
+\setlist[enumerate,1]{topsep=1em,leftmargin=1.8em, itemsep=0.5em, label=\textup{(}\arabic*\textup{)}}
+\setlist[enumerate,2]{topsep=0.5em,leftmargin=3em, itemsep=0.3em}
+
+%pagestyle
+%\pagestyle{fancy} 
+
+\begin{document}
+\begin{center}
+    \textsc{Math 501. HW 7\\ Ian Jorquera\\ Collaborators:}
+\end{center}
+\vspace{1em}
+% See http://www.mathematicalgemstones.com/maria/Math501Fall22.php
+% for problems
+
+% sage: https://sagecell.sagemath.org/
+
+\begin{itemize}
+
+\item[(3)] 
+\begin{enumerate}[label=(\alph*)]
+    \item Let $C_n$ count the number of strings of length $n$ with characters from $\{0,1,2,3\}$ such that there are no two consecutive $3$s. Consider a string $a_1a_2a_3\dots a_{n-1}a_n$. There are four possible characters for $a_n$: if $a_n$ is $0$, $1$ or $2$ then $a_1a_2a_3\dots a_{n-1}$ is a string of length $n-1$ with no consecutive $3$'s, of which there are $C_{n-1}$, meaning there are $3C_{n-1}$ strings of length $n$ that end in $0$, $1$ or $2$. Now if $a_n$ is a $3$ then $a_{n-1}$ can not be a three meaning there are three possibilities for $a_{n-1}$ either $0$, $1$ or $2$, and furthermore this means that $a_1a_2a_3\dots a_{n-2}$ is a string of length $n-2$ with no two consecutive $3$'s. This means there are $3C_{n-2}$ possible string of length $n$ that end in a $3$. So the number of string with no consecutive $3$'s has the recurrence: $C_n=3C_{n-1}+3C_{n-2}$. Finally notice that $C_0=1$, as the empty string has no consecutive $3$s, and $C_0=4$ as there are $4$s string of length $1$, each of the characters.\\
+    
+    \item 
+    Let $C(x)$ be the generating function for the number of strings with no consecutive $3$s. Now to find an explicit generating function consider 
+
+\begin{align*}
+    C(x)&=1+4x+15x^2+C_3x^3+\dots+C_nx^n+\dots\\
+    -3xC(x)&=\;\;\;\;-3x-12x^2-3C_3x^3-\dots-3C_{n-1}x^n+\dots\\
+    -3x^2C(x)&=\;\;\;\;\;\;\;\;\;\;\;\;\;\,-3x^2-12x^3-\dots-3C_{n-2}x^n+\dots
+\end{align*}
+Which gives us
+    $$(1-3x-3x^3)C(x)=1+x$$
+And so $C(x)=\displaystyle{\frac{1+x}{1-3x-3x^3}}$.\\
+
+    \item Notice that the roots of the polynomial $x^2-3x-3$ are $\frac{3\pm \sqrt{21}}{2}$ meaning $1-3x-3x^2=(1-r_1x)(1-r_2x)$ where $r_1=\frac{3+ \sqrt{21}}{2}$ and $r_1=\frac{3- \sqrt{21}}{2}$. By the corollary from class we know that the explicit formula is of the form $\sum_{i=1}^2 P_{i}(n)r_i^n$ where each $P_i$ is a degree $0$ polynomial, meaning constants.
+    This gives us 
+    $$C_n=a\left(\frac{3+ \sqrt{21}}{2}\right)^n+b\left(\frac{3- \sqrt{21}}{2}\right)^n$$
+    For some constants $a$ and $b$. To find these cosntants we can look at $C_0=1=a+b$ and $C_1=4=a\left(\frac{3+ \sqrt{21}}{2}\right)+b\left(\frac{3- \sqrt{21}}{2}\right)$ and set up the following linear system of equations
+
+    $$\left(\begin{array}{c c|c} 
+	1 & 1 & 1\\
+        \frac{3+ \sqrt{21}}{2} & \frac{3- \sqrt{21}}{2} & 4
+\end{array}\right)\Rightarrow \left(\begin{array}{c c|c} 
+	1 & 1 & 1\\
+        0 & -\sqrt{21} & \frac{5- \sqrt{21}}{2}
+\end{array}\right)\Rightarrow \left(\begin{array}{c c|c} 
+	1 & 1 & 1\\
+        0 & 1 & \frac{-5+\sqrt{21}}{2\sqrt{21}}
+\end{array}\right) $$
+This gives us that $b=\frac{-5+\sqrt{21}}{2\sqrt{21}}$ and so $a=1+\frac{5-\sqrt{21}}{2\sqrt{21}}=\frac{5+\sqrt{21}}{2\sqrt{21}}$ and so 
+
+$$C_n=\left(\frac{5+\sqrt{21}}{2\sqrt{21}}\right)\left(\frac{3+ \sqrt{21}}{2}\right)^n+\left(\frac{-5+\sqrt{21}}{2\sqrt{21}}\right)\left(\frac{3- \sqrt{21}}{2}\right)^n$$
+
+\end{enumerate}
+
+\item[(5)]
+Let $S_q(n,k)$ \textit{qounts} the number of inversions in partitions of the set $\left[n\right]$ into $k$ blocks. Consider the element $n$, and consider the case that $n$ is contained in its own block. This means that the remaining $k-1$ blocks are a partition of the set $[n-1]$ and the addition of $n$ will add zero inversions as it will be the last block. This means that the $q$-analog counting the number of inversions where $n$ is in its own block is $S_q(n-1,k-1)$. Now consider the case that $n$ is not in its own block but contained in the $i$th block. This means that when $n$ is removed there will be $k$ blocks that partition the set $[n-1]$ and the $q$-analog counting the number of inversions in partitions of $[n-1]$ into $k$ blocks is $S_q(n-1,k)$, And because $n$ is the largest element it forms an inversion with all the blocks after the $i$th block of which there are $k-i$, this means that the number of inversions of $[n]$ into $k$ blocks with $n$ being in the $i$th block is \textit{qounted} by $q^{k-i}S_q(n-1,k)$.\\
+
+So we can sum over all possible blocks that contain $n$ and the case that $n$ is in its own block and we get the recurrence 
+\begin{align*}
+S_q(n,k)&=S_q(n-1,k-1)+\sum_{i=1}^k q^{k-i}S_q(n-1,k)\\
+&=S_q(n-1,k-1)+(1+q+q^2+\dots+q^{k-1})S_q(n-1,k)
+\end{align*}
+
+
+\end{itemize}
+
+\end{document}
+
+

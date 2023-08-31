@@ -1,0 +1,143 @@
+\documentclass[12pt]{amsart}
+% packages
+\usepackage{graphicx}
+\usepackage{setspace}
+\usepackage{amssymb,amsmath,amsthm,amsfonts,amscd}
+\usepackage{hyperref}
+\usepackage{color}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{enumitem}
+\usepackage[retainorgcmds]{IEEEtrantools}
+\usepackage[notref,notcite,final]{showkeys}
+\usepackage[final]{pdfpages}
+\usepackage{fancyhdr}
+\usepackage{upgreek}
+\usepackage{multicol}
+% set margin as 0.75in
+\usepackage[margin=0.75in]{geometry}
+
+% tikz-related settings
+\usepackage{tikz}
+\usepackage{tikz-cd}
+\usetikzlibrary{cd}
+
+% theorem environments with italic font
+\newtheorem{thm}{Theorem}[section]
+\newtheorem*{thm*}{Theorem}
+\newtheorem{lemma}[thm]{Lemma}
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem{claim}[thm]{Claim}
+\newtheorem{corollary}[thm]{Corollary}
+\newtheorem{conjecture}[thm]{Conjecture}
+\newtheorem{question}[thm]{Question}
+\newtheorem{procedure}[thm]{Procedure}
+\newtheorem{assumption}[thm]{Assumption}
+
+% theorem environments with roman font (use lower-case version in body
+% of text, e.g., \begin{example} rather than \begin{Example})
+\newtheorem{Definition}[thm]{Definition}
+\newenvironment{definition}
+{\begin{Definition}\rm}{\end{Definition}}
+\newtheorem{Example}[thm]{Example}
+\newenvironment{example}
+{\begin{Example}\rm}{\end{Example}}
+
+\theoremstyle{definition}
+\newtheorem{remark}[thm]{\textbf{Remark}}
+
+% special sets
+\newcommand{\A}{\mathbb{A}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\cals}{\mathcal{S}}
+\newcommand{\ZZ}{\mathbb{Z}_{\ge 0}}
+\newcommand{\cala}{\mathcal{A}}
+\newcommand{\calb}{\mathcal{B}}
+\newcommand{\cald}{\mathcal{D}}
+\newcommand{\calh}{\mathcal{H}}
+\newcommand{\call}{\mathcal{L}}
+\newcommand{\calr}{\mathcal{R}}
+\newcommand{\la}{\mathbf{a}}
+\newcommand{\lgl}{\mathfrak{gl}}
+\newcommand{\lsl}{\mathfrak{sl}}
+\newcommand{\lieg}{\mathfrak{g}}
+
+% math operators
+\DeclareMathOperator{\kernel}{\mathrm{ker}}
+\DeclareMathOperator{\image}{\mathrm{im}}
+\DeclareMathOperator{\rad}{\mathrm{rad}}
+\DeclareMathOperator{\id}{\mathrm{id}}
+\DeclareMathOperator{\hum}{[\mathrm{Hum}]}
+\DeclareMathOperator{\eh}{[\mathrm{EH}]}
+\DeclareMathOperator{\lcm}{\mathrm{lcm}}
+\DeclareMathOperator{\Aut}{\mathrm{Aut}}
+\DeclareMathOperator{\Inn}{\mathrm{Inn}}
+\DeclareMathOperator{\Out}{\mathrm{Out}}
+\DeclareMathOperator{\Gal}{\mathrm{Gal}}
+
+
+% frequently used shorthands
+\newcommand{\ra}{\rightarrow}
+\newcommand{\se}{\subseteq}
+\newcommand{\ip}[1]{\langle#1\rangle}
+\newcommand{\dual}{^*}
+\newcommand{\inverse}{^{-1}}
+\newcommand{\norm}[2]{\|#1\|_{#2}}
+\newcommand{\abs}[1]{\lvert #1 \rvert}
+\newcommand{\Abs}[1]{\bigg| #1 \bigg|}
+\newcommand\bm[1]{\begin{bmatrix}#1\end{bmatrix}}
+\newcommand{\op}{\text{op}}
+
+% nicer looking empty set
+\let\oldemptyset\emptyset
+\let\emptyset\varnothing
+
+\setlist[enumerate,1]{topsep=1em,leftmargin=1.8em, itemsep=0.5em, label=\textup{(}\arabic*\textup{)}}
+\setlist[enumerate,2]{topsep=0.5em,leftmargin=3em, itemsep=0.3em}
+
+%pagestyle
+%\pagestyle{fancy} 
+
+\begin{document}
+\begin{center}
+    \textsc{Math 501. HW 2\\ Ian Jorquera}
+\end{center}
+\vspace{1em}
+% See http://www.mathematicalgemstones.com/maria/Math501Fall22.php
+% for problems
+
+% sage: https://sagecell.sagemath.org/
+
+\begin{itemize}
+\item[(1)] % (1+) [2 points]
+Notice from the definitions of addition and multiplication of carnalities we have that $|A|\cdot(|B|+|C|)= |A|\cdot|B\sqcup C|=|A\times(B\sqcup C)|$. And for the right hand side we have that $|A|\cdot |B|+|A|\cdot |C|=|(A\times B)|+|(A\times C)|=|(A\times B)\sqcup (A\times C)|$. Now we want to show combinatorially that these are the same. First assume that $A, B$, and $C$ are all disjoint, if they are not we can relabel each element in each set such that every element in $a\in A$ is relabeled as $(1,a)$, every element $b\in B$ is relabeled as $(2,b)$ and every element $c\in C$ is relabeled as $(3,b)$. Consider the left hand side, $|A\times(B\sqcup C)|$ which counts the number of pairs that form a grid with labels $(a,x)$ for all $a\in A$ and $x\in (B\sqcup C)$. Notice that for the right hand side we have that $|(A\times B)|+|(A\times C)|$ are the elements $(a,b)$ or $(a,c)$ for any elements $a\in A$, $b\in B$ and $c\in C$.\\
+
+Now consider the map $id:A\times(B\sqcup C)\ra (A\times B)\sqcup (A\times C)$ that maps the element $(a,x)\mapsto (a,x)$. Notice this function has the inverse $id^{-1}:(A\times B)\sqcup (A\times C)\ra A\times(B\sqcup C)$ that maps the element $(a,b)\mapsto (a,b)$ for $b\in B$ and $(a,c)\mapsto (a,c)$ if $c\in C$. notice that for $(a,x)\in (A\times B)\sqcup (A\times C)$ we have that $id(id^{-1}((a,x)))=id((a,x))=(a,x)$ and for $(a,x)\in A\times(B\sqcup C)$ we have that $id^{-1}(id((a,x)))=id^{-1}((a,x))=(a,x)$. So we have a bijection. This gives us $|A|\cdot(|B|+|C|)=|A\times(B\sqcup C)|=|(A\times B)\sqcup (A\times C)|=|(A\times B)|+|(A\times C)|=|A|\cdot |B|+|A|\cdot |C|$.\\
+% might want to prove that prod dist over disj union
+
+\item[(2)] % (2+) [4 points]
+let $S$ be a set of $s$ things and $T$ a set of $t$ things, such that both sets are disjoint. $(s+t)^n$ counts the number of functions $f:[n]\ra S\cup T$. Now consider the integer $k$ such that $0\leq k\leq n$. And consider the number of function $f:[n]\ra S\cup T$ such that $k$ values map to elements of $S$ and $n-k$ values map to elements of $T$. Notice that first there will be ${n \choose k}$ way to choose which of the $k$ elements map to elements in $k$, as the order of values selected does not matter and repeats are not allowed as each $f$ must be a function. Additionally, for each values mapped to an element in $S$, there are $s$ options. So if there are $k$ elements mapped to elements in $S$ there are $s^k$ totally options. And then for the $n-k$ elements that map to elements in $T$ there would likewise be $t^{n-k}$ ways of doing that. Therefore there are ${n \choose k}s^kt^{n-k}$ functions $f:[n]\ra S\cup T$ such that exactly $k$ elements map to elements in $S$. We can repeat this for all $k$ to get all possible functions $f:[n]\ra S\cup T$, so $(s+t)^n=\sum_{k=0}^n{n \choose k}s^kt^{n-k}$.\\
+
+Let $p(x)=(x+1)^n$ and $q(x)=\sum_{k=0}^{n}{n \choose k}x^k$. From above we know that for all positive integers $s$, that $p(s)=q(s)$. Because there are infinitely many positive integers we have that $p(x)=q(x)$ as polynomials. Now for any $x,y$ such that $y\neq 0$. Notice that because $p(x/y)=q(x/y)$ we have that $(x/y+1)^n=\sum_{k=0}^{n}{n \choose k}(x/y)^k$. because $\frac{y}{y}=1$ we can write $(x/y+1)^n=(x/y+y/y)^n=\frac{(x+y)^n}{y^n}$. similarly we can write $\sum_{k=0}^{n}{n \choose k}(x/y)^k=\sum_{k=0}^{n}{n \choose k}\frac{x^k}{y^k}$ so $\frac{(x+y)^n}{y^n}=\sum_{k=0}^{n}{n \choose k}\frac{x^k}{y^k}$. Finally we can multiply both sides by $y^n$ and get $(x+y)^n=\sum_{k=0}^{n}{n \choose k} x^ky^{n-k}$.\\% need to specify y\neq 0
+
+\item[(3)] %(1) [1 point]
+Notice that ${2n \choose n}$ counts the number of binary strings with exactly $n$, $1$s. We know that there are two possibilities for the first character. First if the character is a $0$ we know that in the remaining string of $2n-1$ characters there will be $n$ $1$s, meaning there are ${2n-1\choose n}$ possible such string that start with a $0$. Now if the string started with at $1$ we know that in the remaining string there would be $n-1$ $1$s and $n$ $0$s, this means that there would be ${2n-1 \choose n}$ possible such string(counting the possible placements of the $0$s) that start with $1$. And so there are $2{2n-1\choose n}={2n\choose n}$ strings with exactly $n$ $1$s.\\
+
+
+
+\item[(5)] % (2) [3 points]
+Let $a$ be a positive integer and let $S$ be the set of ordered sequences of length $p$ such that each element is a positive integer in $[a]$ except for any sequence of a single element. Notice that there are $a$ sequences of a single element, one for each integer in $[a]$. So $S$ has cardinally $a^p-a$. Now consider any sequence in $S$, $(a_1,a_2,\dots,a_p)$ and consider the sequences that are rotations of this sequence, that is in the form
+$(a_{\pi(1)},a_{\pi(2)},\dots,a_{\pi(p)})$ where $\pi$ is the permutation $(1,2,\dots,p)^k$ for $0\leq k\leq p$(or just any $p$-cycle on $[p]$). Notice that there are $p$ such sequences as the order of $(1,2,\dots,p)$ is $p$. Every sequence therefore exists in a subset of $p$ sequences, the rotations of the sequence. Additional notice for any two sequences $(a_1,a_2,\dots,a_p)$ and $(a'_1,a'_2,\dots,a'_p)$ that if we can write $(a'_1,a'_2,\dots,a'_p) = (a_{\pi(1)},a_{\pi(2)},\dots,a_{\pi(p)})$ for some $p$-cycle $\pi$ then every rotation of $(a_1,a_2,\dots,a_p)$ is also a rotation of $(a'_1,a'_2,\dots,a'_p)$ meaning that they exist in the same subset of $p$ sequences. Otherwise if you can not write one sequence as the rotation of the other then both sequences exist in mutually disjoint subsets of sequences. So we can partition $S$ into subsets of size $p$, the $p$ rotations of each sequence.\\ So $p|(a^p-a)$.\\
+%$(a_{p-k+1},a_{p-k+2},\dots,a_p,a_1,a_2,\dots,a_{p-k})$ for $0\leq k$.
+
+
+\end{itemize}
+
+\end{document}
+
+

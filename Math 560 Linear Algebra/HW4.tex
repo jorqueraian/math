@@ -1,0 +1,415 @@
+\documentclass[12pt]{amsart}
+% packages
+\usepackage{graphicx}
+\usepackage{setspace}
+\usepackage{amssymb,amsmath,amsthm,amsfonts,amscd}
+\usepackage{hyperref}
+\usepackage{color}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{enumitem}
+\usepackage[retainorgcmds]{IEEEtrantools}
+\usepackage[notref,notcite,final]{showkeys}
+\usepackage[final]{pdfpages}
+\usepackage{fancyhdr}
+\usepackage{upgreek}
+\usepackage{multicol}
+\usepackage{fancyvrb}
+\usepackage{listings}
+\usepackage{bussproofs}
+\usepackage{mathtools}
+% set margin as 0.75in
+\usepackage[margin=0.75in]{geometry}
+
+% tikz-related settings
+\usepackage{tikz}
+\usepackage{tikz-cd}
+\usetikzlibrary{cd}
+
+% theorem environments with italic font
+\newtheorem{thm}{Theorem}[section]
+\newtheorem*{thm*}{Theorem}
+\newtheorem{lemma}[thm]{Lemma}
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem{claim}[thm]{Claim}
+\newtheorem{corollary}[thm]{Corollary}
+\newtheorem{conjecture}[thm]{Conjecture}
+\newtheorem{question}[thm]{Question}
+\newtheorem{procedure}[thm]{Procedure}
+\newtheorem{assumption}[thm]{Assumption}
+
+% theorem environments with roman font (use lower-case version in body
+% of text, e.g., \begin{example} rather than \begin{Example})
+\newtheorem{Definition}[thm]{Definition}
+\newenvironment{definition}
+{\begin{Definition}\rm}{\end{Definition}}
+\newtheorem{Example}[thm]{Example}
+\newenvironment{example}
+{\begin{Example}\rm}{\end{Example}}
+
+\theoremstyle{definition}
+\newtheorem{remark}[thm]{\textbf{Remark}}
+
+% special sets
+\newcommand{\A}{\mathbb{A}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\cals}{\mathcal{S}}
+\newcommand{\ZZ}{\mathbb{Z}_{\ge 0}}
+\newcommand{\cala}{\mathcal{A}}
+\newcommand{\calb}{\mathcal{B}}
+\newcommand{\cald}{\mathcal{D}}
+\newcommand{\calh}{\mathcal{H}}
+\newcommand{\call}{\mathcal{L}}
+\newcommand{\calr}{\mathcal{R}}
+\newcommand{\la}{\mathbf{a}}
+\newcommand{\lgl}{\mathfrak{gl}}
+\newcommand{\lsl}{\mathfrak{sl}}
+\newcommand{\lieg}{\mathfrak{g}}
+
+% math operators
+\DeclareMathOperator{\kernel}{\mathrm{ker}}
+\DeclareMathOperator{\coker}{\mathrm{coker}}
+\DeclareMathOperator{\image}{\mathrm{im}}
+\DeclareMathOperator{\coim}{\mathrm{coim}}
+\DeclareMathOperator{\rad}{\mathrm{rad}}
+\DeclareMathOperator{\id}{\mathrm{id}}
+\DeclareMathOperator{\hum}{[\mathrm{Hum}]}
+\DeclareMathOperator{\eh}{[\mathrm{EH}]}
+\DeclareMathOperator{\lcm}{\mathrm{lcm}}
+\DeclareMathOperator{\Aut}{\mathrm{Aut}}
+\DeclareMathOperator{\Inn}{\mathrm{Inn}}
+\DeclareMathOperator{\Out}{\mathrm{Out}}
+\DeclareMathOperator{\Gal}{\mathrm{Gal}}
+\DeclareMathOperator{\End}{\mathrm{End}}
+
+
+% frequently used shorthands
+\newcommand{\ra}{\rightarrow}
+\newcommand{\se}{\subseteq}
+\newcommand{\ip}[1]{\langle#1\rangle}
+\newcommand{\dual}{^*}
+\newcommand{\inverse}{^{-1}}
+\newcommand{\norm}[2]{\|#1\|_{#2}}
+\newcommand{\abs}[1]{\lvert #1 \rvert}
+\newcommand{\Abs}[1]{\bigg| #1 \bigg|}
+\newcommand\bm[1]{\begin{bmatrix}#1\end{bmatrix}}
+\newcommand{\op}{\text{op}}
+
+% nicer looking empty set
+\let\oldemptyset\emptyset
+\let\emptyset\varnothing
+
+\setlist[enumerate,1]{topsep=1em,leftmargin=1.8em, itemsep=0.5em, label=\textup{(}\arabic*\textup{)}}
+\setlist[enumerate,2]{topsep=0.5em,leftmargin=3em, itemsep=0.3em}
+
+
+% Jupyter Notebooks proramming stuff
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{1,1,1}
+
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegray},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codegreen},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2
+}
+
+%box matrix
+\newenvironment{boxmatrix}
+    {
+     \boxed{
+     \begin{matrix}
+            {
+            }
+     \end{matrix}}
+    }
+
+\lstset{style=mystyle}
+
+\begin{document}
+\begin{center}
+    \textsc{Linear Algebra. HW 4\\ Ian Jorquera}
+\end{center}
+\vspace{1em}
+
+\begin{enumerate}
+    \item The set theory definition is $U\oplus V= \{(z,\ell^*)|z\in U, \ell^*\in V\}$. With the set theory definition $U\not\subseteq U\oplus V$. It could be the case that $U$ is isomorphic to a subspace of $U\oplus V$, however from the definition alone this is not obvious.
+    %However it could be the case that one could construct $U\oplus V$ such that $U$ is a subset of the coproduct which satisfies the diagramics definition. 
+    More generally in set theory we have that
+    $\bigoplus_{i\in I}V_i=\{({b_5}_i)_{i:I}| {b_5}_i\in V_i\}$ and similarly $V_i\not\subseteq \bigoplus_{i\in I}V_i$. And again it is not obvious that $V_i$ is a subspace. \\
+
+    \item The diagram definition for the coproduct is shown below
+
+    \[
+    \begin{tikzcd}[row sep=1cm, column sep=.75cm]
+     \forall\arrow[ddd, dash]\\
+     \\
+     \\
+     \;
+    \end{tikzcd} 
+    \begin{tikzcd}[row sep=1cm, column sep=.75cm]
+      &\\
+     &\\
+     U & & V
+    \end{tikzcd}
+    \begin{tikzcd}[row sep=1cm, column sep=.75cm]
+     \exists\arrow[ddd, dash]\\
+     \\
+     \\
+     \;
+    \end{tikzcd} 
+    \begin{tikzcd}[row sep=1cm, column sep=.75cm]
+     & \\
+     & U\oplus V \\
+     U\arrow[ur, "\iota_U"]& & V\arrow[ul, "\iota_v"']
+    \end{tikzcd}
+    \begin{tikzcd}[row sep=1cm, column sep=.75cm]
+     \forall\arrow[ddd, dash,]\\
+     \\
+     \\
+     \;
+    \end{tikzcd}
+    \begin{tikzcd}[row sep=1cm, column sep=.75cm]
+     & T \\
+     & U\oplus V \\
+     U\arrow[ur, "\iota_U"]\arrow[uur, bend left, "f"]& & V\arrow[uul, bend right, "g"']\arrow[ul, "\iota_V"']
+    \end{tikzcd}
+    \begin{tikzcd}[row sep=1cm, column sep=.75cm]
+     \exists!\arrow[ddd, dash]\\
+     \\
+     \\
+     \;
+    \end{tikzcd}
+    \begin{tikzcd}[row sep=1cm, column sep=.75cm]
+     & T \\
+     & U\oplus V\arrow[u, "\mu"'] \\
+     U\arrow[ur, "\iota_U"]\arrow[uur, bend left, "f"]& & V\arrow[uul, bend right, "g"']\arrow[ul, "\iota_V"']
+    \end{tikzcd}
+    \]
+
+
+\item % no do it the other way of matrix usnig. It will suffice to show that there exists a unique map from $\ip{W,\iota_U,\iota_V}$ to the set theory definition $U\oplus V= \{(z,\ell^*)|z\in U, \ell^*\in V\}$ which we already know satisfies this definition. To see this consider an element
+ We want to show the diagrams from the definition above commute when $U=\R^2$ and $V=\R^3$. And $W=\R^5$ is given as the possible coproduct with $\iota_U\left(\,\boxed{\begin{matrix}i\\j \end{matrix}}\,\right):=
+ \boxed{\begin{matrix}1 & 0 \\0 & 5 \\2 & 0 \\0 & -1 \\4 & 2\end{matrix}}\cdot\boxed{\begin{matrix}i\\j \end{matrix}}
+$ and $\iota_V\left(\,\boxed{\begin{matrix}\ell\\m\\k \end{matrix}}\,\right):=
+ \boxed{\begin{matrix}
+0 & 0 & 0\\
+0 & 0 & 0 \\
+1 & 0 & 0 \\
+0 & 1 & 0 \\
+0 & 0 & 1
+\end{matrix}}
+\cdot \boxed{\begin{matrix}\ell\\m\\k \end{matrix}}$. We will show that for any module $T$ with corresponding maps there is a unique map $\mu$ that satisfies the diagram below
+ \[
+\begin{tikzcd}[row sep=1cm, column sep=.75cm]
+     & T \\
+     & W\arrow[u, "\mu"'] \\
+     U\arrow[ur, "\iota_U"]\arrow[uur, bend left, "f"]& & V\arrow[uul, bend right, "g"']\arrow[ul, "\iota_V"']
+    \end{tikzcd}
+ \]
+
+ Any such map would require that for any $\boxed{\begin{matrix}\ell\\m\\k \end{matrix}}\in V$ that $\iota_V\left(\,\boxed{\begin{matrix}\ell\\m\\k \end{matrix}}\,\right)= \boxed{\begin{matrix}0\\0\\\ell\\m\\k \end{matrix}}\mapsto g\left(\,\boxed{\begin{matrix}\ell\\m\\k \end{matrix}}\,\right)$ and similarly for any $\boxed{\begin{matrix}i\\j \end{matrix}}\in U$ that $\iota_U\left(\,\boxed{\begin{matrix}i\\j \end{matrix}}\,\right)= \boxed{\begin{matrix}i\\5j\\2i\\-j\\4i+2j \end{matrix}}\mapsto f\left(\,\boxed{\begin{matrix}i\\j \end{matrix}}\,\right)$. These requirements determine $\mu$. To see this consider any $\boxed{\begin{matrix}i\\5j\\\ell\\m\\k \end{matrix}}\in W$ and notice that $\boxed{\begin{matrix}i\\5j\\\ell\\m\\k \end{matrix}}=\boxed{\begin{matrix}i\\5j\\2i\\-j\\4i+2j \end{matrix}}+\boxed{\begin{matrix}0\\0\\\ell-2i\\m+j\\k-4i-2j \end{matrix}}$. Where we know that $\mu\left(\,\boxed{\begin{matrix}i\\5j\\\ell\\m\\k \end{matrix}}\,\right)=\mu\left(\,\boxed{\begin{matrix}i\\5j\\2i\\-j\\4i+2j \end{matrix}}\,\right)+\mu\left(\,\boxed{\begin{matrix}0\\0\\\ell-2i\\m+j\\k-4i-2j \end{matrix}}\,\right)$ and by the requirements of such a map  $\mu\left(\,\boxed{\begin{matrix}i\\5j\\\ell\\m\\k \end{matrix}}\,\right)=f\left(\,\boxed{\begin{matrix}i\\j \end{matrix}}\,\right)+g\left(\,\boxed{\begin{matrix}\ell-2i\\m+j\\k-4i-2j \end{matrix}}\,\right)$. This means that $\mu$ exists and is unique. This is the map commonly referred to as $f\oplus g$\\
+
+ \item Now let $U=\R^2$ and $V=\R^3$ and we will show that $U\oplus V$ as defined in problem (1) along with the linear maps $\iota_U(u)=(u,0)$ and $\iota_V(v)=(0,v)$ satisfies the diagram definition. That is for any module $T$ with corresponding maps $f$ and $g$ there is a unique $\mu$ that satisfies the following diagram
+  \[
+\begin{tikzcd}[row sep=1cm, column sep=.75cm]
+     & T \\
+     & U\oplus V\arrow[u, "\mu"'] \\
+     U\arrow[ur, "\iota_U"]\arrow[uur, bend left, "f"]& & V\arrow[uul, bend right, "g"']\arrow[ul, "\iota_V"']
+    \end{tikzcd}
+ \]
+
+ Notice that for a map $\mu$ to exists any element $u\in U$ we know that for the diagram to commute we would have that 
+$(u,0)\mapsto f(u)$ and similarly for any element $v\in V$ we would have that 
+$(0,v)\mapsto g(v)$. This necessarily requires that for any element $(u,v)\in U\oplus V$ that $\mu((u,v))=f(u)+g(v)$. And so there exists a unique linear map $\mu$ that satisfies this diagram.\\
+
+\item Problems 3 and 4 are different in the sense that they define two different coproducts, at least up to the elements. However 3 and 4 are the same as they both achieve the same thing, in that that both define the same structure up to isomoprhism and both coproduct behave the same its just that the data is different but not is a structural way.\\
+
+\item WLOG consider the case that $T=U$ and $f=1_U$ and $g=0$ where we know that a unique map $\mu$ exists. This gives us the following diagram
+
+\[
+\begin{tikzcd}[row sep=1cm, column sep=.75cm]
+     & U \\
+     & U\oplus V\arrow[u, "\mu"'] \\
+     U\arrow[ur, "\iota_U"]\arrow[uur, bend left, "1_U"]& & V\arrow[uul, bend right, "0"']\arrow[ul, "\iota_V"']
+    \end{tikzcd}
+ \]
+ Notice that in this case we know that $\mu\circ \iota_U=1_U$ and so $\mu$ is the left inverse of $\iota_U$ and meaning $\iota_U$ is a monomorphism. We can repeat this argument for $T=V$ to get that $\iota_V$ is also a monomorphism. I'm not convinced this fixes the wrinkle at least not in a set theory way I still don't believe that it is always the case the $U$ is an subset of the coproduct. However this does very explicitly tell us that the spaces $U$ and $V$ are subspaces of the coproduct (up to isomorphism) and so exist structurally in the coproduct. And because structure is really all that matters $U$ and $V$ are in the coproduct.
+
+ \item Written in old enlgesh: First the coproduct is formed (as a module, however we could build the coproduct up directly as a type and give it module structure). (This is the formation rule)
+
+\begin{prooftree}
+%\def\fCenter{\mbox{\ $\vdash$\ }}
+\AxiomC{$U,V:\prescript{}{\Omega}{\mathrm{Mod}}$}
+%\AxiomC{$A, B \vdash C$}
+%\BinaryInf$\Gamma, B \fCenter C$
+\UnaryInf$U\oplus V:\fCenter \prescript{}{\Omega}{\mathrm{Mod}}$
+\end{prooftree}
+
+then the puts thy data into thy coproduct (This is the introduction rule)
+
+\begin{multicols}{2}
+\begin{prooftree}
+%\def\fCenter{\mbox{\ $\vdash$\ }}
+\AxiomC{$u:U$}
+%\AxiomC{$A, B \vdash C$}
+%\BinaryInf$\Gamma, B \fCenter C$
+\UnaryInf$\iota_U(u): \fCenter U\oplus V$
+\end{prooftree}
+
+\begin{prooftree}
+%\def\fCenter{\mbox{\ $\vdash$\ }}
+\AxiomC{$v:V$}
+%\AxiomC{$A, B \vdash C$}
+%\BinaryInf$\Gamma, B \fCenter C$
+\UnaryInf$\iota_V(v): \fCenter U\oplus V$
+\end{prooftree}
+
+\end{multicols}
+
+
+The then must take out of thy coproduct (This is the elimination rule)
+
+
+\begin{prooftree}
+\AxiomC{$x:U\oplus V$}
+\AxiomC{$T:\prescript{}{\Omega}{\mathrm{Mod}}, f:U\ra T, g:V\ra T$}
+\BinaryInfC{$\mu(x):T$}
+\end{prooftree}
+
+and finally thy computational step(the computation rules)
+
+%This needs to be split into two. One for u and one for v
+\begin{prooftree}
+\AxiomC{$u:U$}
+\AxiomC{$ $}
+\BinaryInfC{$\iota_U(u):\fCenter U\oplus V$}
+\AxiomC{$T:\prescript{}{\Omega}{\mathrm{Mod}}, f:U\ra T, g:V\ra T$}
+\BinaryInfC{$\mu(\iota_U(u))=f(u)$}
+\end{prooftree}
+
+\begin{prooftree}
+\AxiomC{$v:V$}
+\AxiomC{$ $}
+\BinaryInfC{$\iota_V(v):U\oplus V$}
+\AxiomC{$T:\prescript{}{\Omega}{\mathrm{Mod}}, f:U\ra T, g:V\ra T$}
+\BinaryInfC{$\mu(\iota_V(v))=g(v)$}
+\end{prooftree}
+
+This type definition does allow for 3 and 4, as this type definition encodes the meaning and requirements of the diagram definition.\\
+
+
+The definition for the more general $\bigoplus_{i\in I}U_i$ looks like this. First we need to create the coproduct(The formation rule) as a module so we have that
+
+\begin{prooftree}
+\AxiomC{$i:I$}
+\AxiomC{$U_i:\prescript{}{\Omega}{\mathrm{Mod}}$}
+\BinaryInfC{$\bigoplus_{i\in I}U_i:\prescript{}{\Omega}{\mathrm{Mod}}$}
+\end{prooftree}
+
+Then we need to define a way to introduce data into the coproduct(The introduction rules) so we have that 
+
+\begin{prooftree}
+\AxiomC{$i:I$}
+\AxiomC{$u_i:U_i$}
+\BinaryInfC{$\iota_{U_i}(u_i): \bigoplus_{i\in I}U_i$}
+\end{prooftree}
+We then need a way to show that how data gets out of the coproduct (The elemintation rules). This comes in the form of having another module that has the same properties of the coproduct. % Is T actually a Omega Module?
+
+\begin{prooftree}
+\AxiomC{$i:I\;\;\;\;x:\bigoplus_{i\in I}U_i$}
+\AxiomC{$T:\prescript{}{\Omega}{\mathrm{Mod}}\;\;\;\; f_i:U_i\ra T$}
+\BinaryInfC{$\mu(x):T$}
+\end{prooftree}
+
+Finally we need a way to use both rules which will be our computation rule.
+
+\begin{prooftree}
+\AxiomC{$i:I$}
+\AxiomC{$u_i:U_i$}
+\BinaryInfC{$\iota_{U_i}(u_i):\bigoplus_{i\in I}U_i$}
+\AxiomC{$T:\prescript{}{\Omega}{\mathrm{Mod}}\;\;\;\; f_i:U_i\ra T$}
+\BinaryInfC{$\mu(\iota_{U_i}(u_i))=f_i(u_i)$}
+\end{prooftree}
+
+\item Let $\Delta$ be a division ring and consider $W=\mathrm{Span}_\Delta\{e_1,\dots, e_d\}=\Delta^d$ for some fixed $d$. Consider an epimorphism $\pi:W\twoheadrightarrow V$. We know that $V=\Delta^\ell$ for some $\ell\leq d$. This means that the map $\pi$ is a matrix $F$ of dimension $\ell\times d$, where $Fw=\pi(w)$. And because this matrix represents a surjective map we know that it has rank $\ell$, meaning it maps to all of $V=\Delta^\ell$. In other words we can row reduce $F$ to the matrix
+
+$$\text{RREF}(F)=XF=\boxed{\begin{matrix} I_\ell | M\end{matrix}}$$
+
+Where $M$ is an $\ell\times d-\ell$ matrix and $X$ is a $\ell\times\ell$ matrix representing the row reduction to get the matrix into reduced row echelon form, which is itself an invertible linear map. Notice that 
+$$\boxed{\begin{matrix} I_\ell | M\end{matrix}}\;\boxed{\begin{matrix} I_\ell \\ 0\end{matrix}}=XF\,\boxed{\begin{matrix} I_\ell \\ 0\end{matrix}}= I_\ell$$
+
+This tells us that $\text{RREF}(F)$ has a right inverse. Notice that
+\begin{align*}
+    XF\;\boxed{\begin{matrix} I_\ell \\ 0\end{matrix}}&=I_\ell\\
+    X^{-1}XF\;\boxed{\begin{matrix} I_\ell \\ 0\end{matrix}}&=X^{-1}\\
+    X^{-1}XF\;\boxed{\begin{matrix} I_\ell \\ 0\end{matrix}}\, XX^{-1}&=I_\ell\\
+    F\;\boxed{\begin{matrix} I_\ell \\ 0\end{matrix}}\, X&=I_\ell
+\end{align*}
+And so the linear map $\prescript{-}{}{F}=\boxed{\begin{matrix} I_m \\ 0\end{matrix}}\,X$ is a right inverse of $F$. Furthermore because $\prescript{-}{}{F}$ has a left inverse $F$ we know that it is a monomorphims.\\
+
+\item Consider a subspace $U\se W$ where we know there is a monomorphism $f:U\hookrightarrow W$. From this map we have the map from $W$ to its cokernel $g:W\twoheadrightarrow \coker f$. This gives us the following diagram, where we will write $V=\coker f$.
+
+\[\begin{tikzcd}[row sep=1cm, column sep=.75cm]
+     & \\
+      U\arrow[r,hook, "f"'] & W \arrow[r,twoheadrightarrow, "g"'] & V
+      &\\
+    \end{tikzcd}\]
+
+And we know that an monomorphism has a epimorphism left inverse and from the previous problem we know that any epimorphism has a monomorphism right inverse, which means we have the diagram
+
+\[\begin{tikzcd}[row sep=1cm, column sep=1cm]
+     & \\
+      U\arrow[r,hook, shift right, "f"'] & W \arrow[l,twoheadrightarrow, shift right]\arrow[r,twoheadrightarrow, shift right, "g"'] & V \arrow[l,hook, shift right]
+      &\\
+    \end{tikzcd}\]
+
+    From these we can use the definition of the coproduct and product and we have the diagram
+
+    \[\begin{tikzcd}[row sep=1cm, column sep=.85cm]
+     & U\oplus V\arrow[d, "h"]\arrow[dl, twoheadrightarrow, bend right, shift right]\arrow[dr, twoheadrightarrow, bend left, shift left] \\
+      U\arrow[dr, hook, bend right, shift left]\arrow[r,hook, shift right, "f"']\arrow[ur, bend left, shift right, hook] & W \arrow[d, "k"]\arrow[l,twoheadrightarrow, shift right]\arrow[r,twoheadrightarrow, shift right, "g"'] & V \arrow[dl, hook, bend left, shift left]\arrow[l,hook, shift right]\arrow[ul, hook, bend right, shift left]&\\
+      &U\times V\arrow[ul, twoheadrightarrow, bend left, shift left]\arrow[ur, twoheadrightarrow, bend right, shift left]
+    \end{tikzcd}\]
+    
+Where $h$ is the unique arrow from the coproduct definition, and $k$ is the unique arrow from the product definition. 
+Furthermore we know from the definition of the coproduct there must be a unique morphism $U\oplus V\ra U\times V$. 
+And because we know that $U\oplus V\cong U\times V$ we know that $U\oplus V$ is a solution to the product so the morphism $U\oplus V\ra U\times V=U\oplus V$ is the identity map. This follows from the fact that the identity map works in this case and because the solution is unique the identity map is the unique solution. This gives us that $k\circ h = 1$ as the both sides must be the same unique morphism, the identity on $U\oplus V$.\\
+
+Furthermore notice that we can \textit{rotate} this diagram to get that
+
+\[\begin{tikzcd}[row sep=1cm, column sep=.85cm]
+     &W \arrow[d, "k"]\arrow[dl, twoheadrightarrow, bend right, shift right]\arrow[dr, twoheadrightarrow, bend left, shift left] \\
+      U\arrow[dr, hook, bend right, shift left]\arrow[r,hook, shift right]\arrow[ur, bend left, shift right, hook] & U\oplus V \arrow[d, "h"]\arrow[l,twoheadrightarrow, shift right]\arrow[r,twoheadrightarrow, shift right] & V \arrow[dl, hook, bend left, shift left]\arrow[l,hook, shift right]\arrow[ul, hook, bend right, shift left]&\\
+      &W\arrow[ul, twoheadrightarrow, bend left, shift left]\arrow[ur, twoheadrightarrow, bend right, shift left]
+    \end{tikzcd}\]
+
+Where both modules $W$ are the same and the corresponding monomorphism and epimorphisms are the same. Again $h$ and $k$ are the unique morphisms from the definition of the coproduct and product respectively. In this case we know that the composition $h\circ k: W\ra W$ is a unique morphism satisfying this diagram. However notice that the map $1_W$ is also a morphism $W\ra W$ such that this diagram commutes. Meaning $h\circ k=1$. And so we know that $k$ and $h$ are inverses of each other and therefore isomorphisms between $W$ and $U\oplus V$. \\
+
+\item Let $\Omega=\Z$ and consider the $\Z$-Module $\Z/12\Z$, and consider the submodule $6\Z/12\Z$. First notice that the submodules $3\Z/12\Z$, and $2\Z/12\Z$ both contain $6\Z/12\Z$ meaning their coproducts would not be isomorphic to all of $\Z/12\Z$. Notice also that the coproduct $6\Z/12\Z \oplus 4\Z/12\Z$ has no element of order $12$ as together they would not span all of $\Z/12\Z$. This means that there are no submodule $V$ where $\Z/12\Z\cong 6\Z/12\Z\oplus V$
+
+    
+\end{enumerate}
+
+\end{document}
+
+

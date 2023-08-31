@@ -1,0 +1,167 @@
+\documentclass[12pt]{amsart}
+% packages
+\usepackage{graphicx}
+\usepackage{setspace}
+\usepackage{amssymb,amsmath,amsthm,amsfonts,amscd}
+\usepackage{hyperref}
+\usepackage{color}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{enumitem}
+\usepackage[retainorgcmds]{IEEEtrantools}
+\usepackage[notref,notcite,final]{showkeys}
+\usepackage[final]{pdfpages}
+\usepackage{fancyhdr}
+\usepackage{upgreek}
+\usepackage{multicol}
+\usepackage{fontawesome}
+\usepackage{halloweenmath}
+% set margin as 0.75in
+\usepackage[margin=0.75in]{geometry}
+
+% tikz-related settings
+\usepackage{tkz-berge}
+\usetikzlibrary{calc,quotes}
+\usetikzlibrary{arrows.meta}
+\usetikzlibrary{positioning, automata}
+\usetikzlibrary{decorations.pathreplacing}
+
+%% For table
+\usepackage{tikz}
+\usetikzlibrary{tikzmark}
+
+% theorem environments with italic font
+\newtheorem{thm}{Theorem}[section]
+\newtheorem*{thm*}{Theorem}
+\newtheorem{lemma}[thm]{Lemma}
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem{claim}[thm]{Claim}
+\newtheorem{corollary}[thm]{Corollary}
+\newtheorem{conjecture}[thm]{Conjecture}
+\newtheorem{question}[thm]{Question}
+\newtheorem{procedure}[thm]{Procedure}
+\newtheorem{assumption}[thm]{Assumption}
+
+% theorem environments with roman font (use lower-case version in body
+% of text, e.g., \begin{example} rather than \begin{Example})
+\newtheorem{Definition}[thm]{Definition}
+\newenvironment{definition}
+{\begin{Definition}\rm}{\end{Definition}}
+\newtheorem{Example}[thm]{Example}
+\newenvironment{example}
+{\begin{Example}\rm}{\end{Example}}
+
+\theoremstyle{definition}
+\newtheorem{remark}[thm]{\textbf{Remark}}
+
+% special sets
+\newcommand{\A}{\mathbb{A}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\cals}{\mathcal{S}}
+\newcommand{\ZZ}{\mathbb{Z}_{\ge 0}}
+\newcommand{\cala}{\mathcal{A}}
+\newcommand{\calb}{\mathcal{B}}
+\newcommand{\cald}{\mathcal{D}}
+\newcommand{\calh}{\mathcal{H}}
+\newcommand{\call}{\mathcal{L}}
+\newcommand{\calr}{\mathcal{R}}
+\newcommand{\la}{\mathbf{a}}
+\newcommand{\lgl}{\mathfrak{gl}}
+\newcommand{\lsl}{\mathfrak{sl}}
+\newcommand{\lieg}{\mathfrak{g}}
+
+% math operators
+\DeclareMathOperator{\kernel}{\mathrm{ker}}
+\DeclareMathOperator{\image}{\mathrm{im}}
+\DeclareMathOperator{\rad}{\mathrm{rad}}
+\DeclareMathOperator{\id}{\mathrm{id}}
+\DeclareMathOperator{\hum}{[\mathrm{Hum}]}
+\DeclareMathOperator{\eh}{[\mathrm{EH}]}
+\DeclareMathOperator{\lcm}{\mathrm{lcm}}
+\DeclareMathOperator{\Aut}{\mathrm{Aut}}
+\DeclareMathOperator{\Inn}{\mathrm{Inn}}
+\DeclareMathOperator{\Out}{\mathrm{Out}}
+\DeclareMathOperator{\Gal}{\mathrm{Gal}}
+
+
+% frequently used shorthands
+\newcommand{\ra}{\rightarrow}
+\newcommand{\se}{\subseteq}
+\newcommand{\ip}[1]{\langle#1\rangle}
+\newcommand{\dual}{^*}
+\newcommand{\inverse}{^{-1}}
+\newcommand{\norm}[2]{\|#1\|_{#2}}
+\newcommand{\abs}[1]{\lvert #1 \rvert}
+\newcommand{\Abs}[1]{\bigg| #1 \bigg|}
+\newcommand\bm[1]{\begin{bmatrix}#1\end{bmatrix}}
+\newcommand{\op}{\text{op}}
+
+% nicer looking empty set
+\let\oldemptyset\emptyset
+\let\emptyset\varnothing
+
+%the var phi gang
+\let\oldphi\phi
+\let\phi\varphi
+
+\setlist[enumerate,1]{topsep=1em,leftmargin=1.8em, itemsep=0.5em, label=\textup{(}\arabic*\textup{)}}
+\setlist[enumerate,2]{topsep=0.5em,leftmargin=3em, itemsep=0.3em}
+
+%pagestyle
+%\pagestyle{fancy} 
+
+\begin{document}
+\begin{center}
+    \textsc{Math 501. HW The Number of Cookies in a Baker's Dozen\\ Ian Jorquera\\ Collaborators: The Usual: Kaylee, Kylie, Sarah, Ignacio and Ian }
+\end{center}
+\vspace{1em}
+% See http://www.mathematicalgemstones.com/maria/Math501Fall22.php
+% for problems
+
+% sage: https://sagecell.sagemath.org/
+\begin{itemize}
+
+% I missread these two problems... theyre both salvagable
+% Ive also proved part c, d should be fairly straigt forward
+
+% A tournament T on the vertex set [n] is a directed graph on [n] with no loops such that each pair of distinct vertices is joined by exactly one directed edge. The weight w(e) of a directed edge e from i to j (denoted i -> j) is defined to be x_j if i < j and −x_j if i > j. The weight of T is defined to be w(T) = prod_e w(e), where e ranges over all edges of T.
+\item[(3)] % 34a (2-) (3 points) % show that sum_T w(T) = Prod (x_j-x_i) 
+First consider the product $\displaystyle{\prod_{1\leq i < j \leq n}(x_j-x_i)}$. Notice that each factor $(x_j-x_i)$ represents picking the edge $i\ra j$ which has the corresponding weight $x_j$ or picking the edge $j\ra i$ which has corresponding weight $-x_i$. Additionally there is one factor for every pair of vertices $i<j$ meaning when the product is multiplied out, each term represents a tournament $T$, as each pair of distinct vertices in $T$ is joined by one directed edge, The value of each term is the product of the weights of each edge meaning each term is $w(T)$ for some $T$ . This means $\displaystyle{\prod_{1\leq i < j \leq n}(x_j-x_i)=\sum_{T}w(T)}$, where the sum is over all directed graphs with one directed edge between every two distinct vertices, and no loops, which are the tournaments.\\
+%Now notice that if such a directed graph $D$ has a loop then it must have a loop containing $3$ edges. To see this consider a loop $i\ra j \ra k \dots \ra \ell \ra i$ of length $n$ and consider the edge between $i$ and $k$. If $k\ra i$ then we have the loop $i\ra j\ra k \ra i$ of length $3$. Otherwise If the edge is $i\ra k$ then there exists the loop $i \ra k \dots \ra \ell \ra i$ of size $n-1$, where this process can be repeated until we are left with a loop of size $3$. Now consider the map $f$ that maps a directed graph $D$ to directed graphs $D'$ by picking the loop (if one exists) of size three $i\ra j\ra k \ra i$ with the smallest sum of the vertices. the map $f$ maps $D$ to $D'$ such that $D'$ has all the same edges except the edges in the loop are flipped meaning $D'$ has the loop $i\ra k\ra j \ra i$. Notice that this means that $w(D')=-w(D)$ as each edge is flipped changing the sign, however $|w(i\ra j\ra k \ra i)|=x_ix_jx_k=|w(i\ra k\ra j \ra i)|$. Furthermore notice that $f$ is an involution as $f^2$ would flip the $3$-loop with lowest sum of vertices and then would flip the same loop. We also know that the fixed points of $f$ are any directed graph with no loops, or a tournament. So $\displaystyle{\prod_{1\leq i < j \leq n}(x_j-x_i)=\sum_{D}w(D)=\sum_{T}w(T)}$ where the last sum, sums over the fixed points of $f$, the tournaments.\\
+
+\item[(4)] %34b (2-) (3 points)
+We will show the contrapositive that any tournament with out a three cycle, is transitive. 
+%And by the above proof we know that if there are no $3$-cycles there are no cycles meaning this is the same as showing that all tournaments are transitive. 
+So consider a tournament $T$ with no $3$ cycles. 
+First we will show that the inducted directed graph $T_{\bar{i}}$ on the set $\bar{i}=[n]-i$ is a tournament with no $3$ cycles. To see this notice that by removing edges of the vertex $i$, no new $3$-cycles can be created, so $T_{\bar{i}}$ has no $3$-cycles. Furthermore notice that any distinct vertices $j,k\in\bar{i}$ will have the on directed edge from $T$, and so $T_{\bar{i}}$ is a tournament.
+Also notice that in a tournament with not $3$-cycles there is vertex $i$ such that $k\ra i$ is an edge for all $k\in [n]-i$, in other words $i$ has no edges out of $i$. If this were not the case, then starting at any vertex $i$ we could construct a walk of length $n+1$ such that at each vertex $k$ in the walk we could pick an edge $k\ra k'$, which must always exist. This means we can construct a walk of length $n+1$ which would require there to be a cycle. We can also show that there being a cycle must also imply the existence of a $3$-cycle. To see this consider a cycle $i\ra j \ra k \dots \ra \ell \ra i$ of length $r$ and consider the edge between $i$ and $k$. If $k\ra i$ then we have the $3$-cycle $i\ra j\ra k \ra i$. Otherwise If the edge is $i\ra k$ then there exists the loop $i \ra k \dots \ra \ell \ra i$ of size $r-1$, where this process can be repeated until we are left with a loop of size $3$. This then proves that there must be a vertex with no edges out of it. Furthermore this vertex is unique as if it were not then we would have two terminal vertices $i$ and $j$ where $i\not\ra j$ and $j\not\ra i$ which means we would not have a tournament.\\
+
+
+Now we will construct a permutation $z\in S_n$ from the tournament $T$ with no $3$-cycles. First consider the vertex $i$ that is the unique terminal vertex, where we will require $z(i)=n$. Then consider the the unique terminal vertex $j$ in the tournament $T_{\bar{i}}$, where we will require that $z(j)=n-1$. 
+We can repeat this inductively where the $k$th terminal vertex(the terminal vertex of the induced sub graph created by removing the first $k-1$ terminal vertices) maps to $n-k+1$ to construct the permutation $z$. Now finally we will show that $z$ satisfies the transitively requirement. 
+Notice that for the first terminal vertex $i$ we know that any edge $\ell\ra i$ would correspond to $z(\ell)< n$ meaning $z(\ell)<z(i)=n$. For the $k$th terminal vertex notice that any edge $k\ra \ell$, $z(\ell)$ would already be given a value greater then $n-k+1$ meaning $z(k)<z(\ell)$. Alternatively we would also know that for any edge $\ell\ra k$ we would have that $z(\ell)<n-k+1$ and so $z(\ell)<z(k)=n-k+1$. So $T$ is transitive with the permutation $z$.\\
+
+\item[(5)] % 34c (1+) (2 points)
+Consider a $3$-cycle $i\ra j\ra k\ra i$ in $T$ and the corresponding $3$-cycle $i\leftarrow j\leftarrow k\leftarrow i$ in $T'$. We want to show that $w(T')=-w(T)$, and because we are only changes the edges in the $3$-cycle the only edges we will consider are these edges. By flipping each edge we are changing the sign as any edge $i\ra j$ such that $i<j$ would have positive weight and would be flipped to the edge $j\ra i$ where the weight would be negative. So flipping $3$ edges would flip the sign. Also notice $|w(i\ra j\ra k \ra i)|=x_ix_jx_k$ and in $T'$ we know that the same weight are in the cycle and so $|w(i\ra k\ra j \ra i)|=x_ix_jx_k$, so we know that $w(T')=-w(T)$.\\
+
+\item[(6)] Let $T\leftrightarrow T'$, meaning $T'$ is obtained by reversing a $3$-cycle, and assume this $3$-cycle is the cycle $i\ra j \ra k \ra i$. To see that $T$ and $T'$ have the same number of three cycles consider any vertex $\ell$ not in the $3$-cycle and we will consider the three possible combinations of vertices from $\{i,j,k,\ell\}$ containing $\ell$. This means the three vertices will contain $1$ edge from the cycle $i\ra j\ra k\ra i$ as well as the vertex $\ell$. When flipping the $3$-cycle from $T$, $T'$ these are the only possible cycles that can be affected so we will check that the number of $3$-cycles is preserved.
+
+Case 1: Assume that the edges from the $3$-cycle to $\ell$ are $i\ra \ell$, $j\ra \ell$, $k\ra \ell$. In this case notice that regardless of the orientation of the cycle $i\ra j \ra k \ra i$ or $i\leftarrow j \leftarrow k \leftarrow i$ there can not be any $3$-cycles containing only a single edge of the $3$-cycle. As $\ell$ acts as a terminal vertex from the vertices in the cycle.
+
+Case 2: Similarly if the edges are $i\leftarrow \ell$, $j\leftarrow \ell$, $k\leftarrow \ell$. In this case notice that regardless of the orientation of the cycle $i\ra j \ra k \ra i$ or $i\leftarrow j \leftarrow k \leftarrow i$ there can not be any $3$-cycles containing only a single edge of the $3$-cycle. As $\ell$ acts as a initial vertex to the vertices in the cycle.
+
+Case 3: Assume that there are two edges coming from $\ell$, WLOG assume these edges are $i\ra \ell$, $j\leftarrow \ell$, $k\leftarrow \ell$. Notice in the orientation of $T$ where $i\ra j\ra k\ra i$ we would have the $3$-cycle $i\ra \ell\ra k\ra i$ but there would be no other combination of $3$ vertices containing $\ell$ and an edge of the original cycle that would form a cycle. This means in $T$ there would be $2$ cycles between these $4$ vertices. Notice also that in $T'$ with the orientation $i\leftarrow j \leftarrow k \leftarrow i$ we would have the $3$-cycle $i\ra \ell \ra j \ra k$ but no other combinations of $3$ vertices containing $\ell$ and an edge of the original cycle would form a $3$-cycle. This means in both $T$ and $T'$ there would be $2$ total $3$-cycles with the vertex $\ell$ and the originally $3$-cycle.
+
+Case 4: Assume that there is one edges coming from $\ell$, WLOG assume the edges are $i\ra \ell$, $j\leftarrow \ell$, $k\ra \ell$. Notice in the orientation of $T$ where $i\ra j\ra k\ra i$ we would have that $3$-cycles $k\ra \ell\ra j\ra k$ but there would be no other combination of $3$ vertices containing $\ell$ and an edge of the original cycle that would form a cycle. Notice also that in $T'$ with the orientation $i\leftarrow j \leftarrow k \leftarrow i$ we would have the $3$-cycle $i\ra \ell \ra j \ra i$ but no other combinations of $3$ vertices containing $\ell$ and an edge of the original cycle would form a $3$-cycle. This means in both $T$ and $T'$ there would be $2$ total $3$-cycles with the vertex $\ell$ and the originally $3$-cycle. And so in all cases the number of $3$-cycles is preserved between $T$ and $T'$.\\
+
+
+\end{itemize}
+
+\end{document}
+
+

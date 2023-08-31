@@ -1,0 +1,157 @@
+\documentclass[12pt]{amsart}
+% packages
+\usepackage{graphicx}
+\usepackage{setspace}
+\usepackage{amssymb,amsmath,amsthm,amsfonts,amscd}
+\usepackage{hyperref}
+\usepackage{color}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{enumitem}
+\usepackage[retainorgcmds]{IEEEtrantools}
+\usepackage[notref,notcite,final]{showkeys}
+\usepackage[final]{pdfpages}
+\usepackage{fancyhdr}
+\usepackage{upgreek}
+\usepackage{multicol}
+% set margin as 0.75in
+\usepackage[margin=0.75in]{geometry}
+
+% tikz-related settings
+\usepackage{tikz}
+\usepackage{tikz-cd}
+\usetikzlibrary{cd}
+
+% theorem environments with italic font
+\newtheorem{thm}{Theorem}[section]
+\newtheorem*{thm*}{Theorem}
+\newtheorem{lemma}[thm]{Lemma}
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem{claim}[thm]{Claim}
+\newtheorem{corollary}[thm]{Corollary}
+\newtheorem{conjecture}[thm]{Conjecture}
+\newtheorem{question}[thm]{Question}
+\newtheorem{procedure}[thm]{Procedure}
+\newtheorem{assumption}[thm]{Assumption}
+
+% theorem environments with roman font (use lower-case version in body
+% of text, e.g., \begin{example} rather than \begin{Example})
+\newtheorem{Definition}[thm]{Definition}
+\newenvironment{definition}
+{\begin{Definition}\rm}{\end{Definition}}
+\newtheorem{Example}[thm]{Example}
+\newenvironment{example}
+{\begin{Example}\rm}{\end{Example}}
+
+\theoremstyle{definition}
+\newtheorem{remark}[thm]{\textbf{Remark}}
+
+% special sets
+\newcommand{\A}{\mathbb{A}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\cals}{\mathcal{S}}
+\newcommand{\ZZ}{\mathbb{Z}_{\ge 0}}
+\newcommand{\cala}{\mathcal{A}}
+\newcommand{\calb}{\mathcal{B}}
+\newcommand{\cald}{\mathcal{D}}
+\newcommand{\calh}{\mathcal{H}}
+\newcommand{\call}{\mathcal{L}}
+\newcommand{\calr}{\mathcal{R}}
+\newcommand{\la}{\mathbf{a}}
+\newcommand{\lgl}{\mathfrak{gl}}
+\newcommand{\lsl}{\mathfrak{sl}}
+\newcommand{\lieg}{\mathfrak{g}}
+
+% math operators
+\DeclareMathOperator{\kernel}{\mathrm{ker}}
+\DeclareMathOperator{\image}{\mathrm{im}}
+\DeclareMathOperator{\rad}{\mathrm{rad}}
+\DeclareMathOperator{\id}{\mathrm{id}}
+\DeclareMathOperator{\hum}{[\mathrm{Hum}]}
+\DeclareMathOperator{\eh}{[\mathrm{EH}]}
+\DeclareMathOperator{\lcm}{\mathrm{lcm}}
+\DeclareMathOperator{\Aut}{\mathrm{Aut}}
+\DeclareMathOperator{\Inn}{\mathrm{Inn}}
+\DeclareMathOperator{\Out}{\mathrm{Out}}
+\DeclareMathOperator{\Gal}{\mathrm{Gal}}
+
+
+% frequently used shorthands
+\newcommand{\ra}{\rightarrow}
+\newcommand{\se}{\subseteq}
+\newcommand{\ip}[1]{\langle#1\rangle}
+\newcommand{\dual}{^*}
+\newcommand{\inverse}{^{-1}}
+\newcommand{\norm}[2]{\|#1\|_{#2}}
+\newcommand{\abs}[1]{\lvert #1 \rvert}
+\newcommand{\Abs}[1]{\bigg| #1 \bigg|}
+\newcommand\bm[1]{\begin{bmatrix}#1\end{bmatrix}}
+\newcommand{\op}{\text{op}}
+
+% nicer looking empty set
+\let\oldemptyset\emptyset
+\let\emptyset\varnothing
+
+\setlist[enumerate,1]{topsep=1em,leftmargin=1.8em, itemsep=0.5em, label=\textup{(}\arabic*\textup{)}}
+\setlist[enumerate,2]{topsep=0.5em,leftmargin=3em, itemsep=0.3em}
+
+%pagestyle
+%\pagestyle{fancy} 
+
+\begin{document}
+\begin{center}
+    \textsc{Math 501. HW 2\\ Ian Jorquera\\ Colabs: Ignacio, Kylie, Kaylee, Sam, Chloe, Sam, Page, Sarah, spoon the cat}
+\end{center}
+\vspace{1em}
+% See http://www.mathematicalgemstones.com/maria/Math501Fall22.php
+% for problems
+
+% sage: https://sagecell.sagemath.org/
+
+\begin{itemize}
+
+\item[(2)] % (1+) [2 points]
+Let $\sigma\in S_n$ which is the composition of cycles. So consider any cycle $(\sigma_1\;\sigma_2\;\dots\;\sigma_k)$ of length $k$. Notice that we can rewrite this cycles as $(\sigma_1\;\sigma_2\;\dots\;\sigma_k)=(\sigma_1\;\sigma_2)(\sigma_2\;\sigma_3)\cdots(\sigma_{k-1}\;\sigma_k)$. To see this more clearly consider any $\sigma_j$ such that $1\leq j< k$ and notice that for the composition on the right hand side that $\sigma_j\mapsto \sigma_{j+1}$ and for $\sigma_k$ we have that $\sigma_k\mapsto\sigma_{k-1}\mapsto\sigma_{k-2}\mapsto\dots\mapsto \sigma_{2}\mapsto \sigma_1$. So for every cycle in $\sigma$ we can decompose it as the compositing of transpositions. So any permutation can be decomposed as the composition of transpositions.\\
+
+\noindent A proof for the latter which I will not include would be a proof of the correctness of bubble sort: essentially moving the biggest value to the end, then the second biggest value and so on.\\
+
+\item[(3)]
+\begin{itemize}
+    \item[(a)] % (1) [1 point]
+    Notice that to count the number of rearrangement of $1^{\lambda_{1}}2^{\lambda_{2}}\cdots k^{\lambda_{k}}$, which is a string of length $n=\lambda_1+\lambda_2+\dots+\lambda_k$, we first need to pick the $\lambda_1$ positions for the character $1$, which there are ${n\choose\lambda_1}$ ways to do this, then for the remaining $n-\lambda_1$ positions we must pick the locations of the $\lambda_2$ $2$'s. 
+    We can repeat this process such that for the character $2<j\leq k$ we are picking the $\lambda_j$ locations for the character $j$ from the $n-\lambda_1-\cdots-\lambda_{j-1}$ remaining unpicked locations. 
+    This means that ${n\choose\lambda}={n\choose\lambda_1}{n-\lambda_1\choose\lambda_2}\cdots{n-\lambda_1-\cdots-\lambda_{k-1}\choose\lambda_k}=\frac{n!}{\lambda_1!(n-\lambda_1)!}\frac{(n-\lambda_1)!}{\lambda_2!(n-\lambda_1-\lambda_2)!}\cdots\frac{(n-\lambda_1-\cdots-\lambda_{k-1})!}{\lambda_k!(n-\lambda_1-\cdots-\lambda_{k-1}-\lambda_k)!}$ which is a telescoping so ${n\choose\lambda}=\frac{n!}{\lambda_1!(n-\lambda_1)!}\frac{(n-\lambda_1)!}{\lambda_2!(n-\lambda_1-\lambda_2)!}\cdots\frac{(n-\lambda_1-\cdots-\lambda_{k-1})!}{\lambda_k!(n-\lambda_1-\cdots-\lambda_{k-1}-\lambda_k)!}=\frac{n!}{\lambda_1!\cdots\lambda_k!(n-\lambda_1-\cdots-\lambda_{k-1}-\lambda_k)!}$ but $n-\lambda_1-\cdots-\lambda_{k-1}-\lambda_k=0$ so ${n\choose\lambda}=\frac{n!}{\lambda_1!\cdots\lambda_k!}$.\\
+
+    Finally notice that ${n\choose k}$ counts the number of string with $k$ $1$s and therefore $n-k$ $0$'s, or in other words the number of rearrangements of $1^k0^{n-k}$, so ${n\choose k}={n\choose k,n-k}$ .\\
+
+    \item[(c)] % (1+) [2 points]
+    Consider the multi-variable polynomial that results from the products $(x_1+x_2+\dots+x_k)^n$. In the $n$ terms we are multiplying we can multi-distribute such that the product is the sum of terms such that each term is the product of $n$ variables chosen from $x_1,x_2,\dots,x_n$. Now consider the coefficient of $x_1^{\lambda_1}x_2^{\lambda_2}\cdots x_k^{\lambda_k}$, or the number of terms in our product with $\lambda_i$ $x_i$s for each $i$. This is precisely equal to the number of ways or rearranging the product $x_1^{\lambda_1}x_2^{\lambda_2}\cdots x_k^{\lambda_k}$, or ${n\choose \lambda}$.\\
+    
+    \end{itemize}
+
+\item[(4)] % (1+) [2 points]
+Recall that $x^n$ counts the number of functions $f:[n]\ra[x]$. Now fix $1\leq k\leq x$, and now we will consider only the functions such that $|\image{f}|=k$. Recall that there are $S(n,k)$ ways to partition $[n]$ into $k$ blocks. In other words there are $S(n,k)$ ways to group the $n$ inputs into $k$ groups(we can think of these as the pre-images without labeling each group with its image). And for each way to group the inputs we want the $k$ groups to be mapped to the possible values in $[x]$ injectively. This will ensure that the image has size $k$. Notice that in this case the order of how we pick the $k$ outputs matters as we are assigning an output to each of the $k$ groups. Essentially we are picking which distinct value from $[x]$ are assigned to which of the $k$ groups. This means there are $(x)_k$ ways to map the $k$ groups to distinct outputs in $[x]$. So the total number of functions with an image of size $k$ is $S(n,k)(x)_k$. Because the set of all functions can be split by the size of the images, we can sum the number of functions by the different sizes for the images. So the total number of functions is $x^n=\displaystyle{\sum_k S(n,k)(x)_k}$.\\
+
+
+\item[(6)] % (2) [3 points]
+Consider the transposition $(i\;j)$ such that $j-i=k$. Notice that $(i\;j)=(i\;i+1)(i+1\;i+2)\cdots (i+(k-2)\;i+(k-1))(i+(k-1)\;j)(i+(k-2)\;i+(k-1))\cdots(i+1\;i+2)(i\;i+1)$. 
+To see this more clearly notice that $i\mapsto i+1\mapsto i+2\mapsto\dots\mapsto j$. And $j\mapsto i+(k-1)\mapsto i+(k-2)\mapsto\dots\mapsto i$. 
+And furthermore notice that for any $i<\ell<j$ such that $\ell\neq i$ and $\ell\neq j$ we have that $\ell\mapsto \ell-1\mapsto\ell$.\\
+
+Now recall that any permutation can be written as a product of transpositions, and from the above, a product of adjacent transpositions. Now consider any permutation $\pi=\sigma(i\;i+1)$ for some $i$, such that $i$ and $i+1$ are not an inversion in $\sigma$. Now consider the permutation $\sigma$ in list notation $$\sigma_1,\sigma_2,\dots,\sigma_{k-1}i,\sigma_{k+1},\dots,\sigma_{\ell-1},i+1,\sigma_{\ell-1},\dots,\sigma_n$$ and the permutation $\pi$ in list notation
+$$\sigma_1,\sigma_2,\dots,\sigma_{k-1}i+1,\sigma_{k+1},\dots,\sigma_{\ell-1},i,\sigma_{\ell-1},\dots,\sigma_n$$
+Now consider any $\sigma_j$ for $k<j<\ell$ and assume that $i$ and $\sigma_j$ are an inversion in $\sigma$, which means $\sigma_j<i<i+1$, this means that $i+1$ and $\sigma_j$ are an an inversion in $\pi$. However assume that $i$ and $\sigma_j$ are not an inversion in $\sigma$, which means $\sigma_j>i$, but because $\sigma_i\neq i+1$ then $\sigma_j>i+1$, this means that $i+1$ and $\sigma_j$ are not an inversion in $\pi$.
+Now assume $i+1$ and $\sigma_j$ are an inversion in $\sigma$, which means $\sigma_j>i+1>i$, this means that $i$ and $\sigma_j$ are an an inversion in $\pi$. However assume that $i+1$ and $\sigma_j$ are not an inversion in $\sigma$, which means $\sigma_j<i+1$, but because $\sigma_i\neq i$ then $\sigma_j<i<i+1$, this means that $i$ and $\sigma_j$ are not an inversion in $\pi$. Notice that the application of $(i\;i+1)$ its self adds one inversion, so the total number of inversions increase by $1$. Additionally consider any permutation $\pi$ such that $i$ and $i+1$ are an inversion. Notice we can write $\pi=\pi(1\;i+1)(1\;i+1)$ where $i$ and $i+1$ are not an inversion in $\pi(1\;i+1)$. Therefore we can use the above to conclude that $\pi(1\;i+1)$ has one less inversion then $\pi$. This means that the product of a single adjacent transposition changes the number of inversions by $1$, and so changes the parity of the total number of inversions. Therefore for any permutation $\sigma$ if there are an odd number of adjacent transpositions ($\sigma$ is an odd permutation) the number of inversions would change by $1$ after each application of the transpositions so the number of inversions must be odd. Similarly for any permutation $\sigma$, if there are an even number of adjacent transpositions ($\sigma$ is an even permutation) the number of inversions would change by $1$ after each application of the transpositions so the number of inversions must be even. \\
+
+
+
+\end{itemize}
+
+\end{document}
+
+
