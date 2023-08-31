@@ -1,0 +1,191 @@
+ \documentclass[12pt]{amsart}
+% packages
+\usepackage{graphicx}
+\usepackage{setspace}
+\usepackage{amssymb,amsmath,amsthm,amsfonts,amscd}
+\usepackage{hyperref}
+\usepackage{color}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{enumitem}
+\usepackage[retainorgcmds]{IEEEtrantools}
+\usepackage[notref,notcite,final]{showkeys}
+\usepackage[final]{pdfpages}
+\usepackage{fancyhdr}
+\usepackage{upgreek}
+\usepackage{multicol}
+
+\usepackage{fancyvrb}
+\usepackage{listings}
+% set margin as 0.75in
+\usepackage[margin=0.75in]{geometry}
+
+% tikz-related settings
+\usepackage{tikz}
+\usepackage{tikz-cd}
+\usetikzlibrary{cd}
+
+% theorem environments with italic font
+\newtheorem{thm}{Theorem}[section]
+\newtheorem*{thm*}{Theorem}
+\newtheorem{lemma}[thm]{Lemma}
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem{claim}[thm]{Claim}
+\newtheorem{corollary}[thm]{Corollary}
+\newtheorem{conjecture}[thm]{Conjecture}
+\newtheorem{question}[thm]{Question}
+\newtheorem{procedure}[thm]{Procedure}
+\newtheorem{assumption}[thm]{Assumption}
+
+% theorem environments with roman font (use lower-case version in body
+% of text, e.g., \begin{example} rather than \begin{Example})
+\newtheorem{Definition}[thm]{Definition}
+\newenvironment{definition}
+{\begin{Definition}\rm}{\end{Definition}}
+\newtheorem{Example}[thm]{Example}
+\newenvironment{example}
+{\begin{Example}\rm}{\end{Example}}
+
+\theoremstyle{definition}
+\newtheorem{remark}[thm]{\textbf{Remark}}
+
+% special sets
+\newcommand{\A}{\mathbb{A}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\cals}{\mathcal{S}}
+\newcommand{\ZZ}{\mathbb{Z}_{\ge 0}}
+\newcommand{\cala}{\mathcal{A}}
+\newcommand{\calb}{\mathcal{B}}
+\newcommand{\cald}{\mathcal{D}}
+\newcommand{\calh}{\mathcal{H}}
+\newcommand{\call}{\mathcal{L}}
+\newcommand{\calr}{\mathcal{R}}
+\newcommand{\la}{\mathbf{a}}
+\newcommand{\lgl}{\mathfrak{gl}}
+\newcommand{\lsl}{\mathfrak{sl}}
+\newcommand{\lieg}{\mathfrak{g}}
+
+% math operators
+\DeclareMathOperator{\kernel}{\mathrm{ker}}
+\DeclareMathOperator{\image}{\mathrm{im}}
+\DeclareMathOperator{\rad}{\mathrm{rad}}
+\DeclareMathOperator{\id}{\mathrm{id}}
+\DeclareMathOperator{\hum}{[\mathrm{Hum}]}
+\DeclareMathOperator{\eh}{[\mathrm{EH}]}
+\DeclareMathOperator{\lcm}{\mathrm{lcm}}
+\DeclareMathOperator{\Aut}{\mathrm{Aut}}
+\DeclareMathOperator{\Inn}{\mathrm{Inn}}
+\DeclareMathOperator{\Out}{\mathrm{Out}}
+\DeclareMathOperator{\Gal}{\mathrm{Gal}}
+
+
+% frequently used shorthands
+\newcommand{\ra}{\rightarrow}
+\newcommand{\se}{\subseteq}
+\newcommand{\ip}[1]{\langle#1\rangle}
+\newcommand{\dual}{^*}
+\newcommand{\inverse}{^{-1}}
+\newcommand{\norm}[2]{\|#1\|_{#2}}
+\newcommand{\abs}[1]{\lvert #1 \rvert}
+\newcommand{\Abs}[1]{\bigg| #1 \bigg|}
+\newcommand\bm[1]{\begin{bmatrix}#1\end{bmatrix}}
+\newcommand{\op}{\text{op}}
+
+% nicer looking empty set
+\let\oldemptyset\emptyset
+\let\emptyset\varnothing
+
+\setlist[enumerate,1]{topsep=1em,leftmargin=1.8em, itemsep=0.5em, label=\textup{(}\arabic*\textup{)}}
+\setlist[enumerate,2]{topsep=0.5em,leftmargin=3em, itemsep=0.3em}
+
+%pagestyle
+%\pagestyle{fancy} 
+
+\begin{document}
+\begin{center}
+    \textsc{ECE/MATH 522: Random Walks Midterm\\ Ian Jorquera}
+\end{center}
+\vspace{1em}
+
+
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{1,1,1}
+
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegray},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codegreen},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2
+}
+
+\lstset{style=mystyle}
+
+
+\begin{enumerate}
+\item The two methods of numerically modeling diffusion on a fractal structure are with random walks on Sierpinski Gaskets, which is a fractal with triangular structure, or a random walk on a random percolation cluster at criticality. Criticality refers to the phase transition from where the percolation cluster goes from being many separate clusters to 1 large cluster(or for practical purposes it at least contains very large connected structures).\\
+
+\item For diffusion on fractal structures, ergodicity is assessed by comparing the temporal and ensemble averages of the mean square displacement. If they are the same the process is called ergodic and if they are different the process is called non-erogodic.\\ % need more?
+
+\item In the paper the authors showed that diffusion on fractals is ergodic because the temporal and ensemble mean squared displacements were that same. The authors showed this analytically and numerically. Interestingly such diffusion still experiences sub-diffusive behavior and the mean squared displacement scales as $t^\beta$ where $0<\beta<1$ is mentioned in problem 9.\\
+
+\item For heavy-tailed CTRWs it is known that the ensemble mean squared displacement and the temporal mean squared displacement are different. This means that heavy-tailed CTRWs are non-ergodic. In fact it is known that $\ip{r^2(t)}_{ens}$ scales as $t^\alpha$ and $\ip{r^2(t)}_{T}$ scales as $t$. where $0< \alpha < 1$ comes from the waiting time distribution.\\
+
+\item The authors then look at heavy tailed CTRW on a fractal structure and find that such a walk is also non-ergodic. They find that the $\ip{r^2(t)}_{ens}$ scales as $t^{a\cdot b}$ and the average of the temporal mean squared displacement  over many different realizations $\ip{\ip{r^2(t)}_{T}}_{ens}$ scales as $t^{1-\alpha+\alpha\beta}$ for $0<\alpha,\beta<1$. This means that the temporal mean squared displacement does not grow at the same rate as the ensemble mean squared displacement and so this is a non-ergodic process.\\
+
+\item When looking at CTRW on the fractal structure the authors looked at $\ip{\ip{r^2(t)}_{T}}_{ens}$ instead of $\ip{r^2(t)}_{T}$. They did this because as mentioned the temporal mean squared displacement $\ip{r^2(t)}_{T}$ on a CTRW has greatly varying prefactors so any single realization can vary. And so the authors looked at many realizations to get an average value of the prefactors. Doing this one can also determine that on average the prefactors depend on $T$. Furthermore taking the average of the temporal mean squared displacement will still have the same proportionally or asymptotic growth. When looking at the normal diffusion on a fractal structure the authors didn't use $\ip{\ip{r^2(t)}_{T}}_{ens}$ and only looked at $\ip{r^2(t)}_{T}$. Presumably this was done with the knowledge that such a process was ergodic in which case the ensemble average of the temporal mean squared displacements would be the same and there would be only very minimal variations between long enough realizations.\\
+
+\item Now we will derive equation 8. First from the paper we have that 
+$$\chi_n(t)\approx \frac{t}{\alpha\tau_0}n^{-1/\alpha-1}L_\alpha\left(\frac{t}{\tau_0 n^{1/\alpha}}\right)$$
+
+for large $t$. This then allows us the find the mean squared error
+\begin{align*}
+    \ip{r^2(t)}_{ens}&=\sum_{n=0}^\infty \ip{r^2_n}\chi_n(t)=\sum_{n=0}^\infty n^\beta\chi_n(t)\\
+    &\approx\sum_{n=0}^\infty n^\beta\frac{t}{\alpha\tau_0}n^{-1/\alpha-1}L_\alpha\left(\frac{t}{\tau_0 n^{1/\alpha}}\right)
+\end{align*}
+Which we can approximate with an integral meaning
+\begin{equation*}
+    \ip{r^2(t)}_{ens}\approx\int_{0}^\infty n^\beta\frac{t}{\alpha\tau_0}n^{-1/\alpha-1}L_\alpha\left(\frac{t}{\tau_0 n^{1/\alpha}}\right)dn
+\end{equation*}
+And with the substitution $\displaystyle{y=\frac{t}{\tau_0n^{1/\alpha}}}$ we have that $\displaystyle{dy=-\frac{t}{\alpha\tau_0}n^{-1/\alpha-1}}$ and notice that for $\alpha>0$ 
+$$\displaystyle{\lim_{n\ra 0}\frac{t}{\tau_0n^{1/\alpha}}=\infty}\text{ and } \displaystyle{\lim_{n\ra\infty}\frac{t}{\tau_0n^{1/\alpha}}=0}$$
+Also notice that $n=\left(\frac{t}{\tau_0}\right)^\alpha y^{-\alpha}$ and so this integral is
+
+\begin{align*}
+    \ip{r^2(t)}_{ens}&\approx\int_{\infty}^0 -\left(\left(\frac{t}{\tau_0}\right)^\alpha y^{-\alpha}\right)^\beta L_\alpha\left(y\right)dy\\
+    &\approx\int_{0}^\infty \left(\frac{t}{\tau_0}\right)^{\alpha\beta} y^{-\alpha\beta} L_\alpha\left(y\right)dy\\
+    &\approx\left(\frac{t}{\tau_0}\right)^{\alpha\beta}\int_{0}^\infty y^{-\alpha\beta} L_\alpha\left(y\right)dy\\
+    &\approx\left(\frac{t}{\tau_0}\right)^{\alpha\beta}\frac{\Gamma(1+\beta)}{\Gamma(1+\alpha\beta)}= t^{\alpha\beta}\frac{\Gamma(1+\beta)}{\tau_0^{\alpha\beta}\Gamma(1+\alpha\beta)}
+\end{align*}
+And so $\ip{r^2(t)}_{ens} \sim t^{\alpha\beta}$.\\
+
+
+\item Generally fractal structures are used to describe and model spatial constraints on motion, that is instances where a particle or what ever is being modeled may run into dead ends or may run into instance of limited motion. The authors provide an example of molecular crowding hindering the motion of proteins in a cell. A heavy tailed waiting time may be a result of chemical bindings. So both process combined could be modeled as a CTRW on a fractal structure.\\
+
+\item The exponent $\alpha$ comes from the waiting time distribution and represents the sub-diffusion as a result of a heavy-tailed waiting time distribution. The exponent $\beta$ comes from the fractal structure and represents the sub-diffusion as a result of the fractal structure. Intuitively both exponents play a role in the sub-diffusion of the overall process hence the ensemble mean squared displacement scales sublinearly with exponent being the product of both subdiffusions.
+\end{enumerate}
+
+\textbf{Sources}: \href{https://en.wikipedia.org/wiki/Sierpinski_triangle}{Wikipidea: Sierpinski Gaskets} and \href{https://en.wikipedia.org/wiki/Percolation_theory#Criticality}{Wikipidia: Percolation}
+
+
+\end{document}
+
+
