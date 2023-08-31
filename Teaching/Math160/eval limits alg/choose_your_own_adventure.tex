@@ -1,0 +1,188 @@
+\documentclass[12pt]{article}
+% We can write notes using the percent symbol!
+% The first line above is to announce we are beginning a document, an article in this case, and we want the default font size to be 12pt
+\usepackage[utf8]{inputenc}
+% This is a package to accept utf8 input.  I normally do not use it in my documents, but it was here by default in Overleaf.
+\usepackage{pgfplots}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{graphicx, amsmath,anonchap,tabularx, multicol,verbatim}
+\usepackage{hyperref}
+
+\usepackage[left=1in, right=1in, top=1in, bottom=1in]{geometry}
+
+\usepackage{xcolor}
+\usepackage{graphicx}
+
+\usepackage{enumitem,mdwlist}
+% These three packages are from the American Mathematical Society and includes all of the important symbols and operations 
+\usepackage{fullpage}
+% By default, an article has some vary large margins to fit the smaller page format.  This allows us to use more standard margins.
+
+\setlength{\parskip}{1em}
+% This gives us a full line break when we write a new paragraph
+
+\newenvironment{boxe}
+    {\begin{center}
+    \begin{tabular}{|p{0.9\textwidth}|}
+    \hline\\
+    }
+    { 
+    \\\\\hline
+    \end{tabular} 
+    \end{center}
+    }
+
+\begin{document}
+% Once we have all of our packages and setting announced, we need to begin our document.  You will notice that at the end of the writing there is an end document statements.  Many options use this begin and end syntax.
+
+\begin{center}
+    \Large Math 160: Choose your own Adventure: Solving limits\\
+    Ian Jorquera 
+\end{center}
+
+\section{Solving limits: algebraically}
+
+You've been given a limit $\displaystyle{\lim_{x\to c}f(x)}$ (possible a one sided limit). Now how do we solve it? This document is written in a choose your own adventure style(click the boxes around the numbers to continue your adventure).\\
+
+First we should think of limits in two categories: The first category is when $c$ is a number(go to section \ref{ssec:number}). And the second category is when $c$ is $\infty$ or $-\infty$(go to section \ref{ssec:inf}).\\
+
+\subsection{Evaluating limits at a number}
+\label{ssec:number}
+In this case we are given the limit $\displaystyle{\lim_{x\to c}f(x)}$ where $c$ is a number. Before we discuss some approaches to take we need to make sure our function is as easy to work with as possible. So first look at $f(x)$ and determine if there is a absolute value sign in the function ($|\cdot|$). If there is rewrite it as a piece-wise function(go to example \ref{ex:abs} to see how this may be done).\\
+
+If $f(x)$ is a piece-wise function we need to treat it differently go to section \ref{ssec:pw-number}.
+
+Finally if $f(x)$ is a ``normal'' function then we can (probably) follow the steps below to try and evaluate the limit:
+
+\begin{enumerate}
+    \item \label{b:step1} First try directly plugging in $x=c$ to your function. If you get a value, this is your limit(assuming the function is not piece wise and doesn't have absolute values in which case this may not be true). Sadly This will likely not work but it will tell us how to proceed. You should get one of the following $\frac{k}{0}$ for some constant $k$(go to part \ref{b:kz}), or $\frac{0}{0}$(go to part \ref{b:zz}).
+    \begin{enumerate}[label=\alph*.]
+        \item \label{b:zz} You found by direct substitution that $\displaystyle{\lim_{x\to c}f(x)}=\frac{0}{0}$. In this case we need to do more work. This will usually mean that we need to cancel common terms on the top and bottom. So how can we determine what the common terms are. If your function has a $\sqrt{\cdot}$ in it go to \ref{b:zzsqrt}, does your function have exponential functions(for example $3^x$)? then go to \ref{b:zzexp}. Otherwise if your function is a ration function meaning the denominator and the numerator are polynomials go to \ref{b:zzrational}
+        \begin{enumerate}[label=\roman*.]
+            \item \label{b:zzsqrt}
+                If your function has a square root the square root part will look something like $\sqrt{g(x)}+ h(x)$ where $g(x)$ and $h(x)$ are functions(we may also see $\sqrt{g(x)}- h(x)$, in which case we will do the same thing but switch $+$ and $-$). In this case to solve our limit we want to multiply by $1$. Specifically we want to multiply by $1=\frac{\sqrt{g(x)}- h(x)}{\sqrt{g(x)}- h(x)}$ where $\sqrt{g(x)}- h(x)$ is the conjugate of $\sqrt{g(x)}+ h(x)$. To simply use the fact that $(\sqrt{g(x)}+ h(x))(\sqrt{g(x)}- h(x))=g(x)- (h(x))^2$. This follows from double distribution(which you may have seen called FOIL). Once you simplify try to cancel common terms and continue to \ref{b:step2}.\\
+            \item \label{b:zzexp}
+                See example \ref{ex:exp}.\\
+            \item \label{b:zzrational}
+                If your function is a rational function meaning $f(x)=\frac{g(x)}{h(x)}$ where $g(x)$ and $h(x)$ are polynomials (examples $3x^5+2x-3$ or $2x^2-x+1$) then factor the top and bottom(See examples: \href{https://tutorial.math.lamar.edu/problems/alg/factoring.aspx}{here}). Once you have factored the top and bottom cancel common terms and continue to step \ref{b:step2}.\\
+        \end{enumerate}
+
+        \item\label{b:kz} If we get $\displaystyle{\lim_{x\to c}f(x)}=\frac{k}{0}$ for any constant $k$ we know that the limit is either $\infty$ or $-\infty$, and we need to look at the behavior near our limit to determine the sign. Here we need to look at our limit from both sides(unless you are solving a one-sided limit in which case only look at the relevant limit): $\displaystyle{\lim_{x\to c^-}f(x)}$ and $\displaystyle{\lim_{x\to c^+}f(x)}$ \\
+        \begin{itemize}
+            \item[-] To solve $\displaystyle{\lim_{x\to c^-}f(x)}$ we need to ask: as $x$ approached $c$ from the left does the denominator approach $0$ from the negative side or the positive side? Use your answer to this and the sign of the constant $k$ to determine if the limit is $\infty$ or $-\infty$.\\
+            \item[+] To solve $\displaystyle{\lim_{x\to c^+}f(x)}$ we need to ask: as $x$ approached $c$ from the right does the denominator approach $0$ from the negative side or the positive side? Use your answer to this and the sign of the constant $k$ to determine if the limit is $\infty$ or $-\infty$.\\
+        \end{itemize}
+    Do the one sided limits agree? if they don't then the limit does not exist.
+    \end{enumerate}
+\item \label{b:step2}
+Now that you've simplified your limit, try pluggin in for $x=c$ again, that is return to step \ref{b:step1}.
+    
+\end{enumerate}
+
+
+\subsubsection{Limits of Piece-wise Functions}
+\label{ssec:pw-number}
+ You have determined your function is piece-wise meaning it looks something like 
+ $$f(x)=\begin{cases}
+     g_1(x) & \text{ for } x<c\\
+     g_2(x) & \text{ for } x=c\\
+     g_3(x) & \text{ for } x>c\\
+ \end{cases}$$
+In this case if we are trying to evaluate the limit as $x$ approaches $c$ (the point where the piece wise function changes) we need to solve the one-side limits: $\displaystyle{\lim_{x\to c^-}f(x)}$ and $\displaystyle{\lim_{x\to c^+}f(x)}$. In this case our goal is to determine if the one-sided limits exist and if they are the same. In this case what ever that value is, is our limit. But if we are trying to evaluate the limit as $x$ approaches some value other then $c$ we can ignore the fact $f(x)$ is piece wise and just look at the corresponding function $g_1(x)$ or $g_3(x)$, depending on where $x$ is approaching(go back to section \ref{ssec:number} looking at the specific function you need).\\
+
+So if we are looking at the limit as $x$ approaches $c$ we need to solve $\displaystyle{\lim_{x\to c^-}f(x)}$ and $\displaystyle{\lim_{x\to c^+}f(x)}$. So let's look at the negative side first.
+
+\begin{itemize}
+    \item[-] In this case we will look at the function $g_1(x)$ as this function will give us the outputs for when $x< c$(recall limits never look at the value at $x=c$ so we will ignore the function $g_2$ entirely) Now return to section \ref{ssec:number} to evaluate $\displaystyle{\lim_{x\to c^-}g_1(x)}$.\\
+
+    \item[+] In this case we will look at the function $g_3(x)$ as this function will give us the outputs for when $x> c$(recall limits never look at the value at $x=c$ so we will ignore the function $g_2$ entirely) Now return to section \ref{ssec:number} to evaluate $\displaystyle{\lim_{x\to c^+}g_3(x)}$.\\
+\end{itemize}
+If the limits both exists and are the same then $\displaystyle{\lim_{x\to c}f(x)}$ is that value. Otherwise the limit does not exist.
+
+
+
+\subsection{Evaluating Limits at Infinity}
+\label{ssec:inf}
+In this case we are given the limit $\displaystyle{\lim_{x\to \pm\infty}f(x)}$. Before we discuss some approaches to take we need to make sure our function is as easy to work with as possible. So first look at $f(x)$ and determine if there is a absolute value sign in our function. If there is rewrite it as a piece-wise function(go to example \ref{ex:abs} to see how this may be done). Although this step is not required it will help make your function easier to work with.\\
+
+If $f(x)$ is a piece-wise function we need to treat it differently. Go to section \ref{ssec:pw-inf}.
+
+Finally if we have $f(x)$ which can be written as a ``normal'' function then we can (probably) follow the steps below to try and evaluate our limit:
+\begin{enumerate}
+    \item \label{b:infstep1} First try directly plugging in $x=\infty$ or $x=-\infty$ to your function. And simplify, but recall $\infty$ is not a number so we can not simplify $\frac{\infty}{\infty}$ or $\infty-\infty$. Some of the things we can do are: $\infty\cdot\infty=\infty$, $\infty+\infty=\infty$, $k^\infty=\infty$ when $k>1$, $\frac{\infty}{k}=\infty$ when $k\neq 0$, or $k^\infty=0$ when $-1<k<1$ and $\frac{k}{\infty}=0$ for any constant $k$. If you get a number, this is your limit. Sadly This will likely not work right away but it will tell us how to proceed. You may get 
+    %one of the following $\frac{k}{\infty}$ for some constant $k$(go to part \ref{b:kinf}), or 
+    $\frac{\infty}{\infty}$(go to part \ref{b:infinf}) or $\infty-\infty$(go to \ref{b:infminf}). If you see something like $\frac{\infty-\infty}{\infty}$ go to \ref{b:infinf} and then \ref{b:infminf}.
+    \begin{enumerate}[label=\alph*.]
+        \item \label{b:infinf} You found by direct substitution that $\displaystyle{\lim_{x\to \pm\infty}f(x)}=\frac{\infty}{\infty}$. In this case we need to do more work. This will usually mean we need to simplify our function such that the denominator won't evaluate to $\infty$. If your function has a $\sqrt{\cdot}$ in it go to \ref{b:2zzsqrt}, does your function have exponential functions(for example $3^x$)? then go to \ref{b:2zzexp}. Otherwise if your function is a ration function meaning the denominator and the numerator are polynomials go to \ref{b:2zzrational}.\\
+        \begin{enumerate}[label=\roman*.]
+            \item \label{b:2zzsqrt} To be honest dealing with square roots is more of an art and not really a science, so in this section I present one possible method. First if the denominator is a polynomial go to \ref{b:2zzrational}. Otherwise multiply by the conjugate on the top and bottom as we did in 1a\ref{b:zzsqrt}. And then proceed to \ref{b:2zzrational}.\\
+
+            When working with square roots it is very important to watch out for negatives. This will likely only come into play when you are evaluating the limit as $x$ goes to $-\infty$. As a motivating example consider the function $x\sqrt{2x^2}$. Often it will be easier to work with this function if we bring the outside $x$ into the square root, and when doing so we need to square it. That is $x\sqrt{2x^2}=\pm\sqrt{x^2}\sqrt{2x^2}=\pm\sqrt{x^2\cdot 2x^2}=\pm\sqrt{2x^4}$. When $x$ is positive or when what we are bringing into the square root is positive we know that the resulting square root is positive($x\sqrt{2x^2}=\sqrt{2x^4}$) However when $x$ is negative or when what we are bringing into the square root is negative then the resulting square root must remain negative ($x\sqrt{2x^2}=-\sqrt{2x^4}$. Notice when $x=-1$ then $x\sqrt{2x^2}=-1\cdot\sqrt{2}=-\sqrt{2}.$ and similarly $-\sqrt{2x^4}=-\sqrt{2}$).\\
+            
+            \item \label{b:2zzexp} See example \ref{ex:exp2}.\\
+            
+            \item \label{b:2zzrational} If your function is a rational function meaning $f(x)=\frac{g(x)}{h(x)}$ where $g(x)$ and $h(x)$ are polynomials (examples $3x^5+2x-3$ or $2x^2-x+1$) then find the term of biggest degree in the numerator(Note: this step will be easiest if the polynomial is not factored). This will be the term with the biggest exponent (ex. the biggest degree term of $5x^2+3x^6+x^3$ is $6$ which comes from the $3x^6$ term). Then multiply your function by $1=\frac{\frac{1}{x^n}}{\frac{1}{x^n}}$ where $n$ is the biggest degree. This will make the denominator evaluate to something other then $\infty$. Then simplify the top and bottom of your function and continue to \ref{b:infstep2}(Unless you came from \ref{b:2zzsqrt} in which case return to \ref{b:2zzsqrt}).\\
+        \end{enumerate}
+        \item \label{b:infminf} If you have $\infty-\infty$ factor your function and continue to \ref{b:infstep2}.
+    \end{enumerate}
+    \item \label{b:infstep2} Now that you've simplified your limit, try pluggin in for $x=\infty$ or $x=-\infty$ again, that is return to step \ref{b:infstep1}.
+\end{enumerate}
+
+\subsubsection{Limits of Piece-wise Functions}
+\label{ssec:pw-inf}
+You have determined your function is piece-wise meaning it looks something like 
+ $$f(x)=\begin{cases}
+     g_1(x) & \text{ for } x<b\\
+     g_2(x) & \text{ for } x=b\\
+     g_3(x) & \text{ for } x>b\\
+ \end{cases}$$
+for some constant $b$. In this case if we are trying to evaluate the limit as $x$ approaches $\infty$ or $-\infty$ we can ignore the fact $f(x)$ is piece wise and just look at the corresponding function $g_1(x)$ or $g_3(x)$, depending on which side $\infty$ or $-\infty$ is on. That is for
+\begin{itemize}
+    \item[$\infty$] 
+    Return to section \ref{ssec:inf} to evaluate $\displaystyle{\lim_{x\to \infty} g_3(x)}$.\\
+
+    \item[$-\infty$] 
+    Return to section \ref{ssec:inf} to evaluate $\displaystyle{\lim_{x\to -\infty} g_1(x)}$.\\
+\end{itemize}
+
+\subsection{Examples}
+\label{ssec:examples}
+\subsubsection{Example 1}
+\label{ex:abs}
+For $g(x)=\frac{|x-2|}{x-2}$, find $\displaystyle{\lim_{x\to 2}g(x)}$, $\displaystyle{\lim_{x\to 2^{-}}g(x)}$ and $\displaystyle{\lim_{x\to 2^{+}}g(x)}$.\\ 
+First lets determine if this function has any points that are discontinuous. Notice that the denominator is $x-2$ and when $x=2$ the denominator is $2-2=0$. So we know that $g(x)$ is not defined when $x=2$.\\
+
+Now when ever we are working with absolute values we want to rewrite our function as a piece wise function. Recall that for the function $f(x)=|x|$ we can rewrite it as 
+$$f(x)=|x|=\begin{cases}
+        x & \text{for } x < 1\\
+        -x & \text{for } x \geq 1  
+    \end{cases}$$
+So when $x$ is positive the absolute values does nothing and when the function is negative we add another negative, making it $-x$, canceling out the negative in the input.\\
+
+Now if we wanted to rewrite the function $g(x)$ as a piece wise function, we need to first determine when the function inside the absolute value is negative and when its positive. Looking at our function we can see that $x-2$ is negative when $x<2$ and similarly we know that $x-2$ is positive when $x>2$. So we will split our function onto two functions at the point $x=2$(And because $x=2$ is not defined we will not include this point). First when $x> 2$ or when $x-2$ is positive we know that our function is $\frac{|x-2|}{x-2}=\frac{x-2}{x-2}=1$, which we can cancel as $x>2$ and therefore $x\neq 2$. And when $x<2$ we know that $|x-2|= -(x-2)$, so our function is $\frac{|x-2|}{x-2}=\frac{-(x-2)}{x-2}=-1$, which we can cancel our as $x<2$ and therefore not equal to $2$. This gives us the piece wise function 
+$$g(x)=\frac{|x-2|}{x-2}=\begin{cases}
+        -1 & \text{for } x < 2\\
+        1 & \text{for } x > 2  
+    \end{cases}$$
+which is defined for all $x$ except $x=2$. So now lets look at the one sided limits of $g(x)$. First lets look at what happens as $x$ approached $2$ from the negative side, where we see that $\displaystyle{\lim_{x\to 2^{-}}g(x)}=\displaystyle{\lim_{x\to 2^{-}}-1}=-1$, and similarly for $x$ approaches $2$ from the positive side we get that $\displaystyle{\lim_{x\to 2^{+}}g(x)}=\displaystyle{\lim_{x\to 2^{+}}1}=1$. Now because the one sided limits not not agree we can conclude that the limit $\displaystyle{\lim_{x\to 2}g(x)}$ Does not exist.
+
+\subsubsection{Example 2}
+\label{ex:exp}
+
+
+\subsubsection{Example 3}
+\label{ex:exp2}
+
+Consider the function $f(x)=\frac{2^{x}-2}{4^{x}-1}$. Notice that if we try to directly substitute $\displaystyle{\lim_{x\to\infty}\frac{2^{x}-2}{4^{x}-1}}=\frac{\infty}{\infty}$. So we must simplify.\\
+
+To do this we will multiply by $4^{-x}$ on the top and bottom and simplify. This give us
+$$\displaystyle{\lim_{x\to\infty}\frac{2^{x}-2}{4^{x}-1}}\frac{4^{-x}}{4^{-x}}=\lim_{x\to\infty}\frac{2^{x}4^{-x}-2\cdot4^{-x}}{4^{x}4^{-x}-4^{-x}}=\lim_{x\to\infty}\frac{2^{x}\left(2^{-x}\right)^{2}-2\cdot\left(2^{-x}\right)^{2}}{4^{x}4^{-x}-4^{-x}}=\lim_{x\to\infty}\frac{2^{-x}-2\cdot2^{-2x}}{1-4^{-x}}$$
+Notice that at this point we can directly substitute and get
+$\displaystyle{\lim_{x\to\infty}\frac{\left(2^{x}-2\right)}{4^{x}-1}}=\lim_{x\to\infty}\frac{2^{-x}-2\cdot2^{-2x}}{1-4^{-x}}=\frac{0-0}{1}=0$.\\
+
+
+
+
+\end{document}
