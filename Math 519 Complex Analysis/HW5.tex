@@ -1,0 +1,213 @@
+\documentclass[12pt]{amsart}
+% packages
+\usepackage{graphicx}
+\usepackage{setspace}
+\usepackage{amssymb,amsmath,amsthm,amsfonts,amscd}
+\usepackage{hyperref}
+\usepackage{color}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{enumitem}
+\usepackage[retainorgcmds]{IEEEtrantools}
+\usepackage[notref,notcite,final]{showkeys}
+\usepackage[final]{pdfpages}
+\usepackage{fancyhdr}
+\usepackage{upgreek}
+\usepackage{multicol}
+\usepackage{fontawesome}
+\usepackage{halloweenmath}
+% set margin as 0.75in
+\usepackage[margin=0.75in]{geometry}
+
+% tikz-related settings
+\usepackage{tkz-berge}
+\usetikzlibrary{calc,quotes}
+\usetikzlibrary{arrows.meta}
+\usetikzlibrary{positioning, automata}
+\usetikzlibrary{decorations.pathreplacing}
+
+%% For table
+\usepackage{tikz}
+\usetikzlibrary{tikzmark}
+
+% theorem environments with italic font
+\newtheorem{thm}{Theorem}[section]
+\newtheorem*{thm*}{Theorem}
+\newtheorem{lemma}[thm]{Lemma}
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem{claim}[thm]{Claim}
+\newtheorem{corollary}[thm]{Corollary}
+\newtheorem{conjecture}[thm]{Conjecture}
+\newtheorem{question}[thm]{Question}
+\newtheorem{procedure}[thm]{Procedure}
+\newtheorem{assumption}[thm]{Assumption}
+
+% theorem environments with roman font (use lower-case version in body
+% of text, e.g., \begin{example} rather than \begin{Example})
+\newtheorem{Definition}[thm]{Definition}
+\newenvironment{definition}
+{\begin{Definition}\rm}{\end{Definition}}
+\newtheorem{Example}[thm]{Example}
+\newenvironment{example}
+{\begin{Example}\rm}{\end{Example}}
+
+\theoremstyle{definition}
+\newtheorem{remark}[thm]{\textbf{Remark}}
+
+% special sets
+\newcommand{\A}{\mathbb{A}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\cals}{\mathcal{S}}
+\newcommand{\ZZ}{\mathbb{Z}_{\ge 0}}
+\newcommand{\cala}{\mathcal{A}}
+\newcommand{\calb}{\mathcal{B}}
+\newcommand{\cald}{\mathcal{D}}
+\newcommand{\calh}{\mathcal{H}}
+\newcommand{\call}{\mathcal{L}}
+\newcommand{\calr}{\mathcal{R}}
+\newcommand{\la}{\mathbf{a}}
+\newcommand{\lgl}{\mathfrak{gl}}
+\newcommand{\lsl}{\mathfrak{sl}}
+\newcommand{\lieg}{\mathfrak{g}}
+
+% math operators
+\DeclareMathOperator{\kernel}{\mathrm{ker}}
+\DeclareMathOperator{\image}{\mathrm{im}}
+\DeclareMathOperator{\rad}{\mathrm{rad}}
+\DeclareMathOperator{\id}{\mathrm{id}}
+\DeclareMathOperator{\hum}{[\mathrm{Hum}]}
+\DeclareMathOperator{\eh}{[\mathrm{EH}]}
+\DeclareMathOperator{\lcm}{\mathrm{lcm}}
+\DeclareMathOperator{\Aut}{\mathrm{Aut}}
+\DeclareMathOperator{\Inn}{\mathrm{Inn}}
+\DeclareMathOperator{\Out}{\mathrm{Out}}
+\DeclareMathOperator{\Gal}{\mathrm{Gal}}
+\DeclareMathOperator{\Real}{\mathrm{Re}}
+\DeclareMathOperator{\Imag}{\mathrm{Im}}
+\DeclareMathOperator{\res}{\mathrm{res}}
+
+
+% frequently used shorthands
+\newcommand{\ra}{\rightarrow}
+\newcommand{\se}{\subseteq}
+\newcommand{\ip}[1]{\langle#1\rangle}
+\newcommand{\dual}{^*}
+\newcommand{\inverse}{^{-1}}
+\newcommand{\norm}[2]{\|#1\|_{#2}}
+\newcommand{\abs}[1]{\lvert #1 \rvert}
+\newcommand{\Abs}[1]{\bigg| #1 \bigg|}
+\newcommand\bm[1]{\begin{bmatrix}#1\end{bmatrix}}
+\newcommand{\op}{\text{op}}
+
+%\def\darktheme{} % IAN
+\ifx \darktheme\undefined
+\else
+\pagecolor[rgb]{0.2,0.231,0.302}%{0.23,0.258,0.321}
+\color[rgb]{1,1,1}
+\fi
+
+% nicer looking empty set
+\let\oldemptyset\emptyset
+\let\emptyset\varnothing
+
+%the var phi gang
+\let\oldphi\phi
+\let\phi\varphi
+
+\setlist[enumerate,1]{topsep=1em,leftmargin=1.8em, itemsep=0.5em, label=\textup{(}\arabic*\textup{)}}
+\setlist[enumerate,2]{topsep=0.5em,leftmargin=3em, itemsep=0.3em}
+
+%pagestyle
+%\pagestyle{fancy} 
+
+\begin{document}
+\begin{center}
+    \textsc{Math 519. HW 5\\ Ian Jorquera}
+\end{center}
+\vspace{1em}
+% See http://www.mathematicalgemstones.com/maria/Math501Fall22.php
+% for problems
+
+% sage: https://sagecell.sagemath.org/
+\begin{enumerate}
+\item Consider first the function $\frac{1}{f(1/z)}$ which for $|z|>1$ we know is holomorphic as $1/z$ is holomorphic away from $0$ and because $|1/z|<1$ we know that $f(1/z)$ is holomorphic and non-vanishing, so $1/f(1/z)$ is holomorphic by composition of holomorphic functions. Now we will show that $\frac{1}{\overline{f(1/\overline{z})}}$ is holomorphic for $|z|> 1$. Consider a point $z_0\in \C$ such that $|z_0|> 1$. Notice that $|\overline{z_0}|> 1$. And so $1/f(1/z)$ admits a power series near $\overline{z_0}$, that is $$1/f(1/z)=\sum_{n\geq 0}a_n(z-\overline{z_0})$$ Notice that this means that $$1/f(1/\overline{z})=\sum_{n\geq 0}a_n(\overline{z}-\overline{z_0})$$
+This then gives us that $$1/\overline{f(1/\overline{z})}=\overline{\sum_{n\geq 0}a_n(\overline{z}-\overline{z_0})}=\sum_{n\geq 0}\overline{a_n}({z}-{z_0})$$ This shows that $1/\overline{f(1/\overline{z})}$ has a power series representation for any $|z_0|\geq 1$ and so is holomorphic
+
+Now we will show that $1/\overline{f(1/\overline{z})}$ and $f(z)$ agree on their boundary. Notice that for $|z|=1$ we know that $\frac{1}{z}=\frac{\overline{z}}{z\overline{z}}=\overline{z}$, meaning $1/\overline{f(1/\overline{z})}=1/\overline{f(z)}=f(z)$. This means we have the extension 
+$$F(z)=\begin{cases}f(z) & |z|\leq 1\\
+\frac{1}{\overline{f(1/\overline{z})}}&\text{otherwise}\end{cases}$$
+We know this extension is entire because both functions agree at the boundary so any closed triangular contour can be split up to be the sum of contours on both sides.
+Notice that because $f$ is continuous on the unit disk we know that $f$ is bounded on the unit disk. We also know that because it is non-vanishing there is some $A$ such that $0<A\leq |f(z)|$ for all $z$ on the unit disk by the extreme value theorem. This means $\frac{1}{\overline{f(1/\overline{z})}}$ is bounded by $\frac{1}{A}$. Because $F(z)$ is entire and bounded we know that $F(z)$ is constant, by Liouville's theorem, meaning $f(z)$ is constant.\\
+
+\item 
+    \begin{enumerate}
+    \item Notice that $$f(z)=\frac{2z-3}{z^2-4}=\frac{2z-3}{z^2-4}=\frac{2z-3}{(z-2)(z+2)}$$ 
+    which means there is a simple pole at $z=2$ and $z=-2$. First to compute the residue at $z=2$ we know that 
+    \begin{align*}
+        \res(f;2)&=\lim_{z\ra 2}(z-2)f(z)\\
+        &=\lim_{z\ra 2}(z-2)\frac{2z-3}{(z-2)(z+2)}\\
+        &=\lim_{z\ra 2}\frac{2z-3}{(z+2)}=\frac{1}{4}
+    \end{align*}
+    \item Again using the same factorization as above we know there is a simple pole at $z=-2$. To compute the residue at $z=-2$ we know that 
+    \begin{align*}
+        \res(f;-2)&=\lim_{z\ra -2}(z+2)f(z)\\
+        &=\lim_{z\ra -2}(z+2)\frac{2z-3}{(z-2)(z+2)}\\
+        &=\lim_{z\ra -2}\frac{2z-3}{(z-2)}=\frac{7}{4}
+    \end{align*}
+
+    \item In this case $C$ is a toy contour where the function is holographic everywhere on an in the contour except for the points $z=2$ and $z=-2$. In this case we know that by the Cauchy residue formula that
+    \begin{align*}
+        \int_C f(z)dz=2\pi i (\res(f,2)+\res(f,-2))=4\pi i
+    \end{align*}
+
+    \item The partial fractions decomposition is 
+    $$f(z)=\frac{2z-3}{z^2-4}=\frac{2z-3}{(z-2)(z+2)}=\frac{7}{4(z+2)}+\frac{1}{4(z-2)}$$ 
+    \item In this case 
+    \begin{align*}
+        \int_C f(z)dz&=\int_C \frac{7}{4(z+2)}+\frac{1}{4(z-2)}dz\\
+        &=\int_C \frac{7}{4(z+2)}dz+\int_C\frac{1}{4(z-2)}dz\\
+        &=2\pi i(\frac{4}{7}+\frac{1}{4}) = 4\pi i
+    \end{align*}
+    Where the last line follows from the Cauchy integration formula (or Cauchy residue formula).\\
+    \end{enumerate}
+
+    \item
+    \begin{enumerate}
+        \item Consider the function $\frac{g(z)}{f(z)}$ which is holomorphic around $z_0$ with a zero at $z_0$. Notice that the derivative of this function $\frac{g'(z)f(z)-g(z)f'(z)}{f(z)^2}$ when evaluated at $z_0$ is $\frac{g'(z_0)f(z_0)}{f(z_0)^2}\neq 0$ and so the order of the hole, and therefore the order of the pole, at $z_0$ on the function $\frac{f(z)}{g(z)}$ is $1$. So $z_0$ is a simple pole.\\
+
+        \item By the assumption we know that $g(z)$ is holomorphic with a hole of order $1$, meaning $g(z)=(z-z_0)h(z)$ where $h(z)$ is holomorphic and non-vanishing on points near $z_0$. In this case we can see that
+        \begin{align*}
+        \res\left(\frac{f(z)}{g(z)};z_0\right)&=\lim_{z\ra z_0}(z-z_0)\frac{f(z)}{g(z)}\\
+        &= \lim_{z\ra z_0}(z-z_0)\frac{f(z)}{(z-z_0)h(z)}\\
+        &=\frac{f(z_0)}{h(z_0)}=\frac{f(z_0)}{g'(z_0)}
+    \end{align*}
+        where the last line follows from $g'(z)=(z-z_0)h'(z)+h(z)$ and so $g'(z_0)=h(z_0)$.\\
+    \end{enumerate}
+
+    \item
+    \begin{enumerate}
+        \item Let $f,h$ be holomorphic functions defined on a deleted neighborhood $N_R(z_0)^\times$ where $R$ is as small as needed which means we can write $f(z)=(z-z_0)^n g(z)$ and $h(z)=(z-z_0)^mk(z)$ where $n=\text{ord}_{z_0}f(z)$, $m=\text{ord}_{z_0}h(z)$ and $g,k$ are holomorphic non-vanishing functions on $N_R(z_0)$. Notice that because we are working on a deleted neighborhood we are not concerned with an singularities at $z=z_0$, meaning $$(fh)(z)=(z-z_0)^n g(z)(z-z_0)^m k(z)=(z-z_0)^{n+m} g(z) k(z)$$
+        and so $\text{ord}_{z_0}fh=n+m$ as the product of two non-vanishing functions in non-vanishing.\\
+
+        \item let $f,h$ be holomorphic functions defined on a deleted neighborhood $N_R(z_0)^\times$ where $R$ is as small as needed which means we can write $f(z)=(z-z_0)^n g(z)$ and $h(z)=(z-z_0)^mk(z)$ where $n=\text{ord}_{z_0}f(z)$, $m=\text{ord}_{z_0}h(z)$ and $g,k$ are holomorphic non-vanishing functions on the neighborhood $N_R(z_0)$. Consider first the case where $f(z)=-h(z)$ which would result in $f+h\equiv 0$ and so the order is not well defined. Now consider the case that $n=m$ and $g(z_0)+k(z_0)=0$ but $f+h\not\equiv 0$. In this case we know that $g(z)+k(z)=(z-z_0)^pr(z)$ on $N_R(z_0)$ where $p>0$. In this case we have that $f(z)+g(z)=(z-z_0)^{n+p}r(z)$. If these two situations are not the case then we may assume WLOG that $n\leq m$. Notice that
+        \begin{align*}
+            (f+h)(z)&=(z-z_0)^n g(z)+(z-z_0)^m k(z)\\
+            &=(z-z_0)^n( g(z)+(z-z_0)^{m-n} k(z))
+        \end{align*}
+        Notice that in this case there must be an open neighborhood in which $g(z)+(z-z_0)^{m-n} k(z)$ is non vanishing, if there wasn't there would exist distinct points $z_j\in N_{R/j}(z_0)^\times$ such that $z_j\neq z_0$ and $g(z_j)+(z_j-z_0)^{m-n} k(z_j)=0$ for all $j\in \N$. Notice that the limit as $j\ra \infty$ we have that $z_j\ra z_0$. If this is the case we know that $g(z)+(z-z_0)^{m-n} k(z)\equiv 0$ on $N_R$ which would imply $f(z)=-h(z)$. And so we have that $\text{ord}_{z_0}f+h=\min(n,m)$
+    \end{enumerate}
+
+\end{enumerate}
+
+\end{document}
+
+
+
+
+
+

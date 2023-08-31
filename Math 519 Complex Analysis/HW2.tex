@@ -1,0 +1,222 @@
+\documentclass[12pt]{amsart}
+% packages
+\usepackage{graphicx}
+\usepackage{setspace}
+\usepackage{amssymb,amsmath,amsthm,amsfonts,amscd}
+\usepackage{hyperref}
+\usepackage{color}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{enumitem}
+\usepackage[retainorgcmds]{IEEEtrantools}
+\usepackage[notref,notcite,final]{showkeys}
+\usepackage[final]{pdfpages}
+\usepackage{fancyhdr}
+\usepackage{upgreek}
+\usepackage{multicol}
+\usepackage{fontawesome}
+\usepackage{halloweenmath}
+% set margin as 0.75in
+\usepackage[margin=0.75in]{geometry}
+
+% tikz-related settings
+\usepackage{tkz-berge}
+\usetikzlibrary{calc,quotes}
+\usetikzlibrary{arrows.meta}
+\usetikzlibrary{positioning, automata}
+\usetikzlibrary{decorations.pathreplacing}
+
+%% For table
+\usepackage{tikz}
+\usetikzlibrary{tikzmark}
+
+% theorem environments with italic font
+\newtheorem{thm}{Theorem}[section]
+\newtheorem*{thm*}{Theorem}
+\newtheorem{lemma}[thm]{Lemma}
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem{claim}[thm]{Claim}
+\newtheorem{corollary}[thm]{Corollary}
+\newtheorem{conjecture}[thm]{Conjecture}
+\newtheorem{question}[thm]{Question}
+\newtheorem{procedure}[thm]{Procedure}
+\newtheorem{assumption}[thm]{Assumption}
+
+% theorem environments with roman font (use lower-case version in body
+% of text, e.g., \begin{example} rather than \begin{Example})
+\newtheorem{Definition}[thm]{Definition}
+\newenvironment{definition}
+{\begin{Definition}\rm}{\end{Definition}}
+\newtheorem{Example}[thm]{Example}
+\newenvironment{example}
+{\begin{Example}\rm}{\end{Example}}
+
+\theoremstyle{definition}
+\newtheorem{remark}[thm]{\textbf{Remark}}
+
+% special sets
+\newcommand{\A}{\mathbb{A}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\cals}{\mathcal{S}}
+\newcommand{\ZZ}{\mathbb{Z}_{\ge 0}}
+\newcommand{\cala}{\mathcal{A}}
+\newcommand{\calb}{\mathcal{B}}
+\newcommand{\cald}{\mathcal{D}}
+\newcommand{\calh}{\mathcal{H}}
+\newcommand{\call}{\mathcal{L}}
+\newcommand{\calr}{\mathcal{R}}
+\newcommand{\la}{\mathbf{a}}
+\newcommand{\lgl}{\mathfrak{gl}}
+\newcommand{\lsl}{\mathfrak{sl}}
+\newcommand{\lieg}{\mathfrak{g}}
+
+% math operators
+\DeclareMathOperator{\kernel}{\mathrm{ker}}
+\DeclareMathOperator{\image}{\mathrm{im}}
+\DeclareMathOperator{\rad}{\mathrm{rad}}
+\DeclareMathOperator{\id}{\mathrm{id}}
+\DeclareMathOperator{\hum}{[\mathrm{Hum}]}
+\DeclareMathOperator{\eh}{[\mathrm{EH}]}
+\DeclareMathOperator{\lcm}{\mathrm{lcm}}
+\DeclareMathOperator{\Aut}{\mathrm{Aut}}
+\DeclareMathOperator{\Inn}{\mathrm{Inn}}
+\DeclareMathOperator{\Out}{\mathrm{Out}}
+\DeclareMathOperator{\Gal}{\mathrm{Gal}}
+\DeclareMathOperator{\Real}{\mathrm{Re}}
+\DeclareMathOperator{\Imag}{\mathrm{Im}}
+
+
+% frequently used shorthands
+\newcommand{\ra}{\rightarrow}
+\newcommand{\se}{\subseteq}
+\newcommand{\ip}[1]{\langle#1\rangle}
+\newcommand{\dual}{^*}
+\newcommand{\inverse}{^{-1}}
+\newcommand{\norm}[2]{\|#1\|_{#2}}
+\newcommand{\abs}[1]{\lvert #1 \rvert}
+\newcommand{\Abs}[1]{\bigg| #1 \bigg|}
+\newcommand\bm[1]{\begin{bmatrix}#1\end{bmatrix}}
+\newcommand{\op}{\text{op}}
+
+\def\darktheme{} % IAN
+\ifx \darktheme\undefined
+\else
+\pagecolor[rgb]{0.2,0.231,0.302}%{0.23,0.258,0.321}
+\color[rgb]{1,1,1}
+\fi
+
+% nicer looking empty set
+\let\oldemptyset\emptyset
+\let\emptyset\varnothing
+
+%the var phi gang
+\let\oldphi\phi
+\let\phi\varphi
+
+\setlist[enumerate,1]{topsep=1em,leftmargin=1.8em, itemsep=0.5em, label=\textup{(}\arabic*\textup{)}}
+\setlist[enumerate,2]{topsep=0.5em,leftmargin=3em, itemsep=0.3em}
+
+%pagestyle
+%\pagestyle{fancy} 
+
+\begin{document}
+\begin{center}
+    \textsc{Math 519. HW 2\\ Ian Jorquera}
+\end{center}
+\vspace{1em}
+% See http://www.mathematicalgemstones.com/maria/Math501Fall22.php
+% for problems
+
+% sage: https://sagecell.sagemath.org/
+\begin{enumerate}
+
+\item 
+\begin{enumerate}[label=(\alph*)]
+    \item Here we will compute the limit along the trajectory $x_0+\Delta x+iy_0$. That is if the limit exist we know that 
+    \begin{align*}
+        \lim_{\Delta x\ra 0}\frac{f(x_0+\Delta x+iy_0)-f(x_0+iy_0)}{x_0+\Delta x+iy_0-x_0-iy_0}&=\lim_{\Delta x\ra 0}\frac{u(x_0+\Delta x,y_0)+iv(x_0+\Delta x,y_0)-u(x_0,y_0)-iv(x_0,y_0)}{\Delta x}\\
+        &=\lim_{\Delta x\ra 0}\frac{u(x_0+\Delta x,y_0)-u(x_0,y_0)}{\Delta x}+\lim_{\Delta x\ra 0}\frac{iv(x_0+\Delta x,y_0)-iv(x_0,y_0)}{\Delta x}\\
+        &=u_x(x_0,y_0)+iv_x(x_0,y_0)\\
+        &=\left(\frac{\partial u}{\partial x}+i\frac{\partial v}{\partial x}\right)|_{z_0}
+    \end{align*}
+    \item  Here we will compute the derivative along the trajectory $x_0+i(y_0+\Delta y)$. That is if the limit exist we know that 
+    \begin{align*}
+        \lim_{\Delta y\ra 0}\frac{f(x_0+i(y_0+\Delta y))-f(x_0+iy_0)}{x_0+i(y_0+\Delta y)-x_0-iy_0}&=\lim_{\Delta y\ra 0}\frac{u(x_0,y_0+\Delta y)+iv(x_0,y_0+\Delta y)-u(x_0,y_0)-iv(x_0,y_0)}{i\Delta y}\\
+        &=\lim_{\Delta y\ra 0}\frac{u(x_0,y_0+\Delta y)-u(x_0,y_0)}{i\Delta y}+\lim_{\Delta y\ra 0}\frac{iv(x_0,y_0+\Delta y)-iv(x_0,y_0)}{i\Delta y}\\
+        &=\frac{1}{i}(u_y(x_0,y_0)+iv_x(x_0,y_0))\\
+        &=\frac{1}{i}\left(\frac{\partial u}{\partial y}+i\frac{\partial v}{\partial y}\right)|_{z_0}
+    \end{align*}
+    \item for the derivative of the function $f$ to exist we would need at a minimum that the limits computed along both trajectories are the same. That is $\left(\frac{\partial u}{\partial x}+i\frac{\partial v}{\partial x}\right)|_{z_0}=\frac{1}{i}\left(\frac{\partial u}{\partial y}+i\frac{\partial v}{\partial y}\right)|_{z_0}=\left(-i\frac{\partial u}{\partial y}+\frac{\partial v}{\partial y}\right)|_{z_0}$. And because both $u$ and $v$ are $\R$-valued functions with $\R$-valued derivatives we know that this must imply that $\frac{\partial u}{\partial x}|_{z_0}=\frac{\partial v}{\partial y}|_{z_0}$ and $\frac{\partial v}{\partial x}|_{z_0}=-\frac{\partial u}{\partial y}|_{z_0}$ which is exactly the Cauchy-Riemann equations.\\
+\end{enumerate}
+
+\item  Let $f(z)=u(x,y)+iv(x,y)$ be a holomorphic function meaning $u_x=v_y$ and $u_y=-v_x$ on the set $\Omega$.\\ 
+\begin{enumerate}
+    \item Now assume that $\Real(f)=c$ for some constant $c\in \R$. This means that $u_x(x,y)=0=v_y(x,y)$ Similarly we know that $u_y(x,y)=0=-v_x(x,y)$ this means that $u(x,y)$ and $v(x,y)$ must be constants as they have partial derivatives zero.\\
+    \item Now assume that $\Imag(f)=c$ for some constant $c\in \R$. This means that $v_y(x,y)=0=u_x(x,y)$ Similarly we know that $v_x(x,y)=0=-u_y(x,y)$ and this means that $u(x,y)$ and $v(x,y)$ must be constants as they have partial derivatives zero.\\
+    \item Now assume that $|f|$ is constant which means that $|f|=u(x,y)^2+v(x,y)^2$ is constant. This means that taking the derivative with respect to $x$ and $y$ gives us that $2uu_x+2vv_x=0$ and $2uu_y+2vv_y=0$ and so using Cauchy Riemann equations we have that $uv_y-vu_y=0$ and $-uv_x+vu_x=0$. Notice that if $u=0$ then $0^2+v^2$ would be constant and so $v$ would be constant. So we can assume that $u\neq 0$ in which case we find that
+    \begin{equation*}
+      \begin{split}
+      uv_y-vu_y=0\\
+      uv_y=vu_y\\
+      v_y=\frac{v}{u}u_y
+      \end{split}
+    \quad\quad\quad
+      \begin{split}
+        -uv_x-vu_x=0\\
+      uv_x=vu_x\\
+      v_x=\frac{v}{u}u_x
+      \end{split}
+    \end{equation*}
+    And so plugging back into the original equations
+    \begin{equation*}
+      \begin{split}
+      uu_y+v(\frac{v}{u}u_y)=0\\
+      \frac{u^2+v^2}{u}u_y=0
+      \end{split}
+    \quad\quad\quad
+      \begin{split}
+       uu_x+v(\frac{v}{u}u_x)=0\\
+      \frac{u^2+v^2}{u}u_x=0
+      \end{split}
+    \end{equation*}
+And in both cases we have that $u^2+v^2\neq 0$ meaning $u_x=0$ and $u_y=0$ and so by Cauchy Riemann equation we also have that $v_x=0$ and $v_y=0$ and so $u$ and $v$ are constant, and therefore $f$ is constant.\\ 
+\end{enumerate}
+
+\item
+\begin{enumerate}
+    \item We will show that the sequence of partial sums does not converge by showing it is not Cauchy. Consider the sequence of partial sums $\{s_n=\sum_{k=0}^{n}kz^k\}$ and notice that for $m=n-1$ we have that $|s_n-s_{n-1}|=|nz^n| = n$ this follows from the fact that $z$ is on the unit circle and the norm is multiplicative. Notice also that $\lim_{n\ra \infty} |s_n-s_{n-1}|=\lim_{n\ra\infty} n$ which diverges. And so this sequence is not Cauchy.\\
+
+    \item Consider the sequence of partial sums $S_n=\sum_{k=1}^{n}z^k/k^2$ Let $\epsilon>0$ and pick $N>\frac{1}{\epsilon}$. Notice that for any values $N\leq m\leq n$ we have that $|S_n-S_m|=|\sum_{k=m+1}^{n}z^k/k^2|\leq \sum_{k=m+1}^{n}|z^k/k^2|=\sum_{k=m+1}^{n}k^2$ by the triangle inequality and because $|z|=1$ and the norm is multiplicative. Also notice that each term $\frac{1}{k^2}\leq \frac{1}{k(k-1)}=\frac{1}{k-1}-\frac{1}{k}$. Meaning $\sum_{k=m+1}^{n}\frac{1}{k^2}\leq\sum_{k=m+1}^{n}\frac{1}{k-1}-\sum_{k=m+1}^{n}\frac{1}{k}=\sum_{k=m}^{n-1}\frac{1}{k}-\sum_{k=m+1}^{n}\frac{1}{k}=\frac{1}{m}-\frac{1}{n}< \frac{1}{m}< \frac{1}{N}<\epsilon$.\\
+\end{enumerate}
+
+\item First notice that when $z=1$ we have that $\sum_{n=1}^\infty z^n/n=\sum_{n=1}^\infty 1/n$ is the harmonic series and so diverges.
+
+Now assume that $z\neq 1$ and is on the unit circle and consider the difference of partial sums 
+\begin{align*}
+|S_N-S_{M-1}|&=|\sum_{n=M}^N\frac{z^n}{n}|\\
+&=|\frac{1}{N}\sum_{n=1}^Nz^n-\frac{1}{M}\sum_{n=1}^{M-1}z^n-\sum_{n=M}^{N-1}\left[(\frac{1}{n+1}-\frac{1}{n})\sum_{j=1}^nz^j\right]|\\
+&\leq |\frac{1}{N}\sum_{n=1}^Nz^n|+|\frac{1}{M}\sum_{n=1}^{M-1}z^n|+\sum_{n=M}^{N-1}|\left[(\frac{1}{n+1}-\frac{1}{n})\sum_{j=1}^nz^j\right]|\\
+&=\frac{1}{N}|\frac{z^{N+1}-z}{z-1}|+\frac{1}{M}|\frac{z^{M}-z}{z-1}|+\sum_{n=M}^{N-1}|\left[\frac{1}{n^2+n}\frac{z^{j+1}-z}{z-1}\right]|
+\end{align*}
+And from the triangle inequality and from the fact that $|z|=1$ we know that we can bound the numerators of each fraction by 2 giving 
+$$|S_N-S_{M-1}|\leq \frac{2}{N}|\frac{1}{z-1}|+\frac{2}{M}|\frac{1}{z-1}|+\sum_{n=M}^{N-1}\frac{2}{n^2+n}|\frac{1}{z-1}|$$
+Notice that $|\frac{1}{z-1}|$ is constant for any fixed $z$. So for big enough $N$ and $M$ the first two terms go to zero. Furthermore because $\sum_{n=M}^{N-1}\frac{2}{n^2+n}$ is the difference of two partial sums of the converging sequence $\sum \frac{1}{n^2+n}$ we know that for big enough $N$ and $M$ the sum goes to zero. And so this entire expression goes to zero for big enough $N$ and $M$. So by analysis this sequence is Cauchy and so converges.\\  
+
+\item Let $z=x+iy=re^{i\gamma}$ and $w=u+iv=se^{iu\beta}$ and notice that $\overline{zw}=\overline{(x+iy)(u+iv)}=\overline{(xu-yw)+(xw+yu)i}=(xu-yw)-(xw+yu)i$ and likewise $\overline{z}\;\overline{w}=(x-iy)(u-iv)=(xu-yw)-(xw+yu)i$ and so $\overline{zw}=\overline{z}\;\overline{w}$. This gives us that $|zw|=\sqrt{zw\overline{zw}}=\sqrt{wz\overline{z}\;\overline{w}}=\sqrt{z\overline{z}}\sqrt{w\overline{w}}=|z||w|$.\\ Notice also that $\text{arg}(re^{i\gamma}se^{i\beta})=\text{arg}(rse^{i\gamma+\beta})=\gamma+\beta=\text{arg}(re^{i\gamma})+\text{arg}(se^{i\beta})$. This shows that $|-|$ and $\text{arg}(-)$ are both group homomoprhism and so $\alpha$ is a group homomorphism.\\
+
+Now we will show there exists an inverse map $\alpha^{-1}:\R_{>0}\oplus \R/2\pi\Z\ra C^\times$ that maps $(r,\theta)\mapsto re^{i\theta}$. Notice that for an element  $\alpha(\alpha^{-1}((r,\theta)))=\alpha(re^{i\theta})=(r,\theta)$. And similarly $\alpha^{-1}(\alpha(re^{i\theta}))=\alpha^{-1}((r,\theta))=re^{i\theta}$. This shows that $\alpha$ is injective and surjective.\\
+
+\end{enumerate}
+
+\end{document}
+
+
+
+
+
+

@@ -1,0 +1,48 @@
+\documentclass[12pt]{amsart}
+\usepackage{preamble}
+
+\begin{document}
+\begin{center}
+    \textsc{Math 502. HW 10\\ Ian Jorquera}
+\end{center}
+\vspace{1em}
+
+\begin{itemize}
+\item[(1)] % (1+) [2 points]
+This problem involves matroids of rank at most 3, so we will consider all possible matroids of each rank and use the basis construction of matroids.
+
+For rank 3, there is only one matroid up to isomorphism, as there is only one three-element basis $\mathcal{B}={1,2,3}$.
+
+For rank 2, the bases will have size 2. Up to isomorphism, we only need to consider the number of possible basis elements. Because there are 3 two-element sets, there are 3 matroids up to isomorphism.
+
+For rank 1, the bases will have size 1. Up to isomorphism, we only need to consider the number of possible basis elements in the basis set. Because there are 3 one-element sets, there are 3 matroids up to isomorphism.
+
+Finally, for rank 0, the only matroid has basis set ${\emptyset}$. Therefore, there are 8 matroids up to isomorphism.\\
+
+\item[(2)]
+Consider the so-called uniform matroid $U_{m,n}=([n],{[n]\choose m})$. Notice first that ${[n]\choose m}$ is non-empty when $m\geq 0$ and $n\geq m$. Now consider any two $k$-subsets $B_1, B_2$ such that $B_1\neq B_2$. This necessarily means that there must exist elements $x\in B_1-B_2$ and $y\in B_2-B_1$ of $[n]$. Notice that for any such element $x\in B_1-B_2$ we can construct a set of size $k$ by adding $y$ that is $B_1-x+y\in {[n]\choose m}$.\\
+
+\item[(3)] % (2) [3 points]
+First recall that for a graph $G$ with edges $E$ that $(E,\mathcal{I})$ is a matroid with $\mathcal{I}$ the cycle free subsets of $E$. Here we will show that the set of cycles of the graph $G$ is equal to $\mathcal{C}=\{C\se E | C\not\in \mathcal{I}\text{, and for all }I\subsetneq C, I\in\mathcal{I}\}$. Consider first a cycle in $G$, a set of distinct edges which form a path from a vertex to its self. Notice that by construction of $\mathcal{I}$ we know that no cycle is containing in $\mathcal{I}$. We also know that the removal of any edge say $e_1\ra e_2$ of the cycle will result in either the empty set or a path from $e_2$ to $e_1$. In either case the set of remaining edges would be cycle free. And so all cycles of $G$ are containing in $\mathcal{C}$\\
+
+Now consider a set $C\in\mathcal{C}$ and notice that by $C\not\in\mathcal{I}$ we know there must exist a cycle in $C$. Assume that there exists an edge $e$ not on that cycle. Notice that the removal of that edge $C-e$ still containing a cycle and so $C-e\not\in\mathcal{I}$. This means any $C\in\mathcal{C}$ must be a cycle and contain no additional edges. Showing $\mathcal{C}$ is precisely the set of cycles of $G$. And by problem $(5)$ we know that $(E,\mathcal{C})$ satisfies the axioms C1, C2 and C3.\\
+
+\item[(5)] % (2) [3 points]
+Let $M=(E,\mathcal{I})$ be a matroid satisfying the I1, I2,  and I3 axioms. Let $\mathcal{C}=\{C\se E | C\not\in \mathcal{I}\text{, and for all }I\subsetneq C, I\in\mathcal{I}\}$ we will show that $(E,\mathcal{C})$ satisfies the C1, C2, and C3 axioms. First notice that $\emptyset\in \mathcal{C}$ and so by construction we know that $\emptyset\not\in \mathcal{C}$ which satisfies C1.\\
+
+Now let $C_1,C_2\in\mathcal{C}$ and $C_1\se C_2$. Notice that if $C_1\subsetneq C_2$ then by construction we would have that $C_1\in \mathcal{I}$ however this can not be the case as by construction we have that $C_1\in\mathcal{C}$, meaning $C_1\not\in\mathcal{I}$ which show C2. Notice that this axiom shows that if $C_1\neq C_2$ then there must exist some $x\in C_2-C_1$ and likewise there must exist some $y\in C_1-C_2$ as otherwise one would be a subset of the other.\\
+
+Finally let $C_1,C_2\in\mathcal{C}$ such that $C_1\neq C_2$ and assume there exists some $e\in C_1\cap C_2$. We will show that there must exists some circuit containing in $(C_1\cup C_2)-e$. Assume however that there is not then it must be the case that $(C_1\cup C_2)-e\in \mathcal{I}$. we will show this wil induction on $|I|$ where $I\se (C_1\cup C_2)-e$. Notice first that by definition $\emptyset\in\mathcal{I}$. Then fix let $I\se (C_1\cup C_2)-e$. Notice that by induction any proper subset of $I$ is containing in $\mathcal{I}$. This means $I$ is either a circuit or is it self containing in $\mathcal{I}$, and by assume of the there existing no circuits we know that $I\in \mathcal{I}$. This means $(C_1\cup C_2)-e\in \mathcal{I}$.
+
+If $(C_1\cup C_2)-e\in \mathcal{I}$, then consider $C_1-y\in\mathcal{I}$ where $y\in C_1-C_2$. Notice that $((C_1\cup C_2)-e)-(C_1-y)=(C_2-C_1)+y$. Which means by I3 we may add $|C_1-C_2|$ elements of $(C_2-C_1)+y$ to $C_1-y$ such that the resulting set will be in $\mathcal{I}$ and will contain either all of $C_1$, meaning $y$ was added, or all of $C_2$, meaning all of $C_2-C_1$ was added. In either way the result must contain a circuit and so would not be in $\mathcal{I}$. So $(C_1\cup C_2)-e\not\in \mathcal{I}$. And by the previously proved inductive statement we know that this must mean there exists a circuit containing in $(C_1\cup C_2)-e\in \mathcal{I}$ which shows C3.\\
+
+
+\end{itemize}
+
+\end{document}
+
+
+
+
+
+

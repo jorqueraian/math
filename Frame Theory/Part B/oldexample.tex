@@ -1,0 +1,41 @@
+%Revised: yes for the combo final project parts
+\section{Framing the Theory}
+\label{sec:example}
+Now that we have developed some of the frame theory needed we will look at an example of a complex frame in $\C^3$, and its Naimark complement in $\C^6$. Many nice frames are constructed using discrete Fourier transform matrices and modified to achieve the necessary properties using proposition \ref{prop:bigboi_prop}, that is $S=AI$ for frame bound $A$. %2.11
+Consider the Fourier transform matrix, where $\zeta$ is a primitive third root of unity,
+
+$$\mathcal{F}_{3}=\frac{1}{\sqrt{3}}\begin{pmatrix}1& 1& 1 \\ 1 & \zeta & \zeta^2\\ 1 & \zeta^2 & \zeta \end{pmatrix}$$
+which we will use to construct a frame, by considering orthogonal projections onto two of the dimension. We will denote this frame by the matrix
+$$\Phi=\frac{1}{\sqrt{2}}\begin{pmatrix}[ccc|ccc|ccc]
+1& 1& 1 & 1& 1& 1 & 0 & 0 & 0 \\ 0&0&0&1 & \zeta & \zeta^2 & 1 & \zeta & \zeta^2\\ 1 & \zeta^2 & \zeta &0&0&0& 1 & \zeta^2 & \zeta\end{pmatrix}$$
+
+\begin{example}
+$\Phi$ is an ETF with frame bound $A=3$ and $\spark(\Phi)=3$.
+\end{example}
+
+\begin{proof}
+\iftoggle{full}{First to show that $\Phi$ is tight frame we will compute the frame operator. Notice that the inner product of any two rows is equivalent, up to a constant multiple to the inner product of the rows of $\mathcal{F}_3$ and so $S=3I_3$, meaning $\Phi$ is a tight frame by proposition \ref{prop:bigboi_prop}.
+
+This is an example of a maximal tight frame as there are no tight frames for $\C^3$ with more than $9$ vectors.
+
+Now we need to show that this is an equal angular tight frame. We can do this with a tool such as Matlab or Sage where we find that $\ip{\phi_j,\phi_k}=\frac{1}{2}$ for all $j\neq k$ and $\ip{\phi_j,\phi_j}=1$ for all $j$. And so $\Phi$ is a finite unit norm equiangular tight frame.
+
+Finally, notice if}{If} we index these vectors from left to right by $[9]$ we may notice that $1,2$ and $3$ form a circuit. Furthermore, no two vectors are scalar multiples of one another and so the smallest circuit is of size $3$, meaning the spark is $3$.
+\end{proof}
+
+It turns out that for this example, with respect to the frame's coherence, the spark is as bad as possible, indicating this may not be the best frame to use. However, we may look at a Naimark complement which we will call $\Psi$ which is a frame for $\C^6$ with $9$ vectors. Using the properties of Naimark complements and matroids we can analyze the properties of the Naimark complement without directly computing the possible vectors.
+
+\begin{example}
+    The frame $\Psi$ is an ETF with frame found $A=3$ and has $\spark(\Psi)=6$
+\end{example}
+\begin{proof}
+    By proposition \ref{prop:naimark_comp_is_nice} we know that $\Psi$ is an ETF with frame bound $A=3$. So we need only compute the spark. The Naive approach would be to find an instance of the complement and compute its spark directly, but this would not guarantee the spark is the same for all complements. So instead we will look at the corresponding matroid where we know that $M(\Psi)=M(\Phi)^*$. And from proposition \ref{prop:interpeting_the_dual} we know that the smallest circuit in $M(\Psi)$ corresponds to the maximal hyperplane of $M(\Phi)$. So it suffices to find the maximal number of columns of $\Phi$ that do not span $\C^3$. Notice that any $2$ vectors from a common cell, span the two dimension subspace corresponding to the non-zero entries, and any third vector not in the cell spans $\C^3$. This means any cell is a maximal hyperplane of size $3$. And because a maximal hyperplane $H$ corresponds to a minimal circuit by $E-H$ which would have a size of $9-3=6$, the spark of $\Psi$ is $6$.
+\end{proof}
+
+ Notice that a full spark frame would have a spark of $7$ and with respect to the coherence the worst case spark would be $5$ and so the Naimark complement is neither worst case nor best case spark.
+
+The motivation behind this example is in the computability of spark, for frames. In general computing the girth of a matroid can be very difficult: for graphical matroids, girth can be computed rather easily, but for representable matroids, it can be very computationally difficult.
+% https://www.sciencedirect.com/science/article/pii/S0166218X07002260
+In general, for linear matroids finding girth is w[1]-hard with respect to the girth or rank of the matroid. And FPT with respect to a combination of the rank of the matroid and the size of the underlying field. Meaning that finding good algebraic spread in frames is very hard unless you have a small dimensional space and the frame is on a small field.
+
+Naimark complements can reduce the dimension. Given dim $d<n$ and $n-d<d$ then studying the Naimark complement is likely easier, at least heuristically. Although in this case, we are computing cogirth, which is the problem of finding non-spanning sets, it is still the case that the dimension of the space can be dramatically reduced.

@@ -1,0 +1,107 @@
+\def\darktheme{}
+
+\documentclass[12pt]{amsart}
+\usepackage{preamble}
+
+
+\begin{document}
+\begin{center}
+    \textsc{Math 519. HW 6\\ Ian Jorquera}
+\end{center}
+\vspace{1em}
+% See http://www.mathematicalgemstones.com/maria/Math501Fall22.php
+% for problems
+
+% sage: https://sagecell.sagemath.org/
+\begin{enumerate}
+\item Consider a function $f$ that is entire and injective. We will look at the point at infinity, which is equivalent to looking at the point $z=0$ on $f(\frac{1}{z})$. First, assume that $z=0$ is a removable singularity. This means that on some neighborhood $N_R(0)$, the function $|f(1/z)|$ is bounded by some value $A$. Notice that this means that $|f(z)|$ is bounded by $A$ for $z\in \C$ where $|z|>\frac{1}{R}$. Also, notice that because $f$ is entire, we know that for some $\epsilon>\frac{1}{R}$, $|f(z)|$ is bounded by $B$ on $N_\epsilon(0)$. This means that $f(z)$ is bounded by either $A$ or $B$. And because $f(z)$ is bounded and entire, it is therefore constant. However, this is not possible as we assumed that $f$ is injective.\\
+
+Now assume that $f(\frac{1}{z})$ has an essential singularity at $z=0$. Notice that in this case, it would mean for an open punctured neighborhood $N_R(z_0)^\times$, we have that the image of $f(1/z)$ on $N_R(z_0)^\times$ is dense by Casorati-Weierstrass. Furthermore, by Picard's theorem, we know that the image of $f(1/z)$ on $N_R(z_0)^\times$ must contain all of $\C$ except possibly one point. Notice that $z_1=R+1$ and $z_2=R+2$ are both points not contained in $N_R(z_0)^\times$, and so it must be the case that there exists some $z_0\in N_R(0)^\times$ such that $f(z_1)=f(z_0)$ or $f(z_2)=f(z_0)$. However, $f$ is assumed to be injective, and so $f(z)$ cannot have an essential singularity.\\
+
+This must mean that $f$ has a pole at infinity, and so $f:\hat{\C}\ra\hat{\C}$ is a holomorphic function. This means that $f(z)=\frac{p(z)}{q(z)}$ is a rational function. Notice that $q(z)$ has no roots in $\C$ as $f$ has no poles in $\C$. This must mean that $q(z)$ is a constant function, and so $f(z)$ is a polynomial. Notice that because $f(z)$ is injective, we also know that $f(z)$ has at most one root. And so $f(z)=a+bz$ is a degree 1 polynomial.\\ 
+
+
+\item 
+\begin{enumerate}
+    \item Notice that $\abs{\frac{a+ib}{1+c}}^2=\frac{a^2+b^2}{1+c^2}=\frac{1-c^2}{1+c^2}=\frac{1-c}{1+c}$ and so $|z|^2+1=\frac{1-c}{1+c}+\frac{1+c}{1+c}=\frac{2}{1+c}$ and similarly $1-|z|^2=\frac{1+c}{1+c}-\frac{1-c}{1+c}=\frac{2c}{1+c}$. Now we will show that $\oldphi_S^{-1}=\left(\frac{2\Real(z)}{|z|^2+1}, \frac{2\Imag(z)}{|z|^2+1}, \frac{1-|z|^2}{|z|^2+1}\right)$. First notice that 
+\begin{align*}
+    \oldphi^{-1}_S(\oldphi_S(a,b,c))&=\oldphi^{-1}_S(\frac{a+ib}{1+c})\\
+    &=\left(\frac{2\Real(z)}{|z|^2+1}, \frac{2\Imag(z)}{|z|^2+1}, \frac{1-|z|^2}{|z|^2+1}\right)\\
+    &=\left(\frac{\frac{2a}{1+c}}{\frac{2}{1+c}}, \frac{\frac{2b}{1+c}}{\frac{2}{1+c}}, \frac{\frac{2c}{1+c}}{\frac{2}{1+c}}\right)\\
+    &=\left(a, b, c\right)\\
+\end{align*}
+
+And likewise 
+
+\begin{align*}
+    \oldphi_S(\oldphi^{-1}_S(z))&=\oldphi_S\left(\frac{2\Real(z)}{|z|^2+1}, \frac{2\Imag(z)}{|z|^2+1}, \frac{1-|z|^2}{|z|^2+1}\right)\\
+    &=\frac{\frac{2\Real(z)}{|z|^2+1}+i\frac{2\Imag(z)}{|z|^2+1}}{1+\frac{1-|z|^2}{|z|^2+1}}\\
+    &=\frac{\frac{2\Real(z)}{|z|^2+1}+i\frac{2\Imag(z)}{|z|^2+1}}{\frac{|z|^2+1}{|z|^2+1}+\frac{1-|z|^2}{|z|^2+1}}\\
+    &=\frac{\frac{2z}{|z|^2+1}}{\frac{2}{|z|^2+1}}\\
+    &= z
+\end{align*}
+
+Now notice that $\psi_S(a,b,c)=\overline{\phi_S(a,b,c)}=\frac{a-ib}{1+c}$ and because the conjugate is invertable we have that $\psi^{-1}_S(z)=\phi^{-1}_S(\overline{z})=\left(\frac{2\Real(z)}{|z|^2+1}, -\frac{2\Imag(z)}{|z|^2+1}, \frac{1-|z|^2}{|z|^2+1}\right)$.\\
+
+\item Consider the map $\oldphi_S\circ\oldphi^{-1}_N$ where we have that
+
+\begin{align*}
+    \oldphi_S\circ\oldphi^{-1}_N &= \oldphi_S(\left(\frac{2\Real(z)}{|z|^2+1}, \frac{2\Imag(z)}{|z|^2+1}, \frac{|z|^2-1}{|z|^2+1}\right))\\
+    &= \frac{\frac{2\Real(z)}{|z|^2+1}+i\frac{2\Imag(z)}{|z|^2+1}}{1+\frac{|z|^2-1}{|z|^2+1}}
+    = \frac{\frac{2z}{|z|^2+1}}{\frac{|z|^2+1}{|z|^2+1}+\frac{|z|^2-1}{|z|^2+1}}\\
+    &= \frac{2z}{|z|^2+1+|z|^2-1}\\
+    &= \frac{z}{z\cdot \overbar{z}}\\
+    &= \frac{1}{\overbar{z}}
+\end{align*}
+
+Which is not holomorphic by the first week of class and composition of holomorphic function. Now consider the map $\psi_S\circ\oldphi^{-1}_N$  where we have that
+\begin{align*}
+    \psi_S\circ\oldphi^{-1}_N &= \psi_S(\left(\frac{2\Real(z)}{|z|^2+1}, \frac{2\Imag(z)}{|z|^2+1}, \frac{|z|^2-1}{|z|^2+1}\right))\\
+    &= \frac{\frac{2\Real(z)}{|z|^2+1}-i\frac{2\Imag(z)}{|z|^2+1}}{1+\frac{|z|^2-1}{|z|^2+1}}
+    = \frac{\frac{2\overbar z}{|z|^2+1}}{\frac{|z|^2+1}{|z|^2+1}+\frac{|z|^2-1}{|z|^2+1}}\\
+    &= \frac{2\overline z}{|z|^2+1+|z|^2-1}\\
+    &= \frac{\overline z}{z\cdot \overbar{z}}\\
+    &= \frac{1}{z}\\
+\end{align*}
+Which is holomorphic. Finally consider the map 
+\end{enumerate}
+
+$\psi_S\circ\oldphi^{-1}_S$  where we have that
+\begin{align*}
+    \psi_S\circ\oldphi^{-1}_S &= \psi_S(\left(\frac{2\Real(z)}{|z|^2+1}, \frac{2\Imag(z)}{|z|^2+1}, \frac{1-|z|^2}{|z|^2+1}\right))\\
+    &= \frac{\frac{2\Real(z)}{|z|^2+1}-i\frac{2\Imag(z)}{|z|^2+1}}{1+\frac{1-|z|^2}{|z|^2+1}}
+    = \frac{\frac{2\overbar z}{|z|^2+1}}{\frac{|z|^2+1}{|z|^2+1}+\frac{1-|z|^2}{|z|^2+1}}\\
+    &= \frac{2\overline z}{|z|^2+1+1-|z|^2}\\
+    &= {\overline z}\\
+\end{align*}
+which is not holomorphic by the first week of class
+
+\item 
+\begin{enumerate}
+\item Let $p(z)=\sum_{k=0}^{d}a_kz^k$ be a polynomial of degree $d$ where $a_d\neq 0$ which is a meromorphic function on $\hat{\C}\ra\hat{\C}$. Meaning to determine the order of the polynomial at the point at infinity we can instead look at the point $0$ on $p(\frac{1}{z})=\sum_{k=0}^{d}a_k\frac{1}{z^k}=z^{-d}\sum_{k=0}^{d}a_kz^{d-k}$. Notice that because $a_d\neq 0$ we have that the function $\sum_{k=0}^{d}a_kz^{d-k}$ is holomorphic and non-vanishing near $0$. So the order of the pole is $-d$.\\
+
+\item We know that the only holes or poles will occur at the roots and the point at infinity. And because we know that all roots of $p(z)$ are in the field $\C$ by the fundamental theorem of algebra we know that $p(z)=\sum_{k=0}^{d}a_kz^k=a_d\prod_{j=0}^n(z-r_j)^{e_j}$ such that $r_0,r_1,\dots r_n\in \C$ are the distinct roots of $p(z)$. This means that 
+
+\begin{align*}
+    \sum_{z_0\in \hat{\C}} \text{ord}_{z_0}(p)=\text{ord}_{\infty}(p)+\sum_{j=0}^n\text{ord}_{r_j}(p)=-d+\sum_{j=0}^n e_j=0
+\end{align*}
+
+\item Let $f(z)=\frac{p(z)}{q(z)}$ be a rational function and notice first that from the previous HW we know that
+
+\begin{align*}
+    \sum_{z_0\in \hat{\C}} \text{ord}_{z_0}(f)&=\sum_{z_0\in \hat{\C}} \text{ord}_{z_0}(p(z))+\sum_{z_0\in \hat{\C}}\text{ord}_{z_0}(\frac{1}{q(z)})=\sum_{z_0\in \hat{\C}}\text{ord}_{z_0}(\frac{1}{q(z)})
+\end{align*}
+Now notice that for any $z_0\in \C$ we have that $\text{ord}_{z_0}(\frac{1}{q(z)})=-\text{ord}_{z_0}(q(z))$ by the definition of poles. This means that $$0=\sum_{z_0\in \hat{\C}}\text{ord}_{z_0}(q(z))=-\sum_{z_0\in \hat{\C}}\text{ord}_{z_0}(\frac{1}{q(z)})$$\
+and so we have that
+$$\sum_{z_0\in \hat{\C}} \text{ord}_{z_0}(f)=0$$
+
+\end{enumerate}
+\end{enumerate}
+
+\end{document}
+
+
+
+
+
+

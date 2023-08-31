@@ -1,0 +1,150 @@
+\section{A proof of Bezout's Theorem}
+To prove Bezout's theorem we first prove a series of lemmas restricting the curves to the affine plane, the points on the curves in $\A^2$ and then extending the theorem to the projective case using the idea from proposition \ref{prop:affine_def}.
+
+\subsection{The Affine Case}
+\label{sec:affinecase}
+Throughout the following lemmas, we will assume that $C_1:f_1(x,y)=0$ and $C_2:f_2(x,y)=0$ are affine curves in $\A^2$ for some algebraically closed field $k$, with no common components, with $n_1=\deg(f_1)$ and $n_2=\deg(f_2)$. We will also define the polynomial ring in two variables to be $R:=k[x,y]$ of which both $f_1$ and $f_2$ live and we will consider the ideal $\ip{f_1,f_2}=Rf_1+Rf_2$. We will first look at the space $R/\ip{f_1,f_2}$, which is a $k$-vector space.
+
+\begin{lemma}
+\label{lem:1A}
+Restricting the curves $C_1$ and $C_2$, to $\mathbb{A}^2$ we find that 
+$$\#(C_1\cap C_2\cap\mathbb{A}^2)\leq \dim\left(R/\ip{f_1,f_2}\right)$$
+\end{lemma}
+\begin{proof}
+Let $P_1, P_2,\dots, P_m$ be the distinct points in the intersection $C_1\cap C_2$. Fix a point $P_i$ and for any other point $P_j\neq P_i$ we may construct a line $\ell_{i,j}(x,y)$ such that $\ell_{i,j}(P_i)\neq 0$ and $\ell_{i,j}(P_j)= 0$ (such a construction could be the line going through $P_j$ that is perpendicular to the line determined by $P_i$ and $P_j$). This allows us to construct a polynomial $h_i(x,y)=\frac{\prod_{j\neq i}\ell_{i,j}(x,y)}{\prod_{j\neq i}\ell_{i,j}(P_i)}$, which satisfies that $h_i(P_i)=1$ and $h_i(P_j)=0$ for all $j\neq i$.\\
+
+To prove the lemma we will show that the polynomials $h_i$ for all $i$ are linearly independent in $R/\ip{f_1,f_2}$. To see that assume that 
+\begin{equation}
+\label{eq:l1_li}
+c_1h_1+c_2h_2+\dots+c_mh_m=g_1f_1+g_2f_2\text{, for }g_1,g_2\in R
+\end{equation}
+Notice however that for the point $P_i$ we have that equation \ref{eq:l1_li} gives us $c_i=0$ as $h_j(P_i)=0$ for $i\neq j$ by the construction of $h_j$. And so there are at least as linearly independent polynomials in $R/\ip{f_1,f_2}$ as there are points of intersection.
+\end{proof}
+
+\begin{lemma}
+\label{lem:1Bi}
+Let $R_d$ be the $k$-vector space of polynomials in $R$ of degree $\leq d$. The $\dim(R_d)=\frac{1}{2}(d+1)(d+2)$. Furthermore for any non-zero polynomial $f\in R$, $\dim(R_df)=\dim(R_d)$
+\end{lemma}
+\begin{proof}
+$R_d$ is the vector space spanned by all monomials of degree at most $d$. For any fixed degree $k<1$ there are ${k+1\choose 1}=k+1$ such monomials, which follow from a multi-choose combinatorial argument. This means 
+$$\dim(R_d)=\sum_{k=0}^dk+1=\sum_{k=1}^{d+1}k=\frac{1}{2}(d+1)(d+2)$$
+Now to prove the second claim we will construct an isomorphism between $R_d\ra R_df$ such that $g\mapsto fg$. To show this we need only show that $fx^iy^j$ for all $i+j\leq d$ forms a basis. This is a spanning set as the monomials span $R_d$, and is linearly independent as the monomials are linearly independent, and in any linear combination, we may factor out $f$.
+\end{proof}
+
+
+Now we will look at the $k$-vector space $W_d=\{g_1f_1+g_2f_2| g_1\in R_{d-n_1},g_1\in R_{d-n_2}\}$. Notice that $W_d$ contains polynomials of degree $\leq n$ and so is a subspace of $R_d$.
+
+\begin{lemma}
+\label{lem:1B}
+$$\dim(R/\ip{f_1,f_2})\leq n_1n_2$$
+\end{lemma}
+\begin{proof}
+    Consider a collection of $n_1n_2+1$ polynomials $g_1,g_2,\dots,g_{n_1n_2+1}\in R$ which we will show are linearly dependent in $R/\ip{f_1,f_2}$. First, let $d$ be the maximum of $n_1+n_2$ and the degree of the $n_1n_2+1$ polynomials, and consider the subspace $R_d$, which contains all the polynomials. We will show that the polynomials are linearly dependent in $R_d/W_d$ by dimensional arguments.\\
+    
+    First notice that $W_d=R_{d-n_1}f_1\cup R_{d-n_2}f_2$ and because $d\geq n_1+n_2$ we have that any element $h\in R_{d-n_1}f_1\cap R_{d-n_2}f_2$ can be decomposed as $g_1f_1$ and $g_2f_2$, and where it must be the case that $f_1|g_2$ and $f_2|g_1$, as $f_1$ and $f_2$ share no common factors. And so $f_1f_2$ is a common factor of $h$, meaning $h=g_3f_1f_2$ where $g_3\in R_{d-n_1-n_2}$. This shows that $R_{d-n_1}f_1\cap R_{d-n_2}f_2=R_{d-n_1-n_2}f_1f_2$. Notice that this allows us to determine that 
+    \begin{align*}
+        \dim(W_d)&=\dim(R_{d-n_1}f_1)+\dim(R_{d-n_2}f_2)-\dim(R_{d-n_1}f_1\cap R_{d-n_2}f_2)\\
+        &=\dim(R_{d-n_1}f_1)+\dim(R_{d-n_2}f_2)-\dim(R_{d-n_1-n_2}f_1f_2)
+    \end{align*}
+    and from lemma \ref{lem:1Bi} we have that
+    \begin{align*}
+        \dim(R_d/W_d)&=\dim(R_d)-\dim(W_d)\\
+        &=\dim(R_d)-\dim(R_{d-n_1}f_1)-\dim(R_{d-n_2}f_2)+\dim(R_{d-n_1}f_1\cap R_{d-n_2}f_2)\\
+        &= \frac{1}{2}((d+1)(d+2)-(d-n_1+1)(d-n_1+2)-(d-n_2+1)(d-n_2+2)+(d-n_1-n_2+1)(d-n_1-n_2+2))\\
+        &=n_1n_2
+    \end{align*}
+    Meaning for the polynomials $g_1,g_2,\dots,g_{n_1n_2+1}\in R_d\se R$ there must exists a non-trivial linear combination such that $\sum_{j=1}^{n_1n_2+1}c_jg_j\in W_d$, as the dimension of $R_d/W_d$ is $n_1n_2$. This also proves that because $W_d\se \ip{f_1,f_2}$ that $\sum_{j=1}^{n_1n_2+1}c_jg_j\in \ip{f_1,f_2}$ as well, meaning we there exists a non-trivial linear independence equation for $R/\ip{f_1,f_2}$ as well. And so $\dim(R/\ip{f_1,f_2})\leq n_1n_2$.
+\end{proof}
+
+In the previous proofs, we have looked at curves restricted to $\A^2$, the affine plane and we have shown a weak inequality that $\#(C_1\cap C_2\cap\mathbb{A}^2)\leq \dim(R/\ip{f_1,f_2}) \leq n_1n_2$. Now we will work to strengthen this equality and then extend it to all of the projective plane. First given a curve $C:f(x,y)=\sum_{i,j}c_{ij}x^iy^j=0$ where we want to analyze the points at infinity of $C$. Assume that the degree of $f$ is $n$ and notice that when we homogenize $f$ we get 
+$$f(x,y,z)=\sum_{i+j=n}c_{ij}x^iy^j+O(z)$$
+where $O(z)$ denotes all terms with a $z$. In this case, to study points at infinity we will look at $z=0$ where we find that $f^*(x,y):=f(x,y,0)=\sum_{i+j=n}c_{ij}x^iy^j$. Because $k$ is algebraically closed we may factor $f^*$ are a product of linear terms giving $f^*(x,y)=\prod_{i=1}^n(a_ix+b_iy)$ for $a_i,b_i\in k$ and $a_i$ and $b_i$ not both zero. This means the roots of $f^*$ and therefore the points at infinity of $f$ are when $a_ix=-b_iy$. Notice that the point $(b_i,-a_i)$ and all multiples satisfy this and so the point at infinity are of the form $[b_i:-a_i:0]$ for all $i$.
+
+
+\begin{lemma}
+    \label{lem:22}
+    Assume that the curves $C_1$ and $C_2$ do not meet at infinity. Then $f_1^*$ and $f_2^*$ share no common factors, where $f^*$ denotes the sum of the terms of highest degree in $f$.
+\end{lemma}
+\begin{proof}
+    From the previous observation we noted that we could decompose $f_1^*(x)=\prod_{i=1}^n(a_ix+b_iy)$ for $a_i,b_i\in k$ and $a_i$ and $b_i$ not both zero. And likewise we could decompose $f_2^*(x)=\prod_{i=1}^n(c_ix+d_iy)$ for $c_i,d_i\in k$ and $c_i$ and $d_i$ not both zero.\\
+
+    Now we will assume that $f_1^*$ and $f_2^*$ do have a common factor meaning there exists some $\ell$ and $k$ such that $a_\ell=c_k$ and $b_\ell=d_k$. And because the points at infinity of $C_1$ are $[b_i:-a_i:0]$ for all $i$ and the points at infinity of $C_2$ are $[d_j:-c_j:0]$ for all $j$ we know that both curves intersect at $[b_\ell:-a_\ell:0]=[d_k:-c_k:0]$. The statement follows from the contrapositve.
+\end{proof}
+
+\begin{lemma}
+    \label{lem:23}
+    Assume that for the curves $C_1$ and $C_2$ that $f_1^*$ and $f_2^*$ share no common factors Then $\ip{f_1,f_2}\cap R_d=W_d$ for all $d\geq n_1+n_2$.
+\end{lemma}
+This lemma is proven in a rather interesting way, looking at the intersections at infinity to argue about the degree of the functions at infinity.
+\begin{proof}
+    First one direction is trivial, as all vectors in $W_d$ are of degree $\leq d$ and furthermore we know that $W_d\se \ip{f_1,f_2}$ so we have that $W_d\se \ip{f_1,f_2}\cap R_d$.\\
+
+    For the other direction consider an element $f\in \ip{f_1,f_2}\cap R_d$, such that $f=g_1f_1+g_2f_2$ for $g_1,g_2$ of smallest possible degree. Notice that $g_1,g_2$ may be functions of an arbitrarily big degree, which would lead to the cancellation in the sum. We will show that this need not be the case, so assume that $\deg(g_1)>d-n_1$ 
+    %(would would be cancellation of high degree terms would occur) 
+    and looking at the terms of highest degree it must be the case that $(g_1f_1)^*+(g_2f_2)^*=g_1^*f_1^*+g_2^*f_2^*=0$, as otherwise the degree of $f$ would be $>d$. Likewise we also know that $\deg(g_1f_1)=\deg(g_2f_1)=m>d\geq n_1+n_2$. Because $f_1^*$ and $f_2^*$ have no common factors is must be the case that $f_1^*|g_2^*$ and $f_2^*|g_1^*$ as both $f_1^*$ and $f_2^*$ both divide $g_1^*f_1^*=-g_2^*f_2^*$. This means there exists some function $h_1$ and $h_2$ such that $g_1^*=h_1f_2^*$ and $g_2^*=h_2f_1^*$. Furthermore notice that this gives us that $h_1f_2^*f_1^*=-h_2f_1^*f_2^*$, and because $R$ as a ring has no zero divisors we know that $h_1=-h_2$.\\
+
+    Using this construction we know that $g_1^*f_1^*+g_2^*f_2^*=h_1f_2^*f_1^*+g_2^*f_2^*=0$ and so $h_1f_1^*+g^*_2=0$, meaning the polynomial $h_1f_1+g_2$ has no $\deg(g_1^*)$ terms and therefore $\deg(h_1f_1+g_2)<\deg(g_2)$. Along the same arguments we can observe that $g_1^*f_1^*+g_2^*f_2^*=g_1^*f_1^*+h_2f_1^*f_2^*=0$ and so $g_1^*+h_2f_2^*=0$, meaning the polynomial $g_1+h_2f_2$ has no $\deg(g_1^*)$ terms and therefore $\deg(g_1+h_2f_2)<\deg(g_1)$. Using this construction we can also observe that 
+    $$(g_1+h_2f_2)f_1+(h_1f_1+g_2)f_2=g_1f_1+h_2f_2f_1+h_1f_1f_2+g_2f_2=f+f_1f_2(h_1+h_2)=f$$
+    This contradicts that $g_1$ and $g_2$ were chosen minimally. And so there must exists choices of $g_1$ and $g_2$ with $\deg(g_1)\leq d-n_1$ and $\deg(g_2)\leq d-n_2$. So therefore $f\in W_d$
+\end{proof}
+
+\begin{lemma}
+    \label{lem:2Ap}
+    Assume that the curves $C_1$ and $C_2$ do not meet at infinity. Then $\dim(R/\ip{f_1,f_2})=n_1n_2$
+\end{lemma}
+\begin{proof}
+   First, because the curves $C_1$ and $C_2$ do not meet at infinity and from the lemmas \ref{lem:22} and \ref{lem:23} we know that it must be the case that $\ip{f_1,f_2}\cap R_d=W_d$ for all $d\geq n_1+n_2$. We also know that from lemma \ref{lem:1A} that $\dim(R/\ip{f_1,f_2})\leq n_1n_2$ so it suffices to show that $\dim(R/\ip{f_1,f_2})\geq n_1n_2$. Notice that in lemma \ref{lem:1B} we know that $\dim(R_d/W_d)=n_1n_2$. So consider a collection of linearly independent vectors $g_1,g_2,\dots, g_{n_1n_2}$. And notice that any linear combination of these vectors would have a degree at most $d$, and because there is no linear combination over $k$ that results in a vector in $W_d=\ip{f_1,f_2}\cap R_d$ these vectors must also be linearly independent in $R/\ip{f_1,f_2}$. This means that $\dim(R/\ip{f_1,f_2})\geq n_1n_2$, proving the lemma.
+\end{proof}
+
+\begin{prop}
+\label{prop:finitness_of_I}
+If $C_1$ and $C_2$ have no common components then for $P\in C_1\cap C_2\cap \A^2$ we have that $I(C_1\cap C_2, P)$ is finite
+\end{prop}
+\begin{proof}
+    Fix a point $P\in\A^2$ and notice that for two functions $g/h, g'/h'\in \mathcal{O}_P$ we can rewrite them as $gh'/hh'$ and $g'h/hh'$ sharing a common denominator. This can be repeated inductively such that any collection of rational functions share a common denominator. So consider a collection of rational function $g_1/h,g_2/h,\dots, g_r/h$ and notice that any linear combination can be rewritten as $a_1g_1/h+a_2g_2/h+\dots+ a_rg_r/h=\frac{a_1g_1+a_2g_2+\dots+ a_rg_r}{h}$. And so if the polynomials $g_1,g_2,\dots,g_r$ were linearly dependent in $R/\ip{f_1,f_2}$, meaning $a_1g_1+a_2g_2+\dots+ a_rg_r\in\ip{f_1,f_2}$ then it would also be the case that $\frac{a_1g_1+a_2g_2+\dots+ a_rg_r}{h}\in \ip{f_1,f_2}_P$, and so the rational function $g_1/h,g_2/h,\dots, g_r/h$ would be linearly dependent. This means by contrapositive that any collection of rational function $g_1/h,g_2/h,\dots, g_r/h$ that are linearly independent in $\mathcal{O}_P/\ip{f_1,f_2}_P$ would result in the polynomials $g_1,g_2,\dots, g_r$ being linearly independent in $R/\ip{f_1,f_2}$. This shows that $I(C_1\cap C_2, P)=\dim(\mathcal{O}_P/\ip{f_1,f_2}_P)\leq \dim(R/\ip{f_1,f_2})\leq n_1n_2$.
+\end{proof}
+
+Now we want the inequalities we have built so far to include the multiplicity of the intersections, defined in definition \ref{def:intmult}
+
+\begin{lemma}
+    If $C_1$ and $C_2$ have no common components then
+    $$\sum_{P\in C_1\cap C_2\cap\A^2}I(C_1\cap C_2,P)=\dim(R/\ip{f_1,f_2})$$
+\end{lemma}
+\begin{proof}
+    We will provide a proof sketch. First for the $\leq$ direction. There exists a well defined epimorphism
+    \begin{align*}
+        R&\ra \prod_{{P\in C_1\cap C_2\cap\A^2}}\mathcal{O}_P/\ip{f_1,f_2}_P\\
+        f&\mapsto (\dots,f \mod (f_1,f_2)_P,\dots)_{P\in C_1\cap C_2\cap\A^2}
+    \end{align*}
+    Let $J$ be the kernel of the space and therefore 
+    $$\dim(R/J)=\sum_{P\in C_1\cap C_2\cap\A^2}\dim(\mathcal{O}_P/\ip{f_1,f_2}_P)=\sum_{P\in C_1\cap C_2\cap\A^2}I(C_1\cap C_2, P)$$
+    Notice also that $\ip{f_1,f_2}\se J$ meaning $\dim(R/J)\leq \dim(R/\ip{f_1,f_2})$ proving the first direction. Now we need only show that $J\se\ip{f_1,f_2}$. Fix some $f\in J$ and consider the ideal $L=\{g\in R|gf\in\ip{f_1,f_2}\}$ and we will show that $1\in L$ which implies $\ip{f_1,f_2}= J$. Notice first the $L$ is an ideal which follows from the fact that $\ip{f_1,f_2}$ is an ideal, and so if $g_1,g_2\in L$ then $(g_1+g_2)f\in\ip{f_1,f_2}$ and for $h\in R$ we have that $hg_1f\in \ip{f_1,f_2}$. Likewise $L$ has the property that for all $P\in\A^2$ there exists some $g\in L$ such that $g(P)\neq 0$, which can be shown, with the initial assumption that $1\not\in L$, leads to a contradiction that $1\in L$. And so $L$ being an ideal containing $1$, must mean that $L=R$, and so this must imply that $J\se\ip{f_1,f_2}$ proving the statement.
+\end{proof}
+
+Now putting the previous lemmas together we have shown a weaker version of Bezout's theorem
+\begin{prop}
+\label{prop:almost}
+    If $C_1$ and $C_2$ have no common components and do no intersect at infinity then 
+    $$\sum_{P\in C_1\cap C_2}I(C_1\cap C_2, P)=n_1n_2$$
+\end{prop}
+
+\subsection{Curves that Meet at Infinity}
+Recall from proposition \ref{prop:affine_def} that an affine plane can be defined by the removal of any line in $\P^2$ and therefore any such choice of line, can be interpreted as the line $z=0$ up to projective transformation. This means if $C_1$ and $C_2$ do in fact intersect at infinity, or on the line $z=0$ we need only change perspectives to a new line at infinity, in which the curves $C_1$ and $C_2$ do not intersect.
+
+\begin{lemma}
+\label{lem:mone}
+    For projective curves $C_1$ and $C_2$ with no common components there exists a line $L$ such that $L$ does not contain any of the points in $C_1\cap C_2$.
+\end{lemma}
+\begin{proof}
+    First we want to show that $C_1\cap C_2$ is finite. Let $L$ be a line that is not a component of $C_1$ or $C_2$, and consider the affine plane $\A^2$ constructed by its removal we know that $\sum_{P\in C_1\cap C_2\cap \A^2}I(C_1\cap C_2, P)\leq n_1n_2$, meaning there are only a finite number of points of $C_1\cap C_2$ not on $L$. Likewise because there are infinitely many lines, as $k$ is its self infinite there must exists a second line $L'$ that is distinct from $L$ and shares no components with $C_1$ and $C_2$. And similarly for $L'$ there must also be a finite number of points in $C_1\cap C_2$ not on $L'$. And because $L$ and $L'$ intersect as a single point the total number of points in $C_1\cap C_2$ must be finite.\\
+
+    Given that $C_1\cap C_2$ is finite and knowing that $k$ is algebraically closed and therefore not finite its self we will show that there is a line $L$ not meeting any of the points of $C_1\cap C_2$. There must exist at least one point on the line $z=0$ that is not in $C_1\cap C_2$ as $z=0$ is not a common component, call it $[\beta:\alpha:0]$ and let $L$ be the line $\alpha x+\beta y +\gamma z=0$ and consider the affine points of the form $[x:y:1]$, and pick $\gamma$ to be any value in $k$ that is no equal to $-\alpha x-\beta y$ for all affine points $[x:y:1]$ in $C_1\cap C_2$. This is possible as $k$ has infinitely many elements and $C_1\cap C_2$ has finitely many.
+\end{proof}
+Notice that such a line $L$ must also not be a component of either $C_1$ and $C_2$, as otherwise there would be a intersection point on the line. And now together with section \ref{sec:affinecase} we can prove Bezout's Theorem
+\begin{thm}(Bezout's Theorem)
+Let $C_1$ and $C_2$ be projective curves of degree $n_1$ and $n_2$ respectively with no common components, then 
+$$\sum_{P\in C_1\cap C_2} I(C_1\cap C_2, P)=n_1n_2$$ % need to add a tidbit about how this doesnt affect the degree of the curves in A^2
+\end{thm}
+\begin{proof}
+    By lemma \ref{lem:mone} we know that there must exist some line $L$ that does not contain any of the points in $C_1\cap C_2$. Use this $L$ as the line at infinity and remove it to create the affine plane $\A^2$. Now using lemma \ref{prop:almost} and the fact that $L$ is not a component of either $C_1$ or $C_2$ we know that the corresponding affine curve has the same degree and so we get the result as desired.
+\end{proof}

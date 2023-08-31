@@ -1,0 +1,250 @@
+\documentclass[12pt]{amsart}
+% packages
+\usepackage{graphicx}
+\usepackage{setspace}
+\usepackage{amssymb,amsmath,amsthm,amsfonts,amscd}
+\usepackage{hyperref}
+\usepackage{color}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{enumitem}
+\usepackage[retainorgcmds]{IEEEtrantools}
+\usepackage[notref,notcite,final]{showkeys}
+\usepackage[final]{pdfpages}
+\usepackage{fancyhdr}
+\usepackage{upgreek}
+\usepackage{multicol}
+\usepackage{fontawesome}
+\usepackage{halloweenmath}
+% set margin as 0.75in
+\usepackage[margin=0.75in]{geometry}
+
+% tikz-related settings
+\usepackage{tkz-berge}
+\usetikzlibrary{calc,quotes}
+\usetikzlibrary{arrows.meta}
+\usetikzlibrary{positioning, automata}
+\usetikzlibrary{decorations.pathreplacing}
+
+%% For table
+\usepackage{tikz}
+\usetikzlibrary{tikzmark}
+
+% theorem environments with italic font
+\newtheorem{thm}{Theorem}[section]
+\newtheorem*{thm*}{Theorem}
+\newtheorem{lemma}[thm]{Lemma}
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem{claim}[thm]{Claim}
+\newtheorem{corollary}[thm]{Corollary}
+\newtheorem{conjecture}[thm]{Conjecture}
+\newtheorem{question}[thm]{Question}
+\newtheorem{procedure}[thm]{Procedure}
+\newtheorem{assumption}[thm]{Assumption}
+
+% theorem environments with roman font (use lower-case version in body
+% of text, e.g., \begin{example} rather than \begin{Example})
+\newtheorem{Definition}[thm]{Definition}
+\newenvironment{definition}
+{\begin{Definition}\rm}{\end{Definition}}
+\newtheorem{Example}[thm]{Example}
+\newenvironment{example}
+{\begin{Example}\rm}{\end{Example}}
+
+\theoremstyle{definition}
+\newtheorem{remark}[thm]{\textbf{Remark}}
+
+% special sets
+\newcommand{\A}{\mathbb{A}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\cals}{\mathcal{S}}
+\newcommand{\ZZ}{\mathbb{Z}_{\ge 0}}
+\newcommand{\cala}{\mathcal{A}}
+\newcommand{\calb}{\mathcal{B}}
+\newcommand{\cald}{\mathcal{D}}
+\newcommand{\calh}{\mathcal{H}}
+\newcommand{\call}{\mathcal{L}}
+\newcommand{\calr}{\mathcal{R}}
+\newcommand{\la}{\mathbf{a}}
+\newcommand{\lgl}{\mathfrak{gl}}
+\newcommand{\lsl}{\mathfrak{sl}}
+\newcommand{\lieg}{\mathfrak{g}}
+
+% math operators
+\DeclareMathOperator{\kernel}{\mathrm{ker}}
+\DeclareMathOperator{\image}{\mathrm{im}}
+\DeclareMathOperator{\rad}{\mathrm{rad}}
+\DeclareMathOperator{\id}{\mathrm{id}}
+\DeclareMathOperator{\hum}{[\mathrm{Hum}]}
+\DeclareMathOperator{\eh}{[\mathrm{EH}]}
+\DeclareMathOperator{\lcm}{\mathrm{lcm}}
+\DeclareMathOperator{\Aut}{\mathrm{Aut}}
+\DeclareMathOperator{\Inn}{\mathrm{Inn}}
+\DeclareMathOperator{\Out}{\mathrm{Out}}
+\DeclareMathOperator{\Gal}{\mathrm{Gal}}
+\DeclareMathOperator{\Real}{\mathrm{Re}}
+\DeclareMathOperator{\Imag}{\mathrm{Im}}
+
+
+% frequently used shorthands
+\newcommand{\ra}{\rightarrow}
+\newcommand{\se}{\subseteq}
+\newcommand{\ip}[1]{\langle#1\rangle}
+\newcommand{\dual}{^*}
+\newcommand{\inverse}{^{-1}}
+\newcommand{\norm}[2]{\|#1\|_{#2}}
+\newcommand{\abs}[1]{\lvert #1 \rvert}
+\newcommand{\Abs}[1]{\bigg| #1 \bigg|}
+\newcommand\bm[1]{\begin{bmatrix}#1\end{bmatrix}}
+\newcommand{\op}{\text{op}}
+
+%\def\darktheme{} % IAN
+\ifx \darktheme\undefined
+\else
+\pagecolor[rgb]{0.2,0.231,0.302}%{0.23,0.258,0.321}
+\color[rgb]{1,1,1}
+\fi
+
+% nicer looking empty set
+\let\oldemptyset\emptyset
+\let\emptyset\varnothing
+
+%the var phi gang
+\let\oldphi\phi
+\let\phi\varphi
+
+\setlist[enumerate,1]{topsep=1em,leftmargin=1.8em, itemsep=0.5em, label=\textup{(}\arabic*\textup{)}}
+\setlist[enumerate,2]{topsep=0.5em,leftmargin=3em, itemsep=0.3em}
+
+%pagestyle
+%\pagestyle{fancy} 
+
+\begin{document}
+\begin{center}
+    \textsc{Math 519. HW 4\\ Ian Jorquera}
+\end{center}
+\vspace{1em}
+% See http://www.mathematicalgemstones.com/maria/Math501Fall22.php
+% for problems
+
+% sage: https://sagecell.sagemath.org/
+\begin{enumerate}
+
+\item 
+    \begin{enumerate}
+
+    \item Let $f$ be an analytic function on an open set containing $\overline{N_R}(0)$, and let $C$ be the positivly orietated circle of radius $R$ around $0$. Now consider some $z\in N_R(0)$ where $|z|=r<R$. with the Cauchy-Integral formula we know that 
+    \begin{align*}
+        f(z)&=\frac{1}{2\pi i}\int_C \frac{f(w)}{w-z}\;dw=\frac{1}{2\pi i}\int_C \frac{f(w)}{w(1-z/w)}\;dw\\
+        &=\frac{1}{2\pi i}\int_C f(w)\frac{1}{w}\frac{1}{1-z/w}\;dw=\frac{1}{2\pi i}\int_C f(w)g(w)\;dw
+    \end{align*}
+    Where $g(w)=\frac{1}{w}\frac{1}{1-z/w}$\\
+
+    \item We will show this with induction. Consider first the case when $N=1$ and notice that 
+    \begin{align*} % \sum_{j=0}^{N-1}\frac{z^j}{w^{j+1}}+\frac{z^N}{(w-z)w^N}
+        \sum_{j=0}^{1-1}\frac{z^j}{w^{j+1}}+\frac{z^1}{(w-z)w^1}&=\frac{1}{w}+\frac{z}{(w-z)w}\\
+        &=\frac{w-z}{w(w-z)}+\frac{z}{(w-z)w}\\
+        &=\frac{w}{w(w-z)}=\frac{1}{w-z}=\frac{1}{w}\frac{1}{1-z/w}
+    \end{align*}
+    Now for some fixed $N>1$ we know that from the inductive hypothesis 
+    \begin{align*}
+        \frac{1}{w}\frac{1}{1-z/w}&=\sum_{j=0}^{N-1}\frac{z^j}{w^{j+1}}+\frac{z^N}{(w-z)w^N}\\
+        &=\sum_{j=0}^{N-1}\frac{z^j}{w^{j+1}}+\frac{z^N}{(w-z)w^N}+\frac{z^N}{w^{N+1}}-\frac{z^N}{w^{N+1}}\\
+        &=\sum_{j=0}^{N}\frac{z^j}{w^{j+1}}+\frac{z^N}{(w-z)w^N}-\frac{z^N}{w^{N+1}}\\
+        &=\sum_{j=0}^{N}\frac{z^j}{w^{j+1}}+\frac{wz^N-(w-z)z^N}{(w-z)w^{N+1}}\\
+        &=\sum_{j=0}^{N}\frac{z^j}{w^{j+1}}+\frac{z^{N+1}}{(w-z)w^{N+1}}\\
+    \end{align*}
+
+    \item Using the previous 2 parts we know that 
+    \begin{align*}
+        f(z)&=\frac{1}{2\pi i}\int_C f(w)g(w)\;dw\\
+        &=\frac{1}{2\pi i}\int_C f(w)\left(\sum_{j=0}^{N-1}\frac{z^j}{w^{j+1}}+\frac{z^N}{(w-z)w^N}\right)\;dw\\
+        &=\frac{1}{2\pi i}\sum_{j=0}^{N-1}\int_C f(w)\frac{z^j}{w^{j+1}}\;dw+\frac{1}{2\pi i}\int_C f(w)\frac{z^N}{(w-z)w^N}\;dw\\
+        &=\sum_{j=0}^{N-1}\frac{1}{2\pi i}\int_C \frac{f(w)}{(w-0)^{j+1}}\;dw z^j+\frac{z^N}{2\pi i}\int_C \frac{f(w)}{(w-z)w^N}\;dw\\
+        &=\sum_{j=0}^{N-1}\frac{f^{(j)}(0)}{j!} z^j+\rho_N(z)
+    \end{align*}
+    \end{enumerate}
+
+    \item
+    \begin{enumerate}
+        \item Let $M$ be the max value of $|f(z)|$ on $C$, and notice that 
+        \begin{align*}
+            |p_N(z)|&=\left|\frac{z^N}{2\pi i}\int_C \frac{f(w)}{(w-z)w^N}\;dw\right|\\
+            &\leq \frac{|z|^N}{2\pi}\int_C \frac{|f(w)|}{|w-z||w|^N}\;dw\\
+        \end{align*}
+        Notice that $\frac{1}{|w-z|}$ has an upper bound of $\frac{1}{R-r}$ and $|f(z)|$ of $M$ meaning we have that 
+        \begin{align*}
+            |p_N(z)|&\leq \frac{|z|^N}{2\pi}\int_C \frac{|f(w)|}{|w-z||w|^N}\;dw\\
+            &\leq \frac{r^N}{2\pi}2\pi R\frac{M}{(R-r)R^N}\\
+            &=\frac{rM}{R-r}\left(\frac{r}{R}\right)^{N-1}
+        \end{align*}
+
+        \item Notice that as $r<R$ we know that $\frac{r}{R}<1$. Meaning $$\lim_{N\ra \infty}\frac{rM}{R-r}\left(\frac{r}{R}\right)^{N-1}=\frac{rM}{R-r}\lim_{N\ra \infty}\left(\frac{r}{R}\right)^{N-1}=0$$\\
+    \end{enumerate}
+
+\item 
+\begin{enumerate}
+    \item Let $f(z)=(1+z)^n$ which is a holomorphic function. And notice that
+\begin{align*}
+    \frac{1}{2\pi i}\int_{\gamma}\frac{f(z)}{(z-0)^{r+1}}dz&=\frac{1}{r!}f^{(r)}(0)\\
+    &=\frac{1}{r!}\frac{n!}{(n-r)!}(1+z)^{n-r}\\
+    &=\frac{n!}{r!(n-r)!}={n\choose r}
+\end{align*}
+
+\item Here we will look at the norm, and because ${n\choose r}$ is a real number we know that
+\begin{align*}
+    {n\choose r}=\left|{n\choose r}\right|&=\left|\frac{1}{2\pi i}\int_{\gamma}\frac{(1+z)^n}{z^{r+1}}dz\right|=\frac{1}{2\pi}\left|\int_{\gamma}\frac{(1+z)^n}{z^{r+1}}dz\right|\\
+    &\leq \frac{1}{2\pi}\int_{\gamma}\frac{|1+z|^n}{|z|^{r+1}}dz\leq \frac{1}{2\pi}\int_{\gamma}\frac{2^n}{1^{r+1}}dz\\
+    &\leq \frac{1}{2\pi}2\pi2^n=2^n
+\end{align*}
+
+\end{enumerate}
+
+\item %2.7
+First we will justify the hint which follows from the u-subsitution of $\zeta=-w$ and $d\zeta=-dw$ where
+\begin{align*}
+    2f'(0)&=\frac{2}{2\pi i}\int_{\gamma_r(0)}\frac{f(\zeta)}{\zeta^2}d\zeta\\
+    &=\frac{1}{2\pi i}\left(\int_{\gamma_r(0)}\frac{f(\zeta)}{\zeta^2}d\zeta+\int_{\gamma_r(0)}\frac{f(\zeta)}{\zeta^2}d\zeta\right)\\
+    &=\frac{1}{2\pi i}\left(\int_{\gamma_r(0)}\frac{f(\zeta)}{\zeta^2}d\zeta+\int_{\gamma_r(0)}-\frac{f(-w)}{(-w)^2}dw\right)\\
+    &=\frac{1}{2\pi i}\left(\int_{\gamma_r(0)}\frac{f(\zeta)}{\zeta^2}d\zeta-\int_{\gamma_r(0)}\frac{f(-\zeta)}{\zeta^2}d\zeta\right)\\
+    &=\frac{1}{2\pi i}\int_{\gamma_r(0)}\frac{f(\zeta)-f(-\zeta)}{\zeta^2}d\zeta\\
+\end{align*}
+Now consider a holomorphic function $f:\mathbb{D}\ra \C$ on the unit disk and consider a closure $\overline{N_r}(0)\se \mathbb{D}$ such that $0< r< 1$. Let $g(\zeta)=f(\zeta)-f(-\zeta)$ and notice that $||g(\zeta)||_{\gamma_r(0)}\leq \sup_{w,z\in\mathbb{D}}|f(w)-f(z)|=d$ and so from Cauchy's Inequality we have that 
+
+\begin{align*}
+    2|f'(0)|&=\frac{1}{2\pi i}\int_{\gamma_r(0)}\frac{f(\zeta)-f(-\zeta)}{\zeta^2}d\zeta\\
+    &=\frac{1}{2\pi i}\int_{\gamma_r(0)}\frac{g(\zeta)}{\zeta^2}d\zeta\\
+    &=|g'(0)|\\
+    &\leq \frac{d}{r}
+\end{align*}
+Notice that this is true for all $0<r<1$ and so we can consider the limit as $r\ra 1$ where we can conclude $2|f'(0)|\leq d$.\\
+
+\item We can assume that $z_0=0$ by translation. Meaning we have a holomorphic function $\phi:\Omega\ra\Omega$ with $\phi(0)=0$ and $\phi'(0)=1$. And so from problem 1 and 2 we know that for some radius $R$ around $0$ we have $\phi(z)=\sum_{n\geq 0}a_nz^n=0+z+a_nz^n+O(z^{n+1})$ where $n$ is the first index $n>1$ such that $a_n\neq0$, where we assume it exists. By induction we can show that 
+\begin{align*}
+    \phi_{k+1}(z)&=\phi(\phi_k(z))\\
+    &=z+ka_nz^n+O(z^{n+1})+a_n(z+ka_nz^n+O(z^{n+1}))^n\\
+    &=z+ka_nz^n+O(z^{n+1})+a_n(z^n+ka_nz^{n+1}+O(z^{n+1}))\\
+    &=z+(k+1)a_nz^n+O(z^{n+1})\\
+\end{align*} % do we need to assume that we can restrict \phi to N_R\ra N_R
+And so we have that $\phi_k(z)=z+ka_nz^n+O(z^{n+1})$ and $\phi^{(n)}_k=n!ka_n+O(z)$ on some open disk of radius $r$ around $0$. From the Cauchy inequality and from the fact that $\Omega$ is bounded by some $B$ and so $\phi_k$ is bounded by $B$. This gives us
+
+\begin{align*}
+    |\phi^{(n)}_k(0)|=n!k|a_n|&\leq \frac{n!}{R^n}B\\
+    |a_n|&\leq\frac{B}{kR^n}B
+\end{align*}
+Now looking at the limit of $k\ra \infty$ we get that $|a_n|=0$. And so $a_n=0$ (a contradiction as we assumed $a_n\neq 0$ and so no such $n>1$ exists) meaning $\phi$ is linear.
+
+\end{enumerate}
+
+\end{document}
+
+
+
+
+
+

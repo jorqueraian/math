@@ -1,0 +1,58 @@
+\documentclass[12pt]{amsart}
+\usepackage{preamble}
+
+\let\PP\P
+\newcommand{\PPt}{\mathbb{P}}
+\let\P\PPt
+
+
+\DeclareMathOperator{\cl}{\mathrm{cl}}
+\DeclareMathOperator{\wt}{\mathrm{wt}}
+
+\begin{document}
+\begin{center}
+    \textsc{Math 502. HW 12\\ Ian Jorquera}
+\end{center}
+\vspace{1em}
+
+\begin{itemize}
+\item[(1)] % (1) [1 points]
+Recall that the Riemann sphere is set wise $\C\cup\{\infty\}$ and $\P_\C^1=\C\cup\{[1:0]\}$ and so both sets are in bijection by mapping $[1:0]\leftrightarrow \infty$.\\
+
+\item[(2)] % (1+) [2 points]
+$$\chi\begin{tikzpicture}[scale=0.15, baseline=3mm]
+  \draw (0,0) -- (0,2) -- (2,2) -- (0,0) -- (2,0);
+  \filldraw (0,0) circle (4pt);
+  \filldraw (0,2) circle (4pt);
+  \filldraw (2,0) circle (4pt);
+  \filldraw (2,2) circle (4pt);
+\end{tikzpicture}(q)=\chi\begin{tikzpicture}[scale=0.15, baseline=3mm]
+  \draw (0,0) -- (0,2) -- (2,2) -- (0,0);
+  \filldraw (0,0) circle (4pt);
+  \filldraw (0,2) circle (4pt);
+  \filldraw (2,0) circle (4pt);
+  \filldraw (2,2) circle (4pt);
+\end{tikzpicture}(q)-\chi\begin{tikzpicture}[scale=0.15, baseline=3mm]
+  \draw (0,0) -- (0,2) -- (2,2) -- (0,0);
+  \filldraw (0,0) circle (4pt);
+  \filldraw (0,2) circle (4pt);
+  \filldraw (2,2) circle (4pt);
+\end{tikzpicture}(q)=q^2(q-1)(q-2)-q(q-1)(q-2)=q(q-1)^2(q-2)$$
+
+\item[(4)] % (1+) [2 points]
+$2$ points determine a lines. There are ${81\choose 2}$ ways to choose distinct points. and then ${3\choose 2}=3$ ways to pick $2$ points from any given lines so there are ${81\choose 2}/3=1080$ sets in set.\\
+
+\item[(6)] % (1+) [2 points]
+$3$ non-colinear points determine a plane. First 2 points determine a lines of which there are only $2$ points on each line, and the $3$rd point determines a second non-parallel line. There are ${64 \choose 3}$ to choose distinct points. And then ${4\choose 3}=3$ ways to pick $3$ points from any given plane so there are ${64\choose 3}/4=10416$ fourmations in fourmation.\\
+
+\item[(7)] % (2-) [3 points]
+Notice first that the protective transformations are the linear maps under the relation $A=\lambda A$, that is the maps in $M_2(\F)/\ip{A-\lambda A, \forall \lambda\in\F}$. Consider such a transformation $\phi:\P_\F^1\ra\P_\F^1$ with corresponding matrix $\Phi$ where we know that $\Phi=\begin{pmatrix}1& a\\ b & c\end{pmatrix}$ up to scaling. Consider a protective point $[x:y]$ and notice that $\Phi[x:y]=[x+ay:bx+cy]=[\frac{x+ay}{bx+cy}:1]$ whenever $bx+cy\neq 0$ and $[1:0]$ otherwise. Case 1: assume that $\phi([0:1])\neq [1:0]$, $\phi([1:1])\neq [1:0]$, $\phi([0:1])\neq [1:0]$ and notice that in this case we have 
+$\phi([0:1])=[\frac{a}{c}:1]$,
+$\phi([1:1])=[\frac{1+a}{b+c}:1]$, and $\phi([1:0])=[\frac{1}{b}:1]$. Which, in the first term of each equation, gives $3$ systems of equations and $3$ unknowns and so $a,b,c$ all have solutions in terms of $\phi(0),\phi(1),\phi(P_\infty)$.\\
+Case 2: there are three subcases here and any can occur simultaneously. Case 2a: Assume $\phi([0:1])= [1:0]$ in which case from above we know that $c=0$ and with the other two systems of equations we can find $a$ and $b$. Case 2b: assume $\phi([1:1])= [1:0]$ in which case this gives us the equation $b=c$ which them means there are $3$ equations and $3$ unknowns and so we may find $a,b$ and $c$. Case 3c: assume that $\phi([0:1])= [1:0]$ this gives us that $b=0$, which results in two remaining unknowns and $2$ equations so we can solve for $a$ and $c$.
+
+In any case we can solve for $a,b,c$ given the three points.
+\end{itemize}
+
+\end{document}
+

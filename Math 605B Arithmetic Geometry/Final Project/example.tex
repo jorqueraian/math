@@ -1,0 +1,9 @@
+\section{Testing For Common Components}
+Often Bezout's theorem can be used to determine when two curves are the same or share common components, even in non-algebraically closed fields. Consider the two projective curves over the finite field $\F_3$ restricted to the affine plane where $z=1$.
+$$f\left(x,y\right)=x^{2}+xy-x^{2}y-xy^{2}$$
+$$g\left(x,y\right)=x^{2}+2x-x^{2}y-2xy$$
+We want to determine if these curves have a common component. Bezout's theorem (assuming $z$ is not a common component of either curve) says that in $\overline{\F_3}$ the algebraic closure of $\F_3$ there should be $9$ total points up to multiplicity.
+
+Immediately we may rule out the possibility that these curves are the same. Notice that $f(1,0)=1$ and $g(1,0)=0$, however they may still contain a common component. We can test all point in $\F_3^2$ and find that the points of intersection in the affine plane of which there are $6$ are $(0,0),(0,1),(0,2),(1,1),(1,2)$, and $(2,1)$.
+
+Now consider the field extension $\F_9=\F_3[x]/\ip{x^2+1}$ which effectively adds in the value $x$ acting as $\sqrt{-1}=i$. This give us additional points of intersection: $(0,i),(i,0),(0,1+i),(0,2+i)$, and more. However notice that this gives us $10$ points of intersection meaning $f$ and $g$ must have a common component.

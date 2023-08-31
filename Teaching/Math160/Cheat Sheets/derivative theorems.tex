@@ -1,0 +1,98 @@
+\documentclass[12pt]{report}
+
+\usepackage[left=0.75in, right=0.75in, top=0.75in, bottom=0.75in]{geometry}
+\setlength\parindent{0pt}
+
+\usepackage{graphicx, amsmath,anonchap,tabularx,multicol}
+
+\usepackage{enumitem}
+\setlist{noitemsep}
+\setlist{nolistsep}
+
+\newenvironment{boxe}
+    {\begin{center}
+    \begin{tabular}{|p{0.9\textwidth}|}
+    \hline\\
+    }
+    { 
+    \\\\\hline
+    \end{tabular} 
+    \end{center}
+    }
+
+\begin{document}
+%%PAGE 1%%
+\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}l l}
+\textbf{Derivative Theorems} \\
+MATH 160\\
+%\textbf{Due Friday, 10/22/18} & MATH 157\\
+\hline\hline
+\end{tabular*}\\
+
+\section*{Definitions}
+\begin{boxe}
+A function $f$ is \textbf{Increasing} on $[a,b]$ if for $a\leq x_1< x_2\leq b$ then $f(x_1)<f(x_2)$.\\
+A function $f$ is \textbf{Non-decreasing} on $[a,b]$ if for $a\leq x_1< x_2\leq b$ then $f(x_1)\leq f(x_2)$.\\\\
+
+For a function $f$ a ``point of interest'' is a point $x=p$ such that $f'(p)=0$ or is undefined.\\\\
+For any function $f$ a point $x=p$ in the domain (that is $f(p)$ exists) is called a \textbf{Critical Point} when $f'(p)=0$ or is undefined. The value $f(p)$ is called the \textbf{Critical Value}. \\\\
+
+Suppose $x=p$ is a point in the domain of $f$.
+\begin{itemize}
+    \item $f$ has a \textbf{local maximum} at $x=p$ if $f(p)$ is greater than or equal to the values of $f$ for points near $p$.
+    \item $f$ has a \textbf{local minimum} at $x=p$ if $f(p)$ is less than or equal to the values of $f$ for points near $p$.
+\end{itemize}
+We say ``$f$ has a local maxima/minima of $f(p)$ at $x=p$''\\\\
+
+Suppose $x=p$ is a point in the domain of $f$.
+\begin{itemize}
+    \item $f$ has a \textbf{global maximum} at $p$ if $f(p)$ is greater than or equal to all values of $f$.
+    \item $f$ has a \textbf{global minimum} at $p$ if $f(p)$ is less than or equal to all values of $f$.
+\end{itemize}\\
+
+A point $x=p$ at which a function $f$ changes concavity is called an \textbf{Inflection Point}.
+\end{boxe}
+
+\section*{Theorems}
+\begin{boxe}
+    \textbf{The Mean Value Theorem:} Suppose $f(x)$ is continuous on $[a,b]$ and differentiable on $(a,b)$. Then there is at least one point $c$ in $(a,b)$ at which $\displaystyle{\frac{f(b)-f(a)}{b-a}=f'(c)}$.\\\\
+
+    \textbf{The Increasing Function Theorem:} Suppose $f(x)$ is continuous on $a\leq x\leq b$ and differentiable on $a< x< b$.
+    \begin{itemize}
+        \item If $f'(x)> 0$ on $a< x< b$ then $f$ is \textbf{increasing} on $a\leq x\leq b$
+        \item If $f'(x)\geq 0$ on $a< x< b$ then $f$ is \textbf{non-decreasing} on $a\leq x\leq b$
+    \end{itemize}\\
+    
+    \textbf{The Racetrack Principle:}
+    Suppose $g$ and $h$ are continuous on $a\leq x\leq b$ and differentiable on $a< x< b$ and $g'(x)\leq h'(x)$ on $a< x< b$.
+    \begin{itemize}
+        \item If $g(a)=h(a)$ then $g(x)\leq h(x)$ on $a\leq x\leq b$
+        \item If $g(b)=h(b)$ then $g(x)\geq h(x)$ on $a\leq x\leq b$
+    \end{itemize}
+\end{boxe}
+
+\section*{Theorems part 2}
+\begin{boxe}
+    A function $f$ can only change direction (from increasing to decreasing or decreasing to increasing moving from left to right) at a ``point of interest''.\\\\
+
+    \textbf{Local Extrema Theorem:} Suppose $f$ is defined on an interval and has a local maximum or minimum at $x=p$, which is not an endpoint of the interval Then $x=p$ is a critical point. Furthermore if $f$ is differentiable at $x=p$ then $f'(p)=0$.\\\\
+    
+    \textbf{The First Derivative Test:} Suppose $p$ is a critical point of a continuous function. Moving from Left to Right
+    \begin{itemize}
+        \item if $f'$ changes from negative to positive at $p$ then $f$ has a \textbf{local minimum} at $x=p$
+        \item if $f'$ changes from positive to negative at $p$ then $f$ has a \textbf{local maximum} at $x=p$
+    \end{itemize}\\
+
+    \textbf{The Second Derivative Test:} Suppose $f'(p)=0$
+    \begin{itemize}
+        \item if $f''(p)>0$ then $f$ has a \textbf{local minimum} at $x=p$
+        \item if $f''(p)<0$ then $f$ has a \textbf{local maximum} at $x=p$
+        \item if $f''(p)=0$ or undefined then the test tells us nothing.
+    \end{itemize}\\
+
+    \textbf{The Extreme Value Theorem:} If $f$ is continuous on the closed interval $a\leq x\leq b$ then $f$ has a global maximum and a global minimum on that interval.
+\end{boxe}
+
+
+
+\end{document}

@@ -1,0 +1,44 @@
+\documentclass[12pt]{amsart}
+\usepackage{preamble}
+
+\begin{document}
+\begin{center}
+    \textsc{Math 519. HW 7\\ Ian Jorquera}
+\end{center}
+\vspace{1em}
+
+% sage: https://sagecell.sagemath.org/
+\begin{enumerate}
+\item Consider the function $f(z)=(z-w_1)(z-w_2)\cdots (z-w_n)$ which is entire and so holomorphic on the open disk of radius $1$. Notice that from Cauchy's Inequality we have that
+    \begin{align*}
+        |f^{(n)}(0)|&\leq \frac{n!}{1^n}||f||_{\gamma_1(0)}\\
+        n! &\leq n!||f||_{\gamma_1(0)}\\
+        1 &\leq ||f||_{\gamma_1(0)}
+    \end{align*}
+
+     Notice also that by the maximum modulus principle we know that on the closed neighborhood $\overline{N_1(0)}$, the function $f(z)$ achieves is maximum on the unit circle, the boundary. And it must be the case that $\max_{|z|=1}f(z)=||f||_{\gamma_1(0)}\geq 1$ as otherwise a better supremum would exist, meaning there must exists some value $z$ on the unit circle such that $f(z)\geq 1$.\\
+
+     Furthermore Because $f(z)$ is holomorphic and the modulus function is continuous we know that $|f(z)|$ is continuous. We also know that $|f(z)|$ achieves a value of $0$ at $w_1$, and so on the path from $w_1$ to $z$ along the unit circle there has to be a point $w$ such that $|f(z)|=1$.\\
+
+    
+    \item %Let $f(x+iy)=u(x,y)+iv(x,y)$ and 
+    Consider the function $e^{f(z)}$ which is entire by the composition of entire functions. Notice that $\Real(f(z))$ is bounded by some value $A$ then $e^{f(z)}=e^{\Real(f(z))}e^{i\Imag(f(z))}$ which means that $|e^{f(z)}|=e^{\Real(f(z))}\leq e^A$. And so by Liouvilles theorem we have $e^{f(z)}$ is constant. This means that $\Real(f(z))$ must be constant and $\Imag(f(z))$ a constant value modulo $2\pi$. And because $f(z)$ is continuous this must mean that $\Imag(f(z))$ is constant. And so $f(z)$ is constant.\\
+    
+\item Let $p(z)=\sum_{j=0}^{d}a_j z^j$ where $d\geq 1$ and $a_d\neq 0$ be an entire polynomial. And let $g(z)=p(z)-a_dz^d$ and $f(z)=a_dz^d$. We know that there exists some $R_0$ such that for any $|z|\geq R_0$ we have that $|f(z)|>|g(z)|$. Let $R>R_0$ and $C=\gamma_R(0)$, a circle of radius $R$ around zero. By Rouche's theorem we know that $f(z)$ and $f(z)+g(z)=p(z)$ have the same number of zeros up to multiplicity. Furthermore we know that $f(z)=a_dz^d$ has a zero at $z=0$ of multiplicity $d$. This means $p(z)$ has $d$ roots up to multiplicity.\\
+
+\item 
+\begin{enumerate}
+    \item Assume that $f(z)$ is a non-constant holomorphic function on an open set containing the closed unit disk such that $|f(z)|=1$ when $|z|=1$. Notice that by the maximum modulus principle we know that $|f(z)|<1$ when $|z|<1$ as $f(z)$ has no maximum in the unit disk and achieves a maximum of $1$ on the boundary. Now assume that $f$ is non-vanishing (note: this leads to a contradiction by hw 5, but we will show this directly with maximum modulus principle) which means that $1/f(z)$ is holomorphic on the open unit disk. By the maximum modulus principle we know that $1/f(z)$ must achieve a maximum on the boundary, the unit circle, of $1/1=1$. However because $|f(z)|<1$ when $|z|<1$ we know that $|1/f(z)|>1$ when $|z|<1$ a contradiction. So $f(z)$ must have a root on the unit disk.\\
+
+\item Let $w_0\in\mathbb{D}$ and consider the function $\tilde{f}(z)=\displaystyle{\frac{w_0-f(z)}{1-\overline{w_0}f(z)}}$ and from part (a) we know that $f:\mathbb{D}\ra\mathbb{D}$ and from SS1.7 proven on HW1 we know that $\tilde{f}(z):\mathbb{D}\ra\mathbb{D}$ is non-constant such that $|z|=1$ gives us that $|f(z)|=1$ and so $|\tilde{f}(z)|=1$, which means from part (a), there is a root, that is there exists some $z_0\in\mathbb{D}$ such that $\tilde{f}(z_0)=0$. And because the Blaschke factor is a bijection that interchanges $w_0$ and $0$ we have that $f(z)=w_0$ when $\tilde{f}(z_0)=0$. And so $f$ attains all value of $\mathbb{D}$.\\
+
+\end{enumerate}
+\end{enumerate}
+
+\end{document}
+
+
+
+
+
+

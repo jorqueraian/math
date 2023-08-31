@@ -1,0 +1,70 @@
+\documentclass[12pt]{article}
+
+\usepackage[left=.6in, right=.6in, top=0.75in, bottom=0.75in]{geometry}
+\setlength\parindent{0pt}
+
+\usepackage{graphicx, amsmath,anonchap,tabularx, multicol,array,graphbox}
+\usepackage{cancel}
+\usepackage{enumitem}
+\setlist{noitemsep}
+\setlist{nolistsep}
+\usepackage{float}
+\usepackage{multicol}
+ 
+%\usepackage{draftwatermark}
+%\SetWatermarkText{DRAFT}
+%\SetWatermarkScale{5}
+%\SetWatermarkColor[rgb]{0.8,0.8,0.8}
+\newenvironment{boxe}
+    {\begin{center}
+    \begin{tabular}{|p{0.9\textwidth}|}
+    \hline\\
+    }
+    { 
+    \\\\\hline
+    \end{tabular} 
+    \end{center}
+    }
+    
+\begin{document}
+
+\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}l l}
+\textbf{Optimization Workshop}   \\
+\end{tabular*} \\
+
+\vspace{.1in}
+\small
+\textbf{Remember to:} \textit{Check the critical points AND the boundary points when you are looking for global max/min.}
+\vspace{.1in}
+\begin{enumerate}
+    \item Consider the function $f(x)=x^3+ax$ on the interval $[-3,2]$ where $a$ is a constant.
+    \begin{itemize}
+        \item Find the critical points of $f(x)$ in terms of $a$.\\\\\\\\\\
+        \item Will $f(x)$ always have a global maximum and minimum? How do you know?\\\\\\
+        \item Is there a value for $a$ such that there will be a global maximum at $x=-2$? If so find it.\\\\\\\\\\\\\\\\\\
+        \item Is there a value for $a$ such that there will be a global maximum at $x=2$? If so find it.\\\\\\\\\\\\\\\\\\\\\\
+        \item T/F: There is a value for $a$ such that there is a global maximum at $x=0$. (Hint: Can $x=0$ be a critical point? When it is, can it also be a local minimum or maximum?)\\
+    \end{itemize}
+   % \newpage
+    
+    \newpage
+    \item Find the area of the largest rectangle that can be inscribed in the ellipse $\displaystyle{\frac{x^2}{4}+y^2}=1$
+    \begin{itemize}
+        \item Draw a picture and assign variable to all important quantities. Indicate what quantity needs to be maximized and what constraints you have (Hint: Label the corners of your rectangle as points)\\\\\\\\\\\\\\\\\\\\\\
+
+        \item Write a general equation for the quantity you are maximizing or minimizing in terms of one variable.\\\\\\\\\\
+
+        \item Now that you have an equation. Find an interval for your input variable that makes sense for your problem. Does EVT apply? \\\\
+        
+        \item Find the critical points of your function.\\\\\\\\\\\\\\\\\\\\
+
+        \item Now using the critical points find the maximum or minimum value of your function (don't forget to check the endpoints).\\\\\\\\\\
+
+        \item Now use what you have found to answer the original questions.
+    \end{itemize}
+        
+    
+\end{enumerate}
+
+
+\end{document}

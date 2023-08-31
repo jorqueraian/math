@@ -1,0 +1,153 @@
+\documentclass[12pt]{amsart}
+% packages
+\usepackage{graphicx}
+\usepackage{setspace}
+\usepackage{amssymb,amsmath,amsthm,amsfonts,amscd}
+\usepackage{hyperref}
+\usepackage{color}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{enumitem}
+\usepackage[retainorgcmds]{IEEEtrantools}
+\usepackage[notref,notcite,final]{showkeys}
+\usepackage[final]{pdfpages}
+\usepackage{fancyhdr}
+\usepackage{upgreek}
+\usepackage{multicol}
+\usepackage{fontawesome}
+\usepackage{halloweenmath}
+% set margin as 0.75in
+\usepackage[margin=0.75in]{geometry}
+
+% tikz-related settings
+\usepackage{tkz-berge}
+\usetikzlibrary{calc,quotes}
+\usetikzlibrary{arrows.meta}
+\usetikzlibrary{positioning, automata}
+\usetikzlibrary{decorations.pathreplacing}
+
+%% For table
+\usepackage{tikz}
+\usetikzlibrary{tikzmark}
+
+% theorem environments with italic font
+\newtheorem{thm}{Theorem}[section]
+\newtheorem*{thm*}{Theorem}
+\newtheorem{lemma}[thm]{Lemma}
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem{claim}[thm]{Claim}
+\newtheorem{corollary}[thm]{Corollary}
+\newtheorem{conjecture}[thm]{Conjecture}
+\newtheorem{question}[thm]{Question}
+\newtheorem{procedure}[thm]{Procedure}
+\newtheorem{assumption}[thm]{Assumption}
+
+% theorem environments with roman font (use lower-case version in body
+% of text, e.g., \begin{example} rather than \begin{Example})
+\newtheorem{Definition}[thm]{Definition}
+\newenvironment{definition}
+{\begin{Definition}\rm}{\end{Definition}}
+\newtheorem{Example}[thm]{Example}
+\newenvironment{example}
+{\begin{Example}\rm}{\end{Example}}
+
+\theoremstyle{definition}
+\newtheorem{remark}[thm]{\textbf{Remark}}
+
+% special sets
+\newcommand{\A}{\mathbb{A}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\cals}{\mathcal{S}}
+\newcommand{\ZZ}{\mathbb{Z}_{\ge 0}}
+\newcommand{\cala}{\mathcal{A}}
+\newcommand{\calb}{\mathcal{B}}
+\newcommand{\cald}{\mathcal{D}}
+\newcommand{\calh}{\mathcal{H}}
+\newcommand{\call}{\mathcal{L}}
+\newcommand{\calr}{\mathcal{R}}
+\newcommand{\la}{\mathbf{a}}
+\newcommand{\lgl}{\mathfrak{gl}}
+\newcommand{\lsl}{\mathfrak{sl}}
+\newcommand{\lieg}{\mathfrak{g}}
+
+% math operators
+\DeclareMathOperator{\kernel}{\mathrm{ker}}
+\DeclareMathOperator{\image}{\mathrm{im}}
+\DeclareMathOperator{\rad}{\mathrm{rad}}
+\DeclareMathOperator{\id}{\mathrm{id}}
+\DeclareMathOperator{\hum}{[\mathrm{Hum}]}
+\DeclareMathOperator{\eh}{[\mathrm{EH}]}
+\DeclareMathOperator{\lcm}{\mathrm{lcm}}
+\DeclareMathOperator{\Aut}{\mathrm{Aut}}
+\DeclareMathOperator{\Inn}{\mathrm{Inn}}
+\DeclareMathOperator{\Out}{\mathrm{Out}}
+\DeclareMathOperator{\Gal}{\mathrm{Gal}}
+
+
+% frequently used shorthands
+\newcommand{\ra}{\rightarrow}
+\newcommand{\se}{\subseteq}
+\newcommand{\ip}[1]{\langle#1\rangle}
+\newcommand{\dual}{^*}
+\newcommand{\inverse}{^{-1}}
+\newcommand{\norm}[2]{\|#1\|_{#2}}
+\newcommand{\abs}[1]{\lvert #1 \rvert}
+\newcommand{\Abs}[1]{\bigg| #1 \bigg|}
+\newcommand\bm[1]{\begin{bmatrix}#1\end{bmatrix}}
+\newcommand{\op}{\text{op}}
+
+% nicer looking empty set
+\let\oldemptyset\emptyset
+\let\emptyset\varnothing
+
+%the var phi gang
+\let\oldphi\phi
+\let\phi\varphi
+
+\setlist[enumerate,1]{topsep=1em,leftmargin=1.8em, itemsep=0.5em, label=\textup{(}\arabic*\textup{)}}
+\setlist[enumerate,2]{topsep=0.5em,leftmargin=3em, itemsep=0.3em}
+
+%pagestyle
+%\pagestyle{fancy} 
+
+\begin{document}
+\begin{center}
+    \textsc{Math 605B. HW 3\\ Ian Jorquera}
+\end{center}
+\vspace{1em}
+
+% https://www.omnicalculator.com/math/chinese-remainder
+\begin{itemize}
+\item[(2)] Notice that $(x-\zeta_p)(x-\zeta_p^{-1})=x^2-(\zeta_p+\zeta_p^{-1})+\zeta_p\zeta_p^{-1}=x^2-2\text{Re}(\zeta_p)+1$\\
+
+\item[(3)]
+\begin{enumerate}[label=(\alph*)]
+    \item Notice that $z=\zeta_5+\zeta^4_5=\zeta_5+\zeta^{-1}_5=e^{2\pi i/5}+e^{-2\pi i/5}=\cos(2\pi /5)+i\sin(2\pi /5)+\cos(2\pi /5)-i\sin(2\pi /5)=2\cos(2\pi /5)$
+
+    \item Notice that $(x-(\zeta_5+\zeta_5^4))(x-(\zeta_5^2+\zeta_5^3))=x^2-(\zeta_5+\zeta_5^4+\zeta_5^2+\zeta_5^3)x+(\zeta_5^2\zeta_5^1+\zeta_5^2\zeta_5^4+\zeta_5^3\zeta_5^1+\zeta_5^3\zeta_5^4)=x^2+x+(\zeta_5^3+\zeta_5^1+\zeta_5^4+\zeta_5^2)=x^2+x-1$
+    \item Using the quadratic formula we know that the roots are $\frac{1}{2}\pm \frac{\sqrt{5}}{2}$. We also know that that the real part of $\zeta_5$ is positive meaning $z=\frac{1}{2}+ \frac{\sqrt{5}}{2}$.\\
+\end{enumerate}
+
+\item[(4)] Here we want to consider all permutations of $\{0,1,\infty\}$ of which there are 6. First for the identity we have that the function $f(z)=z$ which fixes $0$ to $0$, $1$ to $1$ and $\infty$ to $\infty$. For the permutation $(0\;\infty)$, meaning $0\mapsto \infty$ and $\infty\mapsto 0$ and $1\mapsto 1$ we have the function $f(z)=\frac{1}{z}$. For the permutation $(0\; 1)$ we have the function $f(z)=1-z$. For the permutation $(1\;\infty)$ we have the function $f(z)=\frac{z}{z-1}$. For the permutation $(1\;\infty\;0)$ we have the function $f(z)=\frac{1}{1-z}$. and finally for the permutation $(1\;0\;\infty)$ we have the function $f(z)=\frac{z-1}{z}$.\\
+
+\item[(5)]
+\begin{enumerate}[label=(\alph*)]
+    \item First we will homogenize the equation to get $x^2+2y^2=z^2$ and we will consider the points at infinity of the form $[x:1:0]$, or when $z=0$ up to equivalence. This is the case when $x^2=-2$ module $p$. And so there are 2 points at infinity $[\pm\sqrt{-2}:1:0]$ when $-2$ is a square(which is determined $p\equiv 1,3\mod 8$) and when $-2$ is not a square there are no points at infinity. Note that we can ignore the case where $y=0$ as if it were $x=0$ which is not a point in projective space.\\%maybe add a tidbit about why neither x and y cant either be zer0. as if it were they both would be.
+    \item The homogeneous equations is $x^3+y^3=z^3$ and the points at infinity are the case when $[x:1:0]$ which is when $x^3\equiv -1\mod p$. So when $p\equiv 2\mod 3$ we know that the cube map is an isomorphism and so $[-1:1:0]$ is the only point at infinity. Otherwise the cube map is $3$-to-$1$ and so there are $3$ values of $x$ that cube to $-1$, and so there are $3$ solutions at infinity. Note that we can ignore the case where $y=0$ as if it were $x=0$ which is not a point in projective space.\\%maybe add a tidbit about why neither x and y cant either be zer0. as if it were they both would be.
+    \item The homogeneous equation is $y^2z=x^3+z^2x+z^3$. and the points at infinity are the case when $[x:y:0]$ which is when $0=x^3$ which means that $x=0$ and so up to scaling there is one point at infinity, the point $[0:1:0]$.
+\end{enumerate}
+
+\end{itemize}
+
+\end{document}
+
+
+
+
+
+

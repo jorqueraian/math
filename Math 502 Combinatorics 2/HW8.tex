@@ -1,0 +1,45 @@
+\documentclass[12pt]{amsart}
+\usepackage{preamble}
+\DeclareMathOperator{\stab}{\mathrm{stab}}
+
+\begin{document}
+\begin{center}
+    \textsc{Math 502. HW 8\\ Ian Jorquera}
+\end{center}
+\vspace{1em}
+% See http://www.mathematicalgemstones.com/maria/Math501Fall22.php
+% for problems
+
+% sage: https://sagecell.sagemath.org/
+\begin{itemize}
+\item[(1)] Suppose $G$ acts on $X$ and let $x\in X$ and consider the stabilizer $\stab_G(x)$. Notice that the identity element is contained in the stabilizer by definition of the group action and so the stabilizer is non-empty. Now consider elements $a,b\in \stab_G(x)$ and notice that $(ab^{-1}) x=a(b^{-1}x)=ax=x$ which follows from the fact that $ex=b^{-1}bx=b^{-1}x$. And so the stabilizer is a subgroup of $G$.\\
+\item[(2)] % (1+) [2 points] % 8 (a)
+From the results of part $b$ or question $3$ we have that the number of $4$-bead $r$-colored necklaces is $\frac{1}{8}\sum_{d|4}\phi(4/d)r^d+\frac{1}{4}r^{2}+\frac{1}{4}r^{3}=\frac{1}{8}(2r+r^2+r^4)+\frac{1}{4}r^{2}+\frac{1}{4}r^{3}=\frac{1}{8}(2r+3r^2+2r^3+r^4)$\\
+
+
+\item[(3)] % (2-) [3 points] % 8 (b)
+In this case we can think of an $n$-necklace as a regular $n$-gon and so we can consider the orbits of all $r$-bead colorings of the $n$-gon. First we will look at the coloring's fixed under the rotations. Consider the rotation of $k$ beads where $1\leq k\leq n$ and notice that the rotations of $k$-beads form a cyclic subgroup of of all rotations that share a factor of $\gcd(k,n)$, and for a necklace to be fixed under this cyclic subgroup it needs to be fixed under a generator, of which a rotation by $\gcd(k,n)$ beads is a generator. This means there would be $n/\gcd(k,n)$ sequences of $\gcd(k,n)$ beads that would have to be colored the same, meaning there would be $r^{\gcd(k,n)}$ colorings that are fixed under the $k$-bead rotation. Furthermore for any $d|n$ we have that there would be $n/d$ sequences of $d$ beads, and furthermore there would be $\phi(n/d)$ such values for $k$ that have share a greatest common divisor to $d$. This means the number of necklaces fixed by any rotation is $\sum_{k=1}^{n}r^{\gcd(k,n)}=\sum_{d|n}\phi(n/d)r^d$.\\
+
+Now consider the reflections and notice that we need only consider one non-trivial reflection as all other reflections will have the same number of fixed colorings. For any fixed reflection if $2|n$ then we need to consider the reflections about opposite edges and vertices. And so for reflection about opposite edges there are $r^{n/2}$ coloring's as we need only consider the beads on one side. And for the reflections about opposite vertices there are $r^{2}r^{(n-2)/2}=r^{n/2+1}$ coloring's as we can consider the opposite vertices separately. If however $2\nmid n$ then the reflection will be about 1 vertex and the opposite edge and there would be $r^{(n+1)/2}$ coloring fixed under the reflection. As we need only consider the $(n-1)/2$ on one side and then additionally the bead of which the rotation fixes.\\
+
+And so from burns sides lemma we have that there are $\frac{1}{2n}\sum_{d|n}\phi(n/d)r^d+\frac{1}{2}r^{\lceil{n/2}\rceil}$ colors when $2\nmid n$ and then $\frac{1}{2n}\sum_{d|n}\phi(n/d)r^d+\frac{1}{4}r^{n/2}+\frac{1}{4}r^{n/2+1}$ colors when $2| n$\\
+
+
+\item[(4)] % (1+) [2 points] % 9 (a)
+Here we will use Burnsides lemma on the cubes whose edges are colored from $r$ colors. First notice that under the identity rotation there are $r^{12}$ colors. For the $\pm 120^\circ$ rotations through opposite vertex pairs there are $r^4$ coloring's that are fixed. This follows from the fact that there are 4 groupings of $3$ edges, 2 groupings of the edges come from the edges connected to the opposite vertices and the last two from from the remaining edges, alternating. Next consider the $90^\circ$ rotations through opposite faces: where there are $r^3$ colorings that are fixed as the edges connected to the opposite faces must be the same and the remaining $4$ edges on the sides must be the same color. Consider the $180^\circ$ rotations through opposite faces. In this case there are twice as many groupings of edges fixed under the rotations and so there are $r^{6}$ colorings that are fixed. Finally consider the $\pm 180^\circ$ rotations around opposite edges. In this case there are $r^7$ colorings as there are $7$ groups of edges fixed under the rotations. This means from Burnsides lemma there are $\frac{1}{24}(r^{12}+8r^4+6r^3+3r^6+6r^7)$ orbits or colorings up to rotation.\\
+
+\item[(4)] % (1+) [2 points] % 9 (b)
+Here we will use Burnsides lemma on the cubes whose vertices are colored from $r$ colors. First notice that under the identity rotation there are $r^{8}$ colors. For the $\pm 120^\circ$ rotations through opposite vertex pairs there are $r^4$ coloring's that are fixed. This follows from the fact that there are 4 groupings of vertices, 2 groupings are the singletons that are the opposite vertices and the last two form from the vertices connected to these opposite vertices. Next consider the $90^\circ$ rotations through opposite faces: where there are $r^2$ colorings that are fixed as the vertices connected to the opposite faces must be the same. Consider the $180^\circ$ rotations through opposite faces. In this case there are twice as many groupings of vertices fixed under the rotations and so there are $r^{4}$ colorings that are fixed. Finally consider the $\pm 180^\circ$ rotations around opposite edges. In this case there are $r^4$ colorings as there are $4$ groups of vertices fixed under the rotations. This means from Burnsides lemma there are $\frac{1}{24}(r^{8}+8r^4+6r^2+3r^4+6r^4)=\frac{1}{24}(6r^2+r^{8}+17r^4)$ orbits or colorings up to rotation.\\
+
+
+
+
+\end{itemize}
+
+\end{document}
+
+
+
+
+
+

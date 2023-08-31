@@ -1,0 +1,84 @@
+\documentclass[12pt]{amsart}
+\usepackage{preamble}
+
+\begin{document}
+\begin{center}
+    \textsc{Math 519. HW 9\\ Ian Jorquera}
+\end{center}
+\vspace{1em}
+
+% sage: https://sagecell.sagemath.org/
+\begin{enumerate}
+\item % or more simply you can change of variables y=|z|^1/2 and then |f(z)|\leq f(|z|)=g(|z|^1/2)\leq (e^B)^(|z|^1/2) and pick A to be max on sufficient large radius.
+\begin{enumerate}
+    \item Let $p(x)=\sum_{k=0}^da_kz^k$ be a polynomial and consider a fixed $m$ and let $\rho=\frac{1}{m}$. Let $A>|a_0|$ and pick $B$ such that $\frac{AB^{km}}{(km)!}>|a_k|$. Notice first that
+$$|p(z)|\leq \sum_{k=0}^d|a_k||z|^k$$
+Likewise notice that 
+\begin{align*}
+    A\exp(B|z|^\rho)&=A\sum_{n\geq 0} \frac{(B|z|^{\rho})^n}{n!}\\
+    &=A\sum_{n\geq 0} \frac{B^n|z|^{n/m}}{n!}\\
+    &=A+A\sum_{k=1}^{d} \frac{B^{km}|z|^{km/m}}{(km)!}+A\sum_{n\geq 1} \frac{B^n|z|^{n/m}}{n!}-A\sum_{k=1}^{d} \frac{B^{km}|z|^{km/m}}{(km)!}\\
+\end{align*}
+
+Now notice that for a fixed $z\in \C$ there exists a non-negative real number 
+$$C=A\sum_{n\geq 1} \frac{B^n|z|^{n/m}}{n!}-A\sum_{k=1}^{d} \frac{B^{km}|z|^{km/m}}{(km)!}$$
+as we are removing a finite number of terms from the original sum which gives us that
+\begin{align*}
+    A\exp(B|z|^\rho)&=A+A\sum_{k=1}^{d} \frac{B^{km}|z|^{km/m}}{(km)!}+C\\
+    &=A+\sum_{k=1}^{d} \frac{AB^{km}|z|^{k}}{(km)!}+C
+\end{align*}
+By construction of $A$ we know that for $z=0$ that $|p(0)|=a_0<A=A\exp(B|0|^\rho)$. Likewise for a fixed $z\neq 0$ we have that 
+$$|p(z)|\leq \sum_{k=0}^d|a_k||z|^k<A+\sum_{k=1}^{d} \frac{AB^{km}|z|^{k}}{(km)!}+C=A\exp(B|z|^\rho)$$
+And so we know that the order of growth of $p(x)$ is less then or equal to $\frac{1}{m}$ for all $m$ we know that the order of growth must be $0$.\\
+
+\item Assume $b\neq 0$ and notice that $|\exp({bz^n})|=\exp(b\Real(z)^n)\leq\exp(b|z|^n)<2\exp(b|z|^n)$. And so the order of growth is at most $n$. Now we will show it is exactly $n$. Let $\rho< n$ and fix constants $e^A,B$. In which case we know that $bz^n$ grows strictly faster then $Bz^\rho+A$ along the real line in the positive direction meaning there must exist a real number $r$ such that $br^n>Br^\rho+A$. Precisely this is the case when $r>\left(\frac{A+B}{b}\right)^{1/(n-\rho)}$. Notice that this means
+$\exp({br^n})>\exp(Br^\rho+A)=e^A\exp(Br^\rho)$. And so 
+no $\rho<n$ satisfies $|\exp({bz^n})|<A\exp(B|z|^\rho)$ for some constant $A,B$ for all $z\in \C$. \\
+
+\item Let $n>0$ and fix constants $e^A,B$. In which case we know that $\exp(z)$ grows strictly faster then $Bz^n+A$ along the real line in the positive direction meaning there must exist a real number $r$ such that $\exp(r)>Br^n+A$. Notice that this means
+$\exp({\exp(r)})>\exp(Br^n+A)=e^A\exp(Br^n)$. And so 
+no $n$ satisfies $|\exp(\exp(r))|<A\exp(B|z|^\rho)$ for some constant $A,B$ for all $z\in \C$. This means that the order of growth is unbounded.\\ 
+\end{enumerate}
+
+\item
+    \begin{enumerate}
+    \item From the theorem we know that $\prod_{n\geq 2}(1+\frac{(-1)^n}{\sqrt{n}})$ converses if and only if $\sum_{n\geq 2} \log (1+\frac{(-1)^n}{\sqrt{n}})$ converges. Notice that with the power series expansion for $\log(1+x)$ we have that $\log(1+\frac{(-1)^n}{\sqrt{n}})={(-1)^nn^{-1/2}}-\frac{1}{2}n^{-1}+\frac{(-1)^{n}}{3}n^{-3/2}-O(n^{-2})$ and so
+    \begin{align*}
+        \sum_{n\geq 2} \log (1+\frac{(-1)^n}{\sqrt{n}})&=\sum_{n\geq 2}\left( \frac{(-1)^n}{\sqrt{n}}-\frac{1}{2n}+\frac{(-1)^{3n}}{3n^{3/2}}-O(n^{-2})\right)\\
+        &=\sum_{n\geq 2} \frac{(-1)^n}{\sqrt{n}}-\sum_{n\geq 2}\frac{1}{2n}+\sum_{n\geq 2}\left(\frac{(-1)^{3n}}{3n^{3/2}}-O(n^{-2})\right)
+    \end{align*}
+    Where the first sum converges by alternating series test, and the third converges by p-series comparison. However notice the second series in a harmonic series and so diverges. This means the entire sum diverges and therefore the infinite product diverges.\\
+
+    \item From the theorem we know that $\prod_{n\geq 2}(1+\frac{(-1)^n}{{n}})$ converses if and only if $\sum_{n\geq 2} \log (1+\frac{(-1)^n}{{n}})$ converges. Notice that with the power series expansion for $\log(1+x)$ we have that $\log(1+\frac{(-1)^n}{{n}})=\frac{(-1)^n}{{n}}-\frac{1}{2n^2}+\frac{(-1)^{3n}}{3n^{3}}-O(n^{-4})$ and so
+    \begin{align*}
+        \sum_{n\geq 2} \log (1+\frac{(-1)^n}{{n}})&=\sum_{n\geq 2} \left(\frac{(-1)^n}{{n}}-\frac{1}{2n^2}+\frac{(-1)^{3n}}{3n^{3}}-O(n^{-4})\right)\\
+        &=\sum_{n\geq 2} \frac{(-1)^n}{{n}}-\sum_{n\geq 2}\frac{1}{2n^2}+\sum_{n\geq 2}\left(\frac{(-1)^{3n}}{3n^{3}}-O(n^{-4})\right)
+    \end{align*}
+    Where the first sum converges by alternating series test, and the second and third converges by p-series comparison. This means the entire sum converges and therefore the infinite product converges.\\
+    \end{enumerate}
+
+    \item Assume that $F(z)=\sum_{n\geq 0} a_nz^n$. Recall that from Cuachy's inequality and on some disk $N_r(0)$ we know that
+    $$n!|a_n|=|F^{(n)}(0)| \leq \frac{n!}{r^n}\norm{F(z)}_{\gamma_r(0)} 
+    \leq \frac{A\cdot n!}{r^n}\exp(ar^\rho)$$
+    And so we have verified the hint that $|a_n|\leq \frac{A}{r^n}\exp(ar^\rho)$.
+    Note also we may fix $r=\left(\frac{n}{a\rho}\right)^{\frac{1}{\rho}}$ which minimizes $\frac{A}{r^n}\exp(ar^\rho)$ to be $e^{n/\rho}\left(\frac{a\rho}{n}\right)^{n/\rho}$. This gives us that
+    \begin{align*}
+    \limsup_{n\ra\infty}|a_n|^{1/n}n^{1/\rho}&\leq \limsup_{n\ra\infty}\left(\frac{A}{r^n}\exp(ar^\rho)\right)^{1/n}n^{1/\rho}\\
+    &\leq \limsup_{n\ra\infty}A^{1/n}\left(e^{n/\rho}\left(\frac{a\rho}{n}\right)^{n/\rho}\right)^{1/n}n^{1/\rho}\\
+    &\leq \limsup_{n\ra\infty}\;A^{1/n} (ea\rho)^{1/\rho}n^{-1/\rho}n^{1/\rho}\\
+    &\leq \limsup_{n\ra\infty}\;A^{1/n}(ea\rho)^{1/\rho}=(ea\rho)^{1/\rho}<\infty\\
+    \end{align*}
+
+
+\item Let $p(z)=\sum_{n= 0}^d a_nz^n$. And fix $\rho>0$ and notice that because $p(z)$ has finitely many terms we know that $\limsup_{n\ra \infty}{|a_n|^{1/n}n^{1/\rho}}=0$. Meaning from part b of problem 5.4 in the book we know that 
+$$|p(x)|\leq A_\epsilon \exp(a_\epsilon|z|^{\rho+\epsilon})$$
+Which is the case for any $\rho+\epsilon>0$. Meaning we may make $\rho+\epsilon$ arbitrarily small and so the infimum, and therefore the order of growth is $0$.
+\end{enumerate}
+
+\end{document}
+
+
+
+
+
+

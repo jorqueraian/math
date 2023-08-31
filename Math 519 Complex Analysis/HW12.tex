@@ -1,0 +1,49 @@
+\documentclass[12pt]{amsart}
+\usepackage{preamble}
+
+\newcommand{\ps}[1]{\left( #1 \right)}
+\newcommand{\HH}{\mathbb{H}}
+\newcommand{\D}{\mathbb{D}}
+
+\begin{document}
+\begin{center}
+    \textsc{Math 519. HW 12\\ Ian Jorquera}
+\end{center}
+\vspace{1em}
+
+
+\begin{enumerate}
+\item First recall that the unit disk is conformal with with the upper half plane. Also notice that the upper half plane $\HH$ is conformal with $\HH-\pi=\{z\in\C| \Imag(z)>-\pi\}$ with that holomorphic map $z\mapsto z-\pi$ and inverse map $w\mapsto w+\pi$. 
+Now consider the holomorphic map $\HH-\pi\ra \C$ that maps $z\mapsto z^2$. 
+Notice that for any $re^{i\theta}\in\C$ where $0\leq \theta < 2\pi$ we have that $\sqrt{r}e^{i\theta/2}\in \overline{\HH}\se \HH-\pi$ and $(\sqrt{r}e^{i\theta/2})^2=re^{i\theta}$. And so the square function is an holomorphic surjection. SO with composition we have a holomorphic surjective map from the unit disk to all of $\C$.\\
+
+\item Let $f:D(0,R)\ra D(0,M)$ be a holomorphic function. This means $\Tilde{f}(z)=\frac{1}{M}f(Rz)$ is a holomorphic function mapping $\D\ra \D$. Then using a Blaske factor we may construct a holomorphic function $\hat{\Tilde{f}}:\D\ra\D$ such that $\hat{\Tilde{f}}(z)=\frac{\Tilde{f}(z)-\Tilde{f}(0)}{1-\overline{\Tilde{f}(0)}\Tilde{f}(z)}$ Notice that $\hat{\Tilde{f}}(0)=0$ and so Schwarz lemma tells us that 
+\begin{align*}
+    |\hat{\Tilde{f}}(z)| &\leq |z|\\
+    \abs{\frac{\Tilde{f}(z)-\Tilde{f}(0)}{1-\overline{\Tilde{f}(0)}\Tilde{f}(z)}}&\leq |z|\\
+    \abs{\frac{\frac{1}{M}f(Rz)-\frac{1}{M}f(0)}{1-\frac{1}{M}\overline{f(0)}\frac{1}{M}f(Rz)}}&\leq |z|\\
+    \abs{\frac{\frac{1}{M}(f(Rz)-f(0))}{1-\frac{1}{M^2}\overline{f(0)}f(Rz)}}&\leq |z|\\
+    \abs{\frac{M(f(Rz)-f(0))}{M^2-\overline{f(0)}f(Rz)}}&\leq |z|\\
+    \abs{\frac{M(f(z)-f(0))}{M^2-\overline{f(0)}f(z)}}&\leq \frac{|z|}{R}\\
+    \abs{\frac{f(z)-f(0)}{M^2-\overline{f(0)}f(z)}}&\leq \frac{|z|}{MR}\\
+\end{align*}
+
+\item 
+\begin{enumerate}
+    \item Let $f,g:U\ra V$ be conformal maps. This means they are both isomorphisms, meanings $gf^{-1}f=g$ where $gf^{-1}$ is an automorphism on $V$.
+    \item Consider the conformal map $f:\HH\ra\D$ such that $f(z)=\frac{z-i}{z+i}$. And consider any other conformal map $g:\HH\ra\D$ were we know $g=\delta f$ where $\delta\in \text{Aut}(\D)$. Furthermore we know that $\delta=e^{i\theta}\psi_\alpha(z)$ for some $\theta\in \R$, and $\alpha\in \D$. This means \begin{align*}
+        g(z)&=e^{i\theta}\psi_\alpha(f(z))\\
+        &=e^{i\theta}\frac{\alpha-\frac{z-i}{z+i}}{1-\overline{\alpha}\frac{z-i}{z+i}}\\
+        &=e^{i\theta}\frac{\frac{\alpha z+\alpha i}{z+i}-\frac{z-i}{z+i}}{\frac{z+i}{z+i}-\overline{\alpha}\frac{z-i}{z+i}}\\
+        &=e^{i\theta}\frac{(\alpha-1)z+(\alpha+1)i}{(1-\overline{\alpha})z+(1+\overline{\alpha})i}\\
+        &=e^{i\theta}\ps{\frac{\alpha-1}{1-\overline{\alpha}}}\frac{z+\frac{\alpha+1}{\alpha-1}i}{z+\frac{1+\overline{\alpha}}{1-\overline{\alpha}}i}\\
+    \end{align*}
+    Notice that $\abs{\frac{\alpha-1}{1-\overline{\alpha}}}=1$ by HW1 and so $\frac{\alpha-1}{1-\overline{\alpha}}=e^{i\Tilde{\theta}}$ 
+    for some $\Tilde{\theta}\in\R$. Furthermore $z\mapsto -\frac{z+1}{z-1}i$ is a conformal map from $\D\ra\HH$ so let 
+    $\frac{\alpha+1}{\alpha-1}i=-\beta$ where $\beta\in \HH$. This gives us
+    $$g(z)=e^{i\hat\theta}\frac{z-\beta}{z-\overline{\beta}}$$
+    where $\hat\theta=\theta+\Tilde{\theta}\in \R$
+\end{enumerate}
+\end{enumerate}
+
+\end{document}

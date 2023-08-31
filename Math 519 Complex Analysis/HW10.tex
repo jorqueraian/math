@@ -1,0 +1,71 @@
+\documentclass[12pt]{amsart}
+\usepackage{preamble}
+
+\begin{document}
+\begin{center}
+    \textsc{Math 519. HW 10\\ Ian Jorquera}
+\end{center}
+\vspace{1em}
+
+
+\begin{enumerate}
+\item Here we are looking at the function $e^z-1$ which is entire and has order of growth $1$. Notice also that $e^z-1$ has zeros of order $1$ at all $z=2\pi n i$ for all $n\in\Z$. This means we know that the Hadamard factorization is 
+\begin{align*}
+    e^z-1&=e^{a_1z+a_0}z\prod_{n\geq 1}E_k\left(\frac{z}{2\pi n i}\right)E_k\left(\frac{z}{-2\pi n i}\right)\\ &=e^{a_1z+a_0}z\prod_{n\geq 1}\left(1-\frac{z}{2\pi n i}\right)\exp\left(\frac{z}{2\pi n i}\right)\left(1+\frac{z}{2\pi n i}\right)\exp\left(-\frac{z}{2\pi n i}\right)\\
+    &=e^{a_1z+a_0}z\prod_{n\geq 1}\left(1+\frac{z^2}{4\pi^2 n^2}\right)
+\end{align*}
+Now notice that $\frac{e^z-1}{z}$ has a removable singularity with value $1$, meaning $e^{a_10+a_0}z\prod_{n\geq 1}\left(1+\frac{0^2}{4\pi^2 n^2}\right)=e^{a_0}=1$ and so $a_0=0$. Likewise we can look at the derivative $\frac{(z-1)e^z+1}{z^2}$ which again has a removable singularity with value $\frac{1}{2}$. And so the Hadamard factorization is
+$$e^z-1=e^{\frac{1}{2}z}z\prod_{n\geq 1}\left(1+\frac{z^2}{4\pi^2 n^2}\right)$$
+
+\item 
+Assume that $f(z)$ is entire, non-constant and has bounded order of growth and misses the distinct points $a,b\in\C$. We know that using the Hadamard factorization that $f(z)-a=e^{p(z)}$ and $f(z)-b=e^{q(z)}$ for polynomials $p,q$ on non-zero degree, as neither function has any zeros and is non-constant. Notice that this means that 
+$$f(z)-b-f(z)+a=a-b=e^{q(z)}-e^{p(z)}$$
+and so 
+$$e^{q(z)}=e^{p(z)}+(a-b)$$
+Notice that because $a-b\neq 0$ we know that there exists some $c\in\C$ such that $e^c=-(a-b)$. And likewise that $p(z)-c$, being a polynomial of non-zero degree has roots in $\C$, meaning there exists $\omega\in\C$ such that $e^{p(\omega)}+(a-b)=e^c+(a-b)=-(a-b)+(a-b)=$ and so it must be the case that $e^{q(\omega)}=0$. however $e^z$ never hits $0$. So this is not possible leading us to conclude that the degree of $p$ and $q$ were zero and so $f(z)$ is a constant function.\\
+
+
+\item 
+\begin{enumerate}
+    \item Notice first 
+\begin{align*}
+    \int_{n}^x\frac{du}{u^{s+1}}&=\frac{1}{-s}(\frac{1}{x^s}-\frac{1}{n^s})\\
+    \frac{1}{n^s}-s\int_{n}^x\frac{du}{u^{s+1}}&=\frac{1}{x^s}\\
+\end{align*}
+Using this we can see
+\begin{align*}
+    \delta_n(s)&=\frac{1}{n^s}-\int_{n}^{n+1}\frac{dx}{x^s}\\
+    \delta_n(s)&=\frac{1}{n^s}-\int_{n}^{n+1}\frac{1}{n^s}-s\int_{n}^x\frac{du}{u^{s+1}} dx\\
+    \delta_n(s)&=\frac{1}{n^s}-\frac{1}{n^s}-s\int_{n}^{n+1}\int_{n}^x\frac{du}{u^{s+1}} dx\\
+    \delta_n(s)&=-s\int_{n}^{n+1}\int_{n}^x\frac{du}{u^{s+1}} dx\\
+\end{align*}
+And so looking at the norm
+\begin{align*}
+    |\delta_n(s)|&=|s|\abs{\int_{n}^{n+1}\int_{n}^x\frac{du}{u^{s+1}} dx}\\
+    &\leq|s|(n+1-n)\sup_{n\leq x\leq n+1}\abs{\int_{n}^x\frac{du}{u^{s+1}}}\\
+    &\leq|s|\sup_{n\leq x\leq n+1}\abs{(x-n)\sup_{n\leq u\leq x}\abs{\frac{1}{u^{s+1}}}}\\
+    &\leq|s|\sup_{n\leq x\leq n+1}\abs{(x-n)\frac{1}{n^{s+1}}}\\
+    &\leq|s|(n+1-n)\frac{1}{|n^{s+1}|}\\
+    &\leq|s|\frac{1}{|n^{s+1}|}\\
+    &\leq\frac{|s|}{n^{\Real(s)+1}}\\
+\end{align*}
+
+\item Let 
+$$|F_N(s)|=|\sum_{1\leq n\leq N}\delta_n(s)|\leq\sum_{1\leq n\leq N}\frac{|s|}{n^{\Real(s)+1}}\leq \sum_{n\geq 1}\frac{|s|}{n^{\Real(s)+1}}$$
+which by p-series comparison converses when $\Real(s)>1$, 
+and so $|F_N(s)|$ is bounded independent of $N$ and so $\{F_N(s)\}$ converges uniformly when $\Real(s)>0$.\\
+
+\item Notice that
+\begin{align*}
+    \zeta(s)-\frac{1}{s-1}&=(\sum_{n\geq 1}n^{-s})-(\sum_{n\geq 1}\int_{n}^{n+1}x^{-s}dx)\\
+    &=\sum_{n\geq 1}n^{-s}-\int_{n}^{n+1}x^{-s}dx\\
+    &=\lim_{N\ra \infty}\sum_{n=1}^N( n^{-s}-\int_{n}^{n+1}x^{-s}dx)\\
+    &=\lim_{N\ra \infty}\sum_{n=1}^N\delta_n(s)\\
+    &=\lim_{N\ra \infty}F_N(s)\leq \sum_{n\geq 1}\frac{|s|}{n^{\Real(s)+1}}
+\end{align*}
+We know that this function is holomorphic as for any fixed $N$, $F_N$ is holomorphic.
+
+\end{enumerate}
+\end{enumerate}
+
+\end{document}

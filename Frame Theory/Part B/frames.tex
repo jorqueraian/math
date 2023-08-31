@@ -1,0 +1,255 @@
+% Revised: yes
+\section{Frames}
+\label{sec:orth_frames}
+\subsection{Orthonormal Bases}
+\label{ssec:ortho}
+A frame is a generalization of an orthonormal basis often adding redundancy. To start we will define an orthonormal basis and then prove Parseval's equality which motivates the definition of a frame.
+
+Throughout this paper, we will be looking at vector spaces that are also inner product spaces, which allows us to define orthogonality. 
+We will restrict our focus to vector spaces with coefficients that are subfields of $\C$, usually $\R$ or $\C$, however, the theorems and definitions we will develop may apply to finite inner product spaces over other fields.
+
+\iftoggle{full}{
+\begin{Definition}
+\label{def:ip}
+An \textit{inner product} on a vector space $V$ over $K\se \C$ is a mapping $\ip{-,-}:V\times V\ra K$ such that for all $x,y,z\in V$ and $\alpha\in K$ we have
+\begin{enumerate}
+    \item conjugate symmetry:  $\ip{x,y}=\overline{\ip{y,x}}$ where $\overline{(\cdot)}:\C\ra \C$ denotes the complex conjugation.
+    \item linearity in the first term: $\ip{\alpha x,y}=\alpha\ip{ x,y}$ and $\ip{x+z,y}=\ip{x,y}+\ip{z,y}$
+    \item positive definiteness: $\ip{x,x}>0$ for all $x\neq 0$
+\end{enumerate}
+\end{Definition}
+Notice we do not require linearity in the second terms, as instead using properties $(1)$ and $(2)$ we get a form of conjugate linearity (often referred to as anti-linearity) where $\ip{x,\alpha y}=\overline{\ip{\alpha y, x}}=\overline{\alpha}\overline{\ip{y,x}}=\overline{\alpha}\ip{x,y}$ and $\ip{x,y+z}=\overline{\ip{y+z,x}}=\overline{\ip{y,x}}+\overline{\ip{z,x}}=\ip{x,y}+\ip{x,z}$. 
+
+A vector space $V$ along with an inner product often denoted $(V,\ip{-,-})$, is called an \textit{inner product space}. Throughout this paper, we will assume all vector spaces are inner product spaces and hence just refer to an inner product space as a vector space $V$. We will also consider norms induced by inner products.
+
+\begin{prop}
+\label{prop:norm}
+Let $(V,\ip{-,-})$ be an inner product space with $V$ a vector space over a subfield of $\C$. Then $\norm{-}:V\ra \R$ where $\norm{x}=\sqrt{\ip{x,x}}$ is a well-defined norm.
+\end{prop}
+
+An important example of an inner product is the standard inner product which is defined by $\ip{x,y}=y^*x$, which in Euclidean space is called the dot product and measures the cosine of the angle between vectors taking into account the magnitude of the vectors. And its induced norm measures the length of a vector.  In general inner products generalize the notion of how similar two vectors are, with an inner product of zero indicating orthogonality or that vectors have no similarity. Norms generalize the notion of the magnitude or the length of a vector.
+
+Complex inner products are an example of sesquilinear forms, meaning an inner product over a finite-dimensional vector space $V$ is of the form $\ip{x,y}=y^*Ax$ for a Hermitian positive definite matrix $A$. However notice that we may decompose $A=U^*U$, by the spectral theorem and the fact that $A$ is positive definite, where $U$ is invertible, meaning $\ip{x,y}=y^*Ax=y^*U^*Ux=(Uy)^*(Ux)$. This shows that any inner product looks like the standard inner product with a change of basis. So we may assume that all inner products are the standard inner product on the elementary basis, up to a change of basis.
+}{A vector space $V$ along with an inner product on $V$, often denoted $(V,\ip{-,-})$, is called an \textit{inner product space}. Throughout this paper, we will assume all vector spaces are inner product spaces and hence just refer to an inner product space as a vector space $V$. We will also consider the norm $\norm{-}$ induced by an inner product.}
+
+\begin{Definition}
+\label{def:ortho}
+    Suppose $V$ is an inner product space with $v,w\in V$ then $v$ and $w$ are called \textit{orthogonal} when $\ip{v,w}=0$. A collection of vectors $(e_j)_j$ is called \textit{orthogonal} if $\ip{e_j,e_k}=0$ for $j\neq k$. If in addition $\norm{e_j}=1$ for all $j$, then $(e_j)_j$ is called \textit{orthonormal}. If $(e_j)_j$ is a basis for $V$ then it is called an orthonormal basis.
+\end{Definition}
+
+For any finite-dimensional vector space $\F^n$, the standard basis is orthonormal and is often denoted as $(e_j)_{j=1}^{n}$. However, in this paper, we may use $(e_j)_{j=1}^{n}$ to denote any orthonormal basis.
+
+\subsection{Properties of Orthogonality}
+\label{ssec:props_ortho}
+In this part, we will look at important properties of orthonormal vectors which we will use to motivate the definition of a frame.
+
+\iftoggle{full}{
+\begin{lemma}
+\label{prop:pythag}
+(Pythagorean theorem) Let $V$ be an inner product space with its induced norm, with a finite collection of orthogonal vectors $(x_j)_{j=1}^n$ then 
+$$\norm{\sum_{j=1}^n x_j}^2=\sum_{j=1}^n\norm{x_j}^2$$
+\end{lemma}
+\begin{proof}
+This follows from repeated application of the standard Pythagorean theorem. To see this we will use induction on $n$. Notice first that when $n=1$ this follows trivially from $(x_j)_{j=1}^1$ having $1$ vector. For $n=2$, notice that for orthogonal vectors $x,y\in V$ we have that $\norm{v+w}^2=\ip{x+y,x+y}=\ip{x,x}+\ip{x,y}+\ip{y,x}+\ip{y,y}=\ip{x,x}+\ip{y,y}=\norm{x}^2+\norm{y}^2$. Now fix $n>2$ and notice that
+\begin{align*}
+    \sum_{j=1}^{n+1}\norm{x_j}^2&=\sum_{j=1}^{n}\norm{x_j}^2+\norm{x_{n+1}}^2=\norm{\sum_{j=1}^{n}x_j}^2+\norm{x_{n+1}}^2=\norm{\sum_{j=1}^{n}x_j+x_{n+1}}^2=\norm{\sum_{j=1}^{n+1}x_j}^2
+\end{align*}
+where the last step follows from the $n=2$ case.
+\end{proof}
+
+Notice that any finite orthonormal collection of vectors $(e_j)_{j=1}^n$, is linearly independent. To see a proof sketch of this assume that $a_1e_1+\dots+a_ne_n=0$, which means that $a_1e_1+\dots+a_{n-1}e_{n-1}=-a_ne_n$, Using orthogonality of $(e_j)_{j=1}^n$ we may show $\ip{a_1e_1+\dots+a_{n-1}e_{n-1},-a_ne_n}=0$, which must mean $a_n=0$ and $a_1e_1+\dots+a_{n-1}e_{n-1}=0$. This can be repeated to show $a_1=\dots=a_n=0$. This shows that orthogonality implies linear independence. Other properties of orthonormal vectors, in particular orthonormal bases, are shown below without complete proof.
+}{}
+
+\begin{prop}
+\label{prop:tfae_wparseval}
+Let $V$ be a finite inner product space with an orthonormal collection of vectors $(e_j)_{j=1}^n$. The following are equivalent
+\begin{enumerate}
+    \item if $x\in V$ is such that $\ip{x,e_j}=0$ for all $j\in[n]$ then $x=0$
+    \item $(e_j)_{j=1}^n$ spans $V$. (Notice that this means $(e_j)_{j=1}^n$ is an orthonormal basis, meaning $n=\dim V$)
+    \item $x=\sum_{j=1}^n\ip{x,e_j}e_j$ for all $x\in V$
+    \item $\norm{x}^2=\sum_{j=1}^n|\ip{x,e_j}|^2$ for all $x\in V$ (Parseval's equality)
+\end{enumerate}
+\end{prop}
+In many applications of orthonormal bases $(3)$ is of critical importance and highlights why orthonormal bases are often more desirable than general bases. $(4)$ is relevant in defining a frame and acts as a generalization of the Pythagorean theorem so we will provide a proof that $(4)$ is equivalent to the other 3 parts.
+\begin{proof}
+    $(3)\Rightarrow (4)$: First for any $x\in V$ let $x=\sum_{j=1}^n\ip{x,e_j}e_j$ and notice that from the Pythagorean theorem $\norm{x}^2=\norm{\sum_{j=1}^n\ip{x,e_j}e_j}^2=\sum_{j=1}^n|\ip{x,e_j}|^2$.
+
+    We will show $(4)\Rightarrow (1)$ by contrapositive: Assume there exists a vector  $x\in V$ such that $\ip{x,e_j}=0$ for all $j\in[n]$ but $\norm{x}> 0$. However notice that $\sum_{j=1}^n|\ip{x,e_j}|^2=\sum_{j=1}^n0=0$, And so the $(4)$ is not true.
+\end{proof}
+
+\subsection{Frames}
+\label{ssec:frames}
+Now that we have seen some useful properties of orthonormal basis we can generalize them to create what is called a frame. In this case, we will define a frame with a weakened version of Parseval's equality which was seen in Proposition \ref{prop:tfae_wparseval}, where we showed that Parseval's equality was a necessary and sufficient condition to show that a finite collection of orthonormal vectors was an orthonormal basis. The results in this paper are well known results, see \cite{king_algebraic_2020} as a reference.
+
+\begin{Definition}
+\label{def:frame}
+    A finite collection of vectors $(\phi_j)_j$ from $\F^d$ is a frame for $\F^d$ if there exists optimal constants $0<A\leq B<\infty$ such that 
+    \begin{equation}
+        A\norm{x}^2\leq \sum_{j=1}^n|\ip{x,\phi_j}|^2\leq B\norm{x}^2\;\;\;\;\forall x\in \F^d
+    \end{equation}
+    where $A$ is called the \textit{lower frame bound} and $B$ is called the \textit{upper frame bound}. 
+    \begin{itemize}
+        \item A frame is \textit{tight} if $A=B$, in which case $A$ is used to denote the single frame bound, and \textit{Parseval} if $A=B=1$.
+        \item A finite frame is \textit{equal-norm} if there exists some $\beta$ such that $\norm{\phi_j}=\beta$ for all $j$ and \textit{unit-norm} if $\beta=1$.
+        \item A unit-norm collection of vectors $(\phi_j)$ is called \textit{equiangular} if there exists some $\alpha\geq 0$ such that $\ip{\phi_j,\phi_k}=\alpha$ when $j\neq k$.  
+    \end{itemize} 
+\end{Definition}
+We may denote a finite unit-norm tight frame as FUNTF and an equiangular tight frame as ETF. Notice that from this definition every orthonormal basis is a Parseval unit-norm frame. This is an equivalence.
+\begin{prop}
+\label{prop:parc_iff_orthonoromalbasis}
+    A collection of vectors $(\phi_j)_j$ from $\F^d$ is a Parseval unit-norm frame if and only if it is an orthonormal basis.
+\end{prop}
+\iftoggle{full}{
+\begin{proof}
+    First notice that any orthonormal basis satisfies Parseval's equality and therefore is a Parseval frame. An orthonormal basis also has unit-norm vectors. 
+    
+So now assume that $(\phi_j)_j$ is a unit-norm Parseval frame. This means for some fixed $k$ we have $1=\norm{\phi_k}=\sum_{j=1}^n|\ip{\phi_k,\phi_j}|^2=|\ip{\phi_k,\phi_k}|+\sum_{j\neq k}|\ip{\phi_k,\phi_j}|^2=1+\sum_{j\neq k}|\ip{\phi_k,\phi_j}|^2$
+    Which means $\sum_{j\neq k}|\ip{\phi_k,\phi_j}|^2=0$ and because $|\ip{\phi_k,\phi_j}|^2\geq 0$ for all $j$, we know that $\ip{\phi_k,\phi_j}=0$ for all $j$ and all fixed $k$. Meaning $(\phi_j)_j$ is an orthonormal collection of vectors satisfying Parseval's equality and so is an orthonormal basis by Proposition \ref{prop:tfae_wparseval}.
+\end{proof}
+}{}
+This suggests that \textit{nice} frames which are not orthonormal basis are those that are FUNTF but are not Parseval or those that are Parseval but not unit-norm, and in general both cases are equivalent up to rescaling.
+
+In frame theory it is often useful to describe frames with matrices, four are of particular importance for this paper
+\begin{Definition}
+\label{def:frame_matrices}
+    Let $(\phi_j)_{j=1}^n$ be a collection of vectors in an inner product space $V$ over a field $\F$
+    \begin{itemize}
+        \item $\Phi:\F^n\ra V$ is the matrix whose columns are the vectors $(\phi_j)_{j=1}^n$, in which case by right multiplication $c\mapsto \sum_{j=1}^nc_j\phi_j$ (\textit{Synthesis operator})
+        \item $\Phi^*:V\ra \F^n$ and by right multiplication takes $x\mapsto (\sum_{j=1}^d\overline{\Phi_{jk}}x_j)_{k=1}^n=(\ip{x,\phi_k})_{k=1}^n$ (\textit{Analysis operator})
+        \item $S=\Phi\Phi^*:V\ra V$, by right multiplication $x\mapsto \sum_{j=1}^n{\ip{x,\phi_j}\phi_j}$ (\textit{Frame operator})
+        \item $G=\Phi^*\Phi=(\ip{\phi_{k},\phi_j})_{jk}$, and so right multiplication maps $x\ra (\sum_{k=1}^n c_k \ip{\phi_k,\phi_j})_{j=1}^n$ (\textit{Gram Matrix})
+    \end{itemize}
+\end{Definition}
+
+In this paper we will often denote a frame, or a collection of vectors, by its synthesis operator, that is we may write $\Phi=(\phi_j)_{j=1}^n$ and use $\Phi$ to denote both the associated matrix and the frame.
+As we will see in proposition \ref{prop:bigboi_prop}, singular values, and singular value decompositions play an important role in frame theory.
+
+\begin{Definition}
+\label{def:sing_vals}
+    Let $B$ be a $m\times n$ matrix with elements in $\F$. Let $(\lambda_j)_j^{n}$ be the $n$ eigenvalues of $B^*B$. In which case we case we call $(\sigma_j)_j^{\min(n,m)}$ the \textit{singular values} of $B$ where $\sigma_j=\sqrt{\lambda_j}$.
+\end{Definition}
+
+\begin{Definition}
+\label{def:SVD}
+    Let $B$ be a $m\times n$ matrix with elements in $\F$. The \textit{singular value decomposition}, often referred to as the SVD, is a factorization
+$$B=U\Sigma V^*$$
+Where $U$ is an $m\times m$ unitary matrix, $V$ is an $n\times n$ unitary matrix, and $\Sigma$ is a $m\times n$ diagonal matrix with non-increasing non-negative real diagonal entries. The diagonal values of $\Sigma$, $(\sigma_j)_{j=1}^{\min(m,n)}$ are the first $\min(m,n)$ \textit{singular values} of $B$. Furthermore, the number of non-zero singular values is equal to the rank of $B$.
+\end{Definition}
+Every matrix has a singular value decomposition but in general, this decomposition is not unique. However with a fixed ordering on the singular values, the matrix $\Sigma$ is uniquely determined by the matrix $B$, and we can gain a lot of information from the singular values and the existence of an SVD of $\Phi$.
+
+\begin{prop}
+\label{prop:bigboi_prop}
+    Let $(\phi_j)_{j=1}^n$ be a collection of vectors in $\F^d$ with $\Phi$ its associated $d\times n$ (synthesis operator) matrix with SVD $\Phi=U\Sigma V^*$, where the diagonal entries of $\Sigma$ are decreasing. Then $\Phi$ is the synthesis operator for the frame $(\phi_j)_{j=1}^n$ with optimal bounds $A$ and $B$ if and only if $n\geq d$, $\sigma_d^2=A$ and $\sigma_1^2=B$. Furthermore, $(\phi_j)_{j=1}^n$ is a tight frame with frame bound $A$ if and only if the rows of $\Phi$ are orthogonal with norm $\sqrt{A}$.
+\end{prop}
+\iftoggle{full}{
+\begin{proof}
+Notice first that with the SVD of $\Phi$ we can write
+\begin{equation}
+\label{eq:SSVD}
+    S=\Phi\Phi^*=U\Sigma V^*(U\Sigma V^*)^*=U\Sigma V^*V^*\Sigma^* U^*=U\Sigma\Sigma^*U^*
+\end{equation}
+    And to compute the frame bounds we notice that for any $x\in F^d$ the frame operator allows us to express $\ip{Sx,x}=\ip{\sum_{j=1}^n{\ip{x,\phi_j}\phi_j},x}=\sum_{j=1}^n \ip{x,\phi_j}\ip{\phi_j,x}=\sum_{j=1}^n |\ip{x,\phi_j}|^2$ meaning
+    $$\sum_{j=1}^n |\ip{x,\phi_j}|^2=\ip{Sx,x}=\ip{U\Sigma\Sigma^*U^*x,x}=\ip{\Sigma^*U^*x,\Sigma^*U^*x}=\norm{\Sigma^*U^*x}^2$$
+    And so our frame bounds are determined by the maximum and minimum of $\norm{\Sigma^*U^*x}^2$. Notice that we need only consider vectors $x$ with unit norm, in which case $\norm{U^*x}=1$. To maximize $\norm{\Sigma^*y}$ we may choose the vector $y=\textbf{e}_1$, as the diagonal entries of $\Sigma$ are ordered in decreasing order, and because $U^*U=I$ we know that if $x$ is equal to the first column of $U$ then $U^*x=\textbf{e}_1$ which maximizes $\norm{\Sigma^*U^*x}^2=\norm{\sigma_1\textbf{e}_1}=\sigma_1^2$, which follows from the imposed order of the singular values on $\Sigma$.
+    Likewise for the same reason if $x$ is the last column, the $d$th column, of $U$ then $\norm{\Sigma^*U^*x}^2=\norm{\Sigma^*\textbf{e}_d}$ is minimized.
+    Case 1: assume that $n\geq d$ in which case $\Sigma$ has $d$ diagonal elements, which means $\norm{\Sigma^*y}^2=\norm{\Sigma^*\textbf{e}_d}=\norm{\sigma_d\textbf{e}_d}=\sigma_d^2$ which again follows from the imposed order of the singular values in $\Sigma$.
+    Case 2: If $n<d$ then $\norm{\Sigma^*U^*x}^2=\norm{\Sigma^*\textbf{e}_d}^2=0$ this follows from $\Sigma^*$ being a diagonal matrix with $n<d$ diagonal elements so the $d$th column of $\Sigma^*$ is zero, and so $\Sigma^*\textbf{e}_d=0$. Notice that for $(\phi_j)_{j=1}^n$ to be a frame we must have $n\geq d$ which means there will be a $d$th singular value in the SVD in which case we would have have
+    $$\sigma_d^2\norm{x}^2\leq \sum_{j=1}^n |\ip{x,\phi_j}|^2\leq \sigma_1^2\norm{x}^2$$
+    with optimal bounds $A=\sigma_d^2$ and $B=\sigma_1^2$. This concludes the first part of the proof.
+    
+    For the second part notice that the frame operator $S=(\Phi^*)^*\Phi^*$, meaning $S$ is the gram matrix of the analysis operator $\Phi^*$, meaning it represents inner products between conjugates of the rows. That is $S=(\ip{{\Phi_{k}}^*,{\Phi_j}^*})_{jk}$, where $\Phi_k$ represents the $k$th row of $\Phi$ and so from equation \ref{eq:SSVD} we have that
+    $$%(\ip{{\Phi_{j}},{\Phi_k}})_{jk}=
+    (\ip{{\Phi_{k}^*},{\Phi_j}^*})_{jk}=S=U\Sigma\Sigma^*U^*=U\textit{A}I_dU^*=AUU^*=AI_d$$ 
+    Where the last three steps follow from the fact that the frame being tight means the singular values must all be $\sqrt{A}$. Furthermore, under conjugate symmetry, we know that $(\ip{{\Phi_{j}},{\Phi_k}})_{jk}=
+    (\ip{{\Phi_{k}^*},{\Phi_j}^*})_{jk}$
+    This is equivalent to the rows of $\Phi$ being linearly independent and $\norm{\Phi_j}=\sqrt{\ip{\Phi_j,\Phi_j}}=\sqrt{A}$ for all $j$
+\end{proof}
+Notice that the second part of the proof of this proposition shows that a frame is tight if and only if the frame operator is a positive multiple of the identity, more specifically when $S=AI$ where $A$ is the frame bound. We have also shown that frames must have at least as many vectors as the dimension, we can strengthen this by observing that the first $d$ singular values must be non-zero.
+}{This proposition shows that a frame is tight if and only if the frame operator is a positive multiple of the identity, more specifically when $S=AI$ where $A$ is the frame bound. We have also shown that frames must have at least as many vectors as the dimension, we can strengthen this by observing that the first $d$ singular values must be non-zero.}
+% idea: singular values tell us how the "matrix" stretches things. no spans of the vectors in the frame "dominate" the others. so all singular values being the same is the same as a tight frame. 
+\begin{corollary}
+\label{cor:frame_iff_span}
+Let $(\phi_j)_{j=1}^n$ be a collection of vectors in $\F^d$. Then $(\phi_j)_{j=1}^n$ is a frame if and only if $(\phi_j)_{j=1}^n$ spans $\F^d$. 
+\end{corollary}
+\begin{proof}
+    Notice that $(\phi_j)_{j=1}^n$ spans $\F^d$ if and only if the rank of $\Phi$ is $d$ And this is the case if and only if there are $d$ non-zero singular values, and by proposition \ref{prop:bigboi_prop} this is the case if and only if $(\phi_j)_{j=1}^n$ is a frame.
+\end{proof}
+
+\iftoggle{full}{
+As another corollary we can combine frames to get a new frame, oftentimes retaining the same properties.
+
+\begin{corollary}
+\label{cor:adding_frames}
+    Let $(\phi_j)_{j=1}^n$ and $(\psi_j)_{j=1}^m$ be tight frames with frame bounds $A$ and $B$ respectively. Their concatenation $(\phi_1,\dots,\phi_n,\psi_1,\dots\,\psi_m)$ is a tight frame with frame bound $A+B$.
+\end{corollary}
+\begin{proof}
+    From proposition \ref{prop:bigboi_prop}, we know that the frame operators for both frames are multiples of the identity matrix: $\Phi\Phi^*=A I_d$ and $\Psi\Psi^*=BI_d$. Notice that the union of both frames has as its synthesis matrix the augmented matrix $\begin{pmatrix}\Phi& \Psi\end{pmatrix}$. And so the frame operator 
+    $$\begin{pmatrix}\Phi& \Psi\end{pmatrix}\begin{pmatrix}\Phi& \Psi\end{pmatrix}^*=\begin{pmatrix}\Phi& \Psi\end{pmatrix}\begin{pmatrix}\Phi^*\\ \Psi^*\end{pmatrix}=\Phi\Phi^*+\Psi\Psi^*=A I_d+B I_d=(A+B)I_d$$
+    Therefore the union of both tight frames is a tight frame with frame bound $A+B$.
+\end{proof}
+Along similar lines as in the previous propositions and corollaries, we can use the matrices created in definition \ref{def:frame_matrices} to learn other useful properties about frames and in particular FUNTFs.
+\begin{prop}
+\label{cor:the_trace_thingy}
+    Let $(\phi_j)_{j=1}^n$ be a frame for $\F^d$ with synthesis operator $\Phi$. If $(\lambda_k)_{k=1}^d$ are the eigenvalues of the frame operator $S$ then
+$$\sum_{k=1}^d\lambda_k=\sum_{j=1}^n\norm{\phi_j}^2$$
+    And if $(\phi_j)_{j=1}^n$ is a FUNTF then the frame bound is $n/d$
+\end{prop}
+\begin{proof}
+    Recall that the sum of the eigenvalues of a matrix is equal to the trace of the matrix and that the trace of a product of matrices is invariant under cyclic permutations of the matrices, meaning
+    $$\sum_{k=1}^d\lambda_k=\tr(S)=\tr(\Phi\Phi^*)=\tr(\Phi^*\Phi)=\tr(G)=\sum_{j=1}^n\norm{\phi_j}^2$$
+    Furthermore notice that if $(\phi_j)_{j=1}^n$ is an FUNTF with frame bound $A$ we know from proposition \ref{prop:bigboi_prop} that $S=AI$ and so $\tr(S)=\tr(AI)=dA$. And like wise we know that $\tr(S)=\sum_{j=1}^n\norm{\phi_j}^2=n$, so $n=dA$ meaning $A=n/d$.
+\end{proof}
+}{}
+To conclude this section we will highlight a connection between Parseval frames and orthonormal bases through orthonormal projection maps.
+\iftoggle{full}{
+\begin{Definition}
+\label{def:ortho_proj}
+    A linear operator $P: V \ra V$ is called a \textit{projection} if $P^2=P$. Furthermore, a projection $P$ is called an \textit{orthogonal projection} if $P$ is Hermitian, that is $P=P^*$.
+\end{Definition}
+}{}
+\begin{thm}(Naimark's Theorem).
+\label{thm:naimark}
+The collection $(\phi_j)_{j=1}^n$ is a Parseval frame for $V=\F^d$ if and only if there exists an inner product space $W\supseteq V$ with orthonormal basis $(e_j)_{j=1}^n$ and orthogonal projection $P:W\ra W$ onto $V$ such that $\phi_j=Pe_j$ for all $j$.
+\end{thm}
+\begin{proof}
+    \iftoggle{full}{
+    We will first show the $\Leftarrow$ direction: Assume $V\se W$, meaning $W$ is a super set of dimension $n$ with basis $(e_j)_{j=1}^n$ and $P:W\ra W$ an orthogonal projection onto $V$, which means $P$ fixes $V$. Notice that for any $x\in V\se W$ we have that
+$$\sum_{j=1}^n|\ip{x,Pe_j}|^2=\sum_{j=1}^n|\ip{P^*x,e_j}|^2=\sum_{j=1}^n|\ip{Px,e_j}|^2=\sum_{j=1}^n|\ip{x,e_j}|^2=\norm{x}^2$$
+    which follows from proposition \ref{prop:tfae_wparseval}, Parseval's equality, as $(e_j)_{j=1}^n$ is an orthonormal basis. This means the collection of vectors $(Pe_j)_{j=1}^n$ is a Parseval frame for $V=\F^d$.
+
+    Now for the $\Rightarrow$ direction: assume that $(\phi_j)_{j=1}^n$ is a Parseval frame for $\F^d$ with synthesis operator $\Phi$ and by proposition \ref{prop:bigboi_prop} we know that $S=\Phi\Phi^*=I_d$, meaning the $d$ rows of $\Phi$ are $n$-dimensional orthonormal vectors. Case 1: if $d=n$ then notice that because $S=I_d$ we know that the rows of $\Phi$ form an orthonormal basis for $\F^d$ and so $\Phi$ is an orthonormal matrix meaning $(\phi_j)_{j=1}^n$ is an orthonormal basis and so with the identity map from $V$ to $V$ as the orthogonal projection we satisfy the statement.
+    Case 2: Assume that $n>d$ then it is the case that the $d$ $n$-dimensional orthonormal row vectors can be extended to an orthonormal basis over $\F^n$. That is there exists $n-d$ $n$-dimensional vectors $(v_\ell)_{\ell=1}^{n-d}$ such that the rows of $\Phi$ and $(v_\ell)_{\ell=1}^{n-d}$ form an orthonormal basis. Let $\Psi$ be the matrix whose rows are $(v_\ell)_{\ell=1}^{n-d}$ and we will denote the columns as $(\psi_j)_{j=1}^n$. Notice the matrix 
+    $$X=\begin{pmatrix}
+        \Phi\\\Psi
+    \end{pmatrix}$$
+is invertible as $XX^*=I$ and so $X^*X=I$ and so the columns of $X$ form an orthonormal basis for $\F^n$ which are the vectors
+$$\left(\begin{pmatrix}
+        \phi_j\\\psi_j
+    \end{pmatrix}\right)_{j=1}^n$$
+Finally, consider the projection of $\F^n$ onto the first $d$ coordinates which would map this orthonormal basis onto $(\phi_j)_{j=1}^n$ as desired.
+}{We will provide a short sketch of the $\Rightarrow$ direction: Assume that $n>d$ then it is the case that the $d$ $n$-dimensional orthonormal row vectors can be extended to an orthonormal basis over $\F^n$ by adding $n-d$ $n$-dimensional vectors $(v_\ell)_{\ell=1}^{n-d}$ such that the rows of $\Phi$ and $(v_\ell)_{\ell=1}^{n-d}$ form an orthonormal basis. Let $\Psi$ be the matrix whose rows are $(v_\ell)_{\ell=1}^{n-d}$ and we will denote the columns as $(\psi_j)_{j=1}^n$. This forms an orthonormal basis for $\F^n$ which are the vectors
+$$\left(\begin{pmatrix}
+        \phi_j\\\psi_j
+    \end{pmatrix}\right)_{j=1}^n$$
+Finally, consider the projection of $\F^n$ onto the first $d$ coordinates.}
+\end{proof}
+This theorem can be extended to tight frames with frame bound $A$ by first rescaling
+%by $\frac{1}{\sqrt{A}}$ 
+to get a Parseval frame. This statement is sometimes referred to as Witt's extension theorem. This theorem provides a very powerful duality of tight frames, which are the vectors $(\psi_j)$, which share many of the properties of the original frame.
+\begin{Definition}
+\label{def:naimark_comp}
+    Let $(\phi_j)_{j=1}^n$ be a tight frame for $\F^d$ with corresponding synthesis operator $\Phi$ with frame bound $A$ and consider vectors $(\psi_j)_{j=1}^n$ in $\F^{n-d}$ with associated matrix $\Psi$. If $\Phi^*\Phi+\Psi^*\Psi=AI$ then we call $\Psi$ a Naimark complement of $\Phi$.
+\end{Definition}
+As we will see in proposition \ref{prop:naimark_comp_is_nice} and in later propositions in section \ref{sec:matroids}, Naimark complements share many of the same properties as the original frame.
+\begin{prop}
+\label{prop:naimark_comp_is_nice}
+    Let $\Phi=(\phi_j)_{j=1}^n$ be a tight frame for $\F^d$ with frame bound $A$ and Naimark complement $\Psi=(\psi_j)_{j=1}^n$ in $\F^{n-d}$. Then $\Psi$ is a tight frame with frame bound $A$ and likewise, $\Phi$ is the Naimark complement of $\Psi$. Furthermore, if $\Phi$ is equiangular or equal-norm then so is $\Psi$.
+\end{prop}
+\iftoggle{full}{
+\begin{proof}
+    If $\Psi$ is a tight frame we know that $\Phi\Phi^*=AI_d$, meaning there are $d$ eigenvalues that are $A$. And because the singular values of $\Phi$ and $\Phi^*$ agree, the non-zero eigenvalues of $\Phi\Phi^*$ and $\Phi^*\Phi$ agree and so there are $d$ eigenvalues of $A$ and $n-d$ of $0$. Since $\Psi$ is the Naimark complement of $\Phi$ we know that $\Phi^*\Phi+\Psi^*\Psi=AI$ and so $\Psi^*\Psi=AI-\Phi^*\Phi$ has $n-d$ non-zero eigenvalues that are $A$ and $d$ eigenvalues that are $0$. To see this notice that $\tr(\Psi^*\Psi)=\tr(AI)-\tr(\Phi^*\Phi)=(n-d)A$. Notice also that the only eigenvalues of $\Psi^*\Psi$ are $0$ and $A$: that is for $x$ an eigenvalue for some vector $v$, $AIv-\Phi^*\Phi v=x Iv$ which means $(A-x)Iv=\Phi^*\Phi v$ and so $A-x$ is an eigenvalue of $\Phi^*\Phi$ meaning $A-x$ is either $A$ or $0$ so $x$ is either $0$ or $A$. This therefore means $\Psi$ is a frame of $\F^{n-d}$ with singular values $\sigma_1=\sigma_{n-d}=\sqrt{A}$ and so $\Psi$ is a tight frame with frame bound $A$.\\
+    Because $\Psi$ is a tight frame and $\Phi$ satisfies $\Psi^*\Psi+\Phi^*\Phi=AI$ we have the $\Phi$ is the Naimark complement of $\Psi$.\\
+    From the definition of Naimark complement, we know that    $$\ip{\begin{pmatrix}\phi_j\\\psi_j\end{pmatrix},\begin{pmatrix}\phi_k\\\psi_k\end{pmatrix}}=\ip{\phi_j,\phi_k}+\ip{\psi_j,\psi_k}=A\delta_{j,k}$$
+    Now assume that $\Phi$ is equiangular with angle $\alpha<1$. This means when $j\neq k$ we have that $|\ip{\psi_j,\psi_k}|=|\ip{\phi_j,\phi_k}|=\alpha<1$ and so $\Psi$ is equiangular. Likewise if $\Phi$ is equal norm, with norm $\beta$ we have for any $j$ that $\ip{\psi_j,\psi_j}=A-\ip{\phi_j,\phi_j}=A-\beta$ and so $\Psi$ is equal norm.
+\end{proof}
+Naimark complements are not necessarily unique, as in the construction of the orthogonal projection in the proof of Naimark's theorem, \ref{thm:naimark}, it is entirely possible to construct multiple projections resulting in different frames.}{}

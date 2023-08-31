@@ -1,0 +1,33 @@
+\documentclass{article}
+\usepackage{preamble}
+
+\usepackage[margin=1in]{geometry}
+
+\newcommand{\I}{\mathcal{I}}
+
+\providetoggle{full}
+\settoggle{full}{true}
+% true: part b
+% false: combo final paper
+
+
+\title{\iftoggle{full}{Who Framed Matroid Rabbit}{Linear Independence of Frames}}
+\author{Ian Jorquera}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+    In this paper, we motivate and develop definitions and fundamental results in frame theory using linear algebra. We then present definitions and results from matroid theory and use them to further understand the linear independence of frames and their Naimark complements.
+\end{abstract}
+\input{introduction}
+\input{frames}
+\input{matroids}
+\input{example}
+
+\nocite{*}
+\bibliographystyle{plain}
+\bibliography{framethy}
+
+\end{document}

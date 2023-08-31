@@ -1,0 +1,193 @@
+\documentclass[12pt]{amsart}
+% packages
+\usepackage{graphicx}
+\usepackage{setspace}
+\usepackage{amssymb,amsmath,amsthm,amsfonts,amscd}
+\usepackage{hyperref}
+\usepackage{color}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{enumitem}
+\usepackage[retainorgcmds]{IEEEtrantools}
+\usepackage[notref,notcite,final]{showkeys}
+\usepackage[final]{pdfpages}
+\usepackage{fancyhdr}
+\usepackage{upgreek}
+\usepackage{multicol}
+\usepackage{fontawesome}
+\usepackage{halloweenmath}
+% set margin as 0.75in
+\usepackage[margin=0.75in]{geometry}
+
+% tikz-related settings
+\usepackage{tkz-berge}
+\usetikzlibrary{calc,quotes}
+\usetikzlibrary{arrows.meta}
+\usetikzlibrary{positioning, automata}
+\usetikzlibrary{decorations.pathreplacing}
+
+%% For table
+\usepackage{tikz}
+\usetikzlibrary{tikzmark}
+
+% theorem environments with italic font
+\newtheorem{thm}{Theorem}[section]
+\newtheorem*{thm*}{Theorem}
+\newtheorem{lemma}[thm]{Lemma}
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem{claim}[thm]{Claim}
+\newtheorem{corollary}[thm]{Corollary}
+\newtheorem{conjecture}[thm]{Conjecture}
+\newtheorem{question}[thm]{Question}
+\newtheorem{procedure}[thm]{Procedure}
+\newtheorem{assumption}[thm]{Assumption}
+
+% theorem environments with roman font (use lower-case version in body
+% of text, e.g., \begin{example} rather than \begin{Example})
+\newtheorem{Definition}[thm]{Definition}
+\newenvironment{definition}
+{\begin{Definition}\rm}{\end{Definition}}
+\newtheorem{Example}[thm]{Example}
+\newenvironment{example}
+{\begin{Example}\rm}{\end{Example}}
+
+\theoremstyle{definition}
+\newtheorem{remark}[thm]{\textbf{Remark}}
+
+% special sets
+\newcommand{\A}{\mathbb{A}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\cals}{\mathcal{S}}
+\newcommand{\ZZ}{\mathbb{Z}_{\ge 0}}
+\newcommand{\cala}{\mathcal{A}}
+\newcommand{\calb}{\mathcal{B}}
+\newcommand{\cald}{\mathcal{D}}
+\newcommand{\calh}{\mathcal{H}}
+\newcommand{\call}{\mathcal{L}}
+\newcommand{\calr}{\mathcal{R}}
+\newcommand{\la}{\mathbf{a}}
+\newcommand{\lgl}{\mathfrak{gl}}
+\newcommand{\lsl}{\mathfrak{sl}}
+\newcommand{\lieg}{\mathfrak{g}}
+
+% math operators
+\DeclareMathOperator{\kernel}{\mathrm{ker}}
+\DeclareMathOperator{\image}{\mathrm{im}}
+\DeclareMathOperator{\rad}{\mathrm{rad}}
+\DeclareMathOperator{\id}{\mathrm{id}}
+\DeclareMathOperator{\hum}{[\mathrm{Hum}]}
+\DeclareMathOperator{\eh}{[\mathrm{EH}]}
+\DeclareMathOperator{\lcm}{\mathrm{lcm}}
+\DeclareMathOperator{\Aut}{\mathrm{Aut}}
+\DeclareMathOperator{\Inn}{\mathrm{Inn}}
+\DeclareMathOperator{\Out}{\mathrm{Out}}
+\DeclareMathOperator{\Gal}{\mathrm{Gal}}
+\DeclareMathOperator{\Real}{\mathrm{Re}}
+\DeclareMathOperator{\Imag}{\mathrm{Im}}
+
+
+% frequently used shorthands
+\newcommand{\ra}{\rightarrow}
+\newcommand{\se}{\subseteq}
+\newcommand{\ip}[1]{\langle#1\rangle}
+\newcommand{\dual}{^*}
+\newcommand{\inverse}{^{-1}}
+\newcommand{\norm}[2]{\|#1\|_{#2}}
+\newcommand{\abs}[1]{\lvert #1 \rvert}
+\newcommand{\Abs}[1]{\bigg| #1 \bigg|}
+\newcommand\bm[1]{\begin{bmatrix}#1\end{bmatrix}}
+\newcommand{\op}{\text{op}}
+
+% nicer looking empty set
+\let\oldemptyset\emptyset
+\let\emptyset\varnothing
+
+%the var phi gang
+\let\oldphi\phi
+\let\phi\varphi
+
+\setlist[enumerate,1]{topsep=1em,leftmargin=1.8em, itemsep=0.5em, label=\textup{(}\arabic*\textup{)}}
+\setlist[enumerate,2]{topsep=0.5em,leftmargin=3em, itemsep=0.3em}
+
+%pagestyle
+%\pagestyle{fancy} 
+
+\begin{document}
+\begin{center}
+    \textsc{Math 519. HW 1\\ Ian Jorquera}
+\end{center}
+\vspace{1em}
+% See http://www.mathematicalgemstones.com/maria/Math501Fall22.php
+% for problems
+
+% sage: https://sagecell.sagemath.org/
+\begin{enumerate}
+
+\item 
+\begin{enumerate}[label=(\alph*)]
+    \item $|z-z_1|=|z-z_2|$ represents the line of points $z\in \C$ such that $z$ is equidistant from the points $z_1$ and $z_2$.
+    \item in this case $\overline{z}$ is the multiplicative inverse meaning $|z|^2=z\overline{z}=1$ or that $|z|=1$. This means this represent the unit circle.
+    \item This represents the vertical line in the complex plane where $z=3+ai$ 
+    \item This represents a half plan, or all points above the line $z=c+ai$ for a fixed $c$. Including the line when $\geq$ and not including the line when $>$.
+    \item Notice that for $z=x+yi$, $a=a_1+ia_2$ and $b=b_1+ib_2$ we have $\Real(az+b)=\Real(az)+b_1$ and because $az=(a_1x- a_2y) + (a_2x+a_1y)i$ and so $\Real(az+b) = a_1x- a_2y + b_i> 0$ is represents a half plane shifted by $b_i$ and skewed according to $a$.
+    \item Let $z=x+iy$ and we have that $|z|=\sqrt{x^{2}+y^{2}}=x+1=\Real(z)+1$ and so this represents a parabola opening to the right with vertex at $-1+0\cdot i=-1$ or $(x,y)=(-1,0)$.\\
+    \item This represents a horizontal line where $z=a+ci$ for some fixed $c$.\\
+\end{enumerate}
+
+\item
+\begin{enumerate}[label=(\alph*)]
+    \item First we will show that complex conjugation is a ring endomorphism $\C\ra\C$. Let $a+bi,c+di\in \C$ and notice that $\overline{(a+bi)+(c+di)}=\overline{(a+c)+(b+d)i}=(a+c)-(b+d)i=(a-bi)+(c-di)=\overline{(a+bi)}+\overline{(c+di)}$. We also have that $\overline{(a+bi)(c+di)}=\overline{(ac-bd)+(ad+bc)i}=(ac-bd)-(ad+bc)i=(a-bi)(c-di)=\overline{(a+bi)}\cdot\overline{(c+di)}$. Becasue $\C$ is a field this is a field endomorphism and therefore a ring homomorphism. Finally to see that this is an involution not that for $a+bi\in \C$ we have that $\overline{\overline{a+bi}}=\overline{a-bi}=a+bi$.\\
+
+    \item Now consider an element $z=c+di\in \C$ and notice that for any $a\in \R$ we have that $\Real(az)=\Real(ac+adi)=ac=a \Real(a+di)=a\Real(z)$. And similarly we have that $\Imag(az)=\Imag(ac+adi)=ad=a \Imag(a+di)=a\Imag(z)$.\\
+
+    \end{enumerate}
+
+    \item
+    \begin{enumerate}[label=(\alph*)]
+    \item Notice that for $z=a+bi,w=c+di\in \C$ we have that $|z+w|^2=\sqrt{(z+w)\overline{(z+w)}}^2= (z+w)\overline{(z+w)}= |z|^2+|w|^2+z\overline{w}+\overline{z}w$. And notice that $z\overline{w}+\overline{z}w=(a+bi)(c-di)+(a-bi)(c+di)=2ac+2bd$ and that $\Real(z\overline{w})=ac+bd$. So $|z+w|^2=|z|^2+|w|^2+2\Real(z\overline{w})$.\\
+
+    \item Using the previous identity we have that for any $z,w\in \C$, that $|z+w|^2+|z-w|^2= |z|^2+|w|^2+|z|^2+|-w|^2+2\Real(z\overline{w})+2\Real(-z\overline{w})$. And from problem 2b we know that $|z|^2+|w|^2+|z|^2+|-w|^2+2\Real(z\overline{w})+2\Real(-z\overline{w})=|z|^2+|w|^2+|z|^2+|-w|^2+2\Real(z\overline{w})-2\Real(z\overline{w})=|z|^2+|w|^2+|z|^2+|w|^2=2(|z|^2+|w|^2)$.
+\end{enumerate}
+
+\item 
+\begin{enumerate}[label=(\alph*)]
+    \item First notice that $z(t^*)\not\in \Omega_1$. So see this notice that if it were there would exists some open neighborhood $N_r(z(t^*))$ for some $r>0$. And becasue $z$ is continuous this would mean there would exist some $\delta$ such that for $|t-t^*|<\delta$ we would have $|z(t)-z(t^*)|<r$ and so there would exist some $t^*<t_0<t^*+\delta$ such that $z(t_0)\in\Omega_1$ a contradiction as $t^*$ was assumed to be the supremum. Because $z(t^*)\not\in\Omega_1$ we know that $z(t^*)\in \Omega_2$. However this meaning there exist some $\epsilon>0$ such that there exists a nieborhood $N_\epsilon(z(t^*))\se \Omega_2$. And by the continuity of $z$ we know that there would exist some $\delta$ such that for $|t-t^*|<\delta$ where we would have $|z(t)-z(t^*)|<\epsilon$ and so there would exist some $t^*-\delta<t_0<t^*$ such that $z(t_0)\in\Omega_1$ buy definition of $t^*$ and $z(t_0)\in\Omega_1$ as it is contained in the neighborhood a contradiction as $\Omega_1$ and $\Omega_2$ are assumed to be disjoint.
+    \item Consider any point $w_1\in\Omega_1$. There exists some $\epsilon>0$ with a neighborhood $N_\epsilon(w_1)\se \Omega$. Let $\Tilde{w_1}\in N_\epsilon(w_1)$. In which case $w_1$ and $\Tilde{w_1}$ are connected by the curve that is the line between them %explicit construction?
+    And because the composition of piecewise continuous curves is piece wise continuous we know that this defines a curve from $w$ to $\Tilde{w_1}$ and so $\Tilde{w_1}\in \Omega_1$ and so $N_\epsilon(w_1)\se \Omega_1$ meaning $\Omega_1$ is open. Like wise consider any point $w_2\in\Omega_2$. There exists some $\epsilon>0$ with a neighborhood $N_\epsilon(w_2)\se \Omega$. Let $\Tilde{w_2}\in N_\epsilon(w_2)$. In which case $w_2$ and $\Tilde{w_2}$ are connected by the curve that is the line between them %explicit construction?
+    And because the composition of piecewise continuous curves is piece wise continuous we know that if there existed a piece wise continuous curve between $w$ and $\Tilde{w_2}$ it would define a curve from $w$ to $w_2$ and so $\Tilde{w_2}\in \Omega_2$ and so $N_\epsilon(w_2)\se \Omega_2$ meaning $\Omega_2$ is open. Notice that these two sets must be disconnected as otherwise there would exist a point that both has a path from $w$ and doesn't, a contradiction. We also know that these sets form the entire set $\Omega$ as $\Omega_2$ contains all points in $\Omega$ that are not in $\Omega_1$. Finally notice that $\Omega_1$ is not empty as it contains the point $w$, as there is trivial continuous map from $w$ to its self $w$. From the assumption that $\Omega$ is connected we know that there can not exist any set $\Omega_2$ and so $\Omega=\Omega_1$.\\
+\end{enumerate}
+\item 
+\begin{enumerate}
+    \item Consider the inequality $\left|\frac{w-z}{1-\overline{w}z}\right|<1$ in which case we have that $\left|{w-z}\right|<\left|{1-\overline{w}z}\right|$ where we know that the square function is an increasing function, and both sides are positive so we know that 
+    $$\left|{w-z}\right|<\left|{1-\overline{w}z}\right|$$
+    $$\left({w-z}\right)\left({\overline{w-z}}\right)<\left({1-\overline{w}z}\right)\left(\overline{1-\overline{w}z}\right)$$
+    $$\left({w-z}\right)\left({\overline{w}-\overline{z}}\right)<\left({1-\overline{w}z}\right)\left({1-w\overline{z}}\right)$$
+    $$|w|+|z|<1+|w||z|$$
+    $$0<1-|w|-|z|+|w||z|$$
+    $$0<(1-|w|)(1-|z|)$$
+And from the assumption we know that $|w|<1$ and $|z|<1$ and so $(1-|w|)(1-|z|)$ is the product of two positive numbers and so is positive.\\
+
+Notice by the same argument we can see that $\left|\frac{w-z}{1-\overline{w}z}\right|=1$ is equivalent to $0<(1-|w|)(1-|z|)$ and with the assumption that $|w|=1$ and $|z|=1$. \\
+
+\item Fix $w\in \mathbb{D}$ meaning $|w|<1$. (i) Consider any point $z\in\mathbb{D}$ which is the case when $|z|<1$ we have that $\left|\frac{w-z}{1-\overline{w}z}\right|<1$ meaning $\frac{w-z}{1-\overline{w}z}\in \mathbb{D}$.
+(ii) Notice that $F(0)=\frac{w-0}{1-\overline{w}0}=w$ and $F(w)=\frac{w-0}{1-\overline{w}w}=0$, as $|w|<1$ so $1-\overline{w}w\neq 0$. 
+(iii) Consider any point $z$ where $|z|=1$. We have that $\left|\frac{w-z}{1-\overline{w}z}\right|=1$.
+(iv) To see that $F$ is a bijection we will show it is an involution. Notice that $F(F(z))= \frac{w-\frac{w-z}{1-\overline{w}z}}{1-\overline{w}\frac{w-z}{1-\overline{w}z}}=\frac{\frac{w-w\overline{w}z}{1-\overline{w}z}-\frac{w-z}{1-\overline{w}z}}{\frac{1-\overline{w}z}{1-\overline{w}z}-\frac{\overline{w}w-\overline{w}z}{1-\overline{w}z}}=\frac{-w\overline{w}z+z}{1-\overline{w}w}=z\frac{1-w\overline{w}}{1-\overline{w}w}=z$ snd so 
+$F$ is its own inverse.
+    
+\end{enumerate}
+
+\end{enumerate}
+
+\end{document}
+
+
+
+
+
+

@@ -1,0 +1,228 @@
+\documentclass[12pt]{amsart}
+% packages
+\usepackage{graphicx}
+\usepackage{setspace}
+\usepackage{amssymb,amsmath,amsthm,amsfonts,amscd}
+\usepackage{hyperref}
+\usepackage{color}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{enumitem}
+\usepackage[retainorgcmds]{IEEEtrantools}
+\usepackage[notref,notcite,final]{showkeys}
+\usepackage[final]{pdfpages}
+\usepackage{fancyhdr}
+\usepackage{upgreek}
+\usepackage{multicol}
+\usepackage{fontawesome}
+\usepackage{halloweenmath}
+% set margin as 0.75in
+\usepackage[margin=0.75in]{geometry}
+
+% tikz-related settings
+\usepackage{tkz-berge}
+\usetikzlibrary{calc,quotes}
+\usetikzlibrary{arrows.meta}
+\usetikzlibrary{positioning, automata}
+\usetikzlibrary{decorations.pathreplacing}
+
+%% For table
+\usepackage{tikz}
+\usetikzlibrary{tikzmark}
+
+% theorem environments with italic font
+\newtheorem{thm}{Theorem}[section]
+\newtheorem*{thm*}{Theorem}
+\newtheorem{lemma}[thm]{Lemma}
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem{claim}[thm]{Claim}
+\newtheorem{corollary}[thm]{Corollary}
+\newtheorem{conjecture}[thm]{Conjecture}
+\newtheorem{question}[thm]{Question}
+\newtheorem{procedure}[thm]{Procedure}
+\newtheorem{assumption}[thm]{Assumption}
+
+% theorem environments with roman font (use lower-case version in body
+% of text, e.g., \begin{example} rather than \begin{Example})
+\newtheorem{Definition}[thm]{Definition}
+\newenvironment{definition}
+{\begin{Definition}\rm}{\end{Definition}}
+\newtheorem{Example}[thm]{Example}
+\newenvironment{example}
+{\begin{Example}\rm}{\end{Example}}
+
+\theoremstyle{definition}
+\newtheorem{remark}[thm]{\textbf{Remark}}
+
+% special sets
+\newcommand{\A}{\mathbb{A}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\cals}{\mathcal{S}}
+\newcommand{\ZZ}{\mathbb{Z}_{\ge 0}}
+\newcommand{\cala}{\mathcal{A}}
+\newcommand{\calb}{\mathcal{B}}
+\newcommand{\cald}{\mathcal{D}}
+\newcommand{\calh}{\mathcal{H}}
+\newcommand{\call}{\mathcal{L}}
+\newcommand{\calr}{\mathcal{R}}
+\newcommand{\la}{\mathbf{a}}
+\newcommand{\lgl}{\mathfrak{gl}}
+\newcommand{\lsl}{\mathfrak{sl}}
+\newcommand{\lieg}{\mathfrak{g}}
+
+% math operators
+\DeclareMathOperator{\kernel}{\mathrm{ker}}
+\DeclareMathOperator{\image}{\mathrm{im}}
+\DeclareMathOperator{\rad}{\mathrm{rad}}
+\DeclareMathOperator{\id}{\mathrm{id}}
+\DeclareMathOperator{\hum}{[\mathrm{Hum}]}
+\DeclareMathOperator{\eh}{[\mathrm{EH}]}
+\DeclareMathOperator{\lcm}{\mathrm{lcm}}
+\DeclareMathOperator{\Aut}{\mathrm{Aut}}
+\DeclareMathOperator{\Inn}{\mathrm{Inn}}
+\DeclareMathOperator{\Out}{\mathrm{Out}}
+\DeclareMathOperator{\Gal}{\mathrm{Gal}}
+\DeclareMathOperator{\Real}{\mathrm{Re}}
+\DeclareMathOperator{\Imag}{\mathrm{Im}}
+
+
+% frequently used shorthands
+\newcommand{\ra}{\rightarrow}
+\newcommand{\se}{\subseteq}
+\newcommand{\ip}[1]{\langle#1\rangle}
+\newcommand{\dual}{^*}
+\newcommand{\inverse}{^{-1}}
+\newcommand{\norm}[2]{\|#1\|_{#2}}
+\newcommand{\abs}[1]{\lvert #1 \rvert}
+\newcommand{\Abs}[1]{\bigg| #1 \bigg|}
+\newcommand\bm[1]{\begin{bmatrix}#1\end{bmatrix}}
+\newcommand{\op}{\text{op}}
+
+%\def\darktheme{} % IAN
+\ifx \darktheme\undefined
+\else
+\pagecolor[rgb]{0.2,0.231,0.302}%{0.23,0.258,0.321}
+\color[rgb]{1,1,1}
+\fi
+
+% nicer looking empty set
+\let\oldemptyset\emptyset
+\let\emptyset\varnothing
+
+%the var phi gang
+\let\oldphi\phi
+\let\phi\varphi
+
+\setlist[enumerate,1]{topsep=1em,leftmargin=1.8em, itemsep=0.5em, label=\textup{(}\arabic*\textup{)}}
+\setlist[enumerate,2]{topsep=0.5em,leftmargin=3em, itemsep=0.3em}
+
+%pagestyle
+%\pagestyle{fancy} 
+
+\begin{document}
+\begin{center}
+    \textsc{Math 519. HW 3\\ Ian Jorquera}
+\end{center}
+\vspace{1em}
+% See http://www.mathematicalgemstones.com/maria/Math501Fall22.php
+% for problems
+
+% sage: https://sagecell.sagemath.org/
+\begin{enumerate}
+
+\item 
+Let $z:[0,2\pi]\ra \C$ where $t\mapsto e^{it}$ be a parameterization of the contour $\gamma_1(0)$. This gives us that 
+\begin{align*}
+    \int_{\gamma_1(0)}z^ndz&=\int_{0}^{2\pi} (z(t))^nz'(t)dt\\
+    &= \int_{0}^{2\pi} e^{int}ie^{it}dt\\
+    &= i\int_{0}^{2\pi} e^{i(n+1)t}dt\\
+    &= i \frac{1}{n+1}e^{(n+1)ti}\Big|_{0}^{2\pi}\\
+    &= 0
+\end{align*}
+
+\item 
+\begin{enumerate}
+    \item First we will use the definition where we have that 
+
+    \begin{align*}
+        \int_{\gamma_1(0)}\Real(z)dz&=\int_{0}^{2\pi} \Real(z(t))z'(t)dt\\
+        &= \int_{0}^{2\pi} \Real(e^{it})ie^{it}dt\\
+        &= \int_{0}^{2\pi} \cos(t)(-\sin(t)+i\cos(t))dt\\
+        &= \int_{0}^{2\pi} -\cos(t)\sin(t)dt+i\int_{0}^{2\pi}\cos^2(t)dt\\
+        &= \frac{1}{2}\cos^2(x)\Big|_{0}^{2\pi}+\frac{i}{2}(\cos(x)\sin(x)+x)\Big|_{0}^{2\pi}\\
+        &=0+\pi i=\pi i
+    \end{align*}
+
+    \item Now we will use the fact that $\Real(z)=\frac{z+\overline{z}}{2}$ which gives us that 
+    \begin{align*}
+        \int_{\gamma_1(0)}\Real(z)dz&=\int_{\gamma_1(0)}\frac{z+\overline{z}}{2}dz\\
+        &=\frac{1}{2}\int_{\gamma_1(0)}zdz+\frac{1}{2}\int_{\gamma_1(0)}\overline{z}dz\\
+        &=0+\pi i=\pi i
+    \end{align*}
+    Which follows from $z$ being holomorphic.\\
+
+\end{enumerate}
+
+\item Here we will bound the norm of the integral for $\epsilon>0$
+\begin{align*}
+    \Big|\int_\gamma f(z)dz\Big|&= \Big|\int_\gamma f(z)-P_\epsilon(z)+P_\epsilon(z)dz\Big| = \Big|\int_\gamma f(z)-P_\epsilon(z)dz+\int_\gamma P_\epsilon(z)dz\Big|\\
+    &\leq \Big|\int_\gamma f(z)-P_\epsilon(z)dz\Big|+\Big|\int_\gamma P_\epsilon(z)dz\Big|\\
+    &\leq \text{Len}(\gamma)\sup_{z\in\gamma} |f(z)-P_\epsilon(z)|+0\\
+    &\leq \text{Len}(\gamma)\epsilon
+\end{align*}
+
+And so because $\text{Len}(\gamma)$ is a constant we know that $|\int_\gamma f(z)dz|=0$. This gives us the bounds $-|\int_\gamma f(z)dz|\leq \int_\gamma f(z)dz\leq |\int_\gamma f(z)dz|$ which tells us that $\int_\gamma f(z)dz=0$\\
+
+\item We we will consider the toy contour $C$ that first goes from $0$ to $R$ on the real line, then  follows the path $\gamma_1: z_1:[0,\frac{\pi}{4}]\ra \C$ where $t\mapsto Re^{it}$ and then $\gamma_2: z_2:[-R,0]\ra \C$ where $t\mapsto -te^{i\frac{\pi}{4}}$. We will integrate over the function $f(z)=e^{iz^2}$. First Notice that $\int_{C}f(z)=\int_0^Rf(x)dx+\int_{\gamma_1}f(z)dz+\int_{\gamma_2}f(z)dz=0$ and the function we are integrating is holomorphic on $\C$ and we are integrating on a toy contour.
+And we will look at each integral individually. First notice that 
+\begin{align*}
+    \int_0^Re^{ix^2}dx=\int_0^R\cos(x^2)dx+i\int_{0}^R\sin(x^2)dx\\
+\end{align*}
+Also notice that
+\begin{align*}
+    \int_{\gamma_2}e^{iz^2}dz&= \int_{-R}^0\exp(i(-te^{i\frac{\pi}{4}})^2)(-e^{i\frac{\pi}{4}})dt\\
+    &=-e^{i\frac{\pi}{4}}\int_{-R}^0\exp(it^2e^{i\frac{\pi}{2}})dt\\
+    &=-e^{i\frac{\pi}{4}}\int_{-R}^0\exp(i^2t^2)dt\\
+    &=-e^{i\frac{\pi}{4}}\int_{-R}^0\exp(-t^2)dt\\
+    &=-(\frac{\sqrt{2}}{2}+i\frac{\sqrt{2}}{2})\frac{\sqrt{\pi}}{2}dt\\
+    &=-\frac{\sqrt{2\pi}}{4}-i\frac{\sqrt{2\pi}}{4}dt
+\end{align*}
+
+Finally notice that
+
+\begin{align*}
+    \int_{\gamma_2}e^{iz^2}dz&=\int_{0}^\frac{\pi}{4}\exp(i(Re^{it})^2)Rie^{it}dt\\
+    &=\int_{0}^\frac{\pi}{4}\exp(iR^2e^{i2t})Rie^{it}dt\\
+    &=\int_{0}^\frac{\pi}{4}\exp(iR^2(\cos(2t)+i\sin(2t)))Rie^{it}dt\\
+    &=\int_{0}^\frac{\pi}{4}\exp(iR^2\cos(2t)-R^2\sin(2t))Rie^{it}dt\\
+    &=\int_{0}^\frac{\pi}{4}\exp(iR^2\cos(2t))\exp(-R^2\sin(2t))Rie^{it}dt
+\end{align*}
+Now we will look at the magnitude of this
+\begin{align*}
+    \Big|\int_{0}^\frac{\pi}{4}\exp(iR^2\cos(2t))\exp(-R^2\sin(2t))Rie^{it}dt\Big|&\leq \int_{0}^\frac{\pi}{4}|\exp(iR^2\cos(2t))\exp(-R^2\sin(2t))Rie^{it}|dt \\ % can do?
+    &\leq \int_{0}^\frac{\pi}{4}|\cos(R^2\cos(2t))\exp(-R^2\sin(2t))R|dt\\
+    &\leq \int_{0}^\frac{\pi}{4}\exp(-R^2\sin(2t))Rdt
+\end{align*}
+Now notice that as $R\ra \infty$ we have that this integral goes to $0$. This follows from the fact that for any fixed $0<t<\frac{\pi}{4}$ we have that $\sin(2t)$ is a constant and so for big enough $R$ the integrand approaches zero. Meaning $\lim_{R\ra \infty}\int_{\gamma_2}e^{iz^2}dz=0$.\\
+
+This gives us
+\begin{align*}
+0=\int_{C}f(z)&=\int_0^Rf(x)dx+\int_{\gamma_1}f(z)dz+\int_{\gamma_2}f(z)dz\\
+\int_0^Rf(x)dx&=-\int_{\gamma_2}f(z)dz\\
+\int_0^R\cos(x^2)dx+i\int_{0}^R\sin(x^2)dx&=\frac{\sqrt{2\pi}}{4}+i\frac{\sqrt{2\pi}}{4}
+\end{align*}
+giving us the desired result.\\
+\end{enumerate}
+
+\end{document}
+
+
+
+
+
+

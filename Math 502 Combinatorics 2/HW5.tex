@@ -1,0 +1,189 @@
+\documentclass[12pt]{amsart}
+% packages
+\usepackage{graphicx}
+\usepackage{setspace}
+\usepackage{amssymb,amsmath,amsthm,amsfonts,amscd}
+\usepackage{hyperref}
+\usepackage{color}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{enumitem}
+\usepackage[retainorgcmds]{IEEEtrantools}
+\usepackage[notref,notcite,final]{showkeys}
+\usepackage[final]{pdfpages}
+\usepackage{fancyhdr}
+\usepackage{upgreek}
+\usepackage{multicol}
+\usepackage{fontawesome}
+\usepackage{halloweenmath}
+\usepackage{ytableau}
+% set margin as 0.75in
+\usepackage[margin=0.75in]{geometry}
+
+% tikz-related settings
+\usepackage{tikz}
+\usepackage{tikz-cd}
+\usetikzlibrary{cd}
+
+%% For table
+\usepackage{tikz}
+\usetikzlibrary{tikzmark}
+
+% theorem environments with italic font
+\newtheorem{thm}{Theorem}[section]
+\newtheorem*{thm*}{Theorem}
+\newtheorem{lemma}[thm]{Lemma}
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem{claim}[thm]{Claim}
+\newtheorem{corollary}[thm]{Corollary}
+\newtheorem{conjecture}[thm]{Conjecture}
+\newtheorem{question}[thm]{Question}
+\newtheorem{procedure}[thm]{Procedure}
+\newtheorem{assumption}[thm]{Assumption}
+
+% theorem environments with roman font (use lower-case version in body
+% of text, e.g., \begin{example} rather than \begin{Example})
+\newtheorem{Definition}[thm]{Definition}
+\newenvironment{definition}
+{\begin{Definition}\rm}{\end{Definition}}
+\newtheorem{Example}[thm]{Example}
+\newenvironment{example}
+{\begin{Example}\rm}{\end{Example}}
+
+\theoremstyle{definition}
+\newtheorem{remark}[thm]{\textbf{Remark}}
+
+% special sets
+\newcommand{\A}{\mathbb{A}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\cals}{\mathcal{S}}
+\newcommand{\ZZ}{\mathbb{Z}_{\ge 0}}
+\newcommand{\cala}{\mathcal{A}}
+\newcommand{\calb}{\mathcal{B}}
+\newcommand{\cald}{\mathcal{D}}
+\newcommand{\calh}{\mathcal{H}}
+\newcommand{\call}{\mathcal{L}}
+\newcommand{\calr}{\mathcal{R}}
+\newcommand{\la}{\mathbf{a}}
+\newcommand{\lgl}{\mathfrak{gl}}
+\newcommand{\lsl}{\mathfrak{sl}}
+\newcommand{\lieg}{\mathfrak{g}}
+
+% math operators
+\DeclareMathOperator{\kernel}{\mathrm{ker}}
+\DeclareMathOperator{\image}{\mathrm{im}}
+\DeclareMathOperator{\rad}{\mathrm{rad}}
+\DeclareMathOperator{\id}{\mathrm{id}}
+\DeclareMathOperator{\hum}{[\mathrm{Hum}]}
+\DeclareMathOperator{\eh}{[\mathrm{EH}]}
+\DeclareMathOperator{\lcm}{\mathrm{lcm}}
+\DeclareMathOperator{\Aut}{\mathrm{Aut}}
+\DeclareMathOperator{\Inn}{\mathrm{Inn}}
+\DeclareMathOperator{\Out}{\mathrm{Out}}
+\DeclareMathOperator{\Gal}{\mathrm{Gal}}
+
+
+% frequently used shorthands
+\newcommand{\ra}{\rightarrow}
+\newcommand{\se}{\subseteq}
+\newcommand{\ip}[1]{\langle#1\rangle}
+\newcommand{\dual}{^*}
+\newcommand{\inverse}{^{-1}}
+\newcommand{\norm}[2]{\|#1\|_{#2}}
+\newcommand{\abs}[1]{\lvert #1 \rvert}
+\newcommand{\Abs}[1]{\bigg| #1 \bigg|}
+\newcommand\bm[1]{\begin{bmatrix}#1\end{bmatrix}}
+\newcommand{\op}{\text{op}}
+
+% nicer looking empty set
+\let\oldemptyset\emptyset
+\let\emptyset\varnothing
+
+%the var phi gang
+\let\oldphi\phi
+\let\phi\varphi
+
+%\def\darktheme{} % IAN
+\ifx \darktheme\undefined
+\else
+\pagecolor[rgb]{0.2,0.231,0.302}%{0.23,0.258,0.321}
+\color[rgb]{1,1,1}
+\fi
+
+\def\multiset#1#2{\ensuremath{\left(\kern-.3em\left(\genfrac{}{}{0pt}{}{#1}{#2}\right)\kern-.3em\right)}}
+
+\setlist[enumerate,1]{topsep=1em,leftmargin=1.8em, itemsep=0.5em, label=\textup{(}\arabic*\textup{)}}
+\setlist[enumerate,2]{topsep=0.5em,leftmargin=3em, itemsep=0.3em}
+
+%pagestyle
+%\pagestyle{fancy} 
+
+\begin{document}
+\begin{center}
+    \textsc{Math 502. HW 5\\ Ian Jorquera}
+\end{center}
+\vspace{1em}
+% See http://www.mathematicalgemstones.com/maria/Math501Fall22.php
+% for problems
+
+% sage: https://sagecell.sagemath.org/
+\begin{itemize}
+
+\item[(2)] The crystal for words of length $4$ and letters $1$ and $2$ is shown below
+\[\begin{tikzcd}[row sep=1cm, column sep=.65cm]
+     \begin{smallmatrix}1&1&1&1\end{smallmatrix}\arrow[d, "F_1", shift left]\\
+     \begin{smallmatrix}1&1&1&2\end{smallmatrix}\arrow[d, "F_1", shift left]\arrow[u, "E_1", shift left]\\
+     \begin{smallmatrix}1&1&2&2\end{smallmatrix}\arrow[d, "F_1", shift left]\arrow[u, "E_1", shift left]\\
+     \begin{smallmatrix}1&2&2&2\end{smallmatrix}\arrow[d, "F_1", shift left]\arrow[u, "E_1", shift left]\\
+     \begin{smallmatrix}2&2&2&2\end{smallmatrix}\arrow[u, "E_1", shift left]\\
+    \end{tikzcd}\;\;\;\;\;\;
+    \begin{tikzcd}[row sep=1cm, column sep=.65cm]
+     \begin{smallmatrix}2&1&1&1\end{smallmatrix}\arrow[d, "F_1", shift left]\\
+     \begin{smallmatrix}2&1&1&2\end{smallmatrix}\arrow[d, "F_1", shift left]\arrow[u, "E_1", shift left]\\
+     \begin{smallmatrix}2&1&2&2\end{smallmatrix}\arrow[u, "E_1", shift left]\\
+    \end{tikzcd}\;\;\;\;\;\;
+    \begin{tikzcd}[row sep=1cm, column sep=.65cm]
+     \begin{smallmatrix}1&2&1&1\end{smallmatrix}\arrow[d, "F_1", shift left]\\
+     \begin{smallmatrix}1&2&1&2\end{smallmatrix}\arrow[d, "F_1", shift left]\arrow[u, "E_1", shift left]\\
+     \begin{smallmatrix}2&2&1&2\end{smallmatrix}\arrow[u, "E_1", shift left]\\
+    \end{tikzcd}\;\;\;\;\;\;
+    \begin{tikzcd}[row sep=1cm, column sep=.65cm]
+     \begin{smallmatrix}1&1&2&1\end{smallmatrix}\arrow[d, "F_1", shift left]\\
+     \begin{smallmatrix}1&2&2&1\end{smallmatrix}\arrow[d, "F_1", shift left]\arrow[u, "E_1", shift left]\\
+     \begin{smallmatrix}2&2&2&1\end{smallmatrix}\arrow[u, "E_1", shift left]\\
+    \end{tikzcd}\;\;\;\;\;\;
+    \begin{tikzcd}[row sep=1cm, column sep=.65cm]
+     \begin{smallmatrix}2&1&2&1\end{smallmatrix}
+    \end{tikzcd}\;\;\;\;\;\;
+    \begin{tikzcd}[row sep=1cm, column sep=.65cm]
+     \begin{smallmatrix}2&2&1&1\end{smallmatrix}
+    \end{tikzcd}\]
+
+\item[(3)] % (2-) [3 points]
+Here we can consider the case that $w$ is a word of $1$s and $2$s and just the map $E_1$. Consider first the case that $w$ is highest weight, meaning there are either no $2$s or that every $2$ has a paired $1$ to its right. This means in any suffix there must be at least an equal number of $1$s as there are $2$, as every $2$ must be paired with a $1$ to its right. So $w$ is reverse ballot.\\
+
+Now assume $w$ is reverse ballot meaning in every suffix the number of $1$s is greater then or equal to the number of $2$s. Notice that for the last $2$ the suffix starting at that $2$ must contain at least one $1$, and so there is a $1$ directly the right of the $2$, and so they form a $21$ pair. We can remove this pair and consider the remaining word. Notice that after this removal the word is still reverse ballot. All suffixes not containing the pair are unchanged and all suffixes containing the pair loose one $1$ and one $2$ and so remain ballot. The suffix containing just the $1$ from the pair is equal to the sequence starting after the $1$ which is ballot. We can repeat this process and remove every $2$ as at every step the word is still ballot and so there must exists a $1$ to the right of every $2$, creating a $21$ pair. This must imply that the original word was of highest weight as there exists no unpaired $2$s and so $E_1(w)=0$.\\
+
+\item[(4)] % (2) [3 points]
+The condition for anti-ballot is as follows: The word $w$ is anti-ballot if for every prefix of $w$ there are more $i+1$s then $i$s for any character $i$.\\
+
+Here we can consider the case that $w$ is a word of $1$s and $2$s and just the map $F_1$. Consider first the case that $w$ is lowest weight, meaning there are either no $1$s or that every $1$ has a paired $2$ to its left. This means in any prefix there must be at least an equal number of $2$s as there are $1$, as every $1$ must be paired with a $2$ to its left. So $w$ is anti-ballot.\\
+
+Now assume $w$ is anti-ballot meaning in every prefix the number of $2$s is greater then or equal to the number of $1$s. Notice that for the first $1$ the prefix ending at that $1$ must contain at least one $2$, and so there is a $2$ directly the left of the $1$, and so they form a $21$ pair. We can remove this pair and consider the remaining word. Notice that after this removal the word is still anti-ballot. All prefixes not containing the pair are unchanged and all prefixes containing the pair loose one $2$ and one $1$ and so remain ballot. The prefix containing just the $2$ from the pair is equal to the sequence ending before the $2$ which is ballot. We can repeat this process and remove every $1$ as at every step the word is still anti-ballot and so there must exists a $2$ to the left of every $1$, creating a $21$ pair. This must imply that the original word was of lowest weight as there exists no unpaired $1$s and so $F_1(w)=0$.\\
+
+\item[(5)] %(1+) [2 points]
+Consider a straight shape Tableau of shape $\lambda=(\lambda_1,\lambda_2,\dots,\lambda_k)$. To fill this Tableau with content in reverse ballot it must have content $\lambda$, meaning the $i$th row would be filled with $\lambda_i$ $i$s. To see this notice that the bottom row must be all $1$s as the reading word must end in a $1$, which forces the entire row to be $1$s. Now consider the $i$th row where we have from our inductive hypothesis that the $i-1$ row is filled with $i-1$s. We know that the last box in the $i$th row must be bigger then $i-1$, but cant be bigger then $i$, as there are no $i$s in the suffix of the reading word of rows below. This means the last box in the $i$th row must be an $i$ and so the entire row must be filled with $\lambda_i$ $i$s. This means that the content of any filling is $\lambda$ and so there is only one filling with reverse ballot. So $c_{\emptyset\nu}^\lambda=1$ when $\nu=\lambda$ and $c_{\emptyset\nu}^\lambda=0$ otherwise.
+\end{itemize}
+
+\end{document}
+
+
+
+
+
+

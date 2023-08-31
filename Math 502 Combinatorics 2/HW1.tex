@@ -1,0 +1,178 @@
+\documentclass[12pt]{amsart}
+% packages
+\usepackage{graphicx}
+\usepackage{setspace}
+\usepackage{amssymb,amsmath,amsthm,amsfonts,amscd}
+\usepackage{hyperref}
+\usepackage{color}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{enumitem}
+\usepackage[retainorgcmds]{IEEEtrantools}
+\usepackage[notref,notcite,final]{showkeys}
+\usepackage[final]{pdfpages}
+\usepackage{fancyhdr}
+\usepackage{upgreek}
+\usepackage{multicol}
+\usepackage{fontawesome}
+\usepackage{halloweenmath}
+\usepackage{ytableau}
+% set margin as 0.75in
+\usepackage[margin=0.75in]{geometry}
+
+% tikz-related settings
+\usepackage{tkz-berge}
+\usetikzlibrary{calc,quotes}
+\usetikzlibrary{arrows.meta}
+\usetikzlibrary{positioning, automata}
+\usetikzlibrary{decorations.pathreplacing}
+
+%% For table
+\usepackage{tikz}
+\usetikzlibrary{tikzmark}
+
+% theorem environments with italic font
+\newtheorem{thm}{Theorem}[section]
+\newtheorem*{thm*}{Theorem}
+\newtheorem{lemma}[thm]{Lemma}
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem{claim}[thm]{Claim}
+\newtheorem{corollary}[thm]{Corollary}
+\newtheorem{conjecture}[thm]{Conjecture}
+\newtheorem{question}[thm]{Question}
+\newtheorem{procedure}[thm]{Procedure}
+\newtheorem{assumption}[thm]{Assumption}
+
+% theorem environments with roman font (use lower-case version in body
+% of text, e.g., \begin{example} rather than \begin{Example})
+\newtheorem{Definition}[thm]{Definition}
+\newenvironment{definition}
+{\begin{Definition}\rm}{\end{Definition}}
+\newtheorem{Example}[thm]{Example}
+\newenvironment{example}
+{\begin{Example}\rm}{\end{Example}}
+
+\theoremstyle{definition}
+\newtheorem{remark}[thm]{\textbf{Remark}}
+
+% special sets
+\newcommand{\A}{\mathbb{A}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\cals}{\mathcal{S}}
+\newcommand{\ZZ}{\mathbb{Z}_{\ge 0}}
+\newcommand{\cala}{\mathcal{A}}
+\newcommand{\calb}{\mathcal{B}}
+\newcommand{\cald}{\mathcal{D}}
+\newcommand{\calh}{\mathcal{H}}
+\newcommand{\call}{\mathcal{L}}
+\newcommand{\calr}{\mathcal{R}}
+\newcommand{\la}{\mathbf{a}}
+\newcommand{\lgl}{\mathfrak{gl}}
+\newcommand{\lsl}{\mathfrak{sl}}
+\newcommand{\lieg}{\mathfrak{g}}
+
+% math operators
+\DeclareMathOperator{\kernel}{\mathrm{ker}}
+\DeclareMathOperator{\image}{\mathrm{im}}
+\DeclareMathOperator{\rad}{\mathrm{rad}}
+\DeclareMathOperator{\id}{\mathrm{id}}
+\DeclareMathOperator{\hum}{[\mathrm{Hum}]}
+\DeclareMathOperator{\eh}{[\mathrm{EH}]}
+\DeclareMathOperator{\lcm}{\mathrm{lcm}}
+\DeclareMathOperator{\Aut}{\mathrm{Aut}}
+\DeclareMathOperator{\Inn}{\mathrm{Inn}}
+\DeclareMathOperator{\Out}{\mathrm{Out}}
+\DeclareMathOperator{\Gal}{\mathrm{Gal}}
+
+
+% frequently used shorthands
+\newcommand{\ra}{\rightarrow}
+\newcommand{\se}{\subseteq}
+\newcommand{\ip}[1]{\langle#1\rangle}
+\newcommand{\dual}{^*}
+\newcommand{\inverse}{^{-1}}
+\newcommand{\norm}[2]{\|#1\|_{#2}}
+\newcommand{\abs}[1]{\lvert #1 \rvert}
+\newcommand{\Abs}[1]{\bigg| #1 \bigg|}
+\newcommand\bm[1]{\begin{bmatrix}#1\end{bmatrix}}
+\newcommand{\op}{\text{op}}
+
+% nicer looking empty set
+\let\oldemptyset\emptyset
+\let\emptyset\varnothing
+
+%the var phi gang
+\let\oldphi\phi
+\let\phi\varphi
+
+\setlist[enumerate,1]{topsep=1em,leftmargin=1.8em, itemsep=0.5em, label=\textup{(}\arabic*\textup{)}}
+\setlist[enumerate,2]{topsep=0.5em,leftmargin=3em, itemsep=0.3em}
+
+%pagestyle
+%\pagestyle{fancy} 
+
+\begin{document}
+\begin{center}
+    \textsc{Math 502. HW 1\\ Ian Jorquera}
+\end{center}
+\vspace{1em}
+% See http://www.mathematicalgemstones.com/maria/Math501Fall22.php
+% for problems
+
+% sage: https://sagecell.sagemath.org/
+\begin{itemize}
+
+\item[(1)]  %(2) [3 points]
+let $p(x,y)$ be a polynomial over a field $k$ of characteristic not equal to $2$. Notice first that the space of polynomials $k[x,y]$ has as a basis $\{x^ny^m| n,m \in \Z^{\geq 0}\}$. We will show that each element in the basis can be uniquiely written as a sum of a symmetric polynomial and an antisymmetric polynomial. First for $x^ny^m$ where $n>m$ notice that $x^ny^m=\frac{1}{2}(m_{(n,m)}+a_{(n,m)})=\frac{1}{2}((x^ny^m+x^my^n)+(x^ny^m-x^my^n))$. And similarly for $n<m$ we have that $x^ny^m=\frac{1}{2}(m_{(m,n)}-a_{(m,n)})=\frac{1}{2}((x^my^n+x^ny^m)-(x^my^n-x^ny^m))$. And finally for the case that $n=m$ we have that $x^ny^n$ is symmetric. And so we can then write $p(x,y)=sym(x,y)+asym(x,y)$ where $sym(x,y)$ is a symmetric polynomial, the sum of the symmetric monomial basis terms, and $asym(x,y)$ is an anti-symmetric polynomial, the sum of the anti symmetric monomial basis terms. To see that this is unique notice that if $p(x,y)=sym(x,y)+asym(x,y)=sym'(x,y)+asym'(x,y)$ then $sym(x,y)-sym'(x,y)+asym(x,y)-asym'(x,y)=0$ and so $sym(x,y)-sym'(x,y)=asym'(x,y)-asym(x,y)$. And because the only polynomial that is both symmetric and antisymmetric is the zero polynomial we know that $sym'(x,y)-sym(x,y)=0$ and $asym'(x,y)-asym(x,y)=0$ so therefore $sym(x,y)=sym'(x,y)$ and $asym'(x,y)=asym(x,y)$.\\
+
+\item[(2)] % (1+) [2 points]
+We can use the relation $p_3-e_2p_1+e_1p_2-3e_3=0$ and so $p_3=e_2e_1-e_1p_2+3e_3$. We can also substitute using the relations $p_2-e_1p_1+2e_2=0$ where $p_2=e_1e_2-2e_2$ and so $p_3= e_2e_1-e_1(e_1e_2-2e_2)+3e_3$.\\
+
+\item[(3)] % (1+) [2 points]
+Using the involution discussed in class we have that $\omega(p_3)= \omega(e_2e_1-e_1(e_1e_2-2e_2)+3e_3)=h_2h_1-h_1(h_1h_2-2h_2)+3h_3$. We also know that $\omega(p_3)=(-1)^{3-1}p_3=p_3$. So $p_3=h_2h_1-h_1(h_1h_2-2h_2)+3h_3$.\\
+
+\item[(4)] Using sage we can determine that $e_{(3,2,2)}=s_{(1, 1, 1, 1, 1, 1, 1)} + 2s_{(2, 1, 1, 1, 1, 1)} + 3s_{(2, 2, 1, 1, 1)} + 2s_{(2, 2, 2, 1)} + s_{(3, 1, 1, 1, 1)} + 2s_{(3, 2, 1, 1)} + s_{(3, 2, 2)} + s_{(3, 3, 1)}$ and so is Schur positive.\\\\
+$h_{(3,2,2)}=s_{(3, 2, 2)} + s_{(3, 3, 1)} + 2s_{(4, 2, 1)} + 2s_{(4, 3)} + s_{(5, 1, 1)} + 3s{(5, 2)} + 2s_{(6, 1)} + s_{(7)}$ and so is also Schur positive.\\\\
+Sage give the following output for $p_{(3,2,2)}=s[1, 1, 1, 1, 1, 1, 1] - s[2, 1, 1, 1, 1, 1] + 2*s[2, 2, 1, 1, 1] - s[2, 2, 2, 1] - s[3, 1, 1, 1, 1] - s[3, 2, 1, 1] + s[3, 2, 2] + s[3, 3, 1] + 2*s[4, 1, 1, 1] - s[4, 2, 1] - s[4, 3] - s[5, 1, 1] + 2*s[5, 2] - s[6, 1] + s[7]$ and so is not Schur positive.\\\\
+Finally $m_{(3,2,2)}$ is $3*s[1, 1, 1, 1, 1, 1, 1] - 3*s[2, 1, 1, 1, 1, 1] + 2*s[2, 2, 1, 1, 1] - s[2, 2, 2, 1] + s[3, 1, 1, 1, 1] - s[3, 2, 1, 1] + s[3, 2, 2]$ and so is also not Schur positive.\\
+
+
+\item[(5)] % (1+) [2 points]
+First with the algebraic definition we have that $$s_{(2,1)}(x_1,x_2,x_3)=\frac{a_{(4,2,0)}}{a_{(2,1,0)}}=\frac{\det\begin{pmatrix} x_1^4 & x_1^2 & 1\\ x_2^4 & x_2^2 & 1\\ x_3^4 & x_3^2 & 1\end{pmatrix}}{\det\begin{pmatrix} x_1^2 & x_1 & 1\\ x_2^2 & x_2 & 1\\ x_3^2 & x_3 & 1\end{pmatrix}}$$
+and using matlab to compute determinants and to simplify terms we can determine that this is equal to $x_1^2x_2 + x_1^2x_3 + x_1x_2^2 + 2x_1x_2x_3 + x_1x_3^2 + x_2^2x_3 + x_2x_3^2$. Now with the young tableaux we need to consider the semi-standard young tableaux with shape $(2,1)$. These are 
+\ytableausetup{smalltableaux}
+\ytableaushort{
+2,11}
+\ytableausetup{nobaseline}
+\ytableaushort{
+2,12}
+\ytableausetup{nobaseline}
+\ytableaushort{
+2,13}
+\ytableausetup{nobaseline}
+\ytableaushort{
+3,12}
+\ytableausetup{nobaseline}
+\ytableaushort{
+3,13}
+\ytableausetup{nobaseline}
+\ytableaushort{
+3,22}
+\ytableausetup{nobaseline}
+\ytableaushort{
+3,23}\;\;and so the Schur polynomial is $x_1^2x_2 + x_1^2x_3 + x_1x_2^2 + 2x_1x_2x_3 + x_1x_3^2 + x_2^2x_3 + x_2x_3^2$ which coincides with the previous definition.
+
+\end{itemize}
+
+\end{document}
+
+
+
+
+
+

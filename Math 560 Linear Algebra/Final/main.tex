@@ -1,0 +1,913 @@
+\documentclass[12pt]{amsart}
+% packages
+\usepackage{graphicx}
+\usepackage{setspace}
+\usepackage{amssymb,amsmath,amsthm,amsfonts,amscd}
+\usepackage{hyperref}
+\usepackage{color}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{enumitem}
+\usepackage[retainorgcmds]{IEEEtrantools}
+\usepackage[notref,notcite,final]{showkeys}
+\usepackage[final]{pdfpages}
+\usepackage{fancyhdr}
+\usepackage{upgreek}
+\usepackage{multicol}
+\usepackage{fancyvrb}
+\usepackage{listings}
+\usepackage{bussproofs}
+\usepackage{mathtools}
+% set margin as 0.75in
+\usepackage[margin=0.75in]{geometry}
+
+% tikz-related settings
+\usepackage{tikz}
+\usepackage{tikz-cd}
+\usetikzlibrary{cd}
+
+% theorem environments with italic font
+\newtheorem{thm}{Theorem}[section]
+\newtheorem*{thm*}{Theorem}
+\newtheorem{lemma}[thm]{Lemma}
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem{claim}[thm]{Claim}
+\newtheorem{corollary}[thm]{Corollary}
+\newtheorem{conjecture}[thm]{Conjecture}
+\newtheorem{question}[thm]{Question}
+\newtheorem{procedure}[thm]{Procedure}
+\newtheorem{assumption}[thm]{Assumption}
+
+% theorem environments with roman font (use lower-case version in body
+% of text, e.g., \begin{example} rather than \begin{Example})
+\newtheorem{Definition}[thm]{Definition}
+\newenvironment{definition}
+{\begin{Definition}\rm}{\end{Definition}}
+\newtheorem{Example}[thm]{Example}
+\newenvironment{example}
+{\begin{Example}\rm}{\end{Example}}
+
+\theoremstyle{definition}
+\newtheorem{remark}[thm]{\textbf{Remark}}
+
+% special sets
+\newcommand{\A}{\mathbb{A}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\cals}{\mathcal{S}}
+\newcommand{\ZZ}{\mathbb{Z}_{\ge 0}}
+\newcommand{\cala}{\mathcal{A}}
+\newcommand{\calb}{\mathcal{B}}
+\newcommand{\cald}{\mathcal{D}}
+\newcommand{\calh}{\mathcal{H}}
+\newcommand{\call}{\mathcal{L}}
+\newcommand{\calr}{\mathcal{R}}
+\newcommand{\la}{\mathbf{a}}
+\newcommand{\lgl}{\mathfrak{gl}}
+\newcommand{\lsl}{\mathfrak{sl}}
+\newcommand{\lieg}{\mathfrak{g}}
+
+% math operators
+\DeclareMathOperator{\kernel}{\mathrm{ker}}
+\DeclareMathOperator{\coker}{\mathrm{coker}}
+\DeclareMathOperator{\image}{\mathrm{im}}
+\DeclareMathOperator{\coim}{\mathrm{coim}}
+\DeclareMathOperator{\rad}{\mathrm{rad}}
+\DeclareMathOperator{\id}{\mathrm{id}}
+\DeclareMathOperator{\hum}{[\mathrm{Hum}]}
+\DeclareMathOperator{\eh}{[\mathrm{EH}]}
+\DeclareMathOperator{\lcm}{\mathrm{lcm}}
+\DeclareMathOperator{\Aut}{\mathrm{Aut}}
+\DeclareMathOperator{\Inn}{\mathrm{Inn}}
+\DeclareMathOperator{\Out}{\mathrm{Out}}
+\DeclareMathOperator{\Gal}{\mathrm{Gal}}
+\DeclareMathOperator{\End}{\mathrm{End}}
+
+
+% frequently used shorthands
+\newcommand{\ra}{\rightarrow}
+\newcommand{\se}{\subseteq}
+\newcommand{\ip}[1]{\langle#1\rangle}
+\newcommand{\dual}{^*}
+\newcommand{\inverse}{^{-1}}
+\newcommand{\norm}[2]{\|#1\|_{#2}}
+\newcommand{\abs}[1]{\lvert #1 \rvert}
+\newcommand{\Abs}[1]{\bigg| #1 \bigg|}
+\newcommand\bm[1]{\begin{bmatrix}#1\end{bmatrix}}
+\newcommand{\op}{\text{op}}
+
+% nicer looking empty set
+\let\oldemptyset\emptyset
+\let\emptyset\varnothing
+
+\setlist[enumerate,1]{topsep=1em,leftmargin=1.8em, itemsep=0.5em, label=\textup{(}\arabic*\textup{)}}
+\setlist[enumerate,2]{topsep=0.5em,leftmargin=3em, itemsep=0.3em}
+
+
+% Jupyter Notebooks proramming stuff
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{1,1,1}
+
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegray},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codegreen},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2
+}
+
+%box matrix
+\newenvironment{boxmatrix}
+    {
+     \boxed{
+     \begin{matrix}
+            {
+            }
+     \end{matrix}}
+    }
+
+\lstset{style=mystyle}
+
+\begin{document}
+\begin{center}
+    \textsc{Linear Algebra. Final\\ Ian Jorquera}
+\end{center}
+\vspace{1em}
+
+\begin{enumerate}
+
+\item % -2pts Grading comment: Argue why the third point cannot be on the line between the parallel ones. Why does r not equal p mean r can't be on l_pq?
+Let $\ell$ and $\ell'$ be two non equal parallel lines, Consider $p\in\ell$ and $q\in \ell'$ and their corresponding line $\ell_{p,q}$ which intersects both $\ell$ and $\ell'$ at $p$ and $q$ respectively. Here we will construct a bijection between the points on the lines, that is $f:\ell\ra \ell'$. First $p\mapsto q$ with $f$. Now consider any point $r\in \ell$ such that $r\neq p$ which means the $r\not\in \ell_{p,q}$, so by the parallel line axiom we have that there must exist a unique line $\ell^*$ containing $r$ that is parallel but not equal to $\ell_{p,q}$. This would then require that $\ell^*$ intersects $\ell'$, as if it did not, it would have to be parallel and so we would have, by parallel being an equivalence relation, that $\ell'$ and $\ell_{p,q}$ are parallel but this is not the case. And because non-parallel lines intersect at a point there is a unique point $s\in \ell'$ that corresponding to the the point $r\in \ell$. And so $f$ maps $r\ra s$. Too see that this is a bijection we will construct an inverse. Consider the map $g:\ell'\ra \ell$ that maps element in the same way as $f$ but from $\ell'$ to $\ell$. WLOG consider an element $a\in \ell$ and notice that $f$ would map it to some $b\in \ell'$ by a unique parallel line. Because this was the unique parallel line $g$ must also map $b$ back to $a$ along the same line. So $g\circ f =\id_{\ell}$. We can show the other direction in the same way, as this is a WLOG argument and so $f\circ g =\id_{\ell'}$.\\ % maybe construct explicit function??
+
+
+\item In this case we must require that any endomorphism on $V$, a matrix $F= \boxed{\begin{matrix}
+a & b\\
+c & d
+\end{matrix}}\in \End(_\Omega  V)$ where $a,b,c,d\in\Q$ respects the omega action. So for any $\omega\in \Omega$ and $F\in\End(_\Omega  V)$ we must have that $F(\omega v)=\omega F(v)$ for any $v$. Because $F$ and $\omega$ are matrices and we know this must be the case for all basis elements we can look as these identities applied to the identity matrix, this means that $F\omega=\omega F$. This means we must show that the elements of $\Omega$ commute with the elements of $\End(_\Omega V)$ and so we need that
+$$\boxed{\begin{matrix}
+0 & 2\\ 1 & 0
+\end{matrix}}\, \boxed{\begin{matrix}
+a & b\\ c & d
+\end{matrix}}= \boxed{\begin{matrix}
+2c & 2d\\ a & b
+\end{matrix}}=\boxed{\begin{matrix}
+    b & 2a\\ d & 2c
+\end{matrix}}=\boxed{\begin{matrix}
+a & b\\ c & d
+\end{matrix}}\,\boxed{\begin{matrix}
+0 & 2\\ 1 & 0
+\end{matrix}}$$
+
+This means we must require that $2c=b$, $2d=2a$, $a=d$ and $b=2c$. And so $\End(_\Omega V)=\left\{\begin{bmatrix}
+    a & 2c\\ c & a
+\end{bmatrix}: a,c\in \Q\right\}$. Finally notice that this is isomorphic to $\Q[\sqrt{2}]$, with the morphism $\varphi:\Q[\sqrt{2}] \ra\End(_\Omega V)$ such that $a+b\sqrt{2}\mapsto aI+b \,\boxed{\begin{matrix}
+0 & 2\\ 1 & 0
+\end{matrix}}$. Here we need only show that $\boxed{\begin{matrix}
+0 & 2\\ 1 & 0
+\end{matrix}}$ acts as $\sqrt{2}$. Notice that $\boxed{\begin{matrix}
+0 & 2\\ 1 & 0
+\end{matrix}}\,\boxed{\begin{matrix}
+0 & 2\\ 1 & 0
+\end{matrix}}=\boxed{\begin{matrix}
+2 & 0\\ 0 & 2
+\end{matrix}}$.\\
+
+\item % -2pts This definition is not testable as written since elements of a set are not labeled.  This would be better described as a function on an index set rather than a set.
+Let $\Delta$ be a division ring and $V$ a $\Delta$-Vector space. 
+%A basis of $V$ is a subset $B\se V$ such that $V=\text{span}\ip{B}$. 
+A set of vectors $B=\{v_x\in V| x\in X\}$ is a basis for $V$ if in the following diagram $\text{eval}$ is a unique isomorphism from the free vector space on $X$, $F_\Delta\ip{X}$, to $V$
+
+\[\begin{tikzcd}[row sep=1cm, column sep=.65cm]
+     X\arrow[drr, "v_*"]\arrow[d]&\\
+     F_\Delta\ip x\arrow[rr, "eval"']&&V\\
+    \end{tikzcd}\]
+This would require that $\text{eval}$ is an epimorphism and so $V=\text{span}_\Delta\ip{B}$, and that $\text{eval}$ has a trivial kernel, and so $B$ would be linearly independent over $\Delta$.\\ \\
+The set $B=\left\{\boxed{\begin{matrix}3\\ 2\end{matrix}},\boxed{\begin{matrix}1\\ 0\end{matrix}},\boxed{\begin{matrix}3\\ 2\end{matrix}}\right\}$ does qualify as a basis by the definition given however the nuance is that $B$ is a set of two elements although it was written with three. This can lead to issues as if one thinks of the three elements as distinct or as a multi-set, $B$ would no longer be a basis as we wouldn't have the linear independence requirement. It is only with the nuance of sets that $B$ satisfies the definition.\\
+
+\item The diagram definition for the pullback $Q(f,g)$ is as follows
+
+    \[
+    \begin{tikzcd}[row sep=1cm, column sep=.7cm]
+     \forall\arrow[ddd, dash]\\
+     \\
+     \\
+     \;
+    \end{tikzcd} 
+    \begin{tikzcd}[row sep=1cm, column sep=.65cm]
+     W& V\arrow[l,"g"']\\
+     U\arrow[u, "f"]&\\
+     & & 
+    \end{tikzcd}
+    \begin{tikzcd}[row sep=1cm, column sep=.7cm]
+     \exists\arrow[ddd, dash]\\
+     \\
+     \\
+     \;
+    \end{tikzcd} 
+    \begin{tikzcd}[row sep=1cm, column sep=.65cm]
+     W& V\arrow[l,"g"']\\
+     U\arrow[u, "f"]& Q(f,g)\arrow[u, "\mu"]\arrow[l, "v"]\\
+     & & 
+    \end{tikzcd}
+    \begin{tikzcd}[row sep=1cm, column sep=.7cm]
+     \forall\arrow[ddd, dash,]\\
+     \\
+     \\
+     \;
+    \end{tikzcd}
+    \begin{tikzcd}[row sep=1cm, column sep=.65cm]
+     W& V\arrow[l,"g"']\\
+     U\arrow[u, "f"]& Q(f,g)\arrow[u, "\mu"]\arrow[l, "v"]\\
+     & & T\arrow[ull, "a", bend left]\arrow[uul, "b", bend right]
+    \end{tikzcd}
+    \begin{tikzcd}[row sep=1cm, column sep=.7cm]
+     \exists!\arrow[ddd, dash]\\
+     \\
+     \\
+     \;
+    \end{tikzcd}
+    \begin{tikzcd}[row sep=1cm, column sep=.65cm]
+     W& V\arrow[l,"g"']\\
+     U\arrow[u, "f"]& Q(f,g)\arrow[u, "\mu"]\arrow[l, "v"]\\
+     & & T\arrow[ull, "a", bend left]\arrow[uul, "b", bend right]\arrow[ul, "\sigma"]
+    \end{tikzcd}
+    \]
+
+    From the first two panels in the cartoon we know that the pullback is a universal cone and so the unique arrow needs to factor through the pullback. To give an explicit construction we can use type theory. First we need the formation rule
+
+    \begin{prooftree}
+        \AxiomC{$U,V,W:\prescript{}{\Omega}{\mathrm{Mod}}$}
+        \AxiomC{$f:U\ra V, g:V\ra W$}
+        \BinaryInfC{$Q(f,g):Type$}
+    \end{prooftree}
+    
+    We then need two elimination rules, one for each map, $v$ and $\mu$, in the diagram
+    
+    \begin{multicols}{2}
+    
+        \begin{prooftree}
+            \AxiomC{$x:Q(f,g)$}
+            \UnaryInf$v(x)\fCenter: U$
+        \end{prooftree}
+        
+        \begin{prooftree}
+            \AxiomC{$x:Q(f,g)$}
+            \UnaryInf$\mu(x)\fCenter: W$
+        \end{prooftree}
+    
+    \end{multicols}
+    Furthermore we also know that 
+    \begin{prooftree}
+        \AxiomC{$x:Q(f,g)$}
+        \UnaryInf$f(v(x))=\fCenter\,g(\mu(x))$
+    \end{prooftree}
+    
+    Now we need the introduction rules which are as follows
+    \begin{prooftree}
+        \AxiomC{$T:Type, t:T$}
+        \AxiomC{$a:T\ra U, b:T\ra V,f(a(t))=g(b(t))$}
+        \BinaryInfC{$\sigma(t):Q(f,g)$}
+    \end{prooftree}
+
+    Now to combine both rules we need the computation rules which there are two for each introduction rule. First we have that
+
+    \begin{prooftree}
+        \AxiomC{$t:T$}
+        \AxiomC{$a:T\ra U, b:T\ra V,f(a(t))=g(b(t))$}
+        \BinaryInfC{$v(\sigma(t))=a(t)$}
+    \end{prooftree}
+And similarly we have that
+    \begin{prooftree}
+        \AxiomC{$t:T$}
+        \AxiomC{$a:T\ra U, b:T\ra V,f(a(t))=g(b(t))$}
+        \BinaryInfC{$\mu(\sigma(t))=b(t)$}
+    \end{prooftree}
+
+This gives us an explicit way to construct $Q(f,g)$ from any $T$ that satisfies the diagram.\\
+
+\item The definition of the kernel of a linear map $f$ in diagram language is
+
+\[
+    \begin{tikzcd}[row sep=1cm, column sep=.7cm]
+     \forall\arrow[ddd, dash]\\
+     \\
+     \\
+     \;
+    \end{tikzcd} 
+    \begin{tikzcd}[row sep=1cm, column sep=.65cm]
+     V& U\arrow[l,"f"']\\
+     &\\
+     &\\
+    \end{tikzcd}
+    \begin{tikzcd}[row sep=1cm, column sep=.7cm]
+     \exists\arrow[ddd, dash]\\
+     \\
+     \\
+     \;
+    \end{tikzcd} 
+    \begin{tikzcd}[row sep=1cm, column sep=.65cm]
+     V&& U\arrow[ll,"f"']\\
+     &\kernel f\arrow[ur, hook, "\iota"]\arrow[ul, "0"]&\\
+     & & 
+    \end{tikzcd}
+    \begin{tikzcd}[row sep=1cm, column sep=.7cm]
+     \forall\arrow[ddd, dash,]\\
+     \\
+     \\
+     \;
+    \end{tikzcd}
+    \begin{tikzcd}[row sep=1cm, column sep=.65cm]
+     V&& U\arrow[ll,"f"']\\
+     &\kernel f\arrow[ur, hook, "\iota"]\arrow[ul, "0"]&\\
+     & T\arrow[uur, hook, "h", bend right]\arrow[uul, "0", bend left]& 
+    \end{tikzcd}
+    \begin{tikzcd}[row sep=1cm, column sep=.7cm]
+     \exists!\arrow[ddd, dash]\\
+     \\
+     \\
+     \;
+    \end{tikzcd}
+    \begin{tikzcd}[row sep=1cm, column sep=.65cm]
+     V&& U\arrow[ll,"f"']\\
+     &\kernel f\arrow[ur, hook, "\iota"]\arrow[ul, "0"]&\\
+     & T\arrow[uur, hook, "h", bend right]\arrow[uul, "0", bend left]\arrow[u, "\sigma"]& 
+    \end{tikzcd}
+    \]
+
+The definition of the cokernel of a linear map $f$ in diagram language is
+
+\[
+    \begin{tikzcd}[row sep=1cm, column sep=.7cm]
+     \forall\arrow[ddd, dash]\\
+     \\
+     \\
+     \;
+    \end{tikzcd} 
+    \begin{tikzcd}[row sep=1cm, column sep=.65cm]
+     V& U\arrow[l,"f"']\\
+     &\\
+     &
+    \end{tikzcd}
+    \begin{tikzcd}[row sep=1cm, column sep=.7cm]
+     \exists\arrow[ddd, dash]\\
+     \\
+     \\
+     \;
+    \end{tikzcd} 
+    \begin{tikzcd}[row sep=1cm, column sep=.65cm]
+     V&& U\arrow[ll,"f"']\\
+     &\coker f\arrow[ul, twoheadleftarrow, "\pi"']\arrow[ur, "0", leftarrow]&\\
+     & & 
+    \end{tikzcd}
+    \begin{tikzcd}[row sep=1cm, column sep=.7cm]
+     \forall\arrow[ddd, dash,]\\
+     \\
+     \\
+     \;
+    \end{tikzcd}
+    \begin{tikzcd}[row sep=1cm, column sep=.65cm]
+     V&& U\arrow[ll,"f"']\\
+     &\coker f\arrow[ul, twoheadleftarrow, "\pi"']\arrow[ur, "0", leftarrow]&\\
+     &T\arrow[uul, twoheadleftarrow, "h"', bend left]\arrow[uur, "0", leftarrow, bend right]&
+    \end{tikzcd}
+    \begin{tikzcd}[row sep=1cm, column sep=.7cm]
+     \exists!\arrow[ddd, dash]\\
+     \\
+     \\
+     \;
+    \end{tikzcd}
+    \begin{tikzcd}[row sep=1cm, column sep=.65cm]
+     V&& U\arrow[ll,"f"']\\
+     &\coker f\arrow[ul, twoheadleftarrow, "\pi"']\arrow[ur, "0", leftarrow]&\\
+     &T\arrow[uul, twoheadleftarrow, "h"', bend left]\arrow[uur, "0", leftarrow, bend right]\arrow[u, leftarrow, "\sigma"]&
+    \end{tikzcd}
+    \]
+
+The definition of the image of a linear map $f$ in diagram language is
+
+\[
+    \begin{tikzcd}[row sep=1cm, column sep=.7cm]
+     \forall\arrow[ddd, dash]\\
+     \\
+     \\
+     \;
+    \end{tikzcd} 
+    \begin{tikzcd}[row sep=1cm, column sep=.65cm]
+     V& U\arrow[l,"f"']\\
+     &\\
+     &
+    \end{tikzcd}
+    \begin{tikzcd}[row sep=1cm, column sep=.7cm]
+     \exists\arrow[ddd, dash]\\
+     \\
+     \\
+     \;
+    \end{tikzcd} 
+    \begin{tikzcd}[row sep=1cm, column sep=.65cm]
+     V&& U\arrow[ll,"f"']\\
+     &\image f\arrow[ul, hook, "j"']\arrow[ur, leftarrow]&\\ %technically this is epi
+     & & 
+    \end{tikzcd}
+    \begin{tikzcd}[row sep=1cm, column sep=.7cm]
+     \forall\arrow[ddd, dash,]\\
+     \\
+     \\
+     \;
+    \end{tikzcd}
+    \begin{tikzcd}[row sep=1cm, column sep=.65cm]
+     V&& U\arrow[ll,"f"']\\
+     &\image f\arrow[ul, hook, "j"']\arrow[ur, leftarrow]&\\ %technically this is epi
+     &T\arrow[uul, hook, bend left]\arrow[uur, leftarrow, bend right]& %technically this is epi
+    \end{tikzcd}
+    \begin{tikzcd}[row sep=1cm, column sep=.7cm]
+     \exists!\arrow[ddd, dash]\\
+     \\
+     \\
+     \;
+    \end{tikzcd}
+    \begin{tikzcd}[row sep=1cm, column sep=.65cm]
+     V&& U\arrow[ll,"f"']\\
+     &\image f\arrow[ul, hook, "j"']\arrow[ur, leftarrow]&\\ %technically this is epi
+     &T\arrow[uul, hook, bend left]\arrow[uur, leftarrow, bend right]\arrow[u, leftarrow, "\sigma"]& 
+    \end{tikzcd}
+    \]
+
+The definition of the coimage of a linear map $f$ in diagram language is
+
+\[
+    \begin{tikzcd}[row sep=1cm, column sep=.7cm]
+     \forall\arrow[ddd, dash]\\
+     \\
+     \\
+     \;
+    \end{tikzcd} 
+    \begin{tikzcd}[row sep=1cm, column sep=.65cm]
+     V& U\arrow[l,"f"']\\
+     &\\
+     &
+    \end{tikzcd}
+    \begin{tikzcd}[row sep=1cm, column sep=.7cm]
+     \exists\arrow[ddd, dash]\\
+     \\
+     \\
+     \;
+    \end{tikzcd} 
+    \begin{tikzcd}[row sep=1cm, column sep=.65cm]
+     V&& U\arrow[ll,"f"']\\
+     &\coim f\arrow[ul]\arrow[ur, twoheadleftarrow, "\nu"]&\\ %technically this is epi
+     & & 
+    \end{tikzcd}
+    \begin{tikzcd}[row sep=1cm, column sep=.7cm]
+     \forall\arrow[ddd, dash,]\\
+     \\
+     \\
+     \;
+    \end{tikzcd}
+    \begin{tikzcd}[row sep=1cm, column sep=.65cm]
+     V&& U\arrow[ll,"f"']\\
+     &\coim f\arrow[ul]\arrow[ur, twoheadleftarrow, "\nu"]&\\
+     &T\arrow[uul, bend left]\arrow[uur, twoheadleftarrow, bend right]& %technically this is epi
+    \end{tikzcd}
+    \begin{tikzcd}[row sep=1cm, column sep=.7cm]
+     \exists!\arrow[ddd, dash]\\
+     \\
+     \\
+     \;
+    \end{tikzcd}
+    \begin{tikzcd}[row sep=1cm, column sep=.65cm]
+     V&& U\arrow[ll,"f"']\\
+     &\coim f\arrow[ul]\arrow[ur, twoheadleftarrow, "\nu"]&\\ 
+     &T\arrow[uul, bend left]\arrow[uur, twoheadleftarrow, bend right]\arrow[u, rightarrow, "\sigma"]&
+    \end{tikzcd}
+    \]
+    This last definition was obtained by flipping all the arrows in the image definition.\\
+
+
+    Now consider a linear map $f:U\ra V$ such that $f(u)=Mu$ where  $U=\R^4$, $V=\R^3$ and $$M=
+ \boxed{\begin{matrix}
+1 & 1 & 1 & 1\\
+1 & -1 & 1 & -1 \\
+2 & 4 & 2 & 4
+\end{matrix}}$$ 
+All calculations for matrix multiplications and row/column reductions were computed using Matlab. In this next part we will be compute the matrices $\Upsilon$, $\Gamma$, $I$, $P$ which correspond the the linear maps in the diagram below
+\[\begin{tikzcd}[row sep=1cm, column sep=.65cm]
+     \coker f &\arrow[l, twoheadrightarrow, "\Upsilon"']V& U\arrow[d, twoheadrightarrow, "P"]\arrow[l, "M"', "f"] & \kernel f\arrow[l, "\Gamma"', hook]\\
+     &\image f\arrow[u, hook, "I"]\arrow[r]& \coim f\arrow[l]
+    \end{tikzcd}\]
+To find the kernel of this matrix we will perform row operations on $M$ as the kernel is an embedding in the domain $U=\R^4$ and so row operations with only affect the basis element of the output. The row reductions for each step have been given in the form of a $3\time 3$ invertible matrix which represents left multiplication. 
+
+$$\boxed{\begin{matrix}
+1 & 1 & 1 & 1\\
+1 & -1 & 1 & -1 \\
+2 & 4 & 2 & 4
+\end{matrix}}
+\xrightarrow{\scalebox{0.5}{\;
+\boxed{\begin{matrix}
+    1 &0& 0\\
+    -1& 1 & 0\\
+    -1 & 0 & 1
+\end{matrix}}\;}}
+\boxed{\begin{matrix}
+1 & 1 & 1 & 1\\
+0 & -2 & 0 & -2 \\
+0 & 2 & 0 & 2
+\end{matrix}}
+\xrightarrow{\scalebox{0.5}{\;
+\boxed{\begin{matrix}
+    1 &0& 0\\
+    0& -\frac{1}{2} & 0\\
+    0 & 1 & 1
+\end{matrix}}\;}}
+\boxed{\begin{matrix}
+1 & 1 & 1 & 1\\
+0 & 1 & 0 & 1 \\
+0 & 0 & 0 & 0
+\end{matrix}}
+\xrightarrow{\scalebox{0.5}{\;
+\boxed{\begin{matrix}
+    1 &-1& 0\\
+    0& 1 & 0\\
+    0 & 0 & 1
+\end{matrix}}\;}}
+\boxed{\begin{matrix}
+1 & 0 & 1 & 0\\
+0 & 1 & 0 & 1 \\
+0 & 0 & 0 & 0
+\end{matrix}}$$
+From the reduced row echelon form we can determine the $4\times 2$ matrix $\Gamma$ which when multiplied on the right of the RREF gives the zero matrix(This requirement comes direction from the commutativity of the diagram).
+$$\Gamma=\boxed{\begin{matrix}
+-1 & 0\\
+0 & -1\\
+1 & 0\\
+0 & 1
+
+\end{matrix}}$$\\
+%This is the matrix that represents the kernel embedding $\iota:\kernel f =\R^2\hookrightarrow U=\R^4$.\\
+
+To then find the cokernel we know that the cokernel is a projection from the codomain meaning we can use column operations to modify the domain. In other words we can perform row reduction on the transpose matrix to get the transpose of the RCEF.
+$$\boxed{\begin{matrix}
+1 & 1 & 2\\
+1 & -1 & 4\\
+1 & 1 & 2\\
+1 & -1 & 4
+\end{matrix}}\xrightarrow{\scalebox{0.5}{\;
+\boxed{\begin{matrix}
+    1 &0& 0&0\\
+    -1& 1 & 0&0\\
+    -1 & 0 & 1&0\\
+    -1&0&0&1
+\end{matrix}}\;}}
+\boxed{\begin{matrix}
+1 & 1 & 2\\
+0 & -2 & 2\\
+0 & 0 & 0\\
+0 & -2 & 2
+\end{matrix}}
+\xrightarrow{\scalebox{0.5}{\;
+\boxed{\begin{matrix}
+    1 & 0 & 0 & 0\\
+    0 & -\frac{1}{2} & 0 & 0\\
+    0 & 0 & 1 & 0\\
+    0 & -1 & 0 & 1
+\end{matrix}}\;}}
+\boxed{\begin{matrix}
+1 & 1 & 2\\
+0 & 1 & -1\\
+0 & 0 & 0\\
+0 & 0 & 0
+\end{matrix}}
+\xrightarrow{\scalebox{0.5}{\;
+\boxed{\begin{matrix}
+    1 & -1 & 0 & 0\\
+    0 & 1 & 0 & 0\\
+    0 & 0 & 1 & 0\\
+    0 & 0 & 0 & 1
+\end{matrix}}\;}}
+\boxed{\begin{matrix}
+1 & 0 & 3\\
+0 & 1 & -1\\
+0 & 0 & 0\\
+0 & 0 & 0
+\end{matrix}}$$
+
+From the reduced column echelon form we can determine the $1\times 3$ matrix $\Upsilon$ which when multiplied on the left of the RCEF gives the zero matrix(This requirement comes direction from the commutativity of the diagram definition).
+$$\Upsilon=\boxed{\begin{matrix}
+-3 & 1 & 1
+\end{matrix}}$$\\
+%This is the matrix that represent the projection map $\pi:V=\R^3\ra\coker f=\R^1$.
+
+Now to find the image and its corresponding linear map, we will note that the image is an embedding on the codomain and so we need to modify the domain using column operations or with row operations of the transpose of $M$. We already found the matrix $M$ in reduced column echelon form which was 
+$$M\sim \boxed{\begin{matrix}
+1 & 0 & 0 & 0 \\
+0 & 1 & 0 & 0\\
+3 & -1 & 0 & 0
+\end{matrix}}$$
+This gives us the embedding map for the image which is represetned by the matrix 
+$$I=\boxed{\begin{matrix}
+1 & 0 \\
+0 & 1\\
+3 & -1
+\end{matrix}}$$
+Finally we need to find the coimage which is a projection from the domain and so we need to modify the codomain with row operations, from above we found the follow for the RREF
+$$M\sim \boxed{\begin{matrix}
+1 & 0 & 1 & 0\\
+0 & 1 & 0 & 1 \\
+0 & 0 & 0 & 0
+\end{matrix}}$$
+Meaning the project map into the coimage would be represented by this matrix without the zero rows which is the matrix
+
+$$P=\boxed{\begin{matrix}
+1 & 0 & 1 & 0\\
+0 & 1 & 0 & 1
+\end{matrix}}$$\\
+
+\item Let $M=\boxed{\begin{matrix}
+    1 & 2\\
+    1 & 3\\
+    1 & 4
+\end{matrix}}$ and $N=\boxed{\begin{matrix}
+    1\\
+    -1\\
+    1
+\end{matrix}}$ such that the linear maps $f:\R^2\ra\R^3$, and $g:\R^1\ra\R^3$ are defined such that $f(u):=Mu$ and $g(v):= Nv$. First we will show that $\mathcal{H}=\{M,N\}$ is a decomposition of $\R^3$. To see this notice that the space spanned by all three vectors can be column reduced (where the matrices on each arrow are multiplied on the right of each matrix) into the matrix
+$$\boxed{\begin{matrix}
+    1 & 2 & 1\\
+    1 & 3 & -1\\
+    1 & 4 & 1
+\end{matrix}}
+\xrightarrow{\scalebox{0.5}{\;
+\boxed{\begin{matrix}
+    1 & -2 & -1\\
+    0 & 1 & 0\\
+    0 & 0 & 1
+\end{matrix}}\;}}
+\boxed{\begin{matrix}
+    1 & 0 & 0\\
+    1 & 1 & -2\\
+    1 & 2 & 0
+\end{matrix}}
+\xrightarrow{\scalebox{0.5}{\;
+\boxed{\begin{matrix}
+    1 & 0 & 0\\
+    0 & 1 & 2\\
+    0 & 0 & 1
+\end{matrix}}\;}}
+\boxed{\begin{matrix}
+    1 & 0 & 0\\
+    1 & 1 & 0\\
+    1 & 2 & 4
+\end{matrix}}$$
+In this particular case it does not matter if we column or row reduce, but in general because we are interested in the result space spanned by our vectors and not necessarily the vectors used to span the space we can column reduce the vectors.
+After column reducing we can see the matrix has rank $3$, meaning it spans all of $\R^3$.
+We also know that neither of the sub spaces span $\R^3$ on their own notice as the corresponding embedding maps have rank at most $2$ and $1$ respectively and so neither span $\R^3$ alone. This means $\mathcal{H}$ is a decomposition of $\R^3$. Now to see that this map is a direct decomposition we need to determine the intersection of the two spaces spanned by each matrix. To do so we can consider the cokernels of each of the matrices in $\mathcal{H}$, This gives us the following diagram, where $\mu$ exists uniquely and corresponds to matrix $$\boxed{\begin{matrix}NULL(M^t)^t\;| \;NULL(N^t)^t\end{matrix}}$$
+where $NULL(M^t)^t$ and $NULL(N^t)^t$ are the matrices corresponding to the linear maps on diagram below.
+
+\[\begin{tikzcd}[row sep=1cm, column sep=.65cm]
+     &\R^3\arrow[dl, "NULL(M^t)^t"']\arrow[dr, "NULL(N^t)^t"]\arrow[d,"\mu"]&\\
+     \coker f& \coker f \times \coker g\arrow[l]\arrow[r] & \coker g\\
+    \end{tikzcd}\]
+
+    Notice that the kernel of $\mu$ tells us the elements of $\R^3$ that map to zero in the cokernels of both $f$ and $g$, meaning the elements that exist in both images of $f$ and $g$. So to find the intersection of the spaces we find the kernel of the product of the cokernels. First we can find that
+    $$NULL(M^t)^t=\boxed{\begin{matrix}
+    1 & -2 & 1
+\end{matrix}}$$
+which corresponds to the linear $\R^3\ra \coker f$. And similarly we can find that
+    $$NULL(N^t)^t=\boxed{\begin{matrix}
+    1 & 1 & 0\\
+    -1 & 0 & 1
+\end{matrix}}$$
+
+which corresponds to the linear $\R^3\ra \coker g$. And so when considering their product we can row reduce
+$$\boxed{\begin{matrix}
+    1 & -2 & 1\\
+    1 & 1 & 0\\
+    -1 & 0 & 1
+\end{matrix}}
+\xrightarrow{\scalebox{0.5}{\;
+\boxed{\begin{matrix}
+    1 & 0 & 0\\
+    -1 & 1 & 0\\
+    1/3 & -2/3 & 1
+\end{matrix}}\;}}
+\boxed{\begin{matrix}
+    1 & -2 & 1\\
+    0 & 3 & -1\\
+    0 & 0 & 4/3
+\end{matrix}}$$
+Notice that when we row reduce we find that the product matrix has rull rank meaning the kernel is trivial and therefore the corresponding spaces for $M$ and $N$ intersect only at $0$. This means $\mathcal{H}$ is a direct decomposition of $\R^3$.\\
+
+\item Let $F=\boxed{\begin{matrix}
+    2 & 1 & 1\\
+    1 & 2 & 1\\
+    1 & 1 & 2
+\end{matrix}}$ be the matrix in question. First let us look at Gram-Schmidt to diagonalize this matrix, which we can do as the matrix is symmetric (matrices above the arrows represent left multiplication, or row reduction, while matrices under the arrows represent right multiplication, or column reductions. All matrix multiplications were verified using Matlab). First we will clear the first row and column using symmetric operations
+$$\boxed{\begin{matrix}
+    2 & 1 & 1\\
+    1 & 2 & 1\\
+    1 & 1 & 2
+\end{matrix}}
+\xrightarrow[]{\scalebox{0.5}{\;
+\boxed{\begin{matrix}
+    1 & 0 & 0\\
+    -1/2 & 1 & 0\\
+    -1/2 & 0 & 1
+\end{matrix}}\;}}
+\boxed{\begin{matrix}
+    2 & 1 & 1\\
+    0 & 3/2 & 1/2\\
+    0 & 1/2 & 3/2
+\end{matrix}}
+\xrightarrow[\scalebox{0.5}{\;
+\boxed{\begin{matrix}
+    1 & -1/2 & -1/2\\
+    0 & 1 & 0\\
+    0 & 0 & 1
+\end{matrix}}\;}]{}
+\boxed{\begin{matrix}
+    2 & 0 & 0\\
+    0 & 3/2 & 1/2\\
+    0 & 1/2 & 3/2
+\end{matrix}}$$
+Then to clear the second row and column
+$$\boxed{\begin{matrix}
+    2 & 0 & 0\\
+    0 & 3/2 & 1/2\\
+    0 & 1/2 & 3/2
+\end{matrix}}
+\xrightarrow[]{\scalebox{0.5}{\;
+\boxed{\begin{matrix}
+    1 & 0 & 0\\
+    0 & 1 & 0\\
+    0 & -1/3 & 1
+\end{matrix}}\;}}
+\boxed{\begin{matrix}
+    2 & 1 & 1\\
+    0 & 3/2 & 1/2\\
+    0 & 0 & 4/3
+\end{matrix}}
+\xrightarrow[\scalebox{0.5}{\;
+\boxed{\begin{matrix}
+    1 & 0 & 0\\
+    0 & 1 & -1/3\\
+    0 & 0 & 1
+\end{matrix}}\;}]{}
+\boxed{\begin{matrix}
+    2 & 0 & 0\\
+    0 & 3/2 & 0\\
+    0 & 0 & 4/3
+\end{matrix}}$$
+Finally we can scale the diagonals 
+$$\boxed{\begin{matrix}
+    2 & 0 & 0\\
+    0 & 3/2 & 0\\
+    0 & 0 & 4/3
+\end{matrix}}
+\xrightarrow[\scalebox{0.5}{\;
+\boxed{\begin{matrix}
+    1/\sqrt{2} & 0 & 0\\
+    0 & 1/\sqrt{3/2} & 0\\
+    0 & 0 & 1/\sqrt{4/3}
+\end{matrix}}\;}]{\scalebox{0.5}{\;
+\boxed{\begin{matrix}
+    1/\sqrt{2} & 0 & 0\\
+    0 & 1/\sqrt{3/2} & 0\\
+    0 & 0 & 1/\sqrt{4/3}
+\end{matrix}}\;}}
+\boxed{\begin{matrix}
+    1 & 0 & 0\\
+    0 & 1 & 0\\
+    0 & 0 & 1
+\end{matrix}}
+$$
+
+This then gives us the diagnolization of the matrix $F$.
+$$\boxed{\begin{matrix}
+    1 & 0 & 0\\
+    0 & 1 & 0\\
+    0 & 0 & 1
+\end{matrix}}=\boxed{\begin{matrix}
+    1/\sqrt{2} & 0 & 0\\
+    -\sqrt{2/3}/2 & \sqrt{2/3} & 0\\
+    -\sqrt{3/4}/3 & -\sqrt{3/4}/3 & \sqrt{3/4}
+\end{matrix}}\,\boxed{\begin{matrix}
+    2 & 1 & 1\\
+    1 & 2 & 1\\
+    1 & 1 & 2
+\end{matrix}}\,\boxed{\begin{matrix}
+    1/\sqrt{2} & -\sqrt{2/3}/2 & -\sqrt{3/4}/3\\
+    0 & \sqrt{2/3} & -\sqrt{3/4}/3\\
+    0 & 0 & \sqrt{3/4}
+\end{matrix}} $$ 
+% [1/sqrt(2) 0 0; 0 1/sqrt(3/2) 0; 0 0 1/sqrt(4/3)]*[1 0 0; 0 1 0; 0 -1/3 1]*[1 0 0; -1/2 1 0; -1/2 0 1]*[2 1 1; 1 2 1; 1 1 2]*[1 0 0; -1/2 1 0; -1/2 0 1]'*[1 0 0; 0 1 0; 0 -1/3 1]'*[[1/sqrt(2) 0 0; 0 1/sqrt(3/2) 0; 0 0 1/sqrt(4/3)]]
+
+Alternatively we can compute the Jordan canonical form from the minimal polynomial. First to compute the minimal polynomial we will pick a random vector $v=\boxed{\begin{matrix}
+    -2 \\
+    3\\
+    5
+\end{matrix}}$ and compute the matrix $\boxed{\begin{matrix} v|Fv|\dots|F^k v
+\end{matrix}}$ such that $k$ is the minimal integer such that the matrix rank is less then the number of columns. In this case we will see that the first 2 columns are linearly independent. Using technology we can also determine that three columns would result in 2 pivots columns, and so $k=2$. And so to find the minimal polynomial we need to find the unique element in the null space of the matrix below, which can be done easily by row reducing, and finding the vector that multiplies to zero with a $1$ in the free term (RREF was computed with Matlab).
+
+$$\boxed{\begin{matrix} 
+-2 & 4 & 28\\
+3 & 9 & 33\\
+5 & 11 & 35
+\end{matrix}}\sim \boxed{\begin{matrix} 
+1 & 0 & -4\\
+0 & 1 & 5\\
+0 & 0 & 0
+\end{matrix}}$$
+Now we can determine the unique element in the null space to be $\boxed{\begin{matrix} 
+4 & -5 & 1
+\end{matrix}}\,^t$ and so the minimal polynomial is $\text{min}_F(x)=x^2-5x+4=(x-4)(x-1)$. However this method only gives us the minimal polynomial with high probability so we need to check this is in fact the minimal polynomial by plugging in $F$ into the polynomial.\\
+
+From the minimal polynomial we know that the Eigenvalues are $1$ and $4$. From this we can conclude that the matrix $F$ is diagnolizable but we can not conclude if the matrix is Sanjay's solution $\boxed{\begin{matrix} 
+4 & 0 & 0\\
+0 & 1 & 0\\
+0 & 0 & 1
+\end{matrix}}$ or if the matrix is $\boxed{\begin{matrix} 
+4 & 0 & 0\\
+0 & 4 & 0\\
+0 & 0 & 1
+\end{matrix}}$. We would need an additional tool. Using The work from Gram-Schmidt we would know that the determinant would be $4$, and so Sajays solution is correct but in general we would not necessarily know based off the minimum polynomial alone. So the answer would be (a), but one could argue that the answer is also (c). As both solutions in general would provide different interpretations with the change of bases they have.\\
+
+\item In this case, up to change of basis there are $3$ matrices. For the linear transform $f:\R^7\ra \R^7$ whose minimal polynomial is $\text{min}_f(x)=(x-1)^3(x-2)^2(x-3)$ we know that $f$ has $3$ Eigenvalues which are $1,2$ and $3$, as these are the roots of the polynomial. Furthermore we know from the multiplicity that the largest Jordan blocks are $\boxed{\begin{matrix} 
+1 & 1 & 0\\
+0 & 1 & 1\\
+0 & 0 & 1
+\end{matrix}}$, $\boxed{\begin{matrix} 
+2 & 1\\
+0 & 2\\
+\end{matrix}}$ and $\boxed{\begin{matrix} 
+3
+\end{matrix}}$ for each of the eigenvalues. We know that these three Jordan blocks must exist in our matrix up to change of basis (the change of basis for the Jordan canonical form). This leaves only one row and columns that could potentially be different of which there are three options for the remaining cell or Jordan block, a 1 by 1 block with any of the three Eigenvalues. This means the possible matrices up to change of basis are the following(with blanks being zeros)
+$$\boxed{\begin{matrix} 
+\boxed{\begin{matrix} 
+1 & 1 & 0\\
+0 & 1 & 1\\
+0 & 0 & 1
+\end{matrix}} &  &  &\\
+ & \boxed{\begin{matrix} 
+2 & 1\\
+0 & 2\\
+\end{matrix}} & & \\
+ &  & \boxed{\begin{matrix} 1
+\end{matrix}} &\\
+&&& \boxed{\begin{matrix} 1
+\end{matrix}}
+\end{matrix}}\;
+\;
+\;\;\;\;\;
+\boxed{\begin{matrix} 
+\boxed{\begin{matrix} 
+1 & 1 & 0\\
+0 & 1 & 1\\
+0 & 0 & 1
+\end{matrix}} &  &  &\\
+ & \boxed{\begin{matrix} 
+2 & 1\\
+0 & 2\\
+\end{matrix}} & & \\
+ &  & \boxed{\begin{matrix} 1
+\end{matrix}} &\\
+&&& \boxed{\begin{matrix} 2
+\end{matrix}}
+\end{matrix}}\;
+\;
+\;\;\;\;\;
+\boxed{\begin{matrix} 
+\boxed{\begin{matrix} 
+1 & 1 & 0\\
+0 & 1 & 1\\
+0 & 0 & 1
+\end{matrix}} &  &  &\\
+ & \boxed{\begin{matrix} 
+2 & 1\\
+0 & 2\\
+\end{matrix}} & & \\
+ &  & \boxed{\begin{matrix} 1
+\end{matrix}} &\\
+&&& \boxed{\begin{matrix} 3
+\end{matrix}}
+\end{matrix}}$$
+\end{enumerate}
+
+\end{document}
+
+

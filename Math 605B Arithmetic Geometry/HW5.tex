@@ -1,0 +1,70 @@
+\def\darktheme{}
+
+\documentclass[12pt]{amsart}
+\usepackage{preamble}
+
+\begin{document}
+\begin{center}
+    \textsc{Math 605B. HW 4\\ Ian Jorquera}
+\end{center}
+\vspace{1em}
+
+\subsection*{part 1}
+\begin{itemize}
+\item[(1)] Consider the automorphism $\oldphi$ on $E:y^2=x^3+x$ that maps $(x,y)\mapsto (-x,iy)$. First to see that this is an automorphism notice that $(iy)^2=-y^2=-x^3-x=(-x)^3-x$. Notice that $\oldphi^2(x,y)=(x,-y)$ which is the map $[-1]$ and so $\oldphi=[i]$.\\
+
+\item[(3)] If $P$ is a $4$-torsion point then $[4]P=[2][2]P=P_\infty$, which means that $2P$ is a $2$-torsion point, and from problem (2) we know that $y_{2P}=0$.
+
+\item[(4)] Let $v_1'=(1,\sqrt{2})$. Notice that $x_{2v_1'}=\frac{1-2+1}{4\cdot 2}=0$. And because $[2]v_1'$ in on $E$ we know that $y_{2v_1'}=0$ and so $[2]v_1'=v_1$ which is a $2$-torsion point meaning $v_1'$ is a 4-torsion point.\\
+
+\item[(5)] Let $v_2'=(-\alpha,i\beta)$. Notice that with sage we can compute that $x_{2v_2'}=i$. And because $[2]v_2'$ in on $E$ we know that $y_{2v_2'}=0$ and so $[2]v_2'=v_2$ which is a $2$-torsion point meaning $v_2'$ is a 4-torsion point.\\
+
+\end{itemize}
+
+\subsection*{part 2}
+\begin{itemize}
+    \item[(3)] Notice that $v_1=(0,0)$ is a point in $(\F_p)^2$ and so the Frobiuous map fixes it so $\sigma(v_1)=v_1$. Notice also that $-1$ is a square module $p$ when $p\equiv 1\mod 4$, and so $i\in \F_p$ when $p\equiv 1\mod 4$. This means that $v_2=(0,i)$ is fixed under the Frobiuous map and so $\sigma(v_2)=v_2$.\\
+    
+    \item[(4)] Notice again that $v_1=(0,0)$ is a point in $(\F_p)^2$ and so the Frobiuous map fixes it so $\sigma(v_1)=v_1$. When $p\equiv 3\mod 4$ $-1$ is not a square $\F_p$ meaning $i\not\in \F_p$. This means that $v_2=(0,i)$ is not fixed under the Frobiuous map. Now notice that $\sigma(v_2)=(0,i^p)$ where $i^p$ is $\pm i$ but because $\sigma$ does not fix $v_2$ we know that $\sigma(v_2)=v_1+v_2$.\\
+    
+    \item[(6)] \begin{enumerate}[label=(\alph*)]
+        \item Notice that when $p\equiv 5\mod 8$ we have that $8|p-5$ and so $4|p-5$ meaning $4|p-1$. And by problem 1 we know that $2$ is not a square so so $\sqrt{2}\not\in \F_p$. Now consider $v_1'=(1,\sqrt{2})$ and notice that $\sigma(v_1')=(1,\sqrt{2}^p)=(1,2^{\frac{p}{2}})=(1,2^{\frac{p-1}{2}}\cdot 2^\frac{1}{2})=(1,-\sqrt 2)=-v_1'$\\
+        
+        \item Notice that from above we know that $\sqrt{2}^p=-\sqrt{2}$ and $i^p=i$ 
+        \begin{align*}
+            \sigma(-\alpha)&=(1-\sqrt{2})^pi^p\\
+            &=(1^p-\sqrt{2}^p)i= (1+\sqrt p) i=-1/\alpha\\
+        \end{align*}
+
+        the computation was verified in sage. We also have that
+        \begin{align*}
+            \sigma(i\beta)&=i^p(1+i)^p(\sqrt{2}-1)^p\\
+            &=i(1+i^p)(\sqrt{2}^p-1)\\
+            &=i(1+i)(-\sqrt{2}-1)=i\beta/\alpha^2\\
+        \end{align*}
+        where the last computation was verified in sage.
+        
+        \item This follows from the chart in problem 7 of part 1 and that $4v_1'=0$ and so $\sigma(v_2')=(1/\alpha, i\beta/\alpha^2)=3v_1'+2v_2'=-v_1'+2v_2'$.\\
+    \end{enumerate}
+    \item[(8)] 
+    \begin{enumerate}[label=(\alph*)]
+        \item Notice that $8|p-7$ which means that $4|p-7$ and so $4\nmid p-1$. And so $i\not\in \F_p$. And from part 1 we know that $\sqrt{2}\in\F_p$. Now consider $v_1'=(1,\sqrt{2})$ and notice that $\sigma(v_1')=(1,\sqrt{2}^p)=(1,\sqrt 2)=v_1'$\\
+        
+        \item Notice that from above we know that $\sqrt{2}^p=\sqrt{2}$ and $i^p=-i$ so
+        \begin{align*}
+            \sigma(\alpha)&=(1-\sqrt{2})^pi^p\\
+            &=(1^p-\sqrt{2}^p)(-i)= -(1-\sqrt p) i=-\alpha\\
+        \end{align*}
+
+        and we also have that
+        \begin{align*}
+            \sigma(i\beta)&=i^p(1+i)^p(\sqrt{2}-1)^p\\
+            &=-i(1+i^p)(\sqrt{2}^p-1)\\
+            &=-i(1-i)(\sqrt{2}-1)\\
+            &=-(1+i)(\sqrt{2}-1)=-\beta\\
+        \end{align*}
+        
+        \item This follows from the chart in problem 7 of part 1 and that $3v_1'=0$ and $\sigma(v_2')=(\alpha, -\beta)=v_1'+3v_2'=v_1'-v_2'$.\\
+    \end{enumerate}
+\end{itemize}
+\end{document}

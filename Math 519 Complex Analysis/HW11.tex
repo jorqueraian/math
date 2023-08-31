@@ -1,0 +1,72 @@
+\documentclass[12pt]{amsart}
+\usepackage{preamble}
+
+\newcommand{\ps}[1]{\left( #1 \right)}
+
+\begin{document}
+\begin{center}
+    \textsc{Math 519. HW 11\\ Ian Jorquera}
+\end{center}
+\vspace{1em}
+
+
+\begin{enumerate}
+\item 
+\begin{enumerate}
+\item Let $F(s)=\xi(\frac{1}{2}+s)$. And recall the function equation $\xi(s)=\xi(1-s)$ which gives us that 
+$$F(-s)=\xi(\frac{1}{2}-s)=\xi(1-(\frac{1}{2}+s))=\xi(\frac{1}{2}+s)$$
+And so there exists a function $G$ such that $G(s^2)=F(s)$
+\item To see that $(s-1)\zeta(s)$ is entire recall that 
+$$(s-1)\zeta(s)=\frac{\pi^{s/2}\xi(s)}{\Gamma(s/2)}(s-1)$$
+And recall that $\xi$ has simple poles at $s=0$ and $s=1$ and $\Gamma$ is non-vanishing and has simple poles at non-positive integers. This means that with $\Gamma$, $(s-1)\zeta(s)$ has a removable singularity at $s=0$ and with the $(s-1)$ factor has a removable singularity at $s=1$. These can be extended to an entire function. so $(s-1)\zeta(s)$ is entire.\\
+
+This therefore means the $G(s)$ has order of growth $1/2$
+
+\item $G(s)$ having fractional order means it has infinitely many zeros, from Hadamard's result. 
+Assume that $s_0$ is such a zero, meaning $G(s_0)=0$. We can consider the possible square roots of $s_0$, of which there are two, in either case is must be the case that $F(\pm s_0^{1/2})=0$. And so $F$ has infinitely many zeros. Furthermore because $\xi(s_0+\frac{1}{2})=0$ if and only if $G(s^2)=F(s_0)=0$ we know that $\xi$ must also have infinitely many zeros. We also know that the only zeros of $\xi$ are on the critical strip and come from $\zeta(s_0+\frac{1}{2})=0$. $\zeta$ has infinitely many zeros in the critical strip.\\
+\end{enumerate}
+
+\item 
+\begin{enumerate}
+    \item Recall that $\psi(x)=\sum\limits_{n\leq x}\Lambda(n)$. Notice that when $n< x$, we have that $\frac{x}{n}> 1$ and so $\delta(\frac{x}{n})=1$. Likewise if $n> x$, we have that $\frac{x}{n}< 1$ and so $\delta(\frac{x}{n})=0$. Finally when $n=x$ we have that $\delta(x/n)=\delta(1)=1/2$, however in this case becasue $x$ is not an integer we have that $\Lambda(x)=0$ and so
+    $$\sum\limits_{n\geq 1}\Lambda(x)\delta(x/n)=\sum\limits_{n< x}\Lambda(n)\delta(x/n)+\sum\limits_{n>x}\Lambda(n)\delta(x/n)+\Lambda(n)\delta(1)=\sum\limits_{n\leq x}\Lambda(n)=\psi(x)$$
+
+    \item Let $G(s)=\frac{x^s}{s}\ps{\frac{-\zeta'(s)}{\zeta(s)}}$ and so 
+    \begin{align*}
+        \frac{1}{2\pi i}\int_{c-i\infty}^{c+i\infty}\frac{x^s}{s}\ps{\frac{-\zeta'(s)}{\zeta(s)}}ds&=\frac{1}{2\pi i}\int_{c-i\infty}^{c+i\infty}\frac{x^s}{s}\ps{\sum_{n\geq 1}\Lambda(n)n^{-s}}ds\\
+        &=\sum_{n\geq 1}\Lambda(n)\frac{1}{2\pi i}\int_{c-i\infty}^{c+i\infty}\frac{\ps{\frac{x}{n}}^s}{s}ds\\
+        &=\sum_{n\geq 1}\Lambda(n)\delta(x/n)\\
+        &=\psi(s)
+    \end{align*}
+\end{enumerate}
+
+\item
+\begin{enumerate}
+    \item Notice that because $\zeta$ has a simple pole at $s=1$, that $L(\zeta)$ has a simple pole and so 
+    \begin{align*}
+        \res_{s=1}(G(s))&=\lim_{s\ra 1}(s-1)\frac{-x^s}{s}L(\zeta)\\
+        &=\lim_{s\ra 1}\frac{-x^s}{s}\lim_{s\ra 1}(s-1)L(\zeta)\\
+        &=-x\res_{s=1}(L(\zeta))\\
+        &=-x\;\text{ord}_{s=1}(\zeta(s))=x
+    \end{align*}
+    \item Because $\zeta$ is non-vanishing and and has no pole at $s=0$ we know that $L(\zeta)$ has no pole, meaning $G(s)$ has a simple pole at $s=0$. This means that 
+    \begin{align*}
+        \res_{s=0}(G(s))&=\lim_{s\ra 0}s\frac{-x^s}{s}L(\zeta)\\
+        &=\lim_{s\ra 0}-x^sL(\zeta)\\
+        &=\lim_{s\ra 0}x^s\lim_{s\ra 0}-L(\zeta)\\
+        &=\lim_{s\ra 0}-L(\zeta)
+    \end{align*}
+    \item Notice that because $\zeta$ has simple zeros at $s=-2n$ for $n\geq 1$, that $L(\zeta)$ has simple poles and so 
+    \begin{align*}
+        \res_{s=-2n}(G(s))&=\lim_{s\ra -2n}(s+2n)\frac{-x^s}{s}L(\zeta)\\
+        &=\lim_{s\ra -2n}\frac{-x^s}{s}\lim_{s\ra -2n}(s+2n)L(\zeta)\\
+        &=\frac{x^{-2n}}{2n}\res_{s=-2n}(L(\zeta))\\
+        &=\frac{x^{-2n}}{2n}\;\text{ord}_{s=-2n}(\zeta(s))\\
+        &=\frac{x^{-2n}}{2n}
+    \end{align*}
+
+    And so $\sum \frac{x^{-2n}}{2n}=\frac{1}{2}\sum \frac{x^{-2n}}{n}=-\frac{1}{2}\log(1-x^{-2})$
+\end{enumerate}
+\end{enumerate}
+
+\end{document}

@@ -1,0 +1,41 @@
+%Revised: yes for the combo final project parts
+\section{Framing the Theory}
+\label{sec:example}
+Now that we have developed some of the frame theory needed we will look at an example of a real frame in $\R^6$, and its Naimark complement in $\R^{10}$. 
+$$\Phi=\frac{1}{\sqrt{3}}\begin{pmatrix}[cccc|cccc|cccc|cccc]
+1&-1&1&-1&1&-1&1&-1&0&0&0&0&0&0&0&0\\
+1&1&-1&-1&0&0&0&0&1&-1&1&-1&0&0&0&0\\
+1&-1&-1&1&0&0&0&0&0&0&0&0&1&-1&1&-1\\
+0&0&0&0&1&1&-1&-1&1&1&-1&-1&0&0&0&0\\
+0&0&0&0&1&-1&-1&1&0&0&0&0&1&1&-1&-1\\
+0&0&0&0&0&0&0&0&1&-1&-1&1&1&-1&-1&1\\
+\end{pmatrix}$$
+
+\begin{example}
+$\Phi$ is an unit-norm ETF with frame bound $A=\frac{8}{3}$ and $\spark(\Phi)=4$.
+\end{example}
+
+\begin{proof}
+\iftoggle{full}{First to show that $\Phi$ is tight frame we will compute the frame operator. Notice that the inner product of any two rows will mostly be the product of zeros, but it may be the case that two columns will agree and two will disagree in sign, meaning the inner product of distinct rows is $0$. Notice also that the norm squared of every row is $8\cdot \left(\frac{1}{\sqrt 3}\right)^2=\frac{8}{3}$. So $\Phi$ is a tight frame by proposition \ref{prop:bigboi_prop}.
+
+Now we need to show that this is an equal angular tight frame. We can do this by noting that every two distinct columns will have a non-zero element in $1$ or $3$ entries and in the case of $1$ entry the sign will disagree and in the case of $3$, $1$ entry will agree in sign and the other $2$ with disagree so we find that $\ip{\phi_j,\phi_k}=-\frac{1}{3}$ for all $j\neq k$ and $\ip{\phi_j,\phi_j}=1$ for all $j$. And so $\Phi$ is a finite unit norm equiangular tight frame.
+
+Finally, notice if}{If} we index these vectors from left to right by $[16]$ we may notice that $1,2,3$ and $4$ form a circuit. Furthermore, no three vectors from the same block are linearly dependent and for any three vectors in different blocks, each vector has one dimension that only that vector reaches. And in the case that two vectors are from the same block, they would not be linearly dependent and the third would reach dimensions the others do not. And so no three vectors are linearly dependent. So the smallest circuit is of size $4$, meaning the spark is $4$.
+\end{proof}
+
+Now consider a Naimark complement which we will call $\Psi$. We know that $\Psi$ is a frame for $\R^{10}$ with $16$ vectors. Using the properties of Naimark complements and matroids we can analyze the properties of the Naimark complement without directly computing the possible vectors.
+
+\begin{example}
+    The frame $\Psi$ is an equal-norm ETF with frame found $A=\frac{8}{3}$ and has $\spark(\Psi)=8$
+\end{example}
+\begin{proof}
+    By proposition \ref{prop:naimark_comp_is_nice} we know that $\Psi$ is an equal-norm ETF with frame bound $A=\frac{8}{3}$. By the proof of \ref{prop:naimark_comp_is_nice} we know that the norm of the vectors of $\Psi$ is $\frac{8}{3}-1=\frac{5}{3}$, which can also be seen with proposition \ref{cor:the_trace_thingy}. So we need only compute the spark. We will look at the corresponding matroid where we know that $M(\Psi)=M(\Phi)^*$. And from proposition \ref{prop:interpeting_the_dual} we know that the smallest circuit in $M(\Psi)$ corresponds to the maximal hyperplane of $M(\Phi)$. So it suffices to find the maximal number of columns of $\Phi$ that do not span $\R^3$. Notice that any $2$ blocks of vectors span all but one of the dimensions corresponding to the non-zero entries, and any ninth vector not in the blocks spans $\R^{10}$. This means any 2 blocks is a maximal hyperplane of size $8$. And because a maximal hyperplane $H$ corresponds to a minimal circuit by $E-H$ which would have a size of $16-8=8$, and so the spark of $\Psi$ is $8$.
+\end{proof}
+
+ Notice that for $\R^{10}$ a full spark frame would have a spark of $11$.
+
+A motivation behind this example is in the computability of spark, for frames. In general computing the girth of a matroid can be very difficult: for graphical matroids, girth can be computed rather easily, but for representable matroids, it can be very computationally difficult.
+% https://www.sciencedirect.com/science/article/pii/S0166218X07002260
+In general, for linear matroids finding girth is w[1]-hard with respect to the girth or rank of the matroid. And FPT with respect to a combination of the rank of the matroid and the size of the underlying field. Meaning that finding good algebraic spread in frames is very hard unless you have a small dimensional space and the frame is on a small field.
+
+Naimark complements can reduce the dimension. Given dim $d<n$ and $n-d<d$ then studying the Naimark complement is likely easier, at least heuristically. Although in this case, we are computing cogirth, which is the problem of finding non-spanning sets, it is still the case that the dimension of the space can be dramatically reduced.

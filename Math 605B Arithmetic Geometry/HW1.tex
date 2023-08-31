@@ -1,0 +1,140 @@
+\documentclass[12pt]{amsart}
+% packages
+\usepackage{graphicx}
+\usepackage{setspace}
+\usepackage{amssymb,amsmath,amsthm,amsfonts,amscd}
+\usepackage{hyperref}
+\usepackage{color}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{enumitem}
+\usepackage[retainorgcmds]{IEEEtrantools}
+\usepackage[notref,notcite,final]{showkeys}
+\usepackage[final]{pdfpages}
+\usepackage{fancyhdr}
+\usepackage{upgreek}
+\usepackage{multicol}
+\usepackage{fontawesome}
+\usepackage{halloweenmath}
+% set margin as 0.75in
+\usepackage[margin=0.75in]{geometry}
+
+% tikz-related settings
+\usepackage{tkz-berge}
+\usetikzlibrary{calc,quotes}
+\usetikzlibrary{arrows.meta}
+\usetikzlibrary{positioning, automata}
+\usetikzlibrary{decorations.pathreplacing}
+
+%% For table
+\usepackage{tikz}
+\usetikzlibrary{tikzmark}
+
+% theorem environments with italic font
+\newtheorem{thm}{Theorem}[section]
+\newtheorem*{thm*}{Theorem}
+\newtheorem{lemma}[thm]{Lemma}
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem{claim}[thm]{Claim}
+\newtheorem{corollary}[thm]{Corollary}
+\newtheorem{conjecture}[thm]{Conjecture}
+\newtheorem{question}[thm]{Question}
+\newtheorem{procedure}[thm]{Procedure}
+\newtheorem{assumption}[thm]{Assumption}
+
+% theorem environments with roman font (use lower-case version in body
+% of text, e.g., \begin{example} rather than \begin{Example})
+\newtheorem{Definition}[thm]{Definition}
+\newenvironment{definition}
+{\begin{Definition}\rm}{\end{Definition}}
+\newtheorem{Example}[thm]{Example}
+\newenvironment{example}
+{\begin{Example}\rm}{\end{Example}}
+
+\theoremstyle{definition}
+\newtheorem{remark}[thm]{\textbf{Remark}}
+
+% special sets
+\newcommand{\A}{\mathbb{A}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\cals}{\mathcal{S}}
+\newcommand{\ZZ}{\mathbb{Z}_{\ge 0}}
+\newcommand{\cala}{\mathcal{A}}
+\newcommand{\calb}{\mathcal{B}}
+\newcommand{\cald}{\mathcal{D}}
+\newcommand{\calh}{\mathcal{H}}
+\newcommand{\call}{\mathcal{L}}
+\newcommand{\calr}{\mathcal{R}}
+\newcommand{\la}{\mathbf{a}}
+\newcommand{\lgl}{\mathfrak{gl}}
+\newcommand{\lsl}{\mathfrak{sl}}
+\newcommand{\lieg}{\mathfrak{g}}
+
+% math operators
+\DeclareMathOperator{\kernel}{\mathrm{ker}}
+\DeclareMathOperator{\image}{\mathrm{im}}
+\DeclareMathOperator{\rad}{\mathrm{rad}}
+\DeclareMathOperator{\id}{\mathrm{id}}
+\DeclareMathOperator{\hum}{[\mathrm{Hum}]}
+\DeclareMathOperator{\eh}{[\mathrm{EH}]}
+\DeclareMathOperator{\lcm}{\mathrm{lcm}}
+\DeclareMathOperator{\Aut}{\mathrm{Aut}}
+\DeclareMathOperator{\Inn}{\mathrm{Inn}}
+\DeclareMathOperator{\Out}{\mathrm{Out}}
+\DeclareMathOperator{\Gal}{\mathrm{Gal}}
+
+
+% frequently used shorthands
+\newcommand{\ra}{\rightarrow}
+\newcommand{\se}{\subseteq}
+\newcommand{\ip}[1]{\langle#1\rangle}
+\newcommand{\dual}{^*}
+\newcommand{\inverse}{^{-1}}
+\newcommand{\norm}[2]{\|#1\|_{#2}}
+\newcommand{\abs}[1]{\lvert #1 \rvert}
+\newcommand{\Abs}[1]{\bigg| #1 \bigg|}
+\newcommand\bm[1]{\begin{bmatrix}#1\end{bmatrix}}
+\newcommand{\op}{\text{op}}
+
+% nicer looking empty set
+\let\oldemptyset\emptyset
+\let\emptyset\varnothing
+
+%the var phi gang
+\let\oldphi\phi
+\let\phi\varphi
+
+\setlist[enumerate,1]{topsep=1em,leftmargin=1.8em, itemsep=0.5em, label=\textup{(}\arabic*\textup{)}}
+\setlist[enumerate,2]{topsep=0.5em,leftmargin=3em, itemsep=0.3em}
+
+%pagestyle
+%\pagestyle{fancy} 
+
+\begin{document}
+\begin{center}
+    \textsc{Math 605B. HW 1\\ Ian Jorquera}
+\end{center}
+\vspace{1em}
+
+\begin{itemize}
+
+\item[(1)] 
+Fix the point $(-1,0)$ on the parabola $H: x^2-y^2=1$. and pick any value $t\in \Q$ such that $t\neq \pm 1$. We know that the line that intersects $(-1,0)$ and has slope $t$, $y=t(x+1)$, must intersect $H$ at a ration point. This follows from the fact that the intersections are the roots of the quadratic equation $x^2-(t(x+1))^2=1$ which has a ration solution $x=-1$, and so must have a second rational solution. The polynomial $x^2-(t(x+1))^2=1$ can be written as $x^2-\frac{2t^2}{1-t^2}x-\frac{t^2+1}{1-t^2}$ and because we know $x=-1$ is a root the second root is $x=\frac{t^2+1}{1-t^2}$, which corresponds to the point $(\frac{t^2+1}{1-t^2}, \frac{2t}{1-t^2})$. Notice that for any ration point $(x_1,y_1)$ not equal to $(-1, 0)$ on $H$ we have the slope $t=\frac{y_1}{x_1+1}$, meaning all points not equal to $(-1,0)$ are parameterized by lines with slope $t\neq \pm 1$. Notice also that for $t=\pm 1$ we have the polynomial $x^2-(x+1)^2=1$ which is the equation $y=-2x-2$ and so the line with slope $t=\pm 1$ intersects the parabola at only the point $(-1,0)$ and so we can parameterize the rational points on $H$ with the lines with rational slope that go through $(-1,0)$.\\
+
+\item[(2)] Notice this parameterization also works for the field $\Z/p\Z$. For any $t\in \Z/p\Z$ where $t\neq \pm 1$ we have the $\Z/p\Z$-rational point $(\frac{t^2+1}{1-t^2}, \frac{2t}{1-t^2})$ on $H: x^2-y^2=1$. This parameterization gives $p-2$ points, for each $t\in \Z/p\Z$ where $t\neq \pm 1$. We also have the point $(-1,0)$ which is on $H$, so there are $p-1$ $\Z/p\Z$-rational points on $H$.\\
+
+\item[(3)] For $p$ and odd prime we have that the following are equivalent: (1) $p\equiv 1$ or $3\mod 8$ (2) $w^2\equiv -2\mod p$ has a solution (3) $p=x^2+2y^2$ for $x,y\in\Z$ (4) $p$ factors in $\Z[\sqrt{-2}]$. We will first prove $3\Rightarrow 2$) let $p=x^2+2y^2$ for $x,y\in\Z$ in which case $0\equiv x^2+2y^2 \mod p$ and so $-2y^2\equiv x^2$. Notice that $p\nmid 2y^2$ meaning $-2\equiv \frac{x^2}{y^2}\equiv (\frac{x}{y})^2 \mod p$. Now we will show that $1\Leftrightarrow 2$) We will assume (2) meaning $1={-2 \choose p}={-1 \choose p}{2 \choose p}$ which is the case when either both are $1$ or $-1$. They are both $1$ when $p\equiv \pm 1 \mod 8$ and $p\equiv \pm 1 \mod 3$, which is when $p\equiv 1 \mod 8$. Alternatively both of these conditions are false when $p\equiv 3 \mod 8$. we can exclude that cases when $p$ is congruent to even numbers as we are assuming $p$ is odd. Now we will show $4\Rightarrow 3$) assume that $p$ factors in $\Z[\sqrt{-2}]$, that is $p=z_1z_2$ for non-units in $\Z[\sqrt{-2}]$. Consider the norm $N(a+\sqrt{-2}b)=a^2+2b^2$. We know that neither $z_1$ or $z_2$ are units meaning they are not equal to $\pm 1$. Notice that $1=N(z_1)=a^2+2b^2$ which is only the case when $a=\pm 1$. so if $z_1$ and $z_2$ are non-units we know they have norm not equal to $1$. Now notice that $N(p)=p^2=N(z_1)N(z_2)$ and neither norm is $1$ we know that both must be $p$ and so $p=N(z_1)=a^2+2b^2$. Finally we will show that $2\Rightarrow 4$) first note that $\Z[\sqrt{-2}]$ is a UFD and assume we have a solution $w^2\equiv -2 \mod p$ which means that $p|w^2+2=(w-\sqrt{-2})(w+\sqrt{-2})$ and if we assume that $p$ does not factor then by the prime lemma must divide one of the terms: $p|(w-\sqrt{-2})$ or $p|(w+\sqrt{-2})$ and so we would have that $\frac{w}{p}\pm\frac{1}{p}\sqrt{-2}$. However $\frac{1}{p}$ is not an integer and so a contradiction.\\
+\end{itemize}
+
+\end{document}
+
+
+
+
+
+

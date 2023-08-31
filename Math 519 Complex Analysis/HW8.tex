@@ -1,0 +1,51 @@
+\documentclass[12pt]{amsart}
+\usepackage{preamble}
+
+\begin{document}
+\begin{center}
+    \textsc{Math 519. HW 8\\ Ian Jorquera}
+\end{center}
+\vspace{1em}
+
+% sage: https://sagecell.sagemath.org/
+\begin{enumerate}
+\item Assume that $\Omega$ is a domain such that $C_1(0)\se \Omega$. Now assume that on $\Omega$ there exists a function $F(z)$ such that $z=\exp(F(z))$. Notice that if this is the case we have that $\frac{d}{dz}\left[z\right]=1=\exp(F(z))\cdot F'(z)=\frac{d}{dz}\left[\exp(F(z))\right]$, which means that $F'(z)=\exp(-F(z))=\frac{1}{z}$. However because $\gamma_1(0)\in \Omega$ we have that
+
+\begin{align*}
+    \int_{\gamma_1(0)}\frac{1}{z}dz=2\pi i
+\end{align*}
+Which means there is no primitive for $F'(z)=\frac{1}{z}$ on $\Omega$ and so no $F(z)$ exists on $\Omega$.\\
+
+\item
+\begin{enumerate}
+    \item Let $f(z)$ and $g(z)$ be continuous branches of the logarithm over $\Omega$. This means that $e^{f(z)}=z=e^{g(z)}$ on $\Omega$. Notice that this means $1=e^{f(z)}e^{-g(z)}=e^{f(z)-g(z)}$. And this occurs when $f(z)-g(z)=2\pi i n$ for any integer $n$, meaning $f(z)=g(z)+2\pi i n$ for any integer $n$.\\
+    
+    \item Let $f(z)$ be a continuous branch of the logarithm on $\Omega$ and let $(\Omega_j)$ be a covering of simply connected subsets of $\Omega$ such that $0\not\in \Omega_j$. Now for any $z_0\in \Omega$ we know that $z_0\in \Omega_j$ for some $j$. And in this case we know that there exists a branch of the logarithm $g(z)$ on $\Omega_j$ that is holomorphic and we know that $f(z)=g(z)+2\pi i n$ for some integer $n$ on $\Omega_j$. Notice that this means that $f'(z_0)=g'(z_0)$. And so $f$ is holomorphic on $\Omega$.\\
+\end{enumerate}
+
+\item % 155
+Consider a domain $\Omega$ containing $\overline{N_1(0)}$ such that $f$ is holomorphic on $\Omega$ and non-vanishing on the unit circle with $f(0)\neq 0$ and $z_1,\dots,z_N$ the zeros of $f$ counted with multiplicity in $N_1(0)$. Consider the Blanschke factor $\psi_\alpha(z)=\frac{\alpha-z}{1-\overline{\alpha}z}$, where $|\alpha|<1$, in which case we know that $\psi_\alpha$ is a holomorphic involution on the unit disk that exchanges $0$ and $\alpha$, this means that $\psi_\alpha(\alpha)=0$. Now consider the function $g(z)=f(z)/(\psi_{z_1}(z)\cdots\psi_{z_N}(z))$. Notice that because $z_1,\dots,z_N$ counts the zeros of $f$ with multiplicity, if $f$ has a zero at $w_0$ with multiplicity $n$ then the function $\psi_{z_1}(z)\cdots\psi_{z_N}(z)$ has a hole at $w_0$ with multiplicity $n$. This results in the function $g(z)$ having no zeros and instead only removable singularities, meaning $g$ may be extended to include these singularities, meaning $g$ is holomorphic and never vanishing on the unit disk. \\
+
+Notice also that because $|\psi_\alpha(z)|=1$ when $|z|=1$ we know that $g$ is non-vanishing on the closed unit disk which is simply connected. This means we may write $g(z)=e^{h(z)}$ for some function $h$ that is holomorphic on the disk. This then gives us that $|g(z)|=|e^{h(z)}|=e^{\Real(h(z))}$, meaning $\log\abs{g(z)}=\Real(h(z))$. Now notice from the mean value theorem we know that on the unit disk.\\
+
+\begin{align*}
+    h(0)&=\frac{1}{2\pi}\int_{0}^{2\pi}h(e^{i\theta})\,d\theta\\
+    \Real(h(0))&=\frac{1}{2\pi}\int_{0}^{2\pi}\Real(h(e^{i\theta}))\,d\theta\\
+    \log\abs{g(0)}&=\frac{1}{2\pi}\int_{0}^{2\pi}\log\abs{g(e^{i\theta})}\,d\theta
+\end{align*}
+ Finally this gives us that
+\begin{align*}
+\log|g(0)|&=\frac{1}{2\pi}\int_{0}^{2\pi}\log\abs{g(e^{i\theta})}\,d\theta\\
+\log\abs{f(0)}-\log\abs{z_1\cdots z_N}&= \frac{1}{2\pi}\int_{0}^{2\pi}\log\abs{{\frac{f(e^{i\theta})}{\psi_{z_1}(e^{i\theta})\cdots\psi_{z_N}(e^{i\theta})}}}\,d\theta\\
+\log\abs{f(0)}&=\log\abs{z_1\cdots z_N}+ \frac{1}{2\pi}\int_{0}^{2\pi}\log\abs{f(e^{i\theta})}\,d\theta\\
+\log\abs{f(0)}&=\sum_{j=1}^N\log\abs{z_j}+ \frac{1}{2\pi}\int_{0}^{2\pi}\log\abs{f(e^{i\theta})}\,d\theta
+\end{align*}
+\end{enumerate}
+
+\end{document}
+
+
+
+
+
+

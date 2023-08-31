@@ -1,0 +1,253 @@
+\documentclass[12pt]{amsart}
+% packages
+\usepackage{graphicx}
+\usepackage{setspace}
+\usepackage{amssymb,amsmath,amsthm,amsfonts,amscd}
+\usepackage{hyperref}
+\usepackage{color}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{enumitem}
+\usepackage[retainorgcmds]{IEEEtrantools}
+\usepackage[notref,notcite,final]{showkeys}
+\usepackage[final]{pdfpages}
+\usepackage{fancyhdr}
+\usepackage{upgreek}
+\usepackage{multicol}
+\usepackage{fontawesome}
+\usepackage{halloweenmath}
+\usepackage{ytableau}
+% set margin as 0.75in
+\usepackage[margin=0.75in]{geometry}
+
+% tikz-related settings
+\usepackage{tkz-berge}
+\usetikzlibrary{calc,quotes}
+\usetikzlibrary{arrows.meta}
+\usetikzlibrary{positioning, automata}
+\usetikzlibrary{decorations.pathreplacing}
+
+%% For table
+\usepackage{tikz}
+\usetikzlibrary{tikzmark}
+
+% theorem environments with italic font
+\newtheorem{thm}{Theorem}[section]
+\newtheorem*{thm*}{Theorem}
+\newtheorem{lemma}[thm]{Lemma}
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem{claim}[thm]{Claim}
+\newtheorem{corollary}[thm]{Corollary}
+\newtheorem{conjecture}[thm]{Conjecture}
+\newtheorem{question}[thm]{Question}
+\newtheorem{procedure}[thm]{Procedure}
+\newtheorem{assumption}[thm]{Assumption}
+
+% theorem environments with roman font (use lower-case version in body
+% of text, e.g., \begin{example} rather than \begin{Example})
+\newtheorem{Definition}[thm]{Definition}
+\newenvironment{definition}
+{\begin{Definition}\rm}{\end{Definition}}
+\newtheorem{Example}[thm]{Example}
+\newenvironment{example}
+{\begin{Example}\rm}{\end{Example}}
+
+\theoremstyle{definition}
+\newtheorem{remark}[thm]{\textbf{Remark}}
+
+% special sets
+\newcommand{\A}{\mathbb{A}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\cals}{\mathcal{S}}
+\newcommand{\ZZ}{\mathbb{Z}_{\ge 0}}
+\newcommand{\cala}{\mathcal{A}}
+\newcommand{\calb}{\mathcal{B}}
+\newcommand{\cald}{\mathcal{D}}
+\newcommand{\calh}{\mathcal{H}}
+\newcommand{\call}{\mathcal{L}}
+\newcommand{\calr}{\mathcal{R}}
+\newcommand{\la}{\mathbf{a}}
+\newcommand{\lgl}{\mathfrak{gl}}
+\newcommand{\lsl}{\mathfrak{sl}}
+\newcommand{\lieg}{\mathfrak{g}}
+
+% math operators
+\DeclareMathOperator{\kernel}{\mathrm{ker}}
+\DeclareMathOperator{\image}{\mathrm{im}}
+\DeclareMathOperator{\rad}{\mathrm{rad}}
+\DeclareMathOperator{\id}{\mathrm{id}}
+\DeclareMathOperator{\hum}{[\mathrm{Hum}]}
+\DeclareMathOperator{\eh}{[\mathrm{EH}]}
+\DeclareMathOperator{\lcm}{\mathrm{lcm}}
+\DeclareMathOperator{\Aut}{\mathrm{Aut}}
+\DeclareMathOperator{\Inn}{\mathrm{Inn}}
+\DeclareMathOperator{\Out}{\mathrm{Out}}
+\DeclareMathOperator{\Gal}{\mathrm{Gal}}
+
+
+% frequently used shorthands
+\newcommand{\ra}{\rightarrow}
+\newcommand{\se}{\subseteq}
+\newcommand{\ip}[1]{\langle#1\rangle}
+\newcommand{\dual}{^*}
+\newcommand{\inverse}{^{-1}}
+\newcommand{\norm}[2]{\|#1\|_{#2}}
+\newcommand{\abs}[1]{\lvert #1 \rvert}
+\newcommand{\Abs}[1]{\bigg| #1 \bigg|}
+\newcommand\bm[1]{\begin{bmatrix}#1\end{bmatrix}}
+\newcommand{\op}{\text{op}}
+
+% nicer looking empty set
+\let\oldemptyset\emptyset
+\let\emptyset\varnothing
+
+%the var phi gang
+\let\oldphi\phi
+\let\phi\varphi
+
+\setlist[enumerate,1]{topsep=1em,leftmargin=1.8em, itemsep=0.5em, label=\textup{(}\arabic*\textup{)}}
+\setlist[enumerate,2]{topsep=0.5em,leftmargin=3em, itemsep=0.3em}
+
+%pagestyle
+%\pagestyle{fancy} 
+
+\begin{document}
+\begin{center}
+    \textsc{Math 502. HW 2\\ Ian Jorquera}
+\end{center}
+\vspace{1em}
+% See http://www.mathematicalgemstones.com/maria/Math501Fall22.php
+% for problems
+
+% sage: https://sagecell.sagemath.org/
+\begin{itemize}
+
+\item[(1)]
+\begin{itemize}
+    \item First recall that we can write $s_{(2,1)}=2m_{(1,1,1)}+m_{(2,1)}$. This gives us that $\ip{s_{(2,1)},h_{(1,1,1)}}=\ip{2m_{(1,1,1)}+m_{(2,1)},h_{(1,1,1)}}=2\ip{m_{(1,1,1)},h_{(1,1,1)}}+\ip{m_{(2,1)},h_{(1,1,1)}}=2+0=2$.\\
+    \item In this case we have that $\ip{s_{(2,1,1)},s_{(3,2)}}=\delta_{{(2,1,1)},{(3,2)}}=0$.\\
+    \item In this case we can rewrite $e_{(2,1)}$ in terms of monomial basis by counting binary matrices and we find that $e_{(2,1)}=3m_{(1,1,1)}+m_{(2,1)}$. This gives us that $\ip{e_{(2,1)},h_{(2,1)}}=\ip{3m_{(1,1,1)}+m_{(2,1)},h_{(2,1)}}=3\ip{m_{(1,1,1)},h_{(2,1)}}+\ip{m_{(2,1)},h_{(2,1)}}=0+1=1$.\\
+    \item Notice that $z_{(3,2,2,1)}=(1^1\cdot 1!)(2^2\cdot 2!)(3^1\cdot 1!)=24$ and so $\ip{p_{(3,2,2,1)},p_{(3,2,2,1)}}=24\ip{p_{(3,2,2,1)},\frac{p_{(3,2,2,1)}}{24}}=24$.\\
+\end{itemize}
+
+\item[(2)] Recall that the Jacobi-Trudi formula is $s_\lambda=\det(h_{\lambda_i-i+j})_{ij}$ and so with the omega involution we have that $s_\lambda=\omega s_\lambda^t=\omega\det(h_{\lambda^t_i-i+j})_{ij}=\omega\sum_{\pi\in S_{\ell(\lambda)}}\text{sgn}(\pi)\prod_{i=1}^nh_{\lambda^t_i-i+\pi(i)}=\sum_{\pi\in S_{\ell(\lambda)}}\text{sgn}(\pi)\prod_{i=1}^n\omega  h_{\lambda^t_i-i+\pi(i)}=\sum_{\pi\in S_{\ell(\lambda)}}\text{sgn}(\pi)\prod_{i=1}^n e_{\lambda^t_i-i+\pi(i)}=\det(e_{\lambda^t_i-i+j})_{ij}$.\\
+
+\item[(3)] The following permutations correspond the the following 2 line arrays and pairs of young tablau under the RSK bijection
+
+\begin{tabular}{cc}
+    $\begin{pmatrix}1 & 2 & 3\\ 1 & 2 & 3\end{pmatrix}$ & \ytableausetup{smalltableaux}
+\ytableaushort{
+123},\ytableausetup{smalltableaux}
+\ytableaushort{
+123} \\
+  $\begin{pmatrix}1 & 3 & 2\\ 1 & 2 & 3\end{pmatrix}$ & \ytableausetup{smalltableaux}
+\ytableaushort{
+3,12},\ytableausetup{smalltableaux}
+\ytableaushort{
+3,12} \\
+  $\begin{pmatrix}2 & 1 & 3\\ 1 & 2 & 3\end{pmatrix}$ & \ytableausetup{smalltableaux}
+\ytableaushort{
+2,13},\ytableausetup{smalltableaux}
+\ytableaushort{
+2,13} \\
+  $\begin{pmatrix}3 & 2 & 1\\ 1 & 2 & 3\end{pmatrix}$ & \ytableausetup{smalltableaux}
+\ytableaushort{
+3,2,1},\ytableausetup{smalltableaux}
+\ytableaushort{
+3,2,1} \\
+ $\begin{pmatrix}2 & 3 & 1\\ 1 & 2 & 3\end{pmatrix}$ & \ytableausetup{smalltableaux}
+\ytableaushort{
+2,13},\ytableausetup{smalltableaux}
+\ytableaushort{
+3,12} \\
+ $\begin{pmatrix}3 & 1 & 2\\ 1 & 2 & 3\end{pmatrix}$ & \ytableausetup{smalltableaux}
+\ytableaushort{
+3,12},\ytableausetup{smalltableaux}
+\ytableaushort{
+2,13} \\
+\end{tabular}
+
+\item[(4)] we have the following words with there corresponding pairs of young tablau.\\
+\begin{tabular}{cc}
+    $\begin{pmatrix}1 & 1 & 2 & 3\\ 1 & 2 & 3 & 4\end{pmatrix}$ & \ytableausetup{smalltableaux}
+\ytableaushort{
+1123},\ytableausetup{smalltableaux}
+\ytableaushort{
+1123}\\
+$\begin{pmatrix}1 & 2 & 1 & 3\\ 1 & 2 & 3 & 4\end{pmatrix}$ & \ytableausetup{smalltableaux}
+\ytableaushort{
+2,113},\ytableausetup{smalltableaux}
+\ytableaushort{
+3,124}\\
+$\begin{pmatrix}1 & 2 & 3 & 1\\ 1 & 2 & 3 & 4\end{pmatrix}$ & \ytableausetup{smalltableaux}
+\ytableaushort{
+2,113},\ytableausetup{smalltableaux}
+\ytableaushort{
+4,123}\\
+$\begin{pmatrix}1 & 1 & 3 & 2\\ 1 & 2 & 3 & 4\end{pmatrix}$ & \ytableausetup{smalltableaux}
+\ytableaushort{
+3,112},\ytableausetup{smalltableaux}
+\ytableaushort{
+4,123}\\
+$\begin{pmatrix}2 & 1 & 1 & 3\\ 1 & 2 & 3 & 4\end{pmatrix}$ & \ytableausetup{smalltableaux}
+\ytableaushort{
+2,113},\ytableausetup{smalltableaux}
+\ytableaushort{
+2,134}\\
+$\begin{pmatrix}2 & 1 & 3 & 1\\ 1 & 2 & 3 & 4\end{pmatrix}$ & \ytableausetup{smalltableaux}
+\ytableaushort{
+23,11},\ytableausetup{smalltableaux}
+\ytableaushort{
+24,13}\\
+$\begin{pmatrix}2 & 3 & 1 & 1\\ 1 & 2 & 3 & 4\end{pmatrix}$ & \ytableausetup{smalltableaux}
+\ytableaushort{
+23,11},\ytableausetup{smalltableaux}
+\ytableaushort{
+34,12}\\
+$\begin{pmatrix}3 & 1 & 1 & 2\\ 1 & 2 & 3 & 4\end{pmatrix}$ & \ytableausetup{smalltableaux}
+\ytableaushort{
+3,112},\ytableausetup{smalltableaux}
+\ytableaushort{
+2,134}\\
+$\begin{pmatrix}3 & 1 & 2 & 1\\ 1 & 2 & 3 & 4\end{pmatrix}$ & \ytableausetup{smalltableaux}
+\ytableaushort{
+3,2,11},\ytableausetup{smalltableaux}
+\ytableaushort{
+4,2,13}\\
+$\begin{pmatrix}3 & 2 & 1 & 1\\ 1 & 2 & 3 & 4\end{pmatrix}$ & \ytableausetup{smalltableaux}
+\ytableaushort{
+3,2,11},\ytableausetup{smalltableaux}
+\ytableaushort{
+3,2,14}\\
+$\begin{pmatrix}1 & 3 & 1 & 2\\ 1 & 2 & 3 & 4\end{pmatrix}$ & \ytableausetup{smalltableaux}
+\ytableaushort{
+3,112},\ytableausetup{smalltableaux}
+\ytableaushort{
+3,124}\\
+$\begin{pmatrix}1 & 3 & 2 & 1\\ 1 & 2 & 3 & 4\end{pmatrix}$ & \ytableausetup{smalltableaux}
+\ytableaushort{
+3,2,11},\ytableausetup{smalltableaux}
+\ytableaushort{
+4,3,12}
+\end{tabular}
+
+\item[(5)] The $2$-line array that corresponds to the pair of Young Tablau is 
+$$\begin{pmatrix}
+    2&2&3&4&1&3&4&1&1\\
+    1&1&1&1&2&2&2&3&3
+\end{pmatrix}$$
+
+\end{itemize}
+
+\end{document}
+
+
+
+
+
+

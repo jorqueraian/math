@@ -1,0 +1,195 @@
+% Revised: ehh good enough.
+\section{Matroids}
+\label{sec:matroids}
+A key advantage to interpreting data with a frame, as opposed to an orthonormal basis, is to make the data more robust to noise and loss of information. Many frames achieve this robustness through redundancies. However, in proposition \ref{cor:frame_iff_span}, we saw that a frame was equivalent to a collection of vectors that spans a vector space. And it is often important to distinguish good frames from bad frames with notions of geometric and algebraic spread. 
+In definition \ref{def:frame} we defined an equiangular frame that encapsulations an understanding of good geometric spread. However, this does not guarantee a good algebraic spread. Algebraic spread encapsulates how mutually linearly dependent a collection of data is, and is formalized with the definition of spark.
+\begin{Definition}
+\label{def:spark}
+Let $\Phi=(\phi_j)_{j=1}^n$ be a collection of vectors in $\F^d$, then the \textit{spark} of $\Phi$ is defined as
+$$\spark{\Phi}=\min\{m \;|\;(\phi_{j_k})_{k=1}^m\se (\phi_j)_{j=1}^n \text{ linearly dependent, } j_1<j_2<\dots < j_m\}$$
+If $\spark(\Phi)=d+1$ then we say $\Phi$ is full spark.
+\end{Definition}
+
+This means the spark is the size of the smallest subset of linearly dependent vectors. A frame being full spark means any subset of $d$ vectors forms a basis. In general $1\leq \spark(\Phi)\leq \rank(\Phi)+1$, which suggests that while the rank encapsulates the maximal (linear) independence of a collection of vectors the spark in a sense encapsulates the worst-case, or minimal dependence, of a collection of vectors. The spark captures a sense of how mutually redundant the vectors are. 
+
+As we will see throughout this section, matroids act as important and useful tools in encapsulating the dependence of a frame and its algebraic spread.
+
+\begin{Definition}
+\label{def:matroid_I}
+    A \textit{matroid} $M$ is a pair $(E,\mathcal{I})$ where $E$ is a finite set, called the \textit{ground set} and $\mathcal{I}\se \mathcal{P}(E)$ the \textit{independent sets}, such that
+    \begin{itemize}
+        \item[(I1)] $\emptyset\in\mathcal{I}$
+        \item[(I2)](\textit{Hereditary Property}) If $I\in \mathcal{I}$ and $J\se I$ then $J\in\mathcal{I}$
+        \item[(I3)] (\textit{Exchange}): If $I_1,I_2\in \I$ with $|I_1|<|I_2|$ then there exists some $x\in I_2-I_1$ with $I_1\cup x\in \I$.
+    \end{itemize}
+\end{Definition}
+\iftoggle{full}{
+A matroid generalizes the notion of linear independence in vector spaces and independence in the form of acyclic subgraphs in graphs and often the power of matroids come from applying ideas from graph theory to frames. First, we will note that every frame (more generally any collection of vectors) is a matroid with linear independence.
+
+\begin{example}
+\label{ex:vectspace}
+Let $(\phi_j)_{j=1}^n$ be a collection of vectors in $\F^d$. Then $M(\Phi)=((\phi_j)_{j=1}^n,\I)$ with $\I$ the subsets of linearly dependent vectors is a matroid. We will often simplify this construction by using $M(\Phi)=([n], \I)$ where $\I$ is instead just the indices of the vectors of each subset of linearly independent vectors.
+\end{example}
+\begin{example}
+\label{ex:graph}
+Let $G=(V, E)$ be a graph. Then $M(G)=(E,\I)$ is a matroid where $E$ is the set of edges and $\I$ the subsets of the edges that form acyclic subgraphs.
+\end{example}
+
+Because matroids generalize the notion of independence in vector spaces and graphs it is often helpful to know when a matroid can be expressed as a collection of vectors or as a graph.}{}
+
+\begin{Definition}
+\label{def:rep_graphical_matroid}
+    Let $M=(E,\I)$ be a matroid. If there exists a collection of vectors $(\phi_j)_{j\in E}$ in $\F^d$ for some field $\F$, indexed by $E$ such that $(\phi_j)_{j\in I}$ is linearly independent if and only if $I\in\I$ the $M$ is called \textit{representable} over $\F$. If a matroid is representable over any field it is called \textit{regular}. Likewise, if there exists a graph, not necessarily simple, $\Gamma=(V, E)$ such that $I\se E$ corresponds to an acyclic subgraph if and only if $I\in\I$ then $M$ is called a \textit{graphical} matroid.
+\end{Definition}
+
+A well-studied question in matroid theory is the classification of graphical and representable matroids. Theorem \ref{thm:graph_regular_matroid_thm} is a rather surprising theorem.
+
+\begin{thm}
+\label{thm:graph_regular_matroid_thm}
+Every graphical matroid is regular
+\end{thm}
+\begin{proof}
+    Let $M$ be a graphical matroid, that is, there exists some graph $\Gamma=(V, E)$ such that $M(\Gamma)=(E,\I_\Gamma)$, where $\I_\Gamma$ are the subsets of $E$ that form acyclic subgraphs, is the same matroid as $M$. Fix an ordering for the vertices and edges, that is $V=(v_j)_{j=1}^n$ and $V=(e_j)_{j=1}^m$. And we will construct an oriented incidence matrix for $\Gamma$ which is the matrix $\tilde{B}=(\tilde{b}_{jk})$ where 
+    $$\tilde{b}_{jk}=\begin{cases}
+        1 & \text{if } e_k \text{ connects } v_j \text{ and } v_\ell \text{ where } j<\ell\\
+        -1 & \text{if } e_k \text{ connects } v_j \text{ and } v_\ell \text{ where } j>\ell\\
+        0 & \text{otherwise}
+    \end{cases}$$
+    In a sense, this construction gives an orientation to our graph. Each column $\tilde{b}_k$ encodes an edge $e_k$ as a vector: if $e_k$ is an edge connecting $v_i$ and $v_j$ where $i<j$, we have the vector with a $1$ in the $i$th column and a $-1$ in the $j$th column, in essence, it gives each edge an orientation based on the fixed ordering of the vertices, effectively labeling $v_i$ as the source and $v_j$ as the sink. Loops are encoded as zero vectors and duplicate edges are duplicate vectors.
+    
+    Notice that this allows us to relate a path in a graph with a linear combination of the corresponding columns. Notice that for a path in $G$: a sequence $v_{j_1}e_{k_1}v_{j_2}e_{k_2}v_{j_3}$, we can add the corresponding columns associated with the edges in the path taking into account the orientations. That is if $j_1<j_2$ the path walks along the edge according to its orientation, and if $j_1>j_2$ the path walks against the orientation of the edge so we must multiply it by $-1$ when adding the edge. And so the sum of the vectors corresponding to each edge, taking into account the orientation of the edges, results in the vector with a $1$ in the $j_1$ row and a $-1$ in the $j_3$ column, the starting the ending vertices of the path. Notice that for a cycle $v_{j_1}e_{k_1}v_{j_2}e_{k_2}\dots v_{j_r}e_{k_r}v_{j_1}$, the path $v_{j_1}e_{k_1}v_{j_2}e_{k_2}\dots v_{j_r}$ would result in a vector with a $1$ in the $j_1$ row and a $-1$ in the $j_r$ row, and so when the vector corresponding to $e_{k_r}$ is added, taking into account the orientation, we would add a vector with $1$ in the $j_r$ row and a $-1$ in the $j_1 $ row resulting in the zero vector. 
+
+    Now we want to show that $M(\Gamma)$ and the matroid formed from the columns of the incidence matrix $M(\tilde{B})=(\tilde{B},\I_{\tilde{B}})$ are the same. Consider first a subset of the columns that are linearly independent: $(b_j)_{j\in I}\in \I_{\tilde{B}}$. This means that no non-trivial linear combination gives the zero vector, and so no sum of edges forms a cycle. And so the set of edges $(e_j)_{j\in I}\in\I_\Gamma$. 
+    Conversely, consider a subset of edges $(e_j)_{j\in I}\in\I_\Gamma$ such that the induced subgraph is acyclic. And consider a linear combination of the corresponding columns $\sum_{j\in I}\alpha_j\tilde{b}_j=0$. Notice that because the subgraph is acyclic it is a forest and so contains a leaf vertex $v_k$ with an edge connecting it $e_\ell$. Notice that this means that $\tilde{b}_\ell$ is the only vector with a non-zero entry in the $k$th row meaning $\alpha_\ell=0$. Notice that this effectively removes $e_\ell$ from the graph which results in an acyclic subgraph itself. We may repeat this inductively for all edges to conclude that $\alpha_\ell=0$ for all $\ell$, meaning $(\tilde{b}_j)_{j\in I}\in\I_{\tilde{B}}$.
+\end{proof}
+%Remove(although true, it is pointless):\iftoggle{full}{This result shows that any graph can be used to form a frame for any field if the resulting matrix has full rank matching the dimension of the space, the number of vertices. However, this rarely results in nice frames.}{}
+The contrapositive of this theorem provides a way to show certain matroids are not graphical, by showing there exists a field such that a matroid is not representable. 
+
+Matroids have many \textit{cryptomorphic} definitions, which correspond to properties that determine the matroid.
+
+\begin{Definition}
+\label{def:circs_bases}
+    Let $M=(E,\I)$ be a matroid, a \textit{circuit} is a subset $C\se E$ such that every proper subset $I\subsetneq C$ is an independent set, that is $I\in\I$. And a basis is an independence set $B\in \I$ of maximal size, meaning for the addition of any other element $x\in E$ it is the case that $B\cup x\not\in\I$.
+\end{Definition}
+
+\iftoggle{full}{
+Circuits can be thought of as minimally dependent sets, and for graphical matroid correspond to cycles in graphs. Every subset of $E$ is either an independent set or is called a \textit{dependent set} and so contains a circuit, a minimal dependent set. The size of the smallest circuit is called the \textit{girth} of the matroid and for a representable matroid is equivalent to the \textit{spark} of its vectors. This allows us to interpret frames as matroids. As with bases of vector spaces and spanning trees of graphs, the bases of a matroid all have equal sizes.
+}{The size of the smallest circuit is called the \textit{girth} of the matroid and for a representable matroid is equivalent to the \textit{spark} of its vectors. This allows us to interpret frames as matroids.}
+
+Both the set of circuits and the set of bases as defined in definition \ref{def:circs_bases} determine a matroid\iftoggle{full}{ which we will see in theorems \ref{thm:equiv_matroid_I_C} and \ref{thm:equiv_matroid_I_B}}{} and so motivate cryptomorphic definitions
+
+\begin{Definition}
+\label{def:matroid_C}
+    A \textit{matroid} $M$ is a pair $(E,\mathcal{C})$ where $E$ is a finite set, called the \textit{ground set} and $\mathcal{C}\se \mathcal{P}(E)$ the set of \textit{circuits}, such that
+    \begin{itemize}
+        \item[(C1)] $\emptyset\not\in\mathcal{C}$
+        \item[(C2)] If $C_1,C_2\in \mathcal{C}$ with $C_1\se C_2$ then $C_1=C_2$
+        \item[(C3)] (Circuit Elemenation) If $C_1,C_2\in \mathcal{C}$ with $e\in C_1\cap C_2$ there exists $C_3\in C_1\cap C_2-e$ such that $C_3\in\mathcal{C}$
+    \end{itemize}
+\end{Definition}
+\begin{Definition}
+\label{def:matroid_B}
+    A \textit{matroid} $M$ is a pair $(E,\mathcal{B})$ where $E$ is a finite set, called the \textit{ground set} and $\mathcal{B}\se \mathcal{P}(E)$ the set of \textit{bases}, such that
+    \begin{itemize}
+        \item[(B1)] $\mathcal{B}$ is not empty
+        \item[(B2)] (exchange): if $B_1,B_2\in\mathcal{B}$ with $B_1\neq B_2$ then for any $x\in B_1-B_2$ there exists some $y\in B_2-B_1$ such that $B_1-x+y\in\mathcal{B}$
+    \end{itemize}
+\end{Definition}
+
+\iftoggle{full}{
+The following theorems outline how to construct the independence sets given a matroid using the circuit definition and basis definition, and showing that each definition is equivalent.
+\begin{thm}
+\label{thm:equiv_matroid_I_C}
+    The Independence set definition and the circuit definitions are equivalent. That is if $M=(E,\I)$ is a matroid, then $M=(E,\mathcal{C})$ is a matroid where $\mathcal{C}=\{C\se E | C\not\in \mathcal{I}\text{, and for all }I\subsetneq C, I\in\mathcal{I}\}$ is the set of circuits.\\
+    Likewise if $M=(E,\mathcal{C})$ is a matroid, then $M=(E,\mathcal{I})$ is a matroid where $\mathcal{I}=\{I\in E| \text{ for all } C\in\mathcal{C}, C\not\se I\}$.
+\end{thm}
+\begin{proof}
+We will prove the first direction of this theorem. Let $M=(E,\mathcal{I})$ be a matroid satisfying (I1), (I2), and (I3). Let $\mathcal{C}=\{C\se E | C\not\in \mathcal{I}\text{, and for all }I\subsetneq C, I\in\mathcal{I}\}$. First notice that $\emptyset\in \mathcal{I}$ and so by construction we know that $\emptyset\not\in \mathcal{C}$ which satisfies (C1).
+    Now let $C_1,C_2\in\mathcal{C}$ and $C_1\se C_2$. Notice that if $C_1\subsetneq C_2$ then by construction we would have that $C_1\in \mathcal{I}$ but by assumption we have that $C_1\in\mathcal{C}$, meaning $C_1=C_2$ which show (C2). Notice that this shows that if $C_1\neq C_2$ then there must exist some $x\in C_2-C_1$ and likewise there must exist some $y\in C_1-C_2$ as otherwise one would be a subset of the other.
+
+    Finally let $C_1,C_2\in\mathcal{C}$ such that $C_1\neq C_2$ and assume there exists some $e\in C_1\cap C_2$. We will show that there must exist some circuit containing in $(C_1\cup C_2)-e$. Assume however that there is no such circuit, meaning it must be the case that $(C_1\cup C_2)-e\in \mathcal{I}$, as a subset of $E$ is either in $\I$ or dependent and so contains a circuit.
+
+    If $(C_1\cup C_2)-e\in \mathcal{I}$, then consider $C_1-y\in\mathcal{I}$ where $y\in C_1-C_2$. Notice that $((C_1\cup C_2)-e)-(C_1-y)=(C_2-C_1)+y$. This means by (I3) we may add $|C_1-C_2|$ elements of $(C_2-C_1)+y$ to $C_1-y$ such that the resulting set will be in $\mathcal{I}$ and will contain either all of $C_1$, meaning $y$ was added, or all of $C_2$, meaning all of $C_2-C_1$ was added. In either case, the result must contain a circuit and so would not be in $\mathcal{I}$. So $(C_1\cup C_2)-e\not\in \mathcal{I}$, which means there exists a circuit contained in $(C_1\cup C_2)-e\in \mathcal{I}$ which shows (C3).
+\end{proof}
+\begin{thm}
+\label{thm:equiv_matroid_I_B}
+    The Independence set definition and the basis set definitions are equivalent. That is if $M=(E,\I)$ is a matroid, then $M=(E,\mathcal{B})$ is a matroid where $\mathcal{B}=\{I\in\I| I \text{ is maximal}\}$ the set of bases.\\
+    Likewise if $M=(E,\mathcal{B})$ is a matroid, then $M=(E,\mathcal{I})$ is a matroid where $\mathcal{I}=\{I\se B|B\in\mathcal{B} \}$, is the downward closure of $\mathcal{B}$.
+\end{thm}
+
+\begin{example}
+\label{ex:uniform_matroid}
+A useful example of a matroid using the basis definition is the \textit{uniform matroid} which is defined as $U_{d,n}=([n],{[n]\choose d})$ where ${[n]\choose d}$ denotes all subsets of $[n]$ of size $d$.
+\end{example}
+The uniform matroid describes the structure of frames or more generally collections of vectors, with full spark.
+}{}
+\begin{prop}
+\label{prop:full_spark_iff_uniform}
+A collection of vectors $\Phi=(\phi_j)_{j=1}^n$ in $\F^d$ has full spark if and only if $M(\Phi)$ is the uniform matrix, $U_{d,n}=([n],{[n]\choose d})$ by the basis definition \ref{def:matroid_B}.
+\end{prop}
+\begin{proof}
+    Assume $M(\Phi)$ is the uniform matroid meaning any collection of less than or equal to $d$ vectors is linearly independent as all subsets of size $d$ are linearly dependent and so not circuits. This also means any subset of $d+1$ vectors is a circuit, and so the girth of the matroid is $d+1$. Now assume that the collection of vectors $(\phi_j)_{j=1}^n$ has spark $d+1$. This means the girth of the matroid $M(\Phi)=([n],\I)$ is $d+1$ and so every subset of $d+1$ vectors is dependent and so must contain a circuit, and because circuits are of size at least $d+1$, then every such subset is a circuit, meaning every subset of size $d$ is in $\I$, which form the basis.
+\end{proof}
+
+In definition \ref{def:naimark_comp}, we presented the Naimark complement, which was a complementary construction for a tight frame. As noted in proposition \ref{prop:naimark_comp_is_nice} Naimark complements shared many nice properties such as having equiangular vectors if and only if the original frame did. In proposition \ref{prop:naimark_comp_has_matroid_dual} and corollary \ref{cor:naimark_full_spark}, we will continue this duality of properties and relate their corresponding matroids and spark, which at first seems unrelated as the dimension of the underlying space of a tight frame and its Naimark complement generally differ. However, in the remainder of this section, we will show that the Naimark complement is very closely related to the dual matroid.
+
+\begin{prop}
+\label{prop:dual_matroid}
+    Let $M=(E,\mathcal{B})$ be a matroid. Then $M^*=(E,\mathcal{B}^*)$, called the \textit{dual matroid}, where $\mathcal{B}^*=\{E-B|B\in\mathcal{B}\}$ is a matroid.
+\end{prop}
+\iftoggle{full}{
+\begin{proof}
+    Let $M=(E,\mathcal{B})$ and let $M^*=E,\mathcal{B}^*$ where $\mathcal{B}^*=\{E-B|B\in\mathcal{B}\}$. Notice that $\mathcal{B}^*$ because $\mathcal{B}$ is non-empty. Consider bases $B_1,B_2\in\mathcal{B}$ such that $B_1\neq B_2$ meaning $E-B_1\neq E-B_2$ Notice that this means for any $x\in (E-B_1)-(E-B_2)$ that $x\in B_2-B_1$ meaning there must exists some $y\in B_1-B_2=(E-B_2)-(E-B_1)$ such that $B_2-x+y$ is a basis in $\mathcal{B}$ meaning $E-B_2-y+x\in \mathcal{B}^*$. So $M^*$ is a matroid.
+\end{proof}
+}{}
+\begin{example}
+\label{ex:dual_uniform}
+    As an example we will look at the uniform matroid of $U_{d,n}=([n],{[n]\choose d})$ where $\mathcal{B}^*=\{[n]-B|B\in {[n]\choose d}\}={[n]\choose n-d}$ meaning $U_{d,n}^*=U_{n-d,n}$
+\end{example}
+In the construction of the dual matroid, we use basis elements of $M$ to create the basis element of $M^*$, that is we may say that the complement of a basis (over $E$) is a basis of the dual matroid. It is also useful to think about dual matroid under different definitions, that is we want to understand the complement of a circuit and a complement of an independent set.
+
+\begin{prop}
+\label{prop:interpeting_the_dual}
+    Let $M$ be a matroid with $\I$ its independent sets and $\mathcal{C}$ its circuits. Then for $I\in\I$, the set $E-I$ is a spanning set of $M^*$ and for $C\in\mathcal{C}$, the set $E-C$ is a hyperplane of $M^*$, a maximally non-spanning independent set of $M^*$.
+\end{prop}
+%\iftoggle{full}{
+\begin{proof}
+    Let $I\in \I$, meaning there exists some basis $B$ such that $I\se B$. This means that $E-B\se E-I$, and so the complement of an independence set contains a basis in $M^*$ and so is a spanning set of $M^*$ and the converse is also true.
+    
+    Let $C$ be a circuit of $M$, and notice that $E-C$ cannot be a spanning set as if it were $E-(E-C)=C$ would be an independence set. However, notice that the removal of any element $e\in C$ would give $C-e\in\I$ meaning $E-C+e$ would be a spanning set for all $c\not\in E-C$. Meaning $E-C$ is a maximal non-spanning set, a hyperplane.
+\end{proof}
+%}{}
+
+In frame theory, matroid duals connect tight frames with their Naimark complements.
+
+\begin{prop}
+\label{prop:naimark_comp_has_matroid_dual}
+    Let $\Phi=(\phi_j)_{j=1}^n$ be a tight frame with frame bound $A$ for $\F^d$ with $n>d$ with Naimark complement $(\psi_j)_{j=1}^n$ in $\F^{n-d}$. Then $M(\Phi)^*=M(\Psi)$.
+\end{prop}
+\begin{proof}
+    Let $X=\begin{pmatrix}\Phi\\\Psi\end{pmatrix}$ as in the proof of theorem \ref{thm:naimark}. 
+    And let $(u_j)_{j=1}^n=\left(\begin{pmatrix}\phi_j\\\psi_j\end{pmatrix}\right)_{j=1}^n$ denote the columns of $X$. Notice that $X^*X=\Phi^*\Phi+\Psi^*\Psi=AI$ which means the vectors $(u_j)$ are pairwise orthogonal. Now because both $M(\Phi)$ and $M(\Psi)$ are matroids over the same number of vectors, $n$, we will assume that both have the same ground set $E=[n]$, which indexes the vectors. Because $n>d$ there must exist a subset of vectors in $(\phi_j)_{j=1}^n$ that is linearly dependent, meaning it contains a circuit. Let $D\in[n]$ be the indices of a dependent set, meaning $(\phi_j)_{j\in D}$ is linearly dependent. And so there exists $\alpha_j\in \F$ for all $j\in D$ such that not all $\alpha_j$ are zero and
+    $$\sum_{j\in D}\alpha_j\phi_j=0$$
+    However because the vectors $(u_j)$ form an orthonormal basis we have that
+    $$\sum_{j\in D}\alpha_ju_j\neq 0\text{ and so }\sum_{j\in D}\alpha_j\psi_j\neq 0$$
+    Now we want to show that the vectors in $(\psi_j)$ with indices $[n]-D$ do not span $\F^{n-d}$ (This aligns with what we expect to see based on the interpretation in proposition \ref{prop:interpeting_the_dual} assuming the statement is true). So let $\tilde{v}=\sum_{j\in D}\alpha_j\psi_j$ and let $k\in [n]-D$ and notice that 
+    \begin{align*}
+        \ip{\tilde{v},\psi_k}=\ip{\sum_{j\in D}\alpha_j\psi_j,\psi_k}&=\ip{\sum_{j\in D}\alpha_j(u_k-\phi_k),u_k-\phi_k}\\
+        &=\ip{\sum_{j\in D}\alpha_ju_k,u_k}-\ip{\sum_{j\in D}\alpha_j\phi_k,\phi_k}=\sum_{j\in D}\alpha\ip{u_j,u_k}-\ip{0,\phi_k}=0
+    \end{align*}
+    which means that the non-zero vector $\tilde{v}$ is orthogonal to the space $(\psi_j)_{j\in[n]-D}$ and so not in its span, meaning the vectors with indices $[n]-D$ is not a spanning set. Notice that this means for any $S\se [n]$ that is a spanning set in $M(\Psi)$, the set $[n]-S$ must be an independence set by the contrapositive of the above. Furthermore if $S$ was a basis of $M(\Psi)$, meaning $|S|=n-d$, then $|[n]-S|=d$ meaning it would be a maximal independence set in $M(\Phi)$, a basis. Recall that Naimark complements are reflective and so we know that $\Phi$ is the Naimark complement of $\Psi$, and so it is also the case that for any basis of $M(\Phi)$ the complement is a basis in $M(\Psi)$. And so $M(\Phi)^*=M(\Psi)$.
+\end{proof}
+This proposition has a very useful corollary for full spark tight frames.
+
+\begin{corollary}
+\label{cor:naimark_full_spark}
+A tight frame $\Phi=(\phi_j)_{j=1}^n$ is full spark if and only if its Naimark complements $\Psi=(\psi_j)_{j=1}^n$ is full spark.
+\end{corollary}
+\begin{proof}
+    Recall that if $\Psi$ is the Naimark complement of $\Phi$ then $\Phi$ is the Naimark complement of $\Psi$ and so it suffices to only show one direction.
+    
+    Assume $\Phi$ is full spark which means that $M(\Phi)=U_{d,n}$. And so $M(\Psi)=M(\Phi)^*=U_{d,n}^*=U_{n-d,n}$ and so from proposition \ref{prop:full_spark_iff_uniform} $\Psi$ has full spark.
+\end{proof}
+
+%Full spark tight frames are in a sense the best tight frame. 
+%Most good agaist erasures and what not. peovable. and also big theorem about denseness.
