@@ -8,9 +8,65 @@
 \vspace{1em}
 
 \begin{enumerate}
-\item what?
+\item Notice that because $1+\frac{1}{n+1}\leq 1+\frac{1}{n}$ we know that $J_{n+1} \se J_n$. And so $\bigcup_{n\in\N}J_n=J_1$. 
+Now we will show that $\bigcap_{n\in\N}J_n$ is empty. To see this consider any real number $r\in J_1$. Notice that because $r>1$ 
+we know that there must exist some $k\in \N$ such that $1<1+\frac{1}{k}<r$ by the Archimedean principle meaning $r\not\in J_{k}$, 
+meaning $r\not\in \bigcap_{n\in\N}J_n$, so $\bigcap_{n\in\N}J_n=\emptyset$.\\
+
+\item This follows from the fundamental theorem of arithmetic. Consider $n_1,n_2,m_1,m_2\in \N$ such that 
+$h(n_1,m_1)=2^{n_1}3^{m_1}=2^{n_2}3^{m_2}=h(n_2,m_2)$. From the fundamental theorem of arithmetic we know that every positive number
+factors uniquely into the product of prime powers. And because $2^{n_1}3^{m_1}=2^{n_2}3^{m_2}$ we have that $n_1=n_2$ and $m_1=m_2$.\\
+
+
+\item For each $k\in\N$ let $D_k$ be a nonempty denumerable set. Consider $D=\bigcup_{k=1}^{\infty}D_k=\bigcup_{j\in I_1}D_j\cup \bigcup_{j\in I_2}D_j$ 
+where the sets $D_j$ for $j\in I_1$ are finite and the sets $D_j$ for $j\in I_2$ are denumerable. WLOG we will assume all sets are disjoint. 
+Notice first that $\bigcup_{j\in I_1}D_j$ is countable. To this first consider the case where $I_1$ is finite, in this case the finite union 
+of finite sets would be finite and so $\bigcup_{j\in I_1}D_j$ finite. Alternatively if $I_1$ is an infinite subset of $\N$ then 
+$\bigcup_{j\in I_1}D_j$ would be denumerable. Because every $D_j$ is finite there exists some bijection $f_j:J_{|D_j|}\ra D_j$. 
+Meaning we may construct a function $f:\N\ra \bigcup_{j\in I_1}D_j$ where for $\ell\leq |D_{j_1}|$ we have that $f(\ell)=f_{j_i}(\ell)$, 
+and like wise when $\sum_{1\leq i <n}|D_{j_i}|<\ell\leq \sum_{1\leq i \leq n}|D_{j_i}|$ we have that $f(\ell)=f_n(\ell-\sum_{1\leq i <n}|D_{j_i}|)$.
+$f$ is one-to-one by construction and is surjective as for any element in an set there are only finitely many sets with finitely 
+many element that come before it.\\
+Now we will show that $\bigcup_{j\in I_2}D_j$ is denumerable. Because each $D_k$ is denumerable we know that there exists some bijection
+$f_k:\N\ra D_k$. Assume first that $I_2$ is finite, in which case we can construct the function $f:\N\ra \bigcup_{j\in I_2}D_j$ such that
+$n\mapsto f_{r}(q)$ where $n=q\cdot |I_2|+r$ from the division algorithm. Notice that this function is injective from the 
+uniqueness of the division algorithm and the fact that $f_k$ in injective for all $k$. Now consider the element $f_k(\ell)$ where 
+$1\leq k\leq |I_2|$ and $\ell\geq 0$, then $f(\ell\cdot |I_2|+k)=f_k(\ell)$ and so $f$ is surjective.\\ % should be \ell + 1 i think. fix late
+Finally consider the case where $I_2$ is an infinite subset of $\N$. In which case construct the function $f:\N\ra \bigcup_{j\in I_2}D_j$
+according to the table below
+\begin{center}\begin{tabular}{c|c|c|c|c|c}
+    $f_1(1)$\tikzmark{a} & $f_1(2)$\tikzmark{b} & $f_1(3)$\tikzmark{d} & $f_1(4)$\tikzmark{g} & \dots\tikzmark{k} \\\hline
+    $f_2(1)$\tikzmark{c} & $f_2(2)$\tikzmark{e} & $f_2(3)$\tikzmark{h} & \dots & \dots\\ \hline
+    $f_3(1)$\tikzmark{f} & $f_3(2)$\tikzmark{i} &\dots & \dots & \dots & \\ \hline
+    $f_4(1)$\tikzmark{j} &\dots&\dots&\dots&\dots& \\ \hline
+    $\vdots$ & $\ddots$ &$\ddots$ & $\ddots$ & $\ddots$ &\\
+\end{tabular}
+\begin{tikzpicture}[overlay, remember picture]
+        \draw [->, blue] ([xshift=0pt, yshift=2pt]{pic cs:a}) to ([xshift=-25pt, yshift=2pt]{pic cs:b});
+        \draw [->, blue] ([xshift=-25pt, yshift=0pt]{pic cs:b}) to ([xshift=0pt, yshift=4pt]{pic cs:c});
+        \draw [->, blue] ([xshift=0pt, yshift=2pt]{pic cs:c}) to ([xshift=-25pt, yshift=2pt]{pic cs:d});
+
+        \draw [->, blue] ([xshift=-25pt, yshift=0pt]{pic cs:d}) to ([xshift=0pt, yshift=4pt]{pic cs:e}); 
+        \draw [->, blue] ([xshift=-25pt, yshift=0pt]{pic cs:e}) to ([xshift=0pt, yshift=4pt]{pic cs:f});
+        \draw [->, blue] ([xshift=0pt, yshift=2pt]{pic cs:f}) to ([xshift=-25pt, yshift=2pt]{pic cs:g});
+
+        \draw [->, blue] ([xshift=-25pt, yshift=0pt]{pic cs:g}) to ([xshift=0pt, yshift=4pt]{pic cs:h}); 
+        \draw [->, blue] ([xshift=-25pt, yshift=0pt]{pic cs:h}) to ([xshift=0pt, yshift=4pt]{pic cs:i});
+        \draw [->, blue] ([xshift=-25pt, yshift=0pt]{pic cs:i}) to ([xshift=0pt, yshift=4pt]{pic cs:j});
+        \draw [->, blue] ([xshift=0pt, yshift=2pt]{pic cs:j}) to ([xshift=-10pt, yshift=2pt]{pic cs:k});
+\end{tikzpicture}
+\end{center}
+Notice that this function is injective by construction and from the fact that each $f_j$ is injective. To see that this function is 
+surjective consider an element $f_k(\ell)$ where 
+$k\geq 1$ and $\ell\geq 1$. Notice that this function is achieved in the $k+\ell-1$th diagonal of which each diagonal has finitely many 
+elements and so there is a finite number of entries before the function $f$ hits $f_k(\ell)$.\\
+
+\item (a) Assume otherwise that for $x\in\Q$ and $y\in\mathbb{I}$ that $x+y\in\Q$. Because $\Q$ is a field we know that $-x\in\Q$ 
+and so $x+y-x=y\in\Q$. Which is not the case so $x+y\in\mathbb{I}$. (b) Assume otherwise that for $x\in\Q$ where $x\neq 0$ and 
+$y\in\mathbb{I}$ that $xy\in\Q$. Because $\Q$ is a field and $x\neq 0$ we know that $x^{-1}=1/x \in\Q$ 
+and so $xy/x=y\in\Q$. Which is not the case so $xy\in\mathbb{I}$.
+
 \end{enumerate}
 
 
 \end{document}
-
