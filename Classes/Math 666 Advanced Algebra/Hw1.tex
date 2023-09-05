@@ -1,0 +1,34 @@
+\documentclass[12pt]{amsart}
+\usepackage{preamble}
+
+\begin{document}
+\begin{center}
+    \textsc{Math 666. HW 1\\ Ian Jorquera}
+\end{center}
+\vspace{1em}
+
+\begin{itemize}
+\item[(1.1)] Notice that the matrix $X=\boxed{\begin{matrix} 0 & -1 \\ 1 & 0 \end{matrix}}$ is a solution to the matrix equation $x^2-1=0$. Furthermore 
+for any invertible $2\times 2$ matrix $A$, a change of basis matrix, we have that $(AXA^{-1})^2-1=AXA^{-1}AXA^{-1}-1=AX^2A^{-1}-1=-1AA^{-1}-1=0$. And so 
+any chang eof basis defines an additional solution.
+
+\item[(1.3)] Consider the polynomial $p(x)=x^9+5x^4+10x+1$. Notice that in the integers module $2$ we have the polynomial $p_2(x)=x^9+x^4+0x+1$ where 
+$p_2(0)=1$ and $p_2(1)=1$. And so there are no roots module 2. Notice that because modular arithmetic in a congruence that preserves multiplication and 
+addition we know that for any integer the output of $p(x)$ is an integer in the coset of integers congruent to $1$ module 2. And so no integer can be a root.\\
+
+\item[(2.1)] Recall that $A\bullet B=AB+BA$, which is commutative as $+$ is commutative and is distributive as matrix multiplication is distributive over 
+matrix additon. Notice that in general this operation is not associative, as for matrices of compatible shape we have that 
+$(A\bullet B)\bullet C=ABC+BAC+CAB+CBA$ and $A\bullet (B\bullet C)=A(BC+CB)+(BC+CB)A=ABC+ACB+BCA+CBA$. And so associativity only holds when 
+$ABC+BAC+CAB+CBA=ABC+ACB+BCA+CBA$ or when $BAC+CAB=ACB+BCA$ which would be true if $B$ commutes with $A$ and $C$.\\
+
+\item[(2.5)] Let $A$ and $B$ be symmetric matrices Notice that $U_A(B)^t=(ABA)^t=A^tB^tA^t=ABA$. So $U_A(B)$ is symmetric. Notice also that $B\mapsto U_A(B)$ 
+is a linear transformation as matrix multiplication on the left and right is linear. $A\mapsto U_A(B)$ is not linear. Notice that for $B=I$, we have that 
+$U_A(B)=A^2$ which is not linear.\\
+
+
+\item[(2.10)] Let $K$ be a field and $d_1,\dots,d_\ell$ be integers. Such an operator would be the Kronecker product.
+
+\end{itemize}
+
+
+\end{document}

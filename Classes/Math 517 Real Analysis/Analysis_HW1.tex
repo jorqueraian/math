@@ -84,8 +84,12 @@ converges to $L$.\\
 (b) Let $(a_k)_{k=1}^{\infty}$ be a convergent sequence with limit $L$. That means for all $\varepsilon>0$ there exists some $M$ such that 
 $|a_k-L|<\varepsilon/2$ for all $k>M$. And so for any $n,m>M$ we have that $|a_n-a_m|\leq |a_n-L|+|L-a_m|< \varepsilon/2+\varepsilon/2=\varepsilon$\\
 
-\item
-
+\item Consider the series $\sum_{k=1}^\infty \frac{1}{k}\sin^2(k)=\sum_{k=1}^\infty \frac{1}{2k}(1-\cos(2k))$ and assume it converges. Consider 
+also the series $\sum_{k=1}^\infty \frac{1}{2k}\cos(2k)$ which converges by theorem 3.11.11 as ${\left(\frac{1}{2k}\right)}_k$ is a decreasing sequence with
+ $\lim_{k\ra\infty}\frac{1}{2k}=0$ and $2$ is not a multiple of $2\pi$. This means that the series 
+ \[\sum_{k=1}^\infty \frac{1}{k}\sin^2(k)+\sum_{k=1}^\infty \frac{1}{2k}\cos(2k)=\sum_{k=1}^\infty \frac{1}{2k}(1-\cos(2k))+\frac{1}{2k}\cos(2k)
+ =\sum_{k=1}^\infty \frac{1}{2k}=\frac{1}{2}\sum_{k=1}^\infty \frac{1}{k}\]
+would converge which is not the case as the harmonic series diverges.
 \end{enumerate}
 
 
