@@ -8,89 +8,147 @@
 \vspace{1em}
 
 \begin{enumerate}
-\item Notice that because $1+\frac{1}{n+1}\leq 1+\frac{1}{n}$ we know that $J_{n+1} \se J_n$. And so $\bigcup_{n\in\N}J_n=J_1$. 
-Now we will show that $\bigcap_{n\in\N}J_n$ is empty. To see this consider any real number $r\in J_1$. Notice that because $r>1$ 
-we know that there must exist some $k\in \N$ such that $1<1+\frac{1}{k}<r$ by the Archimedean principle meaning $r\not\in J_{k}$, 
-meaning $r\not\in \bigcap_{n\in\N}J_n$, so $\bigcap_{n\in\N}J_n=\emptyset$.\\
+    % Let $\N$ be the set of natural numbers. Define the real number intervals $J_n = (1, 1 + 1/n)$ for all $n \in \N$. Find $\bigcup_{n\in\N} J_n$ and 
+    % $\bigcap_{n\in\N} J_n$. Then find their respective complementary in \R.
+    \item
+          Notice that because $1+\frac{1}{n+1}\leq 1+\frac{1}{n}$ we know that $J_{n+1}
+              \se J_n$. And so $\bigcup_{n\in\N}J_n=J_1$. Now we will show that
+          $\bigcap_{n\in\N}J_n$ is empty. To see this consider any real number $r\in
+              J_1$. Notice that because $r>1$ we know that there must exist some $k\in \N$
+          such that $1<1+\frac{1}{k}<r$ by the Archimedean principle meaning $r\not\in
+              J_{k}$, meaning $r\not\in \bigcap_{n\in\N}J_n$, so
+          $\bigcap_{n\in\N}J_n=\emptyset$.
 
-\item This follows from the fundamental theorem of arithmetic. Consider $n_1,n_2,m_1,m_2\in \N$ such that 
-$h(n_1,m_1)=2^{n_1}3^{m_1}=2^{n_2}3^{m_2}=h(n_2,m_2)$. From the fundamental theorem of arithmetic we know that every positive number
-factors uniquely into the product of prime powers. And because $2^{n_1}3^{m_1}=2^{n_2}3^{m_2}$ we have that $n_1=n_2$ and $m_1=m_2$.\\
 
 
-\item For each $k\in\N$ let $D_k$ be a nonempty denumerable set. Consider $D=\bigcup_{k=1}^{\infty}D_k=\bigcup_{j\in I_1}D_j\cup \bigcup_{j\in I_2}D_j$ 
-where the sets $D_j$ for $j\in I_1$ are finite and the sets $D_j$ for $j\in I_2$ are denumerable. WLOG we will assume all sets are disjoint. 
-Notice first that $\bigcup_{j\in I_1}D_j$ is countable. To this first consider the case where $I_1$ is finite, in this case the finite union 
-of finite sets would be finite and so $\bigcup_{j\in I_1}D_j$ finite. Alternatively if $I_1$ is an infinite subset of $\N$ then 
-$\bigcup_{j\in I_1}D_j$ would be denumerable. Because every $D_j$ is finite there exists some bijection $f_j:J_{|D_j|}\ra D_j$. 
-Meaning we may construct a function $f:\N\ra \bigcup_{j\in I_1}D_j$ where for $\ell\leq |D_{j_1}|$ we have that $f(\ell)=f_{j_i}(\ell)$, 
-and like wise when $\sum_{1\leq i <n}|D_{j_i}|<\ell\leq \sum_{1\leq i \leq n}|D_{j_i}|$ we have that $f(\ell)=f_n(\ell-\sum_{1\leq i <n}|D_{j_i}|)$.
-$f$ is one-to-one by construction and is surjective as for any element in an set there are only finitely many sets with finitely 
-many element that come before it.\\
-Now we will show that $\bigcup_{j\in I_2}D_j$ is denumerable. Because each $D_k$ is denumerable we know that there exists some bijection
-$f_k:\N\ra D_k$. Assume first that $I_2$ is finite, in which case we can construct the function $f:\N\ra \bigcup_{j\in I_2}D_j$ such that
-$n\mapsto f_{r}(q)$ where $n=q\cdot |I_2|+r$ from the division algorithm. Notice that this function is injective from the 
-uniqueness of the division algorithm and the fact that $f_k$ in injective for all $k$. Now consider the element $f_k(\ell)$ where 
-$1\leq k\leq |I_2|$ and $\ell\geq 0$, then $f(\ell\cdot |I_2|+k)=f_k(\ell)$ and so $f$ is surjective.\\ % should be \ell + 1 i think. fix late
-Finally consider the case where $I_2$ is an infinite subset of $\N$. In which case construct the function $f:\N\ra \bigcup_{j\in I_2}D_j$
-according to the table below
-\begin{center}
-\begin{tabular}{c|c|c|c|c|c}
-    $f_1(1)$\tikzmark{a} & $f_1(2)$\tikzmark{b} & $f_1(3)$\tikzmark{d} & $f_1(4)$\tikzmark{g} & \dots\tikzmark{k} \\\hline
-    $f_2(1)$\tikzmark{c} & $f_2(2)$\tikzmark{e} & $f_2(3)$\tikzmark{h} & \dots & \dots\\ \hline
-    $f_3(1)$\tikzmark{f} & $f_3(2)$\tikzmark{i} &\dots & \dots & \dots & \\ \hline
-    $f_4(1)$\tikzmark{j} &\dots&\dots&\dots&\dots& \\ \hline
-    $\vdots$ & $\ddots$ &$\ddots$ & $\ddots$ & $\ddots$ &\\
-\end{tabular}
-\begin{tikzpicture}[overlay, remember picture]
-        \draw [->, blue] ([xshift=0pt, yshift=2pt]{pic cs:a}) to ([xshift=-25pt, yshift=2pt]{pic cs:b});
-        \draw [->, blue] ([xshift=-25pt, yshift=0pt]{pic cs:b}) to ([xshift=0pt, yshift=4pt]{pic cs:c});
-        \draw [->, blue] ([xshift=0pt, yshift=2pt]{pic cs:c}) to ([xshift=-25pt, yshift=2pt]{pic cs:d});
+          % Show that the map h : N × N → N given by h(n, m) = 2^n3^m is one-to-one. You may use the Fundamental theorem of arithmetic, but
+          % there are alternative routes.
+    \item This follows from the fundamental theorem of arithmetic. Consider
+          $n_1,n_2,m_1,m_2\in \N$ such that
+          $h(n_1,m_1)=2^{n_1}3^{m_1}=2^{n_2}3^{m_2}=h(n_2,m_2)$. From the fundamental
+          theorem of arithmetic we know that every positive number factors uniquely into
+          the product of prime powers. And because $2^{n_1}3^{m_1}=2^{n_2}3^{m_2}$ we
+          have that $n_1=n_2$ and $m_1=m_2$.
 
-        \draw [->, blue] ([xshift=-25pt, yshift=0pt]{pic cs:d}) to ([xshift=0pt, yshift=4pt]{pic cs:e}); 
-        \draw [->, blue] ([xshift=-25pt, yshift=0pt]{pic cs:e}) to ([xshift=0pt, yshift=4pt]{pic cs:f});
-        \draw [->, blue] ([xshift=0pt, yshift=2pt]{pic cs:f}) to ([xshift=-25pt, yshift=2pt]{pic cs:g});
 
-        \draw [->, blue] ([xshift=-25pt, yshift=0pt]{pic cs:g}) to ([xshift=0pt, yshift=4pt]{pic cs:h}); 
-        \draw [->, blue] ([xshift=-25pt, yshift=0pt]{pic cs:h}) to ([xshift=0pt, yshift=4pt]{pic cs:i});
-        \draw [->, blue] ([xshift=-25pt, yshift=0pt]{pic cs:i}) to ([xshift=0pt, yshift=4pt]{pic cs:j});
-        \draw [->, blue] ([xshift=0pt, yshift=2pt]{pic cs:j}) to ([xshift=-10pt, yshift=2pt]{pic cs:k});
-\end{tikzpicture}
-\end{center}
-Notice that this function is injective by construction and from the fact that each $f_j$ is injective. To see that this function is 
-surjective consider an element $f_k(\ell)$ where 
-$k\geq 1$ and $\ell\geq 1$. Notice that this function is achieved in the $k+\ell-1$th diagonal of which each diagonal has finitely many 
-elements and so there is a finite number of entries before the function $f$ hits $f_k(\ell)$.\\
+          % Suppose that for each k ∈ N, D_k is nonempty and is either a finite or denumerable set. Show that the union D = ∪+{k=2}^∞ D_k is countable
+    \item For each $k\in\N$ let $D_k$ be a nonempty denumerable set. Let
+          $D=\bigcup_{k=1}^{\infty}D_k=\bigcup_{j\in I_1}D_j\cup \bigcup_{j\in I_2}D_j$
+          where the sets $D_j$ for $j\in I_1$ are finite and the sets $D_j$ for $j\in
+              I_2$ are denumerable. WLOG we will assume all sets are disjoint. If they were
+          not we would skip repeated elements in the processes below. Notice first that
+          $\bigcup_{j\in I_1}D_j$ is countable. To see this, first consider the case
+          where $I_1$ is finite, in this case the finite union of finite sets would be
+          finite and so $\bigcup_{j\in I_1}D_j$ is finite.
+          
 
-\item (a) Assume otherwise that for $x\in\Q$ and $y\in\mathbb{I}$ that $x+y\in\Q$. Because $\Q$ is a field we know that $-x\in\Q$ 
-and so $x+y-x=y\in\Q$. Which is not the case so $x+y\in\mathbb{I}$. (b) Assume otherwise that for $x\in\Q$ where $x\neq 0$ and 
-$y\in\mathbb{I}$ that $xy\in\Q$. Because $\Q$ is a field and $x\neq 0$ we know that $x^{-1}=1/x \in\Q$ 
-and so $xy/x=y\in\Q$. Which is not the case so $xy\in\mathbb{I}$.
+          Alternatively if $I_1$ is an infinite subset of $\N$ then $\bigcup_{j\in
+                  I_1}D_j$ would be denumerable: to see this notice that because every $D_j$ is
+          finite there exists some bijection $f_j:J_{|D_j|}\ra D_j$. WLOG we will assume
+          that $I_1=\N$. Now we may construct a function $f:\N\ra \bigcup_{j\in I_1}D_j$
+          where for $\ell\leq |D_{1}|$ we have that $f(\ell)=f_{1}(\ell)$, and like wise
+          when $\sum_{1\leq i <n}|D_{i}|<\ell\leq \sum_{1\leq i \leq n}|D_{i}|$ we have
+          that $f(\ell)=f_n(\ell-\sum_{1\leq i <n}|D_{i}|)$. And so $f$ is one-to-one by
+          construction and is surjective as for any element in any set there are only
+          finitely many sets with finitely many element that come before it.
 
-\item Let $(a_n)_{n=1}^{\infty}$ be a Cauchy sequence. That is for all $\varepsilon>0$ there exists some $N$
-such that $|a_n-a_m|<\varepsilon$ for all $n,m>N$. Now consider a subsequence constructed as follows: For each $k\in \N$ Let 
-$\varepsilon_k=\frac{1}{2^k}$ in which case there exists some $N_k$ such that $|a_n-a_m|<\frac{1}{2^k}$ for all $n,m>N_k$, 
-so let the $k$th element of the sequence be $a_{n_k}=a_n$ where $a_n$ is distinct from all previous element and $n>N_k$.\\
 
-\item (a) Consider a Cauchy sequence $(a_k)_{k=1}^{\infty}$. That is for all $\varepsilon>0$ there exists some $N$
-such that $|a_n-a_m|<\varepsilon$ for all $n,m>N$. First we will show that the sequence $(a_k)_{k=1}^{\infty}$ is bounded. 
-Let $\varepsilon=1$ in which case we know that there exists some $N$ such that $|a_N-a_m|<1$ for all $m>N$. This means that 
-for all $m>N$ we know that $|a_m|<|a_N|+1$. And so the sequence $(a_k)_{k=1}^{\infty}$ is bounded by $\max(a_1,\dots,|a_N|,|a_N|+1)$..\\
-This means the sequence $(a_k)_{k=1}^{\infty}$ has a convergent subsequence $(a_{k_j})_{j=1}^{\infty}$, so let the limit of this subsequence be $L$. 
-Now to see the entire sequence converges to $L$ let $\varepsilon>0$ in which case there exists some $N$ such that $|a_n-a_m|<\varepsilon/2$ 
-for all $n,m>N$ and likewise there exists some $M$ such that $|a_{k_j}-L|<\varepsilon/2$ for all $k_j>M$. Now assume that $n,k_j>\max(M,N)$ 
-In which case we know that $|a_n-L|\leq |a_n-a_{k_j}|+|a_{k_j}-L|\leq \varepsilon/2+\varepsilon/2=\varepsilon$. And so $(a_k)_{k=1}^{\infty}$ 
-converges to $L$.\\
-(b) Let $(a_k)_{k=1}^{\infty}$ be a convergent sequence with limit $L$. That means for all $\varepsilon>0$ there exists some $M$ such that 
-$|a_k-L|<\varepsilon/2$ for all $k>M$. And so for any $n,m>M$ we have that $|a_n-a_m|\leq |a_n-L|+|L-a_m|< \varepsilon/2+\varepsilon/2=\varepsilon$\\
+          Now we will show that $\bigcup_{j\in I_2}D_j$ is denumerable. Because each
+          $D_k$ for $k\in I_2$ is denumerable we know that there exists some bijection
+          $f_k:\N\ra D_k$. Assume first that $I_2$ is finite, in which case we can
+          construct the function $f:\N\ra \bigcup_{j\in I_2}D_j$ such that $n\mapsto
+              f_{r}(q+1)$ where $n=q\cdot |I_2|+r$ from the division algorithm. Notice that
+          this function is injective from the uniqueness of the division algorithm and
+          the fact that $f_k$ is injective for all $k$. Now consider the element
+          $f_k(\ell)$ where $1\leq k\leq |I_2|$ and $\ell\geq 1$, then $f((\ell-1)\cdot
+              |I_2|+k)=f_k(\ell)$ and so $f$ is surjective.
 
-\item Consider the series $\sum_{k=1}^\infty \frac{1}{k}\sin^2(k)=\sum_{k=1}^\infty \frac{1}{2k}(1-\cos(2k))$ and assume it converges. Consider 
-also the series $\sum_{k=1}^\infty \frac{1}{2k}\cos(2k)$ which converges by theorem 3.11.11 as ${\left(\frac{1}{2k}\right)}_k$ is a decreasing sequence with
- $\lim_{k\ra\infty}\frac{1}{2k}=0$ and $2$ is not a multiple of $2\pi$. This means that the series 
- \[\sum_{k=1}^\infty \frac{1}{k}\sin^2(k)+\sum_{k=1}^\infty \frac{1}{2k}\cos(2k)=\sum_{k=1}^\infty \frac{1}{2k}(1-\cos(2k))+\frac{1}{2k}\cos(2k)
- =\sum_{k=1}^\infty \frac{1}{2k}=\frac{1}{2}\sum_{k=1}^\infty \frac{1}{k}\]
-would converge which is not the case as the harmonic series diverges.
+
+          Finally consider the case where $I_2$ is an infinite subset of $\N$. WLOG we
+          will assume that $I_2=\N$. In which case construct the function $f:\N\ra
+              \bigcup_{j\in I_2}D_j$ such that $f(1)=f_1(1)$ and then follow the table below.
+
+          \begin{center}
+              \begin{tabular}{c|c|c|c|c|c}
+                  $f_1(1)$\tikzmark{a} & $f_1(2)$\tikzmark{b} & $f_1(3)$\tikzmark{d} & $f_1(4)$\tikzmark{g} & \dots\tikzmark{k} & \\ \hline
+                  $f_2(1)$\tikzmark{c} & $f_2(2)$\tikzmark{e} & $f_2(3)$\tikzmark{h} & \dots                & \dots             & \\ \hline
+                  $f_3(1)$\tikzmark{f} & $f_3(2)$\tikzmark{i} & \dots                & \dots                & \dots             & \\ \hline
+                  $f_4(1)$\tikzmark{j} & \dots                & \dots                & \dots                & \dots             & \\ \hline
+                  $\vdots$             & $\ddots$             & $\ddots$             & $\ddots$             & $\ddots$          & \\
+              \end{tabular}
+              \begin{tikzpicture}[overlay, remember picture]
+                  \draw [->, blue] ([xshift=0pt, yshift=2pt]{pic cs:a}) to ([xshift=-25pt, yshift=2pt]{pic cs:b});
+                  \draw [->, blue] ([xshift=-25pt, yshift=0pt]{pic cs:b}) to ([xshift=0pt, yshift=4pt]{pic cs:c});
+                  \draw [->, blue] ([xshift=0pt, yshift=2pt]{pic cs:c}) to ([xshift=-25pt, yshift=2pt]{pic cs:d});
+
+                  \draw [->, blue] ([xshift=-25pt, yshift=0pt]{pic cs:d}) to ([xshift=0pt, yshift=4pt]{pic cs:e});
+                  \draw [->, blue] ([xshift=-25pt, yshift=0pt]{pic cs:e}) to ([xshift=0pt, yshift=4pt]{pic cs:f});
+                  \draw [->, blue] ([xshift=0pt, yshift=2pt]{pic cs:f}) to ([xshift=-25pt, yshift=2pt]{pic cs:g});
+
+                  \draw [->, blue] ([xshift=-25pt, yshift=0pt]{pic cs:g}) to ([xshift=0pt, yshift=4pt]{pic cs:h});
+                  \draw [->, blue] ([xshift=-25pt, yshift=0pt]{pic cs:h}) to ([xshift=0pt, yshift=4pt]{pic cs:i});
+                  \draw [->, blue] ([xshift=-25pt, yshift=0pt]{pic cs:i}) to ([xshift=0pt, yshift=4pt]{pic cs:j});
+                  \draw [->, blue] ([xshift=0pt, yshift=2pt]{pic cs:j}) to ([xshift=-10pt, yshift=2pt]{pic cs:k});
+              \end{tikzpicture}
+          \end{center}
+          Notice that this function is injective by construction and from the fact that each $f_j$ is injective. To see that this function is
+          surjective consider an element $f_k(\ell)$ where
+          $k\geq 1$ and $\ell\geq 1$. Notice that this function is achieved in the $k+\ell-1$th diagonal of which each diagonal has finitely many
+          elements and so there is a finite number of entries before the function $f$ hits $f_k(\ell)$. And so in all cases $\bigcup_{j\in I_2}D_j$ is denumerable.
+
+
+          Finally we know that $D=\bigcup_{k=1}^{\infty}D_k=\bigcup_{j\in I_1}D_j\cup
+              \bigcup_{j\in I_2}D_j$ is countable as this is union is a special case of the
+          previous parts.
+
+        
+    % Prove that (a) if x ∈ Q and y ∈ I then x + y ∈ I, and (b) If x ∈ Q, x != 0 and y ∈ I, then xy ∈ I.
+    \item (a) Assume otherwise, that for $x\in\Q$ and $y\in\mathbb{I}$ that $x+y\in\Q$. Because $\Q$ is a field we know that $-x\in\Q$
+          and so $x+y-x=y\in\Q$. Which is not the case so $x+y\in\mathbb{I}$.
+
+          
+          \noindent(b) Assume otherwise that for $x\in\Q$ where $x\neq 0$ and
+          $y\in\mathbb{I}$ that $xy\in\Q$. Because $\Q$ is a field and $x\neq 0$ we know that $x^{-1}=1/x \in\Q$
+          and so $xy/x=y\in\Q$. Which is not the case so $xy\in\mathbb{I}$.
+
+
+    % Let (a_n)_n be a Cauchy sequence. Show that there is a subsequence (a_{n_k})_k such that ∣ a_{n_{k+1}} − a_{n_k} < 1/2^k for all k.
+    \item Let ${(a_n)}_{n=1}^{\infty}$ be a Cauchy sequence. That is for all
+          $\varepsilon>0$ there exists some $N$ such that $|a_n-a_m|<\varepsilon$ for all
+          $n,m>N$. Now consider a subsequence constructed as follows: For each $k\in \N$
+          Let $\varepsilon_k=\frac{1}{2^k}$ in which case there exists some $N_k$ such
+          that $|a_n-a_m|<\frac{1}{2^k}$ for all $n,m>N_k$, so let the $k$th element of
+          the sequence be $a_{n_k}=a_n$ where $a_n$ is distinct from all previous element
+          and $n>N_k$.
+
+
+    % Prove that (a) A Cauchy sequence in R is convergent. (b) A convergent sequence in R is Cauchy.
+    \item (a) Consider a Cauchy sequence ${(a_k)}_{k=1}^{\infty}$. That is for all $\varepsilon>0$ there exists some $N$
+          such that $|a_n-a_m|<\varepsilon$ for all $n,m>N$. First we will show that the sequence $(a_k)_{k=1}^{\infty}$ is bounded.
+          Let $\varepsilon=1$ in which case we know that there exists some $N$ such that $|a_N-a_m|<1$ for all $m>N$. This means that
+          for all $m>N$ we know that $|a_m|<|a_N|+1$. And so the sequence ${(a_k)}_{k=1}^{\infty}$ is bounded by $\max(|a_1|,\dots,|a_N|,|a_N|+1)$.
+
+
+          This means the sequence ${(a_k)}_{k=1}^{\infty}$ has a convergent subsequence ${(a_{k_j})}_{j=1}^{\infty}$, and let the limit of this subsequence be $L$.
+          Now to see the entire sequence converges to $L$. Let $\varepsilon>0$ in which case there exists some $N$ such that $|a_n-a_m|<\varepsilon/2$
+          for all $n,m>N$ and likewise there exists some $M$ such that $|a_{k_j}-L|<\varepsilon/2$ for all $k_j>M$. Now assume that $n,k_j>\max(M,N)$
+          In which case we know that $|a_n-L|\leq |a_n-a_{k_j}|+|a_{k_j}-L|\leq \varepsilon/2+\varepsilon/2=\varepsilon$. And so ${(a_k)}_{k=1}^{\infty}$
+          converges to $L$.
+
+
+          \noindent(b) Let ${(a_k)}_{k=1}^{\infty}$ be a convergent sequence with limit $L$. That means for all $\varepsilon>0$ there exists some $M$ such that
+          $|a_k-L|<\varepsilon/2$ for all $k>M$. And so for any $n,m>M$ we have that $|a_n-a_m|\leq |a_n-L|+|L-a_m|< \varepsilon/2+\varepsilon/2=\varepsilon$.
+
+
+    \item Consider the series $\sum_{k=1}^\infty \frac{1}{k}\sin^2(k)=\sum_{k=1}^\infty
+              \frac{1}{2k}(1-\cos(2k))$ and assume it converges. Consider also the series
+          $\sum_{k=1}^\infty \frac{1}{2k}\cos(2k)$ which converges by theorem 3.11.11 as
+          ${\left(\frac{1}{2k}\right)}_k$ is a decreasing sequence with
+          $\lim_{k\ra\infty}\frac{1}{2k}=0$ and $2$ is not a multiple of $2\pi$. This
+          means that the series
+          \[\sum_{k=1}^\infty \frac{1}{k}\sin^2(k)+\sum_{k=1}^\infty \frac{1}{2k}\cos(2k)=\sum_{k=1}^\infty \frac{1}{2k}(1-\cos(2k))+\frac{1}{2k}\cos(2k)
+              =\sum_{k=1}^\infty \frac{1}{2k}=\frac{1}{2}\sum_{k=1}^\infty \frac{1}{k}\]
+          would converge which is not the case as the harmonic series diverges.
 \end{enumerate}
-
 
 \end{document}
