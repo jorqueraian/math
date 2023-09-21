@@ -1,0 +1,156 @@
+\documentclass[12pt]{amsart}
+\usepackage{preamble}
+
+\begin{document}
+\begin{center}
+    \textsc{Math 517. HW 1\\ Ian Jorquera}
+\end{center}
+\vspace{1em}
+
+\begin{itemize}
+    \item[1.] Let $\sum_{k=1}^{\infty}{a_k}$ be a conditionally convergent series which
+        converges to $L$ This also means that $\lim_{k\ra\infty}|a_k|=0$ and so for
+        $\varepsilon=1$ there exists some $M$ such that $|a_k|<1$ for all $k>M$. This
+        also means the subseries $\sum_{k=1}^{\infty}{a^-_k}$ and
+        $\sum_{k=1}^{\infty}{a^+_k}$ both diverge. Now construct a series as follows.
+        First pick $m_1$ minimally such that $\sum_{k=1}^{m_1}{a^+_k}> 1$, which we can
+        do as the series diverges to $\infty$. Then pick $n_1=1$ which corresponds to
+        the partial sum $\sum_{k=1}^{m_1}{a^+_k}+\sum_{k=1}^{n_1}{a^-_k}$. Repeat this
+        process inductively such that $m_j$ is chosen minimally such that
+        $\sum_{k=1}^{m_j}{a^+_k}+\sum_{k=1}^{n_{j-1}}{a^-_k}> j$ and $n_j=j$. This
+        gives us a rearrangement $p$. Notice that the series
+        $\sum_{k=1}^{\infty}{a_{pk}}$ diverges as for any $N>0$ we may pick $\ell$ such
+        that the subsequence $\{a_{p1},\dots,a_{p\ell}\}$ contains all element $a_k$
+        where $k\leq\max{(M, m_{N+1})}$ and then notice that
+        $|\sum_{k=1}^{n}{a_{pk}}|>N$ for all $n>\ell$. If it were not then it would be
+        the case that the last element added was a negative term too large but by
+        construction $|a_{pk}|<1$ for all $k>\ell$ and the
+        $|\sum_{k=1}^{n-1}{a_{pk}}|>N+1$ so it would have to be the case
+        $|\sum_{k=1}^{n}{a_{pk}}|>N$.
+
+    \item[2.] % Wording my man!
+        WLOG assume that $c_1<c_2$. Let $\sum_{k=1}^{\infty}{a_k}$ be a conditionally
+        convergent series which converges to $L$. This also means the subseries
+        $\sum_{k=1}^{\infty}{a^-_k}$ and $\sum_{k=1}^{\infty}{a^+_k}$ both diverge. Now
+        construct a series as follows. First pick $m_1$ minimally such that
+        $\sum_{k=1}^{m_1}{a^+_k}> c_2$, which we can do as the series
+        $\sum_{k=1}^{\infty}{a^+_k}$ diverges to $\infty$. Then pick $n_1$ minimally
+        such that the partial sum $\sum_{k=1}^{m_1}{a^+_k}+\sum_{k=1}^{n_1}{a^-_k}<c_1$
+        which can be done because the series $\sum_{k=1}^{\infty}{a^-_k}$ diverges to
+        $-\infty$. Repeat this process inductively such that $m_j$ is chosen minimally
+        such that $\sum_{k=1}^{m_j}{a^+_k}+\sum_{k=1}^{n_{j-1}}{a^-_k}> c_2$ and $n_j$
+        is chosen minimally such that
+        $\sum_{k=1}^{m_j}{a^+_k}+\sum_{k=1}^{n_{j}}{a^-_k}< c_1$. This gives us a
+        rearrangement $p$.
+
+        Notice first that because the original series converges we know that for
+        $\varepsilon>0$ there exists some $M$ such that $|a_k|<\varepsilon$ for all
+        $k>M$. Now we will show that both $c_1$ and $c_2$ are cluster points in the set
+        of partial sums $\{\sum_{k=1}^{n}{a_{pk}}\}_{n=1}^{\infty}$.
+
+        Now consider the subsequence $\{\sum_{k=1}^{m_j}{a_{pk}}\}_{j=1}^{\infty}$ That
+        is we are considering only the partial sums that ead at an index $m_j$ as
+        constructed above. Notice that for any $\varepsilon>0$ we may pick $N$ such
+        that the subsequence $\{a_{p1},\dots,a_{p\ell}\}$ contains all $a_k$ where
+        $k>M$. Then for all $j$ where $m_j>N+1$ we know that
+        $|\sum_{k=1}^{m_j}{a_{pk}}-c_2|<\varepsilon$. This is the case as $m_j$ was
+        picked such that $\sum_{k=1}^{m_j}{a_{pk}}>c_2$ but
+        $\sum_{k=1}^{m_j-1}{a_{pk}}<c_2$ and that $|a_{p{m_j}}|<\epsilon$.
+
+        Now consider the subsequence $\{\sum_{k=1}^{n_j}{a_{pk}}\}_{j=1}^{\infty}$ That
+        is we are considering only the partial sums that ead at an index $n_j$ as
+        constructed above. Notice that for any $\varepsilon>0$ we may pick $N$ such
+        that the subsequence $\{a_{p1},\dots,a_{p\ell}\}$ contains all $a_k$ where
+        $k>M$. Then for all $j$ where $n_j>N+1$ we know that
+        $|\sum_{k=1}^{n_j}{a_{pk}}-c_1|<\varepsilon$. This is the case as $n_j$ was
+        picked such that $\sum_{k=1}^{n_j}{a_{pk}}<c_1$ but
+        $\sum_{k=1}^{n_j-1}{a_{pk}}>c_2$ and that $|a_{p{n_j}}|<\epsilon$.
+
+        % \partial S is the set of all boundary points
+    \item[3.] \begin{enumerate}
+            \item $S=\{0\}$. Notice first that $\R-0$ is open. To see this consider any $r\neq 0$ and notice that
+                  there will always exists a number $\ell$ such that $r<\ell< 0$ if $r<0$ and $0>\ell>r$ if $r<0$.
+                  In either case this give an open set
+                  $(r-|\ell|, r+|\ell|)$ that does not contain $0$ and so is entirely
+                  contained in $\R-0$. Meaning $\R-0$ is open and so $\{0\}$ is closed.
+                  Notice also that $0$ is a boundary point of $S$ as for any $\epsilon>0$ we have that the open interval
+                  $(-\epsilon,\epsilon)$ contains $0\in S$ and an element $r\not\in S$ where $0<r<\epsilon$.
+                  So $\partial S =\{0\}=S$
+
+            \item Let $S=[0,1)$ Notice that $0$ is not an interior point as for any $\epsilon>0$
+                  the open set $(-\epsilon,\epsilon)$ will always contain negative numbers and so
+                  $S$ can not be open. And also notice that $1$ is a cluster point as the
+                  sequence ${1-1/n}_{n=1}^\infty$ has a limit of $1$. Because $1\not\in S$ we
+                  know that $S$ is not closed
+
+            \item Consider the unbounded set $S=\R-(0,1)=(-\infty,0]\cup [1,\infty)$. Notice that
+                  every point $r\neq 0,1$ is an interior point of $S$, and $0$ and $1$ are the
+                  only boundary points. So $\partial S$ is bounded by $2$.
+
+                  % Formal? Idk. Need to show Sup is 0 which isnt in 
+            \item Consider the function $f:\R\ra\R$ that maps $x\mapsto -1$ when $-1\leq x\leq 1$
+                  and maps all other values $x\mapsto -\frac{1}{x^2}$. Notice that
+                  $-1<-\frac{1}{x^2}<0$ when $|x|>1$ and so the range of $f$ is bounded by $2$
+                  for all $x\in \R$. Notice also that the range has no maximum as $\frac{1}{x^2}$
+                  gets arbitrarily close to $0$ for large enough $x$ but is never equal to zero.
+                  That is $\sup(f(\R))=0\not\in f(\R)$.
+        \end{enumerate}
+
+    \item[4.] Recall first that compact sets in $\R$ are closed and bounded. And so The
+        intersection $\bigcap K_n$ is closed as it is the intersection of closed sets
+        and is contained in the compact set $K_0$ and so is compact. Last we need to
+        show that the intersection is non-empty.. idk. I think you can say every
+        compact set can be written as the union of of its connected parts which are all
+        intervals. then you have a nested interval theorem. maybe
+
+    \item[5.] Assume first that $K$ is compact. This means $K$ is a closed and bounded set.
+        Consider any sequence $\{x_n\}_{n=1}^\infty\subseteq K$. Because $K$ is bounded we
+        know that $\{x_n\}_{n=1}^\infty\subseteq K$ is bounded and so there must exist a
+        convergent subsequence that converges to $x$, a cluster point of $K$. And
+        because $K$ is compact $x\in K$.
+
+        Now assume that $K$ is a set such that every infinite sequence
+        $\{x_n\}_{n=1}^\infty\se K$ has a convergent subsequence with limit in $K$.
+        Notice that this must mean that $K$ contains all its cluster points as any
+        cluster point will have a infinite sequence converging to it. And so $K$ is
+        closed.
+
+        Assume $K$ is not bounded and notice that this means we may construct a
+        sequence $\{x_n\}_{n=1}^\infty$ such that $|x_n|>n$. By our assumption there
+        must exists a convergent subsequence $\{x_{n_j}\}_{j=1}^\infty\se K$ such that
+        $x_{n_j}\ra L\in K$. However this is not possible as there will always be
+        infinity many elements in the sequence that are larger then $L$. So every
+        sequence $\{x_n\}_{n=1}^\infty$ must be bounded. Therefore $K$ is compact.
+
+        this statement is slightly stronger as it only considers countable sequences
+        rather then possible uncountable subsets
+
+    \item[6.] let $f:D\ra\R$ be a function discontinuous at $a\in D$. That is there exists an
+        $\varepsilon>0$ such that for all $\delta>0$ there is an $x\in D$ such that $|x-a|<\delta$
+        but $|f(x)-f(a)|\geq \epsilon$
+        Notice that this means for every $\delta = \frac{1}{k}$ there must exists some corresponding 
+        $x_k\in D$ as described above.
+        This gives us a sequence $\{x_k\}_{k=1}^\infty$ converges to $a$. Notice also that for every 
+        $k$ by construction $|f(x_k)-f(a)|\geq \epsilon$.
+
+        Now let $f:D\ra\R$ be a function such that at the point $a\in D$ we have some
+        $\varepsilon>0$ such that there exists a sequence $\{x_k\}_{k=1}^\infty$
+        converges to $a$ and for every $k$ we have that $|f(x_k)-f(a)|\geq \epsilon$.
+        Notice that this means our function is discontinuous as for the $\varepsilon$
+        we can consider all $\delta>0$ and because $\{x_k\}_{k=1}^\infty$ converges to
+        $a$ there exists some $N$ such that $|x_k-a|<\delta$ for all $k>N$ and by
+        construction $|f(x_k)-f(a)|\geq \epsilon$ for all $k>N$.
+
+    \item[7.] (1) Let $f:(a,b)\ra\R$ be a function And assume that $f$ is continuous on $(a,b)$. 
+              And let $O$ be an open set in the range of $f$ % Do we want range or do we want generality?
+               Now consider any point $x\in f^{-1}(O)$ and we will show that it is an interior point. First let $y=f(x)$
+               which is its self an interior point of $O$, and so there exists some $\varepsilon>0$ 
+               such that $(y-\varepsilon, y+\varepsilon)\se O$. Because $f$ is continuous we know that 
+               there exists some $\delta>0$ such that for all $r\in (a,b)$ such that $|r-x|<\delta$ we have that $|f(r)-y|<\varepsilon$. ehh idk missing some stuff here. do later cus tedious
+
+               (2)  Let $f:(a,b)\ra\R$ be a function such that for any open set $O$ in the range we have that $f^{-1}(0)$ is open.
+               We will show that $f$ is continuous on $(a,b)$. Fix some point $x\in (a,b)$ and let $\epsilon>0$ And notice that 
+
+\end{itemize}
+
+\end{document}
