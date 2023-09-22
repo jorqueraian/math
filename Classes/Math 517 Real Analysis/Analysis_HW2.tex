@@ -101,7 +101,7 @@
         and is contained in the compact set $K_0$ and so is compact. Last we need to
         show that the intersection is non-empty.. idk. I think you can say every
         compact set can be written as the union of of its connected parts which are all
-        intervals. then you have a nested interval theorem. maybe
+        intervals. then you have a nested interval theorem. maybe...............% AHHHhhhhhhhhhhhhhhhhhhhhhhhhhhHHHHHHHHHHHHHHHHHHHHHHH
 
     \item[5.] Assume first that $K$ is compact. This means $K$ is a closed and bounded set.
         Consider any sequence $\{x_n\}_{n=1}^\infty\subseteq K$. Because $K$ is bounded we
@@ -149,7 +149,8 @@
                which is its self an interior point of $O$, and so there exists some $\varepsilon>0$ 
                such that $(y-\varepsilon, y+\varepsilon)\se O$. Because $f$ is continuous we know that there exists $\delta>0$ 
                where for any $r\in (a,b)$ such that $|x-r|<\delta$ we have that $|f(r)-f(x)|<\varepsilon$. This means that every element $r\in f^{-1}(0)$
-               and therefore the interval $(x-\delta,x+\delta)\se f^{-1}(O)$. And so the preimage of any open set is open.
+               and therefore the interval $(x-\delta,x+\delta)\se f^{-1}(O)$. % do i justify this well enough??
+                And so the preimage of any open set is open.
                
 
                (2) Let $f:(a,b)\ra\R$ be a function such that for any open set $O$ we have that $f^{-1}(0)$ is open.
@@ -171,7 +172,23 @@
     $f$ is uniformly continuous.
 
 
-    \item[9.]
+    \item[9.] % wording? also correctness? i think first part is good. but second is mostly copy paste
+    Let $f:K\ra\R$ be a function that is continuous on a set $K$. Let $O$ be an open set.
+               Consider also the set $U=\bigcup_{x\in f^{-1}(O)}(x-\delta,x+\delta)$ Which by construction is open and $f^{-1}(0)\se U$
+               Where we pick delta as follows. 
+               Consider an point $x\in f^{-1}(O)$. First let $y=f(x)$
+               which is an interior point of $O$, and so there exists some $\varepsilon>0$ 
+               such that $(y-\varepsilon, y+\varepsilon)\se O$. Because $f$ is continuous we know that there exists $\delta>0$ 
+               where for any $r\in K$ such that $|x-r|<\delta$ we have that $|f(r)-f(x)|<\varepsilon$. This means that every element $r\in f^{-1}(0)$
+               and therefore the interval $(x-\delta,x+\delta)\cap K\se f^{-1}(O)$. And so $(x-\delta,x+\delta)= K\se f^{-1}(O)$.\\
+
+               Let $f:K\ra\R$ be a function on a set $K$ such that for any open set $O$ we have that $f^{-1}(0)=K\Cap U$ for some open set $U$.
+               We will show that $f$ is continuous on $K$. Fix some point $x\in K$ and again consider its image $y=f(x)$ and let 
+               $\varepsilon>0$ and consider the open interval $(y-\varepsilon, y+\varepsilon)$ and by assumption we know that 
+               $f^{-1}((y-\varepsilon, y+\varepsilon))=K\cap U$ for some open set $U$ is open and so $U$ 
+               contains an open interval around $x$ of length $2\delta>0$
+               And notice that for any $r\in (a,b)$ such that $|x-r|<\delta$ we have that $f(r)\in(y-\varepsilon, y+\varepsilon)$ and so
+               we have that $|f(r)-f(x)|<\varepsilon$. And so $f$ is continuous at all points $x\in(a,b)$
 
 \end{itemize}
 
