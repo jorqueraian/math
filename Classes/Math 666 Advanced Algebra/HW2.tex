@@ -1,0 +1,43 @@
+\documentclass[12pt]{amsart}
+\usepackage{preamble}
+
+\begin{document}
+\begin{center}
+    \textsc{Math 666. HW 2\\ Ian Jorquera}
+\end{center}
+\vspace{1em}
+
+\begin{itemize}
+    \item[(2.1)]
+    \item[(2.3)] 
+    Let \[\ip{\text{Digs}_{10}}::= \;0\;|\;1\; | \;2\;|\;3\;|\;\dots\; |\; 9\] 
+    and then let 
+    
+    \[\ip{\text{Dig-String}_{10}}::=\ip{\text{Digs}_{10}}\;|\;\ip{\text{Dig-String}_{10}}\ip{\text{Digs}_{10}}\] And finally to prevent zeros in the front
+
+    \[\ip{\text{Nat}_{10}}::= 0\;|\;\ip{\text{Non-Zero-Digs}_{10}}\ip{\text{Dig-String}_{10}}\]
+
+    \item[(3.2)]
+    
+
+    \item[(3.3)] Thanks
+    \item[(3.4)] We could do
+    \[\ip{\text{Nat?}}::= 0\;|\;S(\ip{\text{Nat?}})\;|\; (\ip{\text{Nat?}})S\]
+    But notice that this would create the ambiguity for what 1 would be either $S(0)$ or $(0)S$ and we would need to add relations to fix this.
+
+    \item[(3.5)]
+    
+
+    \item[(4.1)]
+
+    \item[(7.1)]
+    \item[(7.2)]
+    \item[(7.3)]
+    
+    \item[(10.2)]
+    \item[(10.3)]
+
+\end{itemize}
+
+
+\end{document}
