@@ -3,7 +3,7 @@
 
 \begin{document}
 \begin{center}
-    \textsc{Math 517. HW 1\\ Ian Jorquera}
+    \textsc{Math 517. HW 2\\ Ian Jorquera}
 \end{center}
 \vspace{1em}
 
@@ -141,15 +141,37 @@
         $a$ there exists some $N$ such that $|x_k-a|<\delta$ for all $k>N$ and by
         construction $|f(x_k)-f(a)|\geq \epsilon$ for all $k>N$.
 
-    \item[7.] (1) Let $f:(a,b)\ra\R$ be a function And assume that $f$ is continuous on $(a,b)$. 
-              And let $O$ be an open set in the range of $f$ % Do we want range or do we want generality?
+    \item[7.] (1) Let $f:(a,b)\ra\R$ be a function that is continuous on $(a,b)$. 
+               %Meaning for any point $r\in (a,b)$ and any $\varepsilon>0$ there exists $\delta>0$ where for any $x\in (a,b)$ such that $|x-r|<\delta$ we have that $|f(r)-f(x)|<\varepsilon$
+               
+               Let $O$ be an open set% in the range of $f$
                Now consider any point $x\in f^{-1}(O)$ and we will show that it is an interior point. First let $y=f(x)$
                which is its self an interior point of $O$, and so there exists some $\varepsilon>0$ 
-               such that $(y-\varepsilon, y+\varepsilon)\se O$. Because $f$ is continuous we know that 
-               there exists some $\delta>0$ such that for all $r\in (a,b)$ such that $|r-x|<\delta$ we have that $|f(r)-y|<\varepsilon$. ehh idk missing some stuff here. do later cus tedious
+               such that $(y-\varepsilon, y+\varepsilon)\se O$. Because $f$ is continuous we know that there exists $\delta>0$ 
+               where for any $r\in (a,b)$ such that $|x-r|<\delta$ we have that $|f(r)-f(x)|<\varepsilon$. This means that every element $r\in f^{-1}(0)$
+               and therefore the interval $(x-\delta,x+\delta)\se f^{-1}(O)$. And so the preimage of any open set is open.
+               
 
-               (2)  Let $f:(a,b)\ra\R$ be a function such that for any open set $O$ in the range we have that $f^{-1}(0)$ is open.
-               We will show that $f$ is continuous on $(a,b)$. Fix some point $x\in (a,b)$ and let $\epsilon>0$ And notice that 
+               (2) Let $f:(a,b)\ra\R$ be a function such that for any open set $O$ we have that $f^{-1}(0)$ is open.
+               We will show that $f$ is continuous on $(a,b)$. Fix some point $x\in (a,b)$ and again consider its image $y=f(x)$ and let 
+               $\varepsilon>0$ and consider the open interval $(y-\varepsilon, y+\varepsilon)$ and by assumption we know that 
+               $f^{-1}((y-\varepsilon, y+\varepsilon))$ is open and so contains an open interval around $x$ of length $2\delta>0$
+               And notice that for any $r\in (a,b)$ such that $|x-r|<\delta$ we have that $f(r)\in(y-\varepsilon, y+\varepsilon)$ and so
+               we have that $|f(r)-f(x)|<\varepsilon$. And so $f$ is continuous at all points $x\in(a,b)$
+
+
+    \item[8.] Let $f:\R\ra \R$ be continuous and periodic. This means that there exists some $L$ such that $f(x)=f(x+L)$ for all $x$. 
+    Consider the subset $[0,L]$ which is compact and so the function $f$ is uniformly continuous on $[0,L]$, that is for any 
+    $\varepsilon>0$ there exists $\delta_1(\epsilon)>0$ such that for $x,y\in\R$ where $|x-y|<\delta$ we have that $|f(x)-f(y)|<\varepsilon$.
+    Notice also that the subset $[-L/2,L/2]$ is also compact and so the function $f$ is uniformly continuous on $[-L/2,L/2]$, that is for any 
+    $\varepsilon>0$ there exists $\delta_2(\varepsilon)>0$ such that for $x,y\in\R$ where $|x-y|<\delta$ we have that $|f(x)-f(y)|<\varepsilon$. 
+    Now consider any $\varepsilon >0$ and pick $\delta=\min(\delta_1(\varepsilon),\delta_2(\varepsilon), L/2)$ and notice that for any $x,y\in\R$ such that $|x-y|<\delta$
+    we have assuming WLOG that $x<y$, that $(x,y)$ is contained in either $[nL,(n+1)L]$ or $[nL-L/2,(n+1)L-L/2]$ for some integer $n$. 
+    In either case we know that $(x-nL,y-nL)$ would be contained in either $[0,L]$ or $[-L/2,L/2]$ and so $|f(x)-f(y)|=|f(x-nL)-f(y-nL)|<\varepsilon$ and therefore 
+    $f$ is uniformly continuous.
+
+
+    \item[9.]
 
 \end{itemize}
 
