@@ -26,7 +26,7 @@
         the case that the last element added was a negative term too large but by
         construction $|a_{pk}|<1$ for all $k>\ell$ and the
         $|\sum_{k=1}^{n-1}{a_{pk}}|>N+1$ so it would have to be the case
-        $|\sum_{k=1}^{n}{a_{pk}}|>N$. 
+        $|\sum_{k=1}^{n}{a_{pk}}|>N$.
 
     \item[2.]
         WLOG assume that $c_1<c_2$. Let $\sum_{k=1}^{\infty}{a_k}$ be a conditionally
@@ -51,20 +51,18 @@
         Now consider the subsequence $\{\sum_{k=1}^{m_j}{a_{pk}}\}_{j=1}^{\infty}$ That
         is we are considering only the partial sums that ead at an index $m_j$ as
         constructed above. Notice that for any $\varepsilon>0$ we may pick $N$ such
-        that the subsequence $\{a_{p1},\dots,a_{pN}\}$ contains all $a_k$ where
-        $k>M$. Then for all $j>N$ we know that
-        $|\sum_{k=1}^{m_j}{a_{pk}}-c_2|<\varepsilon$. This is the case as $m_j$ was
-        picked such that $\sum_{k=1}^{m_j}{a_{pk}}>c_2$ but
-        $\sum_{k=1}^{m_j-1}{a_{pk}}<c_2$ and that $|a_{p{m_j}}|<\epsilon$.
+        that the subsequence $\{a_{p1},\dots,a_{pN}\}$ contains all $a_k$ where $k>M$.
+        Then for all $j>N$ we know that $|\sum_{k=1}^{m_j}{a_{pk}}-c_2|<\varepsilon$.
+        This is the case as $m_j$ was picked such that $\sum_{k=1}^{m_j}{a_{pk}}>c_2$
+        but $\sum_{k=1}^{m_j-1}{a_{pk}}<c_2$ and that $|a_{p{m_j}}|<\epsilon$.
 
         Now consider the subsequence $\{\sum_{k=1}^{n_j}{a_{pk}}\}_{j=1}^{\infty}$ That
         is we are considering only the partial sums that ead at an index $n_j$ as
         constructed above. Notice that for any $\varepsilon>0$ we may pick $N$ such
-        that the subsequence $\{a_{p1},\dots,a_{pN}\}$ contains all $a_k$ where
-        $k>M$. Then for all $j>N$ we know that
-        $|\sum_{k=1}^{n_j}{a_{pk}}-c_1|<\varepsilon$. This is the case as $n_j$ was
-        picked such that $\sum_{k=1}^{n_j}{a_{pk}}<c_1$ but
-        $\sum_{k=1}^{n_j-1}{a_{pk}}>c_2$ and that $|a_{p{n_j}}|<\epsilon$.
+        that the subsequence $\{a_{p1},\dots,a_{pN}\}$ contains all $a_k$ where $k>M$.
+        Then for all $j>N$ we know that $|\sum_{k=1}^{n_j}{a_{pk}}-c_1|<\varepsilon$.
+        This is the case as $n_j$ was picked such that $\sum_{k=1}^{n_j}{a_{pk}}<c_1$
+        but $\sum_{k=1}^{n_j-1}{a_{pk}}>c_2$ and that $|a_{p{n_j}}|<\epsilon$.
 
         % \partial S is the set of all boundary points
     \item[3.] \begin{enumerate}
@@ -96,13 +94,28 @@
                   That is $\sup(f(\R))=0\not\in f(\R)$.
         \end{enumerate}
 
-    \item[4.] Recall first that compact sets in $\R$ are closed and bounded. And so The
-        intersection $\bigcap K_n$ is closed as it is the intersection of closed sets
-        and is contained in the compact set $K_0$ and so is compact. Last we need to
+    \item[4.] Recall first that compact sets in $\R$ are closed and bounded. And so the
+        intersection $\bigcap_{n=1}^{\infty} K_n$ is closed as it is the intersection of closed sets. It is 
+        also contained in the compact set $K_1$ and so is compact its self. Last we need to
         show that the intersection is non-empty.
-         idk. I think you can say every
-        compact set can be written as the union of of its connected parts which are all
-        intervals. then you have a nested interval theorem. maybe...............% AHHHhhhhhhhhhhhhhhhhhhhhhhhhhhHHHHHHHHHHHHHHHHHHHHHHH
+        First we will show that compact sets are the finite union of disjoint closed
+        intervals. To see this consider a compact set $K$ and assume that $K=\bigsqcup_{j}C_j$ has infinitely many disjoint
+        closed sets that make it up. For each disjoint set $C_j$ we know there exists
+        open sets $A_j$ and $B_j$ such that $C_j\cap K = A_j$, $B_j\cap K\neq \emptyset$, while
+        $(A_j\cap K)\cup(B_j\cap K)= K$ and $(A_j\cap K)\cap(B_j\cap K)=\emptyset$. 
+        Consider the open cover $\{A_j\}_j$ which by assumption has a finite
+        subcover $\{A_{j_\ell}\}_{\ell=1}^n$. Notice that because each $A_j$ was
+        constructed to contains only $C_j$ we know that $K=\bigcup_{\ell=1}^{n} C_{j_\ell}$ 
+        as so $K$ is the finite union of disjoint compact sets. We may further
+        assume that each disjoint $C_{j_\ell}$ is connected which means that it must be
+        an interval.
+
+        Notice that this means that in the chain of nested compact sets there must exists a
+        chain of nested intervals that are non-empty as at every level of the nested
+        compact sets there must be at least 1 interval that is non-empty. So by the
+        nested interval theorem the intersection of these nested closed intervals must
+        be non-empty, so the chain of nested compact sets must be non empty.
+        % in non compact the example to show this is false is [n,\infty] for increasing n.
 
     \item[5.] Assume first that $K$ is compact. This means $K$ is a closed and bounded set.
         Consider any sequence $\{x_n\}_{n=1}^\infty\subseteq K$. Because $K$ is bounded we
@@ -120,8 +133,9 @@
         sequence $\{x_n\}_{n=1}^\infty$ such that $|x_n|>n$. By our assumption there
         must exists a convergent subsequence $\{x_{n_j}\}_{j=1}^\infty\se K$ such that
         $x_{n_j}\ra L\in K$. However this is not possible as there will always be
-        infinity many elements in the sequence that are larger then $L$ and only finitely many smaller then $L$. So every
-        sequence $\{x_n\}_{n=1}^\infty$ must be bounded. Therefore $K$ is compact.
+        infinity many elements in the sequence that are larger then $L$ and only
+        finitely many smaller then $L$. So every sequence $\{x_n\}_{n=1}^\infty$ must
+        be bounded. Therefore $K$ is compact.
 
         this statement is slightly stronger as it only considers countable sequences
         rather then possible uncountable subsets
@@ -129,70 +143,70 @@
     \item[6.] let $f:D\ra\R$ be a function discontinuous at $a\in D$. That is there exists an
         $\varepsilon>0$ such that for all $\delta>0$ there is an $x\in D$ such that $|x-a|<\delta$
         but $|f(x)-f(a)|\geq \varepsilon$
-        Notice that this means for every $\delta = \frac{1}{k}$ there must exists some corresponding 
+        Notice that this means for every $\delta = \frac{1}{k}$ there must exists some corresponding
         $x_k\in D$ as described above.
-        This gives us a sequence $\{x_k\}_{k=1}^\infty$ that converges to $a$. Notice also that for every 
+        This gives us a sequence $\{x_k\}_{k=1}^\infty$ that converges to $a$. Notice also that for every
         $k$ by construction $|f(x_k)-f(a)|\geq \varepsilon$.
 
         Now let $f:D\ra\R$ be a function such that at the point $a\in D$ we have some
-        $\varepsilon>0$ such that there exists a sequence $\{x_k\}_{k=1}^\infty$
-        that converges to $a$ and for every $k$ we have that $|f(x_k)-f(a)|\geq \varepsilon$.
-        Notice that this means our function is discontinuous as for the $\varepsilon$
-        we can consider all $\delta>0$ and because $\{x_k\}_{k=1}^\infty$ converges to
-        $a$ there exists some $N$ such that $|x_k-a|<\delta$ for all $k>N$ and by
-        construction $|f(x_k)-f(a)|\geq \varepsilon$ for all $k>N$.
+        $\varepsilon>0$ such that there exists a sequence $\{x_k\}_{k=1}^\infty$ that
+        converges to $a$ and for every $k$ we have that $|f(x_k)-f(a)|\geq
+            \varepsilon$. Notice that this means our function is discontinuous as for the
+        $\varepsilon$ we can consider all $\delta>0$ and because $\{x_k\}_{k=1}^\infty$
+        converges to $a$ there exists some $N$ such that $|x_k-a|<\delta$ for all $k>N$
+        and by construction $|f(x_k)-f(a)|\geq \varepsilon$ for all $k>N$.
 
+    \item[7.] (1) Let $f:(a,b)\ra\R$ be a function that is continuous on $(a,b)$.
+        %Meaning for any point $r\in (a,b)$ and any $\varepsilon>0$ there exists $\delta>0$ where for any $x\in (a,b)$ such that $|x-r|<\delta$ we have that $|f(r)-f(x)|<\varepsilon$
+        Let $O$ be an open set. Now consider any point $x\in f^{-1}(O)$ and we will
+        show that it is an interior point. First let $y=f(x)$ which is its self an
+        interior point of $O$, and so there exists some $\varepsilon>0$ such that
+        $(y-\varepsilon, y+\varepsilon)\se O$. Because $f$ is continuous at $x$ and
+        because $x$ is an interior point of $(a,b)$ we know that there exists
+        $\delta>0$ where $(x-\delta,x+\delta)\se (a,b)$ and for any $r\in
+            (x-\delta,x+\delta)$ where it is the case that $|x-r|<\delta$ we have that
+        $|f(r)-f(x)|<\varepsilon$. This means that every element $r\in f^{-1}(0)$ and
+        therefore the interval $(x-\delta,x+\delta)\se f^{-1}(O)$. And so the preimage
+        of any open set is open.
 
-    \item[7.] (1) Let $f:(a,b)\ra\R$ be a function that is continuous on $(a,b)$. 
-               %Meaning for any point $r\in (a,b)$ and any $\varepsilon>0$ there exists $\delta>0$ where for any $x\in (a,b)$ such that $|x-r|<\delta$ we have that $|f(r)-f(x)|<\varepsilon$
-               Let $O$ be an open set. 
-               Now consider any point $x\in f^{-1}(O)$ and we will show that it is an interior point. First let $y=f(x)$
-               which is its self an interior point of $O$, and so there exists some $\varepsilon>0$ 
-               such that $(y-\varepsilon, y+\varepsilon)\se O$. Because $f$ is continuous at $x$ and because $x$ is an 
-               interior point of $(a,b)$ we know that there exists $\delta>0$ 
-               where $(x-\delta,x+\delta)\se (a,b)$ and for any $r\in (x-\delta,x+\delta)$ where it is the case that  $|x-r|<\delta$ 
-               we have that $|f(r)-f(x)|<\varepsilon$. This means that every element $r\in f^{-1}(0)$
-               and therefore the interval $(x-\delta,x+\delta)\se f^{-1}(O)$.
-                And so the preimage of any open set is open.
-               
+        (2) Let $f:(a,b)\ra\R$ be a function such that for any open set $O$ we have that $f^{-1}(O)$ is open.
+        We will show that $f$ is continuous on $(a,b)$. Fix some point $x\in (a,b)$ and again consider its image $y=f(x)$ and let
+        $\varepsilon>0$ and consider the open interval $(y-\varepsilon, y+\varepsilon)$ and by assumption we know that
+        $f^{-1}((y-\varepsilon, y+\varepsilon))$ is open and so contains an open interval around $x$ of length $2\delta>0$
+        And notice that for any $r\in (a,b)$ such that $|x-r|<\delta$ we have that $f(r)\in(y-\varepsilon, y+\varepsilon)$ and so
+        we have that $|f(r)-f(x)|<\varepsilon$. And so $f$ is continuous at all points $x\in(a,b)$
 
-               (2) Let $f:(a,b)\ra\R$ be a function such that for any open set $O$ we have that $f^{-1}(O)$ is open.
-               We will show that $f$ is continuous on $(a,b)$. Fix some point $x\in (a,b)$ and again consider its image $y=f(x)$ and let 
-               $\varepsilon>0$ and consider the open interval $(y-\varepsilon, y+\varepsilon)$ and by assumption we know that 
-               $f^{-1}((y-\varepsilon, y+\varepsilon))$ is open and so contains an open interval around $x$ of length $2\delta>0$
-               And notice that for any $r\in (a,b)$ such that $|x-r|<\delta$ we have that $f(r)\in(y-\varepsilon, y+\varepsilon)$ and so
-               we have that $|f(r)-f(x)|<\varepsilon$. And so $f$ is continuous at all points $x\in(a,b)$
-
-
-    \item[8.] Let $f:\R\ra \R$ be continuous and periodic. This means that there exists some $L$ such that $f(x)=f(x+L)$ for all $x$. 
-    Consider the subset $[0,L]$ which is compact and so the function $f$ is uniformly continuous on $[0,L]$, that is for any 
-    $\varepsilon>0$ there exists $\delta_1(\varepsilon)>0$ such that for $x,y\in\R$ where $|x-y|<\delta$ we have that $|f(x)-f(y)|<\varepsilon$.
-    Notice also that the subset $[-L/2,L/2]$ is also compact and so the function $f$ is uniformly continuous on $[-L/2,L/2]$, that is for any 
-    $\varepsilon>0$ there exists $\delta_2(\varepsilon)>0$ such that for $x,y\in\R$ where $|x-y|<\delta$ we have that $|f(x)-f(y)|<\varepsilon$. 
-    Now consider any $\varepsilon >0$ and pick $\delta=\min(\delta_1(\varepsilon),\delta_2(\varepsilon), L/2)$ and notice that for any $x,y\in\R$ such that $|x-y|<\delta$
-    we have assuming WLOG that $x<y$, that $(x,y)$ is contained in either $[nL,(n+1)L]$ or $[nL-L/2,(n+1)L-L/2]$ for some integer $n$. 
-    In either case we know that $(x-nL,y-nL)$ would be contained in either $[0,L]$ or $[-L/2,L/2]$ and so $|f(x)-f(y)|=|f(x-nL)-f(y-nL)|<\varepsilon$ and therefore 
-    $f$ is uniformly continuous.
-
+    \item[8.] Let $f:\R\ra \R$ be continuous and periodic. This means that there exists some $L$ such that $f(x)=f(x+L)$ for all $x$.
+        Consider the subset $[0,L]$ which is compact and so the function $f$ is uniformly continuous on $[0,L]$, that is for any
+        $\varepsilon>0$ there exists $\delta_1(\varepsilon)>0$ such that for $x,y\in\R$ where $|x-y|<\delta$ we have that $|f(x)-f(y)|<\varepsilon$.
+        Notice also that the subset $[-L/2,L/2]$ is also compact and so the function $f$ is uniformly continuous on $[-L/2,L/2]$, that is for any
+        $\varepsilon>0$ there exists $\delta_2(\varepsilon)>0$ such that for $x,y\in\R$ where $|x-y|<\delta$ we have that $|f(x)-f(y)|<\varepsilon$.
+        Now consider any $\varepsilon >0$ and pick $\delta=\min(\delta_1(\varepsilon),\delta_2(\varepsilon), L/2)$ and notice that for any $x,y\in\R$ such that $|x-y|<\delta$
+        we have assuming WLOG that $x<y$, that $(x,y)$ is contained in either $[nL,(n+1)L]$ or $[nL-L/2,(n+1)L-L/2]$ for some integer $n$.
+        In either case we know that $(x-nL,y-nL)$ would be contained in either $[0,L]$ or $[-L/2,L/2]$ and so $|f(x)-f(y)|=|f(x-nL)-f(y-nL)|<\varepsilon$ and therefore
+        $f$ is uniformly continuous.
 
     \item[9.] % wording? also correctness? i think first part is good. but second is mostly copy paste
-    Let $f:K\ra\R$ be a function that is continuous on a set $K$. Let $O$ be an open set.
-               Consider also the set $U=\bigcup_{x\in f^{-1}(O)}(x-\delta_x,x+\delta_x)$. Which by construction is open and $f^{-1}(0)\se U$ and so therefore
-               $f^{-1}(0)\se U\cap K$ as $f^{-1}(0)\se K$.
-               Where we pick $\delta_x$ as follows: 
-               Consider an point $x\in f^{-1}(O)$. First let $y=f(x)$
-               which is an interior point of $O$, and so there exists some $\varepsilon>0$ 
-               such that $(y-\varepsilon, y+\varepsilon)\se O$. Because $f$ is continuous we know that there exists $\delta_x>0$ 
-               where for any $r\in K$ such that $|x-r|<\delta_x$ we have that $|f(r)-f(x)|<\varepsilon$. This means that every element $r\in f^{-1}(0)$
-               and therefore the interval $(x-\delta_x,x+\delta_x)\cap K\se f^{-1}(O)$. And so $U\cap K= f^{-1}(O)$.
+        Let $f:K\ra\R$ be a function that is continuous on a set $K$. Let $O$ be an open set.
+        Consider also the set $U=\bigcup_{x\in f^{-1}(O)}(x-\delta_x,x+\delta_x)$. Which by construction is open and $f^{-1}(0)\se U$ and so therefore
+        $f^{-1}(0)\se U\cap K$ as $f^{-1}(0)\se K$.
+        Where we pick $\delta_x$ as follows:
+        Consider an point $x\in f^{-1}(O)$. First let $y=f(x)$
+        which is an interior point of $O$, and so there exists some $\varepsilon>0$
+        such that $(y-\varepsilon, y+\varepsilon)\se O$. Because $f$ is continuous we know that there exists $\delta_x>0$
+        where for any $r\in K$ such that $|x-r|<\delta_x$ we have that $|f(r)-f(x)|<\varepsilon$. This means that every element $r\in f^{-1}(0)$
+        and therefore the interval $(x-\delta_x,x+\delta_x)\cap K\se f^{-1}(O)$. And so $U\cap K= f^{-1}(O)$.
 
-               Let $f:K\ra\R$ be a function on a set $K$ such that for any open set $O$ we have that $f^{-1}(0)=K\cap U$ for some open set $U$.
-               We will show that $f$ is continuous on $K$. Fix some point $x\in K$ and again consider its image $y=f(x)$ and let 
-               $\varepsilon>0$ and consider the open interval $(y-\varepsilon, y+\varepsilon)$ and by assumption we know that 
-               $f^{-1}((y-\varepsilon, y+\varepsilon))=K\cap U$ for some open set $U$ and so $U$ 
-               contains an open interval around $x$ of length $2\delta>0$
-               And notice that for any $r\in K$ such that $|x-r|<\delta$ we have that $f(r)\in(y-\varepsilon, y+\varepsilon)$ and so
-               we have that $|f(r)-f(x)|<\varepsilon$. And so $f$ is continuous at all points $x\in K$
+        Let $f:K\ra\R$ be a function on a set $K$ such that for any open set $O$ we
+        have that $f^{-1}(0)=K\cap U$ for some open set $U$. We will show that $f$ is
+        continuous on $K$. Fix some point $x\in K$ and again consider its image
+        $y=f(x)$ and let $\varepsilon>0$ and consider the open interval
+        $(y-\varepsilon, y+\varepsilon)$ and by assumption we know that
+        $f^{-1}((y-\varepsilon, y+\varepsilon))=K\cap U$ for some open set $U$ and so
+        $U$ contains an open interval around $x$ of length $2\delta>0$ And notice that
+        for any $r\in K$ such that $|x-r|<\delta$ we have that $f(r)\in(y-\varepsilon,
+            y+\varepsilon)$ and so we have that $|f(r)-f(x)|<\varepsilon$. And so $f$ is
+        continuous at all points $x\in K$
 
 \end{itemize}
 
