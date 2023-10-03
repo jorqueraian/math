@@ -1,0 +1,81 @@
+\documentclass[12pt]{article}
+\usepackage[left=0.5in, right=0.5in, top=0.75in, bottom=0.5in]{geometry}
+\usepackage{epsfig,graphics,amsmath,color,multicol,enumitem,tabularx,pbox,url}
+\usepackage{cancel}
+%\usepackage[firstpage]{draft watermark}
+
+\setlist{noitemsep}
+\setlist{nolistsep}
+
+\pagestyle{empty}
+
+\newenvironment{boxe}
+    {\begin{center}
+    \begin{tabular}{|p{0.9\textwidth}|}
+    \hline\\
+    }
+    { 
+    \\\hline
+    \end{tabular} 
+    \end{center}
+    }
+
+\begin{document}
+
+
+\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}l l}
+\textbf{Derivative Shortcut practice}  &  Wizard name: \hrulefill \\
+%\textbf{\today} & MATH 157, Hogwart's House: \rule{4cm}{0.5pt}  \\
+\textbf{Math 160 } & MATH 160 Hogwart's House:\hspace{2cm} \\
+\hline\hline
+\end{tabular*} 
+
+
+\normalsize 
+
+\vspace{.4cm}
+For each: Identify which derivative rules you will need to use and then solve the derivative
+\begin{enumerate}
+    \item Let $R(q)=q^2\ln(q)$. Find $R'(q)$
+    \vspace{.9in}
+    \item Verify, using the quotient rule, that 
+    $\displaystyle{\frac{d}{dx}\left[\tan(x)\right]=\sec^2(x)}$ (Hint: $\tan(x)=\frac{\sin(x)}{\cos(x)}$, $\sin^2(x)+\cos^2(x)=1$)
+    \vspace{.9in}
+    \item Let $\displaystyle{w(y)=e^{y^2}+\sin(y)-y^4}$. Find $w'(y)$
+    \vspace{.9in}
+    \item $f(x)=\sqrt{a+\sqrt{x}}$ for some number $a$. Find $f'(x)$
+    \vspace{.9in}
+    %\item $\displaystyle{f(x)=\sqrt{\frac{(x+1)^{10}}{(2x+1)^5}}}$. Find $f'(x)$
+\end{enumerate}
+
+5. Use the graphs of $f(x)$ and $g(x)$ to find the following derivatives. If it does not exist, explain why.
+\begin{multicols}{2}
+\includegraphics[scale=0.35]{Chain2.png}
+
+\begin{itemize} %hacked lol
+\item[ ] \;\;\;\;\;$\displaystyle\frac{d}{dx}\left[f(x)\right]\Bigg|_{x=4}$
+
+\vspace{1in}
+
+
+\item[ ] \;\;\;\;\;$\displaystyle\frac{d}{dx}\left[g(f(x))\right]\Bigg|_{x=4}$
+
+\vspace{1in}
+
+\item[ ]\;\;\;\;\; $\displaystyle\frac{d}{dx}\left[g(f(x))\right]\Bigg|_{x=0}$
+
+\end{itemize}
+\end{multicols}
+\newpage
+\begin{itemize}
+    \item[6.] Find $\displaystyle{\frac{d}{dx}\left[\sqrt{x}\sin(x)2^x\right]}$
+    \vspace{3in}
+    \item[7.] Compute $\displaystyle{\frac{d}{dz}\left[\sqrt{\sin(4z^2)}\right]}$
+    \vspace{3in}
+    \item[7.] Let $\displaystyle{f(x)=\frac{3^x+x^2}{\tan(x)+x}}$. Find $f'(x)$
+\end{itemize}
+
+
+
+
+\end{document}
