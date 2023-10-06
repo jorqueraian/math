@@ -3,82 +3,105 @@
 
 \begin{document}
 \begin{center}
-    \textsc{Math 517. HW 3\\ Ian Jorquera}
+   \textsc{Math 517. HW 3\\ Ian Jorquera}
 \end{center}
 \vspace{1em}
 
 \begin{itemize}
-    \item[1.] 
-     First we will show that $s(2^kx)=\min_{n\in\Z}|2^kx-n|$ is continuous for all $x\in \R$ for any fixed $k\in\N$. 
-     To see this let $\epsilon>0$ and $x\in \R$ and assume that the closest integer to $2^kx$ is $n$ and 
-     notice that for $\delta=\min(\epsilon/2^{k},1/2^{k},1/4)$ we have that for any $y\in\R$ 
-     such that $|x-y|<\delta$ that the closest integer to $2^ky$ is at most $1$ away from $n$.
-     This gives us 2 cases WLOG: First assume that $n$ is the closest integer to $2^ky$. In which case 
-     \begin{align*}
-        \abs{s(2^ky)-s(2^kx)}&=\abs{|2^ky-n|-|2^kx-n|}\\
-        &\leq \abs{(2^ky-n)-(2^kx-n)}\\
-            &=|(2^ky-2^kx)|=2^k|x-y|<2^k\delta\leq\epsilon
-     \end{align*}
-     Case 2: assume WLOG that $x<y$ and the closest integer to $2^ky$ is $n+1$. 
-     Notice that from our assumption $\delta<\frac{1}{4}$ so it must be the case that $n<2^kx<2^ky<n+1$.
-     Notice however that the distance between $2^ky$ and $n+1$ is bounded by the distance between $2^ky$ and $n$, that is $|2^ky-(n+1)|< 2^ky-n$. 
-     Likewise $|2^kx-n|< (n+1)-2^kx$. 
-     Case 2a: If $s(2^ky)<s(2^kx)$ this means that
-     \begin{align*}
-        \abs{s(2^ky)-s(2^kx)}=s(2^kx)-s(2^ky)&=|2^kx-n|-|2^ky-(n+1)|\\
-        &<(n+1)-2^kx-|2^ky-(n+1)|\\
-        &=(n+1)-2^kx-(n+1)+2^ky\leq 2^ky-2^kx<2^k\delta<\epsilon
-     \end{align*}
+   \item[1.]
+      First we will show that $s(2^kx)=\min_{n\in\Z}|2^kx-n|$ is continuous for all $x\in \R$ for any fixed $k\in\N$.
+      To see this let $\epsilon>0$ and $x\in \R$ and assume that the closest integer to $2^kx$ is $n$ and
+      notice that for $\delta=\min(\epsilon/2^{k},1/2^{k},1/4)$ we have that for any $y\in\R$
+      such that $|x-y|<\delta$ that the closest integer to $2^ky$ is at most $1$ away from $n$.
+      This gives us 2 cases WLOG: First assume that $n$ is the closest integer to $2^ky$. In which case
+      \begin{align*}
+         \abs{s(2^ky)-s(2^kx)} & =\abs{|2^ky-n|-|2^kx-n|}                      \\
+                               & \leq \abs{(2^ky-n)-(2^kx-n)}                  \\
+                               & =|(2^ky-2^kx)|=2^k|x-y|<2^k\delta\leq\epsilon
+      \end{align*}
+      Case 2: assume WLOG that $x<y$ and the closest integer to $2^ky$ is $n+1$.
+      Notice that from our assumption $\delta<\frac{1}{4}$ so it must be the case that $n<2^kx<2^ky<n+1$.
+      Notice however that the distance between $2^ky$ and $n+1$ is bounded by the distance between $2^ky$ and $n$, that is $|2^ky-(n+1)|< 2^ky-n$.
+      Likewise $|2^kx-n|< (n+1)-2^kx$.
+      Case 2a: If $s(2^ky)<s(2^kx)$ this means that
+      \begin{align*}
+         \abs{s(2^ky)-s(2^kx)}=s(2^kx)-s(2^ky) & =|2^kx-n|-|2^ky-(n+1)|                                  \\
+                                               & <(n+1)-2^kx-|2^ky-(n+1)|                                \\
+                                               & =(n+1)-2^kx-(n+1)+2^ky\leq 2^ky-2^kx<2^k\delta<\epsilon
+      \end{align*}
 
-     and case 2b: if $s(2^ky)>s(2^kx)$ then this means that
-     \begin{align*}
-        \abs{s(2^ky)-s(2^kx)}=s(2^ky)-s(2^kx)&=|2^ky-(n+1)|-|2^kx-n|\\
-        &2^ky-n-|2^kx-n|\\
-        &=2^ky-n-2^kx-n\leq 2^ky-2^kx<2^k\delta<\epsilon
-     \end{align*}
-     
-     And so we know that $\abs{s(2^ky)-s(2^kx)}<\epsilon$ when ever $|x-y|<\delta$ and so $s(2^kx)$ is continuous for all $x\in \R$\\
+      and case 2b: if $s(2^ky)>s(2^kx)$ then this means that
+      \begin{align*}
+         \abs{s(2^ky)-s(2^kx)}=s(2^ky)-s(2^kx) & =|2^ky-(n+1)|-|2^kx-n|                          \\
+                                               & 2^ky-n-|2^kx-n|                                 \\
+                                               & =2^ky-n-2^kx-n\leq 2^ky-2^kx<2^k\delta<\epsilon
+      \end{align*}
 
-     Now consider the sequence of functions $\displaystyle{\left\{\sum_{k=1}^n\frac{s(2^kx)}{2^k}\right\}_{n=1}^{\infty}}$. 
-     First we will show that this sequence of functions converges uniformly
-     Let $\epsilon>0$ and let $N$ be an integer such that $\frac{1}{2^{n-1}}<\epsilon$ we know that 
-     \[\abs{\sum_{k=1}^\infty\frac{s(2^kx)}{2^k}-\sum_{k=1}^n\frac{s(2^kx)}{2^k}}=\abs{\sum_{k=n}^\infty\frac{s(2^kx)}{2^k}}<\abs{\sum_{k=n}^\infty\frac{1}{2^k}}=\frac{1}{2^n(1-\frac{1}{2})}=\frac{1}{2^{n-1}}<\epsilon\]
-     which is the case for all $x\in\R$. 
-     Next Notice that for each function in the sequence
-     $\sum_{k=1}^n\frac{s(2^kx)}{2^k}$ is continuous as it is the finite sun of continuous function, as $s(2^kx)$ is continuous for all $x\in\R$.
-     So we know that the sequence of function converges to the function $b(x)=\sum_{k=1}^\infty\frac{s(2^kx)}{2^k}$ which is also continuous.\\
+      And so we know that $\abs{s(2^ky)-s(2^kx)}<\epsilon$ when ever $|x-y|<\delta$
+      and so $s(2^kx)$ is continuous for all $x\in \R$\\
 
-     Finally we will show that $b(x)$ is differentiable no where. let $a\in\R$ and consider the derivative
-     \[\lim_{h\ra 0}\frac{b(a+h)-b(a)}{h}=\lim_{h\ra 0}\frac{\lim_{n\ra\infty}\sum_{k=1}^n\frac{s(2^k(a+h))}{2^k}-\lim_{n\ra\infty}\sum_{k=1}^n\frac{s(2^ka)}{2^k}}{h}\]
-     And because the sequence of function is converges uniformly, it also converges point-wise so
-     \[\lim_{h\ra 0}\frac{\lim_{n\ra\infty}\sum_{k=1}^n\frac{s(2^k(a+h))}{2^k}-\lim_{n\ra\infty}\sum_{k=1}^n\frac{s(2^ka)}{2^k}}{h}=\lim_{h\ra 0}\lim_{n\ra\infty}\frac{\sum_{k=1}^n\frac{s(2^k(a+h))}{2^k}-\sum_{k=1}^n\frac{s(2^ka)}{2^k}}{h}\]
-     idk
+      Now consider the sequence of functions
+      $\displaystyle{\left\{\sum_{k=1}^n\frac{s(2^kx)}{2^k}\right\}_{n=1}^{\infty}}$.
+      First we will show that this sequence of functions converges uniformly Let
+      $\epsilon>0$ and let $N$ be an integer such that $\frac{1}{2^{n-1}}<\epsilon$
+      we know that
+      \[\abs{\sum_{k=1}^\infty\frac{s(2^kx)}{2^k}-\sum_{k=1}^n\frac{s(2^kx)}{2^k}}=\abs{\sum_{k=n}^\infty\frac{s(2^kx)}{2^k}}<\abs{\sum_{k=n}^\infty\frac{1}{2^k}}=\frac{1}{2^n(1-\frac{1}{2})}=\frac{1}{2^{n-1}}<\epsilon\]
+      which is the case for all $x\in\R$. Next Notice that for each function in the
+      sequence $\sum_{k=1}^n\frac{s(2^kx)}{2^k}$ is continuous as it is the finite
+      sun of continuous function, as $s(2^kx)$ is continuous for all $x\in\R$. So we
+      know that the sequence of function converges to the function
+      $b(x)=\sum_{k=1}^\infty\frac{s(2^kx)}{2^k}$ which is also continuous.\\
 
-     \item[2.] First we will show that $f(x)$ is differentiable at zero. Notice that
-     \[f'(0)=\lim_{h\ra 0}\frac{f(0+h)-f(0)}{h}=\lim_{h\ra 0}\frac{f(h)}{h}\]
-     And notice that for any $h<0$ we have that $-h\leq \frac{f(h)}{h}<0$ and for any $h>0$ that $0\leq \frac{f(h)}{h}<h$ 
-     and so by the squeeze theorem we have that \(f'(0)=\lim_{h\ra 0}\frac{f(h)}{h}=0\)
-     To see that $f(x)$ is not differentiable anywhere else it is enough to show that it is not continuous anywhere else. 
-     Let $x\in \Q$ such that $x\neq 0$. Notice that for $\epsilon=x^2/2$ and for any $\delta>0$ that there will always exists an irrational 
-     number $r$ such that $x<r<x+\delta$ which means $|f(x)-f(r)|=x^2>x^2/2$. Likewise let $x\in \mathbb{I}$. Notice that for $\epsilon=x^2/2$ and for any 
-     $\delta>0$ that there will always exists an rational number $r$ such that $x<r<x+\delta$ which means $|f(x)-f(r)|=r^2>x^2>x^2/2$. 
-     So $f(x)$ is discontinuous at all $x\neq 0$ and therefore not differentiable.
+      Finally we will show that $b(x)$ is differentiable no where. let $a\in\R$ and
+      consider the derivative
+      \[\lim_{h\ra 0}\frac{b(a+h)-b(a)}{h}=\lim_{h\ra 0}\frac{\lim_{n\ra\infty}\sum_{k=1}^n\frac{s(2^k(a+h))}{2^k}-\lim_{n\ra\infty}\sum_{k=1}^n\frac{s(2^ka)}{2^k}}{h}\]
+      And because the sequence of function is converges uniformly, it also converges
+      point-wise so
+      \[\lim_{h\ra 0}\frac{\lim_{n\ra\infty}\sum_{k=1}^n\frac{s(2^k(a+h))}{2^k}-\lim_{n\ra\infty}\sum_{k=1}^n\frac{s(2^ka)}{2^k}}{h}=\lim_{h\ra 0}\lim_{n\ra\infty}\frac{\sum_{k=1}^n\frac{s(2^k(a+h))}{2^k}-\sum_{k=1}^n\frac{s(2^ka)}{2^k}}{h}\]
+      idk
 
-     \item[3.] Let $f(x)=x^3-3x^2+2x$\\ % need some more here. theorems from class only use open intervals and deriv neq 0. but this isnt really needed
-     (1) Notice first the $f(x)$ and $f'(x)$ are continuous everywhere and let $I=(-\infty, 1-\frac{\sqrt{3}}{3})$. Notice that for all $x<1-\frac{\sqrt{3}}{3}$ that $f'(x)>0$ and so 
-     by the inverse function theorem $f$ has a local inverse that is differentiable. However the largest locally invertible interval $(-\infty, 1-\frac{\sqrt{3}}{3}]$ 
-     as $f(x)<f(1-\frac{\sqrt{3}}{3})$ for all $x<1-\frac{\sqrt{3}}{3}$. And so there exists a function $f^{-1}:(-\infty,f(1-\frac{\sqrt{3}}{3})]\ra(-\infty,1-\frac{\sqrt{3}}{3}]$.\\
-     (2) Recall that from the inverse function theorem that $(f^{-1})'(0)=\frac{1}{f'(f^{-1}(0))}=\frac{1}{f'(0)}=\frac{1}{2}$
-     (3) The only points where $f(x)=0$ are $x_1$ and $x_3$. This means that local inversion around either $x_1$ or $x_3$ is impossible unless we consider intervals where
-     $x_1$ and $x_2$ are not interior points. Local inversion around $x_2=1$ and $x_4=2$ is possible for any interval that does not have $x_1$ or $x_3$ as interior points.
+   \item[2.] First we will show that $f(x)$ is differentiable at zero. Notice that
+      \[f'(0)=\lim_{h\ra 0}\frac{f(0+h)-f(0)}{h}=\lim_{h\ra 0}\frac{f(h)}{h}\]
+      And notice that $0$ is a cluster point of the domain of $f(h)/h$, and for any
+      $h<0$ we have that $-h\leq \frac{f(h)}{h}<0$ and for any $h>0$ that $0\leq
+         \frac{f(h)}{h}<h$ and because $\lim_{h\ra 0^-}-h=0=\lim_{h\ra 0^-}0$ and
+      $\lim_{h\ra 0^+}0=0=\lim_{h\ra 0^+}h$ by the squeeze theorem we have that
+      \(f'(0)=\lim_{h\ra 0}\frac{f(h)}{h}=0\) To see that $f(x)$ is not
+      differentiable anywhere else it is enough to show that it is not continuous
+      anywhere else. Let $x\in \Q$ such that $x\neq 0$. Notice that for
+      $\epsilon=x^2/2$ and for any $\delta>0$ that there will always exists an
+      irrational number $r$ such that $x<r<x+\delta$ which means
+      $|f(x)-f(r)|=x^2>x^2/2=\epsilon$. Likewise let $x\in \mathbb{I}$. Notice that
+      for $\epsilon=x^2/2$ and for any $\delta>0$ that there will always exists an
+      rational number $r$ such that $x<r<x+\delta$ which means
+      $|f(x)-f(r)|=r^2>x^2>x^2/2=\epsilon$. So $f(x)$ is discontinuous at all $x\neq
+         0$ and therefore not differentiable.
 
-     \item[4.] Let $S,T$ be sets such that $s<t$ for all $s\in S$ and $t\in T$, let $s^*:=\sup S$ and $t^*:=\inf T$
-     (1) Assume that $\sup S> \inf T$, this means that there must exist some $s\in S$ such that $t^*<s\leq s^*$ as if there were not $t^*$ would be a 
-     smaller upper bound than $s^*$. Likewise we know that there must exist some $t\in T$ such that $t^*\leq t< s^*$ as if there were not $s^*$ would be a 
-     larger lower bound than $t^*$. And by assumption we know that $s<t$ meaning $t^*<s<t<s^*$. This must mean that $s$ is a bigger upper bound, as $s<t$ for all $t\in T$.\\
-     (2) Assume that this was not the case and that $s^*<t^*$ However by our assumption there exists $s\in S$ and $t\in T$ such that $t-s<t^*-s^*$ but this is a 
-     contradiction because it must also be the case $s\leq s^*<t^*\leq t$ meaning $t-s\geq t^*-s^*$.
+   \item[3.] Let $f(x)=x^3-3x^2+2x$\\ % need some more here. theorems from class only use open intervals and deriv neq 0. but this isnt really needed
+      (1) Notice first the $f(x)$ and $f'(x)$ are continuous everywhere and let 
+      $I=(-\infty, 1-\frac{\sqrt{3}}{3})$. Notice that for all $x<1-\frac{\sqrt{3}}{3}$ that $f'(x)>0$ and so
+      by the inverse function theorem $f$ has a local inverse that is differentiable. 
+      However the largest locally invertible interval is $(-\infty, 1-\frac{\sqrt{3}}{3}]$
+      as $f(x)<f(1-\frac{\sqrt{3}}{3})$ for all $x<1-\frac{\sqrt{3}}{3}$. And so there 
+      exists a function $f^{-1}:(-\infty,f(1-\frac{\sqrt{3}}{3})]\ra(-\infty,1-\frac{\sqrt{3}}{3}]$.\\
+      (2) Recall that from the inverse function theorem that $(f^{-1})'(0)=\frac{1}{f'(f^{-1}(0))}=\frac{1}{f'(0)}=\frac{1}{2}$
+      (3) The only points where $f'(x)=0$ are $x_1$ and $x_3$. This means that local 
+      inversion around either $x_1$ or $x_3$ is impossible unless we consider intervals where
+      $x_1$ and $x_2$ are not interior points and instead are boundary points.
+      Local inversion around $x_2=1$ and $x_4=2$ is possible for any interval that does 
+      not have $x_1$ or $x_3$ as interior points. % maybe give intervals
 
+   \item[4.] Let $S,T$ be sets such that $s<t$ for all $s\in S$ and $t\in T$, let $s^*:=\sup S$ and $t^*:=\inf T$
+      (1) Assume that this is not true and that $\sup S=s^*> \inf T=t^*$, 
+      this means that there must exist some $s\in S$ such that $t^*<s\leq s^*$ as if there were not $t^*$ would be a
+      smaller upper bound for the set $S$ than $s^*$. Likewise we know that there must exist 
+      some $t\in T$ such that $t^*\leq t< s^*$ as if there were not $s^*$ would be a
+      larger lower bound for the set $T$ than $t^*$. And by assumption we know that $s<t$ meaning 
+      $t^*<s<t<s^*$. This must mean that $s$ is a greater lower bound for the set $T$ then $t^*$, as $s<t$ 
+      for all $t\in T$ and $t^*<s$.\\
+      (2) Assume that this was not the case and that $s^*<t^*$ However by our 
+      assumption there exists $s\in S$ and $t\in T$ such that $t-s<t^*-s^*$ but this is a
+      contradiction because it must also be the case $s\leq s^*<t^*\leq t$ meaning $t-s\geq t^*-s^*$.
 
 \end{itemize}
 
