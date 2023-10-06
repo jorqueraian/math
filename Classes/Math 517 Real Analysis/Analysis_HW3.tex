@@ -42,7 +42,12 @@
 
       Now consider the sequence of functions
       $\displaystyle{\left\{\sum_{k=1}^n\frac{s(2^kx)}{2^k}\right\}_{n=1}^{\infty}}$.
-      First we will show that this sequence of functions converges uniformly Let
+      First we will show that this sequence of functions converges point wise. 
+      Which follows from the fact that for any $x\in \R$ we have that 
+      $\frac{s(2^kx)}{2^k}\leq \frac{1}{2^k}$. And so $\sum_{k=1}^n\frac{s(2^kx)}{2^k}$ 
+      is bounded by a geometric series and so converges when $n\ra\infty$ to 
+      $b(x)=\lim_{n\ra\infty}\sum_{k=1}^n\frac{s(2^kx)}{2^k}=\sum_{k=1}^\infty\frac{s(2^kx)}{2^k}$. 
+      Now we will show this sequence converges to $b(x)$ uniformly. Let
       $\epsilon>0$ and let $N$ be an integer such that $\frac{1}{2^{n-1}}<\epsilon$
       we know that
       \[\abs{\sum_{k=1}^\infty\frac{s(2^kx)}{2^k}-\sum_{k=1}^n\frac{s(2^kx)}{2^k}}=\abs{\sum_{k=n}^\infty\frac{s(2^kx)}{2^k}}<\abs{\sum_{k=n}^\infty\frac{1}{2^k}}=\frac{1}{2^n(1-\frac{1}{2})}=\frac{1}{2^{n-1}}<\epsilon\]
@@ -52,13 +57,14 @@
       know that the sequence of function converges to the function
       $b(x)=\sum_{k=1}^\infty\frac{s(2^kx)}{2^k}$ which is also continuous.\\
 
-      Finally we will show that $b(x)$ is differentiable no where. let $a\in\R$ and
-      consider the derivative
-      \[\lim_{h\ra 0}\frac{b(a+h)-b(a)}{h}=\lim_{h\ra 0}\frac{\lim_{n\ra\infty}\sum_{k=1}^n\frac{s(2^k(a+h))}{2^k}-\lim_{n\ra\infty}\sum_{k=1}^n\frac{s(2^ka)}{2^k}}{h}\]
-      And because the sequence of function is converges uniformly, it also converges
-      point-wise so
-      \[\lim_{h\ra 0}\frac{\lim_{n\ra\infty}\sum_{k=1}^n\frac{s(2^k(a+h))}{2^k}-\lim_{n\ra\infty}\sum_{k=1}^n\frac{s(2^ka)}{2^k}}{h}=\lim_{h\ra 0}\lim_{n\ra\infty}\frac{\sum_{k=1}^n\frac{s(2^k(a+h))}{2^k}-\sum_{k=1}^n\frac{s(2^ka)}{2^k}}{h}\]
-      idk
+      Finally we will show that $b(x)$ is differentiable no where.
+      Fix $x\in \R$ 
+      Notice first that each term in the sum, the function $\frac{s(2^kx)}{x}$ has slopes $1$ and $-1$
+      Let $m$ be a positive integer and consider the integers $n$ and $n+1$ that are closest to $2^mx$. 
+      That is $n\leq 2^mx\leq n+1$ and so $\frac{n}{2^m}\leq x\leq \frac{n+1}{2^m}$. see like page 193 or something idk
+
+
+
 
    \item[2.] First we will show that $f(x)$ is differentiable at zero. Notice that
       \[f'(0)=\lim_{h\ra 0}\frac{f(0+h)-f(0)}{h}=\lim_{h\ra 0}\frac{f(h)}{h}\]
