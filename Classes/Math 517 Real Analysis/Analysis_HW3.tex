@@ -42,14 +42,14 @@
 
       Now consider the sequence of functions
       $\displaystyle{\left\{\sum_{k=1}^n\frac{s(2^kx)}{2^k}\right\}_{n=1}^{\infty}}$.
-      First we will show that this sequence of functions converges point wise. 
-      Which follows from the fact that for any $x\in \R$ we have that 
-      $\frac{s(2^kx)}{2^k}\leq \frac{1}{2^k}$. And so $\sum_{k=1}^n\frac{s(2^kx)}{2^k}$ 
-      is bounded by a geometric series and so converges when $n\ra\infty$ to 
-      $b(x)=\lim_{n\ra\infty}\sum_{k=1}^n\frac{s(2^kx)}{2^k}=\sum_{k=1}^\infty\frac{s(2^kx)}{2^k}$. 
-      Now we will show this sequence converges to $b(x)$ uniformly. Let
-      $\epsilon>0$ and let $N$ be an integer such that $\frac{1}{2^{n-1}}<\epsilon$
-      we know that
+      First we will show that this sequence of functions converges point wise. Which
+      follows from the fact that for any $x\in \R$ we have that
+      $\frac{s(2^kx)}{2^k}\leq \frac{1}{2^k}$. And so
+      $\sum_{k=1}^n\frac{s(2^kx)}{2^k}$ is bounded by a geometric series and so
+      converges when $n\ra\infty$ to
+      $b(x)=\lim_{n\ra\infty}\sum_{k=1}^n\frac{s(2^kx)}{2^k}=\sum_{k=1}^\infty\frac{s(2^kx)}{2^k}$.
+      Now we will show this sequence converges to $b(x)$ uniformly. Let $\epsilon>0$
+      and let $N$ be an integer such that $\frac{1}{2^{n-1}}<\epsilon$ we know that
       \[\abs{\sum_{k=1}^\infty\frac{s(2^kx)}{2^k}-\sum_{k=1}^n\frac{s(2^kx)}{2^k}}=\abs{\sum_{k=n}^\infty\frac{s(2^kx)}{2^k}}<\abs{\sum_{k=n}^\infty\frac{1}{2^k}}=\frac{1}{2^n(1-\frac{1}{2})}=\frac{1}{2^{n-1}}<\epsilon\]
       which is the case for all $x\in\R$. Next Notice that for each function in the
       sequence $\sum_{k=1}^n\frac{s(2^kx)}{2^k}$ is continuous as it is the finite
@@ -57,64 +57,46 @@
       know that the sequence of function converges to the function
       $b(x)=\sum_{k=1}^\infty\frac{s(2^kx)}{2^k}$ which is also continuous.\\
 
-      Finally we will show that $b(x)$ is differentiable no where.
-      Fix $x\in \R$ and let $m$ be a positive integer and consider the integers $n$ and $n+1$ that are closest to $2^{m^-1}x$. 
-      That is $n\leq 2^{m-1}x\leq n+1$ and so $\frac{n}{2^{m-1}}\leq x\leq \frac{n+1}{2^{m-1}}$. Now pick $h_m=\pm\frac{1}{2^m}$ 
-      where the sign is chosen such that $\frac{n}{2^{m-1}}\leq x+h_m\leq \frac{n+1}{2^{m-1}}$.
-      %$2^{m-1}x$ and $2^{m-1}(x+h_m)$ have the same closest integer. This is always possible as  $|2^{m-1}h_m|=2^{m-1}2^{-m}=\frac{1}{2}$. 
-      Now consider the sequence of difference quotients $\left\{\frac{b(x+h_m)-b(x)}{h_m}\right\}_{m=1}^\infty$. Let $i_k=\text{sgn}()$And notice that 
+      Finally we will show that $b(x)$ is differentiable no where. Fix $x\in \R$ and
+      let $m$ be a natural number and consider the integers $n$ and $n+1$ that are
+      closest to $2^{m-2}x$. That is $n\leq 2^{m-2}x\leq n+1$ and so
+      $\frac{n}{2^{m-2}}\leq x\leq \frac{n+1}{2^{m-2}}$. Now pick
+      $h_m=\pm\frac{1}{2^m}$ where the sign is chosen such that
+      $\frac{n}{2^{m-2}}\leq x+h_m\leq \frac{n+1}{2^{m-2}}$ and $2^{m-2}x$ and $2^{m-2}(x+h_m)$ have the same closest integer. This is always possible as  $|2^{m-2}h_m|=2^{m-2}2^{-m}=\frac{1}{4}$. % need m-2 and 1/4?
+      Now consider the sequence of difference quotients
+      $\left\{\frac{b(x+h_m)-b(x)}{h_m}\right\}_{m=2}^\infty$. And notice that
       \begin{align}
-         \frac{b(x+h_m)-b(x)}{h_m}&=\frac{1}{h_m}\sum_{k=0}^{\infty}\frac{1}{2^k}\left(s(2^k(x+h_m))-s(2^kx)\right)\\
-         &=\frac{1}{h_m}\sum_{k=0}^{m}\frac{1}{2^k}\left(s(2^k(x+h_m))-s(2^kx)\right)\\
-         &=\frac{1}{h_m}\sum_{k=0}^{m}\sigma_k h_m\\
-         &=\sum_{k=0}^{m}\sigma_k
+         \frac{b(x+h_m)-b(x)}{h_m} & =\frac{1}{h_m}\sum_{k=0}^{\infty}\frac{1}{2^k}\left(s(2^k(x+h_m))-s(2^kx)\right) \\
+                                   & =\frac{1}{h_m}\sum_{k=0}^{m-2}\frac{1}{2^k}\left(s(2^k(x+h_m))-s(2^kx)\right) + S_m     \\
+                                   & =\frac{1}{h_m}\sum_{k=0}^{m-2}\sigma_k h_m  + S_m                                       \\
+                                   & =\sum_{k=0}^{m-2}\sigma_k +S_m
       \end{align}
 
+      Where $S_{m-1}=\frac{1}{h_m}\frac{1}{2^{m-1}}\left(s(2^{m-1}(x+h_m))-s(2^{m-1}x)\right)$ is the 
+      $m-1$th term of the sum. Notice that (2) follows from the fact that for $k\geq m$ we have that
+      $2^kh_m=2^{k-m}$ is an integer as $k-m\geq 1$, and so from the periodicity of $s$ we know that
+      $s(2^k(x+h_m))=s(2^kx)$.  Notice that (3) follows from the fact that for $k\leq
+         m-1$ then $2^{k}x$ and $2^{k}(x+h_m)$ have the same closest integer and are
+      between the same two closest integers. This has to be true as the line segments of 
+      $s(2^kx)$ and nested in the line segments of $s(2^{k-1}x)$, and if two points $x$ and $x+h_m$
+      lie on the same line segment of $s(2^kx)$ then $2^{k}x$ and $2^{k}(x+h_m)$ have the same closest 
+      integer and are between the same two closest integers.This means that 
+      $s(2^k(x+h_m))-s(2^kx)=\sigma 2^kh_m$ where $\sigma=\pm 1$ and the sign is determined by 
+      whether the closest integer is less then or greater then both $2^{k}x$ and $2^{k}(x+h_m)$. 
+      This follows from the fact that $2^{k}x$ and $2^{k}(x+h_m)$ lie on the same line segment of
+      the function $s(x)$ which has slope $1$ or $-1$.
 
-      Notice that (2) follows from the fact that for $k\geq m$ we have that $2^kh_m=2^{k-m}$ is an integer, and so from the periodicity of $s$ we know that $s(2^k(x+h_m))=s(2^kx)$
-      Notice that (3) follows from the fact that for $k\leq m-1$ then $2^{k}x$ and $2^{k}(x+h_m)$ have the same closest integer and are between the 
-      same two closest integers. this has to be true but im struggling with wording why. prove why!
-      This means that $s(2^k(x+h_m))-s(2^kx)=\sigma 2^kh_m$ where $\sigma=\pm 1$ and the sign is determined by whether the closest integer 
-      is less then or greater then $2^{k}x$ and $2^{k}(x+h_m)$. This follows from the fact that $2^{k}x$ and $2^{k}(x+h_m)$ lie on the same 
-      line segment of the function $s(x)$ which has slope $1$ or $-1$.
+      Notice that this sequence
+      $\left\{\frac{b(x+h_m)-b(x)}{h_m}\right\}_{m=1}^\infty=\left\{\sum_{k=0}^{m}\sigma_k+S_{m-1}\right\}_{m=1}^\infty$
+      can not converge as $\lim_{m\ra \infty} \sigma_k$ does not exist as each term
+      is either $1$ or $-1$. This means that the general limit
+      \[\lim_{m\ra \infty} \frac{b(x+h_m)-b(x)}{h_m}\]
+      does not exists. And because $\lim_{m\ra \infty}h_m$ =0 we know that
+      \[\lim_{h\ra 0} \frac{b(x+h_m)-b(x)}{h_m}\]
+      Does not exists. And so $b(x)$ is not differentiable at any $x\in\R$.
 
-      Notice that this sequence $\left\{\frac{b(x+h_m)-b(x)}{h_m}\right\}_{m=1}^\infty=\left\{\sum_{k=0}^{m}\sigma_k\right\}_{m=1}^\infty$ can not converge as 
-      $\lim_{m\ra \infty} \sigma_k$ does not exist as each term is either $1$ or $-1$. This means that the general limit
-      %, which follows from the original choice of $h_m$, and 
-      %that $2^{m-1}x$ and $2^{m-1}(x+h_m)$ have the same closest integer $n$ and so $2^k2^{m-k-1}x$ and $2^k2^{m-k-1}(x+h_m)$
-
-
-
-
-
-
-
-      ahhh\\\\\\\\basd bad bad bad bad wrong!!!
-      Notice first that each term in the sum, the function $\frac{s(2^kx)}{2^k}$ has slopes $2^k$ and $-2^k$
-      Let $m$ be a positive integer and consider the integers $n$ and $n+1$ that are closest to $2^mx$. 
-      That is $n\leq 2^mx\leq n+1$ and so $\frac{n}{2^m}\leq x\leq \frac{n+1}{2^m}$. Notice that as 
-      $m\ra \infty$ this interval $\frac{n+1}{2^m}-\frac{n}{2^m}=\frac{1}{2^m}\ra 0$. Here we will show 
-      \[\lim_{m\ra\infty}\frac{b(\frac{n+1}{2^m})-b(\frac{n}{2^m})}{\frac{1}{2^m}}\] diverges. 
-      This is enough to show that the derivative $f'(x)$ must not exist, which we will show later.
-      Consider the following 
-      \[\abs{b(\frac{n+1}{2^m})-b(\frac{n}{2^m})}=\abs{\sum_{k=0}^\infty\frac{1}{2^k}\left(s(2^k\frac{n+1}{2^m})-s(2^k\frac{n}{2^m})\right)}\]
-      Notice that when $k\geq m$ then $s(2^k\frac{n+1}{2^m})=s(2^{k-m}(n+1))=0$ as $2^{k-m}(n+1)$ is an integer and likewise $s(2^k\frac{n}{2^m})=0$.
-      And so $s(2^k\frac{n+1}{2^m})-s(2^k\frac{n}{2^m})=0$. Notice also that when $k=m-1$ we have that one of $2^{-(m-k)}(n+1)=\frac{n+1}{2}$ or $2^{-(m-k)}(n)=\frac{n}{2}$ 
-      is an integer and the other is $\frac{1}{2}$ from the closest integer. Meaning $|s(2^k\frac{n+1}{2^m})-s(2^k\frac{n}{2^m})|= \frac{1}{2}$. 
-      Finally notice that when $k<m-1$ we have by case 2 of the continuity proof that because there is no integer between $2^k\frac{n}{2^m}$ and 
-      $2^k\frac{n+1}{2^m}$ that $|s(2^k\frac{n+1}{2^m})-s(2^k\frac{n}{2^m})|\leq |2^k\frac{n+1}{2^m}-2^k\frac{n}{2^m}|=2^{k-m}$ This means that
-      \begin{align*}
-         \abs{b(\frac{n+1}{2^m})-b(\frac{n}{2^m})}&=\abs{\sum_{k=0}^\infty\frac{1}{2^k}\left(s(2^k\frac{n+1}{2^m})-s(2^k\frac{n}{2^m})\right)}\\
-         &= \abs{\sum_{k=0}^{m-1}\frac{1}{2^k}\left(s(2^k\frac{n+1}{2^m})-s(2^k\frac{n}{2^m})\right)+\sum_{k=m}^{\infty}\frac{1}{2^k}\left(s(2^k\frac{n+1}{2^m})-s(2^k\frac{n}{2^m})\right)}\\
-         &= \abs{\sum_{k=0}^{m-1}\frac{1}{2^k}\left(s(2^k\frac{n+1}{2^m})-s(2^k\frac{n}{2^m})\right)}\\
-         &\geq \frac{1}{2^{m-1}}\frac{1}{2}-\abs{\sum_{k=0}^{m-2}\frac{1}{2^k}\left(s(2^k\frac{n+1}{2^m})-s(2^k\frac{n}{2^m})\right)}\\
-         &\geq \frac{1}{2^m}-\sum_{k=0}^{m-2}\abs{\frac{1}{2^k}\left(s(2^k\frac{n+1}{2^m})-s(2^k\frac{n}{2^m})\right)}\\
-         &\geq \frac{1}{2^m}-\sum_{k=0}^{m-2}\frac{1}{2^k}2^{k-m}
-      \end{align*}
-      Where step 3 follows from the fact that $|a|-|b|=|a+b-b|-|b|\leq |a+b|+|-b|-|b|=|a+b|$.
-
-
-
+      %$|a|-|b|=|a+b-b|-|b|\leq |a+b|+|-b|-|b|=|a+b|$.
+      \newpage
    \item[2.] First we will show that $f(x)$ is differentiable at zero. Notice that
       \[f'(0)=\lim_{h\ra 0}\frac{f(0+h)-f(0)}{h}=\lim_{h\ra 0}\frac{f(h)}{h}\]
       And notice that $0$ is a cluster point of the domain of $f(h)/h$, and for any
@@ -133,30 +115,34 @@
          0$ and therefore not differentiable.
 
    \item[3.] Let $f(x)=x^3-3x^2+2x$\\ % need some more here. theorems from class only use open intervals and deriv neq 0. but this isnt really needed
-      (1) Notice first the $f(x)$ and $f'(x)$ are continuous everywhere and let 
+      (1) Notice first the $f(x)$ and $f'(x)$ are continuous everywhere and let
       $I=(-\infty, 1-\frac{\sqrt{3}}{3})$. Notice that for all $x<1-\frac{\sqrt{3}}{3}$ that $f'(x)>0$ and so
-      by the inverse function theorem $f$ has a local inverse that is differentiable. 
+      by the inverse function theorem $f$ has a local inverse that is differentiable.
       However the largest locally invertible interval is $(-\infty, 1-\frac{\sqrt{3}}{3}]$
-      as $f(x)<f(1-\frac{\sqrt{3}}{3})$ for all $x<1-\frac{\sqrt{3}}{3}$. And so there 
-      exists a function $f^{-1}:(-\infty,f(1-\frac{\sqrt{3}}{3})]\ra(-\infty,1-\frac{\sqrt{3}}{3}]$.\\
-      (2) Recall that from the inverse function theorem that $(f^{-1})'(0)=\frac{1}{f'(f^{-1}(0))}=\frac{1}{f'(0)}=\frac{1}{2}$
-      (3) The only points where $f'(x)=0$ are $x_1$ and $x_3$. This means that local 
+      as $f(x)<f(1-\frac{\sqrt{3}}{3})$ for all $x<1-\frac{\sqrt{3}}{3}$. And so there
+      exists a function $f^{-1}:(-\infty,f(1-\frac{\sqrt{3}}{3})]\ra(-\infty,1-\frac{\sqrt{3}}{3}]$ 
+      which behaves the same as the inverse function on the interval $(-\infty, 1-\frac{\sqrt{3}}{3})$ but also maps
+      $f(1-\frac{\sqrt{3}}{3})\mapsto 1-\frac{\sqrt{3}}{3}$.\\
+      (2) Recall that from the inverse function theorem that $(f^{-1})'(0)=\frac{1}{f'(f^{-1}(0))}=\frac{1}{f'(0)}=\frac{1}{2}$\\
+      (3) The only points where $f'(x)=0$ are $x_1$ and $x_3$. This means that local
       inversion around either $x_1$ or $x_3$ is impossible unless we consider intervals where
       $x_1$ and $x_2$ are not interior points and instead are boundary points.
-      Local inversion around $x_2=1$ and $x_4=2$ is possible for any interval that does 
+      Local inversion around $x_2=1$ and $x_4=2$ is possible for any interval that does
       not have $x_1$ or $x_3$ as interior points. % maybe give intervals
 
-   \item[4.] Let $S,T$ be sets such that $s<t$ for all $s\in S$ and $t\in T$, let $s^*:=\sup S$ and $t^*:=\inf T$
-      (1) Assume that this is not true and that $\sup S=s^*> \inf T=t^*$, 
+
+   \item[4.] Let $S,T$ be sets such that $s<t$ for all $s\in S$ and $t\in T$, let $s^*:=\sup S$ and $t^*:=\inf T$\\
+      (1) Assume that this is not true and that $\sup S=s^*> \inf T=t^*$,
       this means that there must exist some $s\in S$ such that $t^*<s\leq s^*$ as if there were not $t^*$ would be a
-      smaller upper bound for the set $S$ than $s^*$. Likewise we know that there must exist 
+      smaller upper bound for the set $S$ than $s^*$. Likewise we know that there must exist
       some $t\in T$ such that $t^*\leq t< s^*$ as if there were not $s^*$ would be a
-      larger lower bound for the set $T$ than $t^*$. And by assumption we know that $s<t$ meaning 
-      $t^*<s<t<s^*$. This must mean that $s$ is a greater lower bound for the set $T$ then $t^*$, as $s<t$ 
+      larger lower bound for the set $T$ than $t^*$. And by assumption we know that $s<t$ meaning
+      $t^*<s<t<s^*$. This must mean that $s$ is a greater lower bound for the set $T$ then $t^*$, as $s<t$
       for all $t\in T$ and $t^*<s$.\\
-      (2) Assume that this was not the case and that $s^*<t^*$ However by our 
-      assumption there exists $s\in S$ and $t\in T$ such that $t-s<t^*-s^*$ but this is a
-      contradiction because it must also be the case $s\leq s^*<t^*\leq t$ meaning $t-s\geq t^*-s^*$.
+      (2) Assume that for all $\epsilon>0$ that there exists $s\in S$ and $t\in T$ such that $t-s<\epsilon$. 
+      And assume that $s^*\neq t^*$ and that $s^*<t^*$ and so $t^*-s^*=\epsilon^*$ for some $\epsilon^*>0$.
+       However by our there must exists $s\in S$ and $t\in T$ such that $t-s<t^*-s^*=\epsilon^*$ but this is a
+      contradiction because it must also be the case $s\leq s^*<t^*\leq t$ meaning $t-s\geq t^*-s^*=\epsilon^*$.
 
 \end{itemize}
 
