@@ -58,11 +58,51 @@
       $b(x)=\sum_{k=1}^\infty\frac{s(2^kx)}{2^k}$ which is also continuous.\\
 
       Finally we will show that $b(x)$ is differentiable no where.
-      Fix $x\in \R$ 
-      Notice first that each term in the sum, the function $\frac{s(2^kx)}{x}$ has slopes $1$ and $-1$
-      Let $m$ be a positive integer and consider the integers $n$ and $n+1$ that are closest to $2^mx$. 
-      That is $n\leq 2^mx\leq n+1$ and so $\frac{n}{2^m}\leq x\leq \frac{n+1}{2^m}$. see like page 193 or something idk
+      Fix $x\in \R$ and let $m$ be a positive integer and consider the integers $n$ and $n+1$ that are closest to $2^{m^-1}x$. 
+      That is $n\leq 2^{m-1}x\leq n+1$ and so $\frac{n}{2^{m-1}}\leq x\leq \frac{n+1}{2^{m-1}}$. Now pick $h_m=\pm\frac{1}{2^m}$ 
+      where the sign is chosen such that $\frac{n}{2^{m-1}}\leq x+h_m\leq \frac{n+1}{2^{m-1}}$.
+      %$2^{m-1}x$ and $2^{m-1}(x+h_m)$ have the same closest integer. This is always possible as  $|2^{m-1}h_m|=2^{m-1}2^{-m}=\frac{1}{2}$. 
+      Now consider the sequence of difference quotients $\left\{\frac{b(x+h_m)-b(x)}{h_m}\right\}_{m=1}^\infty$. Let $i_k=\text{sgn}()$And notice that 
+      \begin{align}
+         \frac{b(x+h_m)-b(x)}{h_m}&=\frac{1}{h_m}\sum_{k=0}^{\infty}\frac{1}{2^k}\left(s(2^k(x+h_m))-s(2^kx)\right)\\
+         &=\frac{1}{h_m}\sum_{k=0}^{m}\frac{1}{2^k}\left(s(2^k(x+h_m))-s(2^kx)\right)
+      \end{align}
 
+
+      Notice that (2) follows from the fact that for $k\geq m$ we have that $2^kh_m=2^{k-m}$ is an integer, and so from the periodicity of $s$ we know that $s(2^k(x+h_m))=s(2^kx)$
+      Notice that (3) follows from the fact that for $k\leq m-1$ then $2^{k}x$ and $2^{k}(x+h_m)$ and are between the same two closest integers this has to be true but im struggling with wording why.
+      %, which follows from the original choice of $h_m$, and 
+      %that $2^{m-1}x$ and $2^{m-1}(x+h_m)$ have the same closest integer $n$ and so $2^k2^{m-k-1}x$ and $2^k2^{m-k-1}(x+h_m)$
+
+
+
+
+
+
+
+      ahhh\\\\\\\\basd bad bad bad bad wrong!!!
+      Notice first that each term in the sum, the function $\frac{s(2^kx)}{2^k}$ has slopes $2^k$ and $-2^k$
+      Let $m$ be a positive integer and consider the integers $n$ and $n+1$ that are closest to $2^mx$. 
+      That is $n\leq 2^mx\leq n+1$ and so $\frac{n}{2^m}\leq x\leq \frac{n+1}{2^m}$. Notice that as 
+      $m\ra \infty$ this interval $\frac{n+1}{2^m}-\frac{n}{2^m}=\frac{1}{2^m}\ra 0$. Here we will show 
+      \[\lim_{m\ra\infty}\frac{b(\frac{n+1}{2^m})-b(\frac{n}{2^m})}{\frac{1}{2^m}}\] diverges. 
+      This is enough to show that the derivative $f'(x)$ must not exist, which we will show later.
+      Consider the following 
+      \[\abs{b(\frac{n+1}{2^m})-b(\frac{n}{2^m})}=\abs{\sum_{k=0}^\infty\frac{1}{2^k}\left(s(2^k\frac{n+1}{2^m})-s(2^k\frac{n}{2^m})\right)}\]
+      Notice that when $k\geq m$ then $s(2^k\frac{n+1}{2^m})=s(2^{k-m}(n+1))=0$ as $2^{k-m}(n+1)$ is an integer and likewise $s(2^k\frac{n}{2^m})=0$.
+      And so $s(2^k\frac{n+1}{2^m})-s(2^k\frac{n}{2^m})=0$. Notice also that when $k=m-1$ we have that one of $2^{-(m-k)}(n+1)=\frac{n+1}{2}$ or $2^{-(m-k)}(n)=\frac{n}{2}$ 
+      is an integer and the other is $\frac{1}{2}$ from the closest integer. Meaning $|s(2^k\frac{n+1}{2^m})-s(2^k\frac{n}{2^m})|= \frac{1}{2}$. 
+      Finally notice that when $k<m-1$ we have by case 2 of the continuity proof that because there is no integer between $2^k\frac{n}{2^m}$ and 
+      $2^k\frac{n+1}{2^m}$ that $|s(2^k\frac{n+1}{2^m})-s(2^k\frac{n}{2^m})|\leq |2^k\frac{n+1}{2^m}-2^k\frac{n}{2^m}|=2^{k-m}$ This means that
+      \begin{align*}
+         \abs{b(\frac{n+1}{2^m})-b(\frac{n}{2^m})}&=\abs{\sum_{k=0}^\infty\frac{1}{2^k}\left(s(2^k\frac{n+1}{2^m})-s(2^k\frac{n}{2^m})\right)}\\
+         &= \abs{\sum_{k=0}^{m-1}\frac{1}{2^k}\left(s(2^k\frac{n+1}{2^m})-s(2^k\frac{n}{2^m})\right)+\sum_{k=m}^{\infty}\frac{1}{2^k}\left(s(2^k\frac{n+1}{2^m})-s(2^k\frac{n}{2^m})\right)}\\
+         &= \abs{\sum_{k=0}^{m-1}\frac{1}{2^k}\left(s(2^k\frac{n+1}{2^m})-s(2^k\frac{n}{2^m})\right)}\\
+         &\geq \frac{1}{2^{m-1}}\frac{1}{2}-\abs{\sum_{k=0}^{m-2}\frac{1}{2^k}\left(s(2^k\frac{n+1}{2^m})-s(2^k\frac{n}{2^m})\right)}\\
+         &\geq \frac{1}{2^m}-\sum_{k=0}^{m-2}\abs{\frac{1}{2^k}\left(s(2^k\frac{n+1}{2^m})-s(2^k\frac{n}{2^m})\right)}\\
+         &\geq \frac{1}{2^m}-\sum_{k=0}^{m-2}\frac{1}{2^k}2^{k-m}
+      \end{align*}
+      Where step 3 follows from the fact that $|a|-|b|=|a+b-b|-|b|\leq |a+b|+|-b|-|b|=|a+b|$.
 
 
 
