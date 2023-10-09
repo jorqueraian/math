@@ -65,12 +65,16 @@
       Now consider the sequence of difference quotients $\left\{\frac{b(x+h_m)-b(x)}{h_m}\right\}_{m=1}^\infty$. Let $i_k=\text{sgn}()$And notice that 
       \begin{align}
          \frac{b(x+h_m)-b(x)}{h_m}&=\frac{1}{h_m}\sum_{k=0}^{\infty}\frac{1}{2^k}\left(s(2^k(x+h_m))-s(2^kx)\right)\\
-         &=\frac{1}{h_m}\sum_{k=0}^{m}\frac{1}{2^k}\left(s(2^k(x+h_m))-s(2^kx)\right)
+         &=\frac{1}{h_m}\sum_{k=0}^{m}\frac{1}{2^k}\left(s(2^k(x+h_m))-s(2^kx)\right)\\
+         &=\frac{1}{h_m}\sum_{k=0}^{m}\frac{1}{2^k}\sigma_k h_m
       \end{align}
 
 
       Notice that (2) follows from the fact that for $k\geq m$ we have that $2^kh_m=2^{k-m}$ is an integer, and so from the periodicity of $s$ we know that $s(2^k(x+h_m))=s(2^kx)$
-      Notice that (3) follows from the fact that for $k\leq m-1$ then $2^{k}x$ and $2^{k}(x+h_m)$ and are between the same two closest integers this has to be true but im struggling with wording why.
+      Notice that (3) follows from the fact that for $k\leq m-1$ then $2^{k}x$ and $2^{k}(x+h_m)$ have the same closest integer and are between the 
+      same two closest integers. this has to be true but im struggling with wording why. prove why!
+      This means that $s(2^k(x+h_m))-s(2^kx)=\sigma h_m$ where $\sigma=\pm 1$ and the sign is determined by whether the closest integer 
+      is less then or greater then $2^{k}x$ and $2^{k}(x+h_m)$.
       %, which follows from the original choice of $h_m$, and 
       %that $2^{m-1}x$ and $2^{m-1}(x+h_m)$ have the same closest integer $n$ and so $2^k2^{m-k-1}x$ and $2^k2^{m-k-1}(x+h_m)$
 
