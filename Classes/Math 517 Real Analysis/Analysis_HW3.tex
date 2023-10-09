@@ -66,15 +66,20 @@
       \begin{align}
          \frac{b(x+h_m)-b(x)}{h_m}&=\frac{1}{h_m}\sum_{k=0}^{\infty}\frac{1}{2^k}\left(s(2^k(x+h_m))-s(2^kx)\right)\\
          &=\frac{1}{h_m}\sum_{k=0}^{m}\frac{1}{2^k}\left(s(2^k(x+h_m))-s(2^kx)\right)\\
-         &=\frac{1}{h_m}\sum_{k=0}^{m}\frac{1}{2^k}\sigma_k h_m
+         &=\frac{1}{h_m}\sum_{k=0}^{m}\sigma_k h_m\\
+         &=\sum_{k=0}^{m}\sigma_k
       \end{align}
 
 
       Notice that (2) follows from the fact that for $k\geq m$ we have that $2^kh_m=2^{k-m}$ is an integer, and so from the periodicity of $s$ we know that $s(2^k(x+h_m))=s(2^kx)$
       Notice that (3) follows from the fact that for $k\leq m-1$ then $2^{k}x$ and $2^{k}(x+h_m)$ have the same closest integer and are between the 
       same two closest integers. this has to be true but im struggling with wording why. prove why!
-      This means that $s(2^k(x+h_m))-s(2^kx)=\sigma h_m$ where $\sigma=\pm 1$ and the sign is determined by whether the closest integer 
-      is less then or greater then $2^{k}x$ and $2^{k}(x+h_m)$.
+      This means that $s(2^k(x+h_m))-s(2^kx)=\sigma 2^kh_m$ where $\sigma=\pm 1$ and the sign is determined by whether the closest integer 
+      is less then or greater then $2^{k}x$ and $2^{k}(x+h_m)$. This follows from the fact that $2^{k}x$ and $2^{k}(x+h_m)$ lie on the same 
+      line segment of the function $s(x)$ which has slope $1$ or $-1$.
+
+      Notice that this sequence $\left\{\frac{b(x+h_m)-b(x)}{h_m}\right\}_{m=1}^\infty=\left\{\sum_{k=0}^{m}\sigma_k\right\}_{m=1}^\infty$ can not converge as 
+      $\lim_{m\ra \infty} \sigma_k$ does not exist as each term is either $1$ or $-1$. This means that the general limit
       %, which follows from the original choice of $h_m$, and 
       %that $2^{m-1}x$ and $2^{m-1}(x+h_m)$ have the same closest integer $n$ and so $2^k2^{m-k-1}x$ and $2^k2^{m-k-1}(x+h_m)$
 
