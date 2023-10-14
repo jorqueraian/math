@@ -12,23 +12,28 @@
 \begin{document}
 \pagestyle{empty}
 
-\textbf{Warm-up Instructions:} \\
-Whenever you see a new theorem, you should be sure to understand the hypotheses (requirements) of the theorem as well as the conclusions of the theorem. 
+\textbf{Warm-up Instructions:} Whenever you see a new theorem, you should be sure to understand the hypotheses (requirements) of the theorem as well as the conclusions of the theorem. 
 
 \bigskip
 \textbf{\emph{\underline{The Mean Value Theorem (MVT)}}}: \\
-
+\vspace{-1pt}
 Suppose $y=f(x)$ is continuous on a closed interval $[a,b]$ and differentiable on the interval's interior $(a,b)$. Then there is at least one point $c$ in $(a,b)$ at which $\displaystyle\frac{f(b)-f(a)}{b-a}=f'(c)$
+\vspace{1pt}
 \begin{enumerate}
 \item What are the requirements of the MVT? \\
 \vspace{.1in}\\
 We need \underline{\hspace{3in}} and \underline{\hspace{3in}} \\
 \vspace{.1in}\\
-What do these requirements mean? \\
-\vspace{1in}\\
+Which of the graphs below satisfy the requirements of the MVT for the values of $a$ and $b$ indicated on the graphs? \\
+\begin{multicols}{2}
+	\includegraphics[scale=.5]{sat-mvt.PNG}
+	
+	\includegraphics[scale=.5]{nosat-mvt.PNG}
+\end{multicols}
+
 \item What is the conclusion of the MVT? \\
 \vspace{1in}\\
-What does this mean? Can you use slope/AROC/IROC in your explanation?
+What does this mean? Can you interpret the conclusions using slope/AROC/IROC in your explanation? Then sketch a picture of the meaning on the graphs above that meet the requirements.
 
 \vspace{1.5 in}
 
@@ -37,7 +42,7 @@ What does this mean? Can you use slope/AROC/IROC in your explanation?
 \end{enumerate}
 
 \newpage
-
+\iffalse
 \begin{center}
 \textbf{The Mean Value Theorem}
 \end{center}
@@ -92,6 +97,7 @@ Interpretations of the difference quotient: \\
 \end{multicols}
 
 \newpage
+\fi
 
 \textbf{Examples:} \\
 
@@ -117,7 +123,7 @@ Interpretations of the difference quotient: \\
 	
 	\end{enumerate}
 	
-\item $g(x) = \sin(\frac{1}{x}), [-\pi,0]$ \\
+\iffalse\item $g(x) = \sin(\frac{1}{x}), [-\pi,0]$ \\
 
 \begin{enumerate}
 	
@@ -134,69 +140,70 @@ Interpretations of the difference quotient: \\
 	\vspace{0.5 in}
 
 \end{enumerate}
+\fi
 
 \item $h(x)$ on the indicated intervals (Note the hole):
 
 \begin{multicols}{2}
 
-\includegraphics[scale=0.6]{MVTexample.png}
+\includegraphics[scale=0.5]{MVTexample.png}
 
-\begin{enumerate}
+\begin{itemize}
 
-\item $[-3,0]$
-
-\vspace{1.25 in}
-
-\item $[0,8]$
-
-
-\end{enumerate}
-
-\end{multicols}
-
-\newpage
-
-\item $k(x)$ on the indicated intervals: 
-
-
-\includegraphics[scale =0.6]{MVTexample2.png}
-
-\begin{multicols}{3}
-
-\item $[0,6]$
-
-\item $(-6,0]$
-
-\item $[6, 12]$
-
-\end{multicols}
+\item[ ] \;\;\;(a)\;\;$[-2,0]$
 
 \vspace{1.5 in}
 
-\item Leonardo DiCaprio enters a 60 mph toll highway at 7:30 with his Oscar safely strapped into its car seat.  The toll highway is 20 miles long.  Leonardo exits the toll highway at 7:45, and is immediately pulled over by the police.  Why did he get pulled over?  (Hint: Use the MVT - be sure to justify why you can use it, though!)
+\item[ ] \;\;\;(b)\;\;$[0,1]$
+
+
+\end{itemize}
+
+\end{multicols}
+
+
+
+\item Fred enters a 60 mph highway at 7:30 with his friends Daphne, Velma, Shaggy and their dog Scooby. They stay on the highway for 20 miles and exit the highway at 7:45. They are immediately pulled over by the police.  Why did he get pulled over?  (Hint: Use the MVT - be sure to justify why you can use it!)
 
 \end{enumerate}
 
 \newpage
+\begin{itemize}
+	\item[4.] Create a counterexample for the following false statement: \\
 
+\begin{center}
+	Suppose $y=f(x)$ is continuous on $[a,b]$. Then there is at least one point $c$ in $(a,b)$ at which $\displaystyle{\frac{f(b)-f(a)}{b-a}=f'(c)}$.\\
+\end{center}
+Make sure your counter example includes all of the following:\\
+\begin{itemize}
+\item[(i)] A clearly defined function $f$ given graphically or with an equation and specific values for $a$ and $b$ (Hint: One of the previous graphs may work here). \\
+\vspace{2in}
+\item[(ii)] Justify how the given function $f$, and the values $a$ and $b$ satisfy the hypothesis. \\
+\vspace{1in}
+\item[(iii)] Explain how the conclusion is not satisfied: This means you must show that there are no points $c$ in $(a,b)$
+ at which $\displaystyle{\frac{f(b)-f(a)}{b-a}=f'(c)}$.
+\end{itemize}
+\end{itemize}
+
+\newpage
 \textbf{Additional Examples and Explanations:} \\
 
 \emph{\underline{Check Point}}: Find the value(s) of $c$ that satisfy the equation in the conclusion of the MVT for\\
-$f(x)=\sqrt{x-1}$ on the interval $[1,3]$
+$f(x)=e^{\frac{1}{3}x}$ on the interval $[0,3]$
 
 \bigskip
 
-\textcolor{blue}{Is $f(x)$ continuous on the interval $[1,3]$?} \textcolor{red}{Yes! (Domain is $[1,\infty]$.)}
+\textcolor{blue}{Is $f(x)$ continuous on the interval $[0,3]$?} \textcolor{red}{Yes! ($f$ is continuous everywhere.)}
 
-\textcolor{blue}{Is $f(x)$ differentiable on the interval $(1,3)$?} \textcolor{red}{Yes! $f'(x)=\displaystyle\frac{1}{2\sqrt{x-1}}$.}
+\textcolor{blue}{Is $f(x)$ differentiable on the interval $(1,3)$?} \textcolor{red}{Yes! $f'(x)=\displaystyle{\frac{1}{3}e^{\frac{1}{3}x}}$.}
 
-\textcolor{blue}{Find $c$ in $(1,3)$:} 
+\textcolor{blue}{Find $c$ in $(0,3)$:} 
 
-\textcolor{red}{$$\frac{f(3)-f(1)}{3-1}=f'(c)$$}
-\textcolor{red}{$$\frac{\sqrt{2}-0}{2}=\displaystyle\frac{1}{2\sqrt{x-1}}$$}
-\textcolor{red}{$$\sqrt{2}=\displaystyle\frac{1}{\sqrt{x-1}}$$}
-\textcolor{red}{$$2=\frac{1}{x-1}$$}
-\textcolor{red}{$$2x-2=1\Rightarrow x=\frac{3}{2}$$}
+\textcolor{red}{$$\frac{f(3)-f(0)}{3-0}=f'(c)$$}
+\textcolor{red}{$$\frac{e^{1}-e^{0}}{3}=\displaystyle{\frac{1}{3}e^{\frac{1}{3}x}}$$}
+\textcolor{red}{$$e-1=\displaystyle{e^{\frac{1}{3}x}}$$}
+\textcolor{red}{$$\ln(e-1)=\ln\left(e^{\frac{1}{3}x}\right)$$}
+\textcolor{red}{$$\ln(e-1)=\frac{1}{3}x\Rightarrow x=3\ln(e-1)\approx 1.624$$}
 
 \bigskip
 
