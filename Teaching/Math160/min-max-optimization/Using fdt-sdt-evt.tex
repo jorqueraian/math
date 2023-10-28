@@ -33,25 +33,29 @@
 \textbf{Math 160, Optimization}   \\
 \end{tabular*} \\
 
-\vspace{.1in}
-\small
-\textbf{Key hint:} \textit{If you are using the EVT: Check the critical points AND the boundary points when you are looking for global max/min.}
-\vspace{.1in}
 \begin{enumerate}
-    \item Show that the $q(x)=3x^{\frac{1}{3}}-x$ has a global maximum of $2$ on the interval $[-1,8]$. What $x$-value does this occur at?\\\\\\\\\\\\\\\\\\\\\\\\
-
-    \item Consider the function $f(x)=x^3-ax$ on the interval $[-3,2]$ where $a$ is a constant.
+    \item Use the first derivative test to find the local minimums/maximums of the function 
+    $q(x)=\displaystyle{\frac{x^2+5}{x-2}}$ 
     \begin{itemize}
-        \item Find the critical points of $f(x)$ in terms of $a$.\\\\\\\\\\
-        \item Will $f(x)$ always have a global maximum and minimum?\\\\\\
-        \item Find a value for $a$ such that there is a global maximum at $x=-2$.\\\\\\\\\\\\\\\\\\
-        \item Find a value for $a$ such that there is a global maximum at $x=2$.\\\\\\\\\\\\
-        \item T/F: There is a value for $a$ such that there is a global maximum at $x=0$. (Hint: Can $x=0$ be a critical point? When it is, can it also be a local minimum or maximum?)
+        \item[(a)] Compute $q'(x)$\\\\\\\\
+        \item[(b)] Where is $q'(x)$ undefined? (Think about what values of $x$ result in dividing by zero)\\\\\\\\
+        \item[(c)] Where is $q'(x)=0$ (Hint: If the numerator of $q'(x)$ then $q'(x)$ is zero. 
+        It is enough to only look for when the numerator is zero)\\\\\\\\\\\\\\\\\\\\
+        \item[(d)] Find the points of interest and the critical points of $q(x)$.\\\\\\\\
+        \item[(e)] Create a first derivaitve sign chart and then use the first derivative test to classify your critical points as local min or max or neither.\\\\\\\\\\
     \end{itemize}
-   \newpage
-    \item Sketch the graph of a continuous function having the following properties:
+\newpage
+    \item (a) Verify that $f(x)=\sin(x^2-x)$ has a local minimum at $x=1/2$ using the second derivative test.\\
+    
+    \vspace{4in}
+
+    (b) Does $f(x)$ have a local max at $x=1$?
+
+\iffalse
+    \item Let $f(x)$ be a continuous function with the following properties
+    \vspace{-.16in}
 	\begin{itemize}
-	\begin{multicols}{3}
+	\begin{multicols}{2}
 	\item $f(-3)=-2$
 	\item $f(0)=3$
 	\item $f(1)=0$
@@ -60,13 +64,29 @@
 	\item $f'(1)$ is undefined
 	\item $f'(x)<0$ for $-\infty<x<-3$, $0<x<1$
 	\item $f'(x)>0$ for $-3<x<0$ and $1<x<\infty$
-	\item $f''(x)<0$ for $1<x<4$ 
+	\item $f''(x)<0$ for $1<x<4$ and $-1<x<1$ 
 	\item $f''(x)>0$ for $4<x<\infty$ 
 	\end{multicols}
 	\end{itemize}
+    (a) Find the critical points of $f$.\\\\\\\\\\
+    (b) Using the Second Derivative Test, classify each as a local min/max or 
+    explain why the test is inconclusive and then use the First Derivative Test.\\\\\\\\\\
+    (c) Sketch the graph of a continuous 
+    function having the following properties:
+
 	\begin{center}
 	\includegraphics[scale=0.5]{Axes2a.jpg}\end{center}
-    \item Find the global maximum and minimum of the function $\displaystyle{f(t)=\frac{t}{1+t^2}}$ on $(-\infty,\infty)$ or explain why they don't exist. Hint: EVT does not apply here, why? How could looking at the end behavior help?\\
+    \fi
+    \newpage
+    \item Consider the function $f(x)=x^3-ax$ on the interval $[-3,2]$ where $a$ is a constant.
+    \begin{itemize}
+        \item Find the critical points of $f(x)$ in terms of $a$.\\\\\\\\\\
+        \item Will $f(x)$ always have a global maximum and minimum?\\\\\\
+        \item Find a value for $a$ such that there is a global maximum at $x=-2$.\\\\\\\\\\\\\\\\\\
+        \item Find a value for $a$ such that there is a global maximum at $x=2$.\\\\\\\\\\\\
+        \item T/F: There is a value for $a$ such that there is a global maximum at $x=0$. (Hint: Can $x=0$ be a critical point? When it is, can it also be a local minimum or maximum?)
+    \end{itemize}
+    %\item Find the global maximum and minimum of the function $\displaystyle{f(t)=\frac{t}{1+t^2}}$ on $(-\infty,\infty)$ or explain why they don't exist. Hint: EVT does not apply here, why? How could looking at the end behavior help?\\
     
     \vspace{4in}
 
@@ -112,7 +132,7 @@
 
         \vspace{4in}
         
-        \item What would happen to your result if the nearest point on the grid from problem 6a were $20$ miles down the coats rather than $10$ miles?
+        %\item What would happen to your result if the nearest point on the grid from problem 6a were $20$ miles down the coats rather than $10$ miles?
         \newpage
         \item Assume again that the nearest point on the grid was $10$ miles down the coast. Suppose that the underwater cable costs $\alpha$ times as much as cable on land ($\alpha>1$). Which combination of the underwater and land-based cable will minimize the total cost of the cable now? (write your answer in terms of $\alpha$). Interpret your answer.
     \end{enumerate}

@@ -1,5 +1,96 @@
 \section{Introduction}
-In this paper, 
+This paper is meant as a way of documenting my understanding of 
+algebra with an emphasis on how and why algebra is the way it is, 
+and so may be obvious or even outright insulting to a trained algebraist.
+I've come to the conclusion the conclusion that Algebra is a 4 step process:
+Step 1) Find example of algebra in the real word. 
+Step 2) Using your examples (a) find operators, or a grammar and (b) find laws that your operators seem to follow your examples. This step we create the "free" algebra
+Step 3) Study your newly built algebra by (a) studying the "simple" things. (b) study the "free" thing. (c) study the representations.
+step 4) idk study your examples again with new insights or don't.
 
-\subsection{Stuff}
-We will start by giving...
+\subsection{Step 1: A Motivating Example}
+Matrices are cool. Thats it! Thats all the motivation I need.
+Groups can be used to talk about the algebra of multiplying 
+invertible matrices with common dimensions, with the General Linear group.
+Groupoids can be used to work with all square matrices. And a Category can be 
+used to study the behavior of matrix multiplication in general. However these 
+three algebra leave gaps, categories and groupoids can often be too broad, allowing
+for partially defined multiplications while group are too narrow, allowing only 
+invertible matrices.
+
+Often one may want to study rectangular matrices. For example Let $V^+$ be the 
+$k$-module of $q\times p$ matrices $M_{q,p}$ and $V^-$ be the 
+$k$-module of $p\times q$ matrices $M_{p,q}$. These matrices are clearly compatible under 
+multiplication but there is a problem! If $A\in V^+$ and $B\in V^-$, then their product is in neither
+of the original modules. This requires a new operator, a trinary operation where if $A,C\in V^+$ and $B\in V^-$
+then $ABC\in V^+$ and vice-versa. In fact this trinary operator would be tri-linear.
+This would give us a nice algebra, but it has a problem, it does not behave nicely with geometry.
+Geometry often looks at bilinear forms which can often be defined by a transpose. 
+However notice with this simple triple product we have that $ABC$ is bilinear in $A$ and $C$ but notice that 
+under a transpose $(ABC)^t=C^tB^tA^t$ we have a commuting issue. And so instead we want to define an operator
+that is symmetric in $A$ and $C$. An easy way to do this is to define an operator $\{A,B,C\}=ABC+CBA$.
+
+
+A simpler example of this commuting issue is with symmetric(self-adjoint) matrices, where $A=A^t$ and $B=B^t$. 
+If we had a bilinear form: $\ip{x|y}=x^ty$ we could study the self adjoint elements $\ip{Ax|y}=\ip{x|A^ty}$. 
+But we run into the exact same problem: that symmetric matrices are generally not closed under multiplication
+$(AB)^t=B^tA^t=BA$. And restricting you study of matrices to commutative ones is not a reasonable ask! 
+So again the fix is to invent a new matrix multiplication that is symmetric and still does all the same things.
+
+
+\subsection{Step 2: Fumbling to a Definition}
+We are not saying Ottmar Loos Fumbled to the definitions we will present below 
+(They are simply too nice and also intricate for that to be the case) but at some point to do
+algebra you have to just fumble to something that looks good enough, and hopefully in retrospect you can convince yourself
+why your algebra is a good one.
+
+As mentioned above we want to create an algebra that looks at how pairs of modules interact, through a symmetric 
+trilinear operator that we will think about as being our triple matrix product symmetricified.
+So we need to define our two $k$-modules with our trilinear operator that goes between them
+
+\begin{align*}\ip{\ip{V^+}}::&= 0_+ \\
+                             &| \ip{V^+}+\ip{V^+} \\
+                             &| -\ip{V^+} \\
+                             &| \ip{k}\cdot \ip{V^+}\\ 
+                             &| \{\ip{V^+}, \ip{V^-}, \ip{V^+}\}\end{align*}
+\begin{align*}\ip{\ip{V^-}}::&= 0_- \\
+    &| \ip{V^-}+\ip{V^-} \\
+    &| -\ip{V^-} \\
+    &| \ip{k}\cdot \ip{V^-} \\
+    &| \{\ip{V^-}, \ip{V^+}, \ip{V^-}\}\end{align*}
+ 
+And then we can define the grammar for the algebra of the pair of modules. This is the signature for a Jordan pair over $k$
+
+\[\ip{\ip{\text{JP}_k}}::= \ip{V^+} | \ip{V^-}\]
+
+Now that we know what operators we have in our world we need laws to tell us what these operators mean.
+First we need the laws that tell us that $V^+$ and $V^-$ are in fact $k$-modules. 
+And we need the laws that tell us $\{-,-,-\}:V^\sigma\times V^{-\sigma}\times V^\sigma\ra V^\sigma$ is a trilinear operator and symmetric in the first and third terms. 
+From these Laws we can define additional operators: Let $Q_\sigma:V^\sigma\ra \hom(V^{-\sigma},V^{\sigma})$ 
+be the Quadratic map defined as $2Q_\sigma(x)y = \{xyx\}$, and its corresponding bilinear map 
+$Q_\sigma:V^\sigma\times V^\sigma\ra \hom(V^{-\sigma},V^{\sigma})$ defined as 
+$Q_\sigma(x,z)=Q_\sigma(x+z)-Q_\sigma(x)-Q_\sigma(z)$. TODO make sure this actually works. I think i might have an off by 1/2 or 2.
+We can also define the bilinear map $D_\sigma(x,y)z=Q_\sigma(x,z)y$
+Notice that in the example in section we would have that $Q_\sigma(x)y=xyx$.
+
+Now that we have our algebra with some initial laws we need to build some more laws. Consider the formulas of $\text{JP}_k$
+We will build following laws
+\begin{equation}
+    \{x,y,Q_\sigma(x)z\}=Q_\sigma(x)\{y,x,z\}
+\end{equation}
+\begin{equation}
+    \{Q_\sigma(x)y,y,z\}=\{x,Q_{-\sigma}(y)x,z\}
+\end{equation}
+\begin{equation}
+    Q_{\sigma}(Q_{\sigma}(x)y)z=Q_{\sigma}(x)(Q_{-\sigma}(y)(Q_{\sigma}(x)z))
+\end{equation}
+
+
+Combining these laws we have the following definition of a Jordan Pair
+
+\begin{definition}
+    The pair $V=(V^+,V^-)$ is called a Jordan pair if $V\vDash_{\text{JP}_k}\mathcal{L}$ where $\mathcal{L}$ 
+    are the laws outlined above. More Concisely we may say
+
+    give a more readable definition
+\end{definition}

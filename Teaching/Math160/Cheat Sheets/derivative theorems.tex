@@ -61,14 +61,29 @@ A point $x=p$ at which a function $f$ changes concavity is called an \textbf{Inf
     \begin{itemize}
         \item If $f'(x)> 0$ on $a< x< b$ then $f$ is \textbf{increasing} on $a\leq x\leq b$
         \item If $f'(x)\geq 0$ on $a< x< b$ then $f$ is \textbf{non-decreasing} on $a\leq x\leq b$
-    \end{itemize}\\
+    \end{itemize}
     
-    \textbf{The Racetrack Principle:}
+    \iffalse\textbf{The Racetrack Principle:}
     Suppose $g$ and $h$ are continuous on $a\leq x\leq b$ and differentiable on $a< x< b$ and $g'(x)\leq h'(x)$ on $a< x< b$.
     \begin{itemize}
         \item If $g(a)=h(a)$ then $g(x)\leq h(x)$ on $a\leq x\leq b$
         \item If $g(b)=h(b)$ then $g(x)\geq h(x)$ on $a\leq x\leq b$
     \end{itemize}
+    \fi
+    \begin{center}
+        \begin{tabular}{c|c}
+            $f(x)$ & $f'(x)$\\
+            \hline
+            Increasing & $f'(x)>0$ \\
+            \hline
+            Decreasing & $f'(x)<0$ \\ \hline
+
+             Point of Interest or& $f'(x)=0$ \\
+             Critical Point (if $f(x)$ exists) & $f'(x)$ Does not exist \\
+            \hline
+        
+        \end{tabular}
+        \end{center}
 \end{boxe}
 
 \section*{Theorems part 2}
@@ -87,7 +102,7 @@ A point $x=p$ at which a function $f$ changes concavity is called an \textbf{Inf
     \begin{itemize}
         \item if $f''(p)>0$ then $f$ has a \textbf{local minimum} at $x=p$
         \item if $f''(p)<0$ then $f$ has a \textbf{local maximum} at $x=p$
-        \item if $f''(p)=0$ or undefined then the test tells us nothing.
+        \item if $f''(p)=0$ or undefined then the test tells us nothing (This does NOT mean no local extrema exists).
     \end{itemize}\\
 
     \textbf{The Extreme Value Theorem:} If $f$ is continuous on the closed interval $a\leq x\leq b$ then $f$ has a global maximum and a global minimum on that interval.
