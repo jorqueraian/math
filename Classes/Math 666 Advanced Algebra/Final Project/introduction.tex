@@ -63,25 +63,31 @@ And then we can define the grammar for the algebra of the pair of modules. This 
 
 \[\ip{\ip{\text{JP}_k}}::= \ip{V^+} | \ip{V^-}\]
 
-Now that we know what operators we have in our world we need laws to tell us what these operators mean.
-First we need the laws that tell us that $V^+$ and $V^-$ are in fact $k$-modules. 
-And we need the laws that tell us $\{-,-,-\}:V^\sigma\times V^{-\sigma}\times V^\sigma\ra V^\sigma$ is a trilinear operator and symmetric in the first and third terms. 
-From these Laws we can define additional operators: Let $Q_\sigma:V^\sigma\ra \hom(V^{-\sigma},V^{\sigma})$ 
-be the Quadratic map defined as $2Q_\sigma(x)y = \{xyx\}$, and its corresponding bilinear map 
-$Q_\sigma:V^\sigma\times V^\sigma\ra \hom(V^{-\sigma},V^{\sigma})$ defined as 
-$Q_\sigma(x,z)=Q_\sigma(x+z)-Q_\sigma(x)-Q_\sigma(z)$. TODO make sure this actually works. I think i might have an off by 1/2 or 2.
-We can also define the bilinear map $D_\sigma(x,y)z=Q_\sigma(x,z)y$
-Notice that in the example in section we would have that $Q_\sigma(x)y=xyx$.
+Now that we know what operators we have in our world we need laws to tell us what these operators mean and how we can rewrite expressions.
+First we need the laws that tell us that $V^+$ and $V^-$ are in fact $k$-modules.
+And we also need the laws that tell about our triple product, that $\{-,-,-\}:V^\sigma\times V^{-\sigma}\times V^\sigma\ra V^\sigma$ is a trilinear operator and symmetric in the first and third terms. 
 
-Now that we have our algebra with some initial laws we need to build some more laws. Consider the formulas of $\text{JP}_k$
-We will build following laws
+From these laws we can create additional operators: for $\sigma=\pm$ let
+\[Q_\sigma:V^\sigma\ra \hom(V^{-\sigma},V^{\sigma})\text{ be quadratic maps given by }2Q_\sigma(x)y = \{xyx\}\]
+We can also create their corresponding symmetric bilinear maps 
+$Q_\sigma:V^\sigma\times V^\sigma\ra \hom(V^{-\sigma},V^{\sigma})$ which are given by 
+$Q_\sigma(x,z)=Q_\sigma(x+z)-Q_\sigma(x)-Q_\sigma(z)$. %TODO make sure this actually works. I think i might have an off by 1/2 or 2.
+Finally we will create the bilinear maps $D_\sigma(x,y)z=Q_\sigma(x,z)y$
+Notice that in the example in the section above we would have that $Q_\sigma(x)y=xyx$.
+
+Now that we have our algebra with some initial laws we need to build some more laws using the formulas of $\text{JP}_k$.
+These laws are created to mirror the behavior of our motivating examples.
+We will build the following laws:
 \begin{equation}
+    \tag{JP1}
     \{x,y,Q_\sigma(x)z\}=Q_\sigma(x)\{y,x,z\}
 \end{equation}
 \begin{equation}
+    \tag{JP2}
     \{Q_\sigma(x)y,y,z\}=\{x,Q_{-\sigma}(y)x,z\}
 \end{equation}
 \begin{equation}
+    \tag{JP3}
     Q_{\sigma}(Q_{\sigma}(x)y)z=Q_{\sigma}(x)(Q_{-\sigma}(y)(Q_{\sigma}(x)z))
 \end{equation}
 
@@ -90,7 +96,60 @@ Combining these laws we have the following definition of a Jordan Pair
 
 \begin{definition}
     The pair $V=(V^+,V^-)$ is called a Jordan pair if $V\vDash_{\text{JP}_k}\mathcal{L}$ where $\mathcal{L}$ 
-    are the laws outlined above. More Concisely we may say
-
-    give a more readable definition
+    are the laws outlined above. More Concisely we may say that a pair $V=(V^+,V^-)$ of $k$-modules
+    along with a pair of quadratic maps $(Q_+,Q_-)$, which define the trilinear operator $\{-,-,-\}$, is called a Jordan pair if JP1-JP3 hold in all scalar extensions of $V$
+    \begin{equation}
+        \tag{JP1}
+        \{x,y,Q_\sigma(x)z\}=Q_\sigma(x)\{y,x,z\}
+    \end{equation}
+    \begin{equation}
+        \tag{JP2}
+        \{Q_\sigma(x)y,y,z\}=\{x,Q_{-\sigma}(y)x,z\}
+    \end{equation}
+    \begin{equation}
+        \tag{JP3}
+        Q_{\sigma}(Q_{\sigma}(x)y)z=Q_{\sigma}(x)(Q_{-\sigma}(y)(Q_{\sigma}(x)z))
+    \end{equation}
 \end{definition}
+Now that we have a definition for our algebra we can define what it means to have sub-objects, 
+homomorphisms, congruences, quotients and ideals. None of the following are particularly surprising (You see what I did there? Im acting like a trained algebraist)
+\begin{definition}
+    A homomorphism $h:V\ra W$ of Jordan Pairs is a pair of maps $(h_+,h_-)$ such that $h_\sigma:V^\sigma\ra W^\sigma$ is a 
+    $k$-module homomorphism such that the following holds
+    \begin{equation}
+        h_{\sigma}(\{x,y,z\})=\{h_{\sigma}(x),h_{-\sigma}(y),h_{\sigma}(z)\}
+    \end{equation}
+    This condition is equivalent to 
+    \begin{equation}
+        h_{\sigma}(Q_{\sigma}(x)y)=Q_{\sigma}(h_{\sigma}(x))h_{-\sigma}(y)
+    \end{equation}
+\end{definition}
+
+Once we have a homomorphism we can talk about congruences of homomorphism: 
+\begin{definition}
+    Let $h$ be a homomorphism of Jordan Pairs then $\ker(h)=\{x\equiv z \pmod h | h(x)=h(z)\}$
+\end{definition}
+Because of the underlying module structure we have that %$x\equiv z \pmod h$ is equivalent to $x-z\equiv 0_\sigma \pmod h$
+
+\begin{prop}
+    The Kernel of a homomorphism $h:V\ra W$ of Jordan Pairs is equivalent to a sub-object of the Jordan Pair $V$. 
+    That is we may consider the $\ker(h)=\{x\in V | h(x)=0_\sigma\}$.
+\end{prop}
+\begin{proof}
+    Notice that using the $k$-module structure we have that $x\equiv z \pmod h$ if and only if $x-z\equiv 0_\sigma \pmod h$.
+\end{proof}
+
+Now that we have our notion of a congruence or a kernel we can define an ideal 
+\begin{definition}
+    $I=(I^+,I^-)$ is an ideal of $V$ if $I$ is the kernel of some homomorphism $h: V\ra W$.
+\end{definition}
+This gives us a special case of Noethers Isomorphism theorem relating homomorphism, ideals and Quotients 
+\begin{prop}
+    $I=(I^+,I^-)$ is sub-object of $V$ such that nasty thing if and only if $V/I$ is a Jordan Pair and $H:V\ra V/I$ is a homomorphism
+\end{prop}
+\begin{proof}
+
+\end{proof}
+
+\subsection{Step 3: Studying The Algebra}
+Now that we have created the algebra of Jordan Pairs we need to study it.
