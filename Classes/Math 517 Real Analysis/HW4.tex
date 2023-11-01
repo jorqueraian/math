@@ -8,23 +8,88 @@
 \vspace{1em}
 
 \begin{itemize}
-   \item[1.] Let $f$ be defined on $[0,1]$ such that $f$ is integrable on $[\delta,1]$ for all $0<\delta<1$. % i think this is true
-            Becasue 
+   \item[1.]
+      Consider the function
+      \[ f(x)= \begin{cases}
+            \frac{1}{x} & 0<x\leq 1 \\
+            0           & x=0
+         \end{cases}\]
+      which is defined for all $[0,1]$ and is integral for any $[\delta,1]$ where
+      $0<\delta<1$ as $f$ is continuous on $[\delta,1]$. However for any partition of
+      $[0,1]$ the function $f$ is unbounded in the first interval $[x_0,x_1]$.
+      Meaning $f$ is not integrable on $[0,1]$. We may also notice that
+      \[\lim_{t\ra 0^+}\int_{t}^1f(x)=\lim_{t\ra 0^+}\ln(1)-\ln(t)\]
+      whose limit diverges.
+      % oops my proof would work if continuous. Because $f$ is defined on the compact interval $[0,1]$ we know that it 
+      %must be bounded. Let $M=\sup_{x\in[0,1]}f(x)$ and 
+      %$m=\inf_{x\in[0,1]}f(x)$. Let $\epsilon>0$ and let $\delta=\frac{\epsilon}{2(M-m)}$.
+      %This means that on the interval $[0,\delta]$
+      %we know that $f$ is Riemann integral on $[\delta, 1]$, meaning there exists a partition
+      %$P$ on $[\delta,1]$ such that $U(f,P)-L(f,P)<(1=\frac{m+n}{2})\epsilon$
 
-   \item[2.] First we will show that $\sum_{k=1}^\infty\frac{1}{k}$ diverges. Let $\epsilon=\frac{1}{2}$ 
-   and notice that for any $N$ we can pick $n=N$ and $m=2n$ and notice that $|s_m-s_n|=\sum_{k=n}^{2n}\frac{1}{k}\geq \frac{2n-n}{2n}=\frac{1}{2}$
-   And so the sequence of partial sums fails to be Cauchy, and so diverges.
-   Notice that for any $x<1$ we have that $k^x\leq q k$ for all $k\geq 1$, meaning $\frac{1}{k} \leq \frac{1}{k^x}$ 
-   and so by comparison we have that $\sum_{k=1}^\infty\frac{1}{k^x}$ diverges.
-   Now we will show that $\sum_{k=1}^\infty\frac{1}{k^x}$ converges when $x>1$.
-   Consider the integral comparison test where we have that $\int_1^\infty\frac{1}{k^x}dk=\lim_{t\ra \infty}\frac{1-x}{t^{x-1}}-\frac{1-x}{1^{x-1}}=x-1$.
-   And because the integral converges we know the series must as well.
+   \item[2.] First we will show that $\sum_{k=1}^\infty\frac{1}{k}$ diverges.
+      Let $\epsilon=\frac{1}{2}$
+      and notice that for any $N$ we can pick $n=N$ and $m=2n$ and notice that $|s_m-s_n|=\sum_{k=n}^{2n}\frac{1}{k}\geq \frac{2n-n}{2n}=\frac{1}{2}$
+      And so the sequence of partial sums fails to be Cauchy, and so diverges.
+      Notice that for any $x<1$ we have that $k^x\leq q k$ for all $k\geq 1$, meaning $\frac{1}{k} \leq \frac{1}{k^x}$
+      and so by comparison we have that $\sum_{k=1}^\infty\frac{1}{k^x}$ diverges.
+      Now we will show that $\sum_{k=1}^\infty\frac{1}{k^x}$ converges when $x>1$.
+      Consider the integral comparison test where we have that $\int_1^\infty\frac{1}{k^x}dk=\lim_{t\ra \infty}\frac{1-x}{t^{x-1}}-\frac{1-x}{1^{x-1}}=x-1$.
+      And because the integral converges we know the series must as well.
 
-   \item[3.] this seems very easy unless the definition is different then what we had before
-   \item[3.] 
-   \item[4. ] From a previous HW or Exam or what ever we showed by squeez theorem... Notice that 
-   \[DF(0,0)= \begin{pmatrix}\frac{\partial f_1}{\partial x} & \frac{\partial f_1}{\partial y}\\ \frac{\partial f_2}{\partial x} & \frac{\partial f_2}{\partial y}\end{pmatrix}  = \begin{pmatrix}1 & 0\\ 0 & 1\end{pmatrix}\]
-    which is a invertible matrix. However the inverse function theorem
+   \item[3.] this seems very easy unless the definition is different then what we had before. ill wait on this
+   \item[3.] First we will compute the Cauchy Principal value of $\int_{-\infty}^\infty f(x)dx$ which is 
+            \[\int_{-\infty}^\infty f(x)dx =\lim_{t\ra\infty}\int_{-t}^t f(x)dx 
+            = \lim_{t\ra\infty}\int_{2}^t f(x)dx + \int_{-t}^{-2} f(x)dx \]
+            Notice that $\frac{1}{1+x}$ is continuous when $x\neq 1$ and has an anti-derivative of $\ln|x+1|$ 
+            which is also continuous when $x\neq 1$, meaning $\lim_{s\ra 2}\int_{s}^t f(x)dx=\int_{2}^t \frac{1}{1+x}dx$ 
+            and likewise for the integral on $(-\infty,-2]$. So by the fundamental theorem of Calculus
+            \begin{align*}
+               \lim_{t\ra\infty}\int_{2}^t f(x)dx + \int_{-t}^{-2} f(x)dx 
+               &=\lim_{t\ra\infty} \ln(t+1)-\ln(3)+ \ln(1)-\ln(t-1)\\
+               &=-\ln(3)+\lim_{t\ra\infty}(\ln(t+1)-\ln(t-1))\\
+               &=-\ln(3)+\lim_{t\ra\infty}\ln(\frac{t+1}{t-1})=-\ln(3)
+            \end{align*}
+
+            the improper integral would be 
+            \[\int_{-\infty}^\infty f(x)dx = \int_{-\infty}^0 f(x)dx +\int_{0}^\infty f(x)dx\]
+            This improper integral does not exists as neither of the improper integrals
+            $\int_{0}^\infty f(x)dx$ or $\lim_{t\ra\infty}\int_{\infty}^0 f(x)dx$. To see this notice that
+            \[int_{0}^\infty f(x)dx=\lim_{t\ra\infty}\int_{2}^t f(x)dx=\lim_{t\ra\infty} \ln(t+1)-\ln(3)\]
+            which diverges.
+
+   \item[4. ] Notice that because $\frac{h-h^2}{h}\leq \frac{h+h^2\sin(\frac{1}{h})}{h}\leq \frac{h+h^2}{h}$
+              We know by the squeeze theorem that 
+              \[\lim_{h\ra 0}\frac{f(0+h)-f(0)}{h}=\lim_{h\ra 0}\frac{h+h^2\sin(\frac{1}{h})}{h}
+              =\lim_{h\ra 0}\frac{h+h^2}{h}=\lim_{h\ra 0}\frac{h-h^2}{h}=1\]
+              And so we know that
+              \[DF(0,0)= \begin{pmatrix}
+               \frac{\partial f_1}{\partial x} & \frac{\partial f_1}{\partial y}\\ 
+               \frac{\partial f_2}{\partial x} & \frac{\partial f_2}{\partial y}
+               \end{pmatrix}  = 
+               \begin{pmatrix}1 & 0\\ 0 & 1\end{pmatrix}\]
+               % note that D1f_1 exists at every point but is not continuous when x=0
+               % I lost the example in the book
+              which is an invertible matrix. However the inverse function theorem does
+              apply in this situation as the function $F$ is not $C^1$ on any open 
+              neighborhood around $(0,0)$ and so can not be locally $C^1$-invertible. 
+              To see this we will show that $D_xf_1(x,y)$ is not continuous at $x=0$.
+              Notice that $D_xf_1(x,y)=1+2x\sin(\frac{1}{x})-\cos(1/x)$ Notice that 
+              $\lim_{x\ra0}D_xf_1(x,y)$ Does not exists, which follows from the fact that 
+              $\lim_{x\ra 0} 1+2x\sin(\frac{1}{x})=1$ while $\lim_{x\ra 0}\cos(\frac{1}{x})$ 
+              does not exist, and so $D_xf_1(x,y)$ is not continuous, therefore $F$ is not $C^1$ around $(0,0)$
+
+              %pdf p 330 def of C^1
+              %pdf p 371 inverse funcky theorem
+
+   \item[5.] Consider the curve $y^2+y-x^2=0$, and because this is a quadratic equation in 
+         $y$. We have that the two roots of $y^2+y-x^2$ in terms of $x$ are 
+         $y=\frac{-1\pm \sqrt{1+4x^2}}{2}$. Notice further that the nieborhood of solutions around $(0,0)$
+         are $y=\frac{-1+ \sqrt{1+4x^2}}{2}$.
+         This is unique as there are only two roots of the equation with respect to 
+         $y$ and only this equation has $(0,0)$ as a solution.
+
 \end{itemize}
 
+% note for self: review 10.6 in book and 10.8
 \end{document}
