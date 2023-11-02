@@ -31,13 +31,33 @@
       Let $\epsilon=\frac{1}{2}$
       and notice that for any $N$ we can pick $n=N$ and $m=2n$ and notice that $|s_m-s_n|=\sum_{k=n}^{2n}\frac{1}{k}\geq \frac{2n-n}{2n}=\frac{1}{2}$
       And so the sequence of partial sums fails to be Cauchy, and so diverges.
-      Notice that for any $x<1$ we have that $k^x\leq q k$ for all $k\geq 1$, meaning $\frac{1}{k} \leq \frac{1}{k^x}$
+      Notice that for any $x<1$ we have that $k^x\leq k$ for all $k\geq 1$, meaning $\frac{1}{k} \leq \frac{1}{k^x}$
       and so by comparison we have that $\sum_{k=1}^\infty\frac{1}{k^x}$ diverges.
       Now we will show that $\sum_{k=1}^\infty\frac{1}{k^x}$ converges when $x>1$.
       Consider the integral comparison test where we have that $\int_1^\infty\frac{1}{k^x}dk=\lim_{t\ra \infty}\frac{1-x}{t^{x-1}}-\frac{1-x}{1^{x-1}}=x-1$.
-      And because the integral converges we know the series must as well.
+      And because the integral converges when $x>1$ we know the series must as well.
 
-   \item[3.] this seems very easy unless the definition is different then what we had before. ill wait on this
+   \item[3.] Assume $S$ has Lebesgue Measure zero, that is for any $\epsilon>0$ we have that there exists a
+             countable collection $\{K_j\}_{j=1}^\infty$ of open intervals that covers $S$ and $\sum_{j=1}^\infty m(K_j)<\epsilon$.
+             Notice that $m(\overline{K_j})=m(K_j)$, and that $K_j\se \overline{K_j}$, meaning the collection of closed intervals
+             $\{\overline{K_j}\}_{j=1}^\infty$, corresponding to each open cover, covers $S$ and 
+             $\sum_{j=1}^\infty m(\overline{K_j})<\epsilon$.
+
+             For the other direction assume that for any $\epsilon>0$ we have that there exists a
+             countable collection $\{{K_j}\}_{j=1}^\infty$ of closed intervals that covers 
+             $S$ and $\sum_{j=1}^\infty m(K_j)<\epsilon$. Now fix $\epsilon>0$ and consider the collection of 
+             closed intervals $\{{K_j}\}_{j=1}^\infty$ that covers $S$ and $\sum_{j=1}^\infty m(K_j)<\epsilon/2$
+             For each $K_j=[a_j,b_j]$ consider the open interval $O_j=(a_j-\frac{\epsilon}{2^{j+2}},b_j+\frac{\epsilon}{2^{j+2}})$.
+             By construction we know that $\{{O_j}\}_{j=1}^\infty$ covers $S$. Also notice that
+             \begin{align*}
+               \sum_{j=1}^\infty m(O_j)&=\sum_{j=1}^\infty (b_j+\frac{\epsilon}{2^{j+2}})-(a_j-\frac{\epsilon}{2^{j+2}})\\
+               &=\sum_{j=1}^\infty b_j-a_j+2\frac{\epsilon}{2^{j+2}}\\
+               &<\epsilon/2 +2\sum_{j=1}^\infty \frac{\epsilon}{2^{j+2}}\\
+               &=\epsilon/2 +\frac{1}{2}\epsilon\sum_{j=1}^\infty \frac{1}{2^j}\\
+               &=\epsilon/2+\epsilon/2=\epsilon
+             \end{align*}
+             And so $S$ has Measure zero.
+         
    \item[3.] First we will compute the Cauchy Principal value of $\int_{-\infty}^\infty f(x)dx$ which is 
             \[\int_{-\infty}^\infty f(x)dx =\lim_{t\ra\infty}\int_{-t}^t f(x)dx 
             = \lim_{t\ra\infty}\int_{2}^t f(x)dx + \int_{-t}^{-2} f(x)dx \]
@@ -54,8 +74,8 @@
             the improper integral would be 
             \[\int_{-\infty}^\infty f(x)dx = \int_{-\infty}^0 f(x)dx +\int_{0}^\infty f(x)dx\]
             This improper integral does not exists as neither of the improper integrals
-            $\int_{0}^\infty f(x)dx$ or $\lim_{t\ra\infty}\int_{\infty}^0 f(x)dx$. To see this notice that
-            \[int_{0}^\infty f(x)dx=\lim_{t\ra\infty}\int_{2}^t f(x)dx=\lim_{t\ra\infty} \ln(t+1)-\ln(3)\]
+            $\int_{0}^\infty f(x)dx$ or $\int_{\infty}^0 f(x)dx$ exist. To see this notice that
+            \[\int_{0}^\infty f(x)dx=\lim_{t\ra\infty}\int_{2}^t f(x)dx=\lim_{t\ra\infty} \ln(t+1)-\ln(3)\]
             which diverges.
 
    \item[4. ] Notice that because $\frac{h-h^2}{h}\leq \frac{h+h^2\sin(\frac{1}{h})}{h}\leq \frac{h+h^2}{h}$
@@ -74,21 +94,42 @@
               apply in this situation as the function $F$ is not $C^1$ on any open 
               neighborhood around $(0,0)$ and so can not be locally $C^1$-invertible. 
               To see this we will show that $D_xf_1(x,y)$ is not continuous at $x=0$.
-              Notice that $D_xf_1(x,y)=1+2x\sin(\frac{1}{x})-\cos(1/x)$ Notice that 
-              $\lim_{x\ra0}D_xf_1(x,y)$ Does not exists, which follows from the fact that 
+              Notice that when $x\neq 0$ we have that $D_xf_1(x,y)=1+2x\sin(\frac{1}{x})-\cos(1/x)$. Notice also that 
+              $\lim_{x\ra0}D_xf_1(x,y)$ does not exists, which follows from the fact that 
               $\lim_{x\ra 0} 1+2x\sin(\frac{1}{x})=1$ while $\lim_{x\ra 0}\cos(\frac{1}{x})$ 
               does not exist, and so $D_xf_1(x,y)$ is not continuous, therefore $F$ is not $C^1$ around $(0,0)$
+              and so the inverse function theorem does not apply.
 
               %pdf p 330 def of C^1
               %pdf p 371 inverse funcky theorem
 
    \item[5.] Consider the curve $y^2+y-x^2=0$, and because this is a quadratic equation in 
-         $y$. We have that the two roots of $y^2+y-x^2$ in terms of $x$ are 
-         $y=\frac{-1\pm \sqrt{1+4x^2}}{2}$. Notice further that the nieborhood of solutions around $(0,0)$
+         $y$, we have that the two roots of $y^2+y-x^2$ in terms of $x$ are 
+         $y=\frac{-1\pm \sqrt{1+4x^2}}{2}$. Notice further that the neighborhood of solutions around $(0,0)$
          are $y=\frac{-1+ \sqrt{1+4x^2}}{2}$.
          This is unique as there are only two roots of the equation with respect to 
          $y$ and only this equation has $(0,0)$ as a solution.
 
+   \item[6.] Notice that $B$ is closed because its compliment $B^c$ is open. 
+             To see this consider any element $x\not\in B$ such that $\norm{x}>1$ and let 
+             $b=\frac{x}{\norm{x}}\in B$ notice that there must exist a constant 
+             $c\in\R$ such that $\norm{b}<|c|\norm{x}<\norm{x}$. Meaning the open ball 
+             $B_{\norm{x-cx}}(x)\se B^c$, as any element $y\in B_{\norm{x-cx}}(x)$
+             has $1<|c|\norm{x}\leq \norm{y}$. Likewise consider any element 
+             $x\not\in B$ such that $\norm{x}<1$ and let 
+             $b=\frac{x}{\norm{x}}\in B$. Notice that there must exist a constant 
+             $c\in\R$ such that $\norm{x}<\norm{cx}<\norm{b}$. Meaning the open ball 
+             $B_{\norm{cx-x}}(x)\se B^c$, as any element $y\in B_{\norm{x-cx}}(x)$
+             has $\norm{y}< |c||x|<1$. So $B$ is closed.  % am i misunderstanding B, is it the closed ball? or just the boundary?
+             We also know that $B$ is bounded by $1$. So $B$ is closed and bounded.
+             Now consider the sequence $\{\vec{\textbf x}_j\}_{j=1}^\infty$ where each 
+             $\vec{\textbf{x}}_j=\{x_n\}_{n=1}^\infty\in l^2$ such that $x_j=1$ and each $x_k=0$ for $k\neq j$.
+             That is the $j$th vector in the sequence has a $1$ in the $j$th term and $0$ everywhere else.
+             Notice that this sequence does not converge as $\norm{\vec{\textbf{x}}_j-\vec{\textbf{x}}_k}=\sqrt{2}$ for
+             all $j\neq k$. So this sequence can not converge as if $\epsilon<\sqrt{2}/2$ then for any $\vec L\in l^2$ if 
+             $\norm{\vec{\textbf{x}}_j- \vec L}<\epsilon$ then it must be the case by the triangle inequality that 
+             $\norm{\vec L-\vec{\textbf{x}}_k}\geq \norm{\vec{\textbf{x}}_j-\vec{\textbf{x}}_k}-\norm{\vec{\textbf{x}}_j-\vec L}\geq \sqrt{2}-\sqrt{2}/2=\sqrt{2}/2$,
+             for all $k>j$.
 \end{itemize}
 
 % note for self: review 10.6 in book and 10.8
