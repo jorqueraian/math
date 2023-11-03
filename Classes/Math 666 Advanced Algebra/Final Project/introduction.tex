@@ -97,7 +97,8 @@ Combining these laws we have the following definition of a Jordan Pair
 \begin{definition}
     The pair $V=(V^+,V^-)$ is called a Jordan pair if $V\vDash_{\text{JP}_k}\mathcal{L}$ where $\mathcal{L}$ 
     are the laws outlined above. More Concisely we may say that a pair $V=(V^+,V^-)$ of $k$-modules
-    along with a pair of quadratic maps $(Q_+,Q_-)$, which define the trilinear operator $\{-,-,-\}$, is called a Jordan pair if JP1-JP3 hold in all scalar extensions of $V$
+    along with a pair of quadratic maps $(Q_+,Q_-)$, which define the trilinear operator $\{-,-,-\}$, 
+    is called a Jordan pair if JP1-JP3 hold in all scalar extensions of $V$
     \begin{equation}
         \tag{JP1}
         \{x,y,Q_\sigma(x)z\}=Q_\sigma(x)\{y,x,z\}
@@ -111,6 +112,9 @@ Combining these laws we have the following definition of a Jordan Pair
         Q_{\sigma}(Q_{\sigma}(x)y)z=Q_{\sigma}(x)(Q_{-\sigma}(y)(Q_{\sigma}(x)z))
     \end{equation}
 \end{definition}
+Note that we will often represent an element of a Jordan Pair as $x\in V$ without directly 
+specifying which module $x$ is a member of. And in general a pair of objects signifies that 
+objects may come from either of terms as in ...
 Now that we have a definition for our algebra we can define what it means to have sub-objects, 
 homomorphisms, congruences, quotients and ideals. None of the following are particularly surprising (You see what I did there? Im acting like a trained algebraist)
 \begin{definition}
@@ -125,31 +129,53 @@ homomorphisms, congruences, quotients and ideals. None of the following are part
     \end{equation}
 \end{definition}
 
-Once we have a homomorphism we can talk about congruences of homomorphism: 
-\begin{definition}
-    Let $h$ be a homomorphism of Jordan Pairs then $\ker(h)=\{x\equiv z \pmod h | h(x)=h(z)\}$
-\end{definition}
-Because of the underlying module structure we have that %$x\equiv z \pmod h$ is equivalent to $x-z\equiv 0_\sigma \pmod h$
 
+\begin{definition}
+    Let $h=(h_+,h_-)$ be a homomorphism of Jordan Pairs then the kernel of $h$ is 
+    $\ker(h)=(\{x\equiv z \pmod h | h_+(x)=h_+(z)\},\{x\equiv z \pmod h | h_-(x)=h_-(z)\})$
+    More concisely we will write $\ker(h)=\{x\equiv z \pmod h | h(x)=h(z)\}\se V\times V$
+\end{definition}
+
+The kernel of a homomorphism $h:V\ra W$ is the resulting congruence on $V$ that relates elements by their outputs in the
+homomorphism. We know from Noether's Isomorphism theorem that the kernels of $V$ represent all the congruences on $V$.
+
+
+Because of the underlying module structure of $V^\sigma$ we have the following observation for 
+congruence of $V$: that $x\equiv z \Leftrightarrow x-z\equiv 0_\sigma$. 
+This means that congruences of Jordan Pairs can be identified with the sub-object 
+$()\{x\in V | x\equiv 0_\sigma\},\{x\in V | x\equiv 0_\sigma\})\se V$ up to univalence. 
+In the context of kernels this means that
+$(x,z)\in\ker(h)$ if and only if $h_\sigma(x-z)=0_\sigma$.
+This means the Kernel of a homomorphism of Jordan Pairs can be identified with 
+$\{x\in V | h_\sigma(x)=0_\sigma\}$.
+We will call this type of sub-object an Ideal of $V$.
+
+\begin{definition}
+    $I=(I^+,I^-)$ is an ideal of $V$ if there exists a congruence $\equiv$ on $\V$ 
+    such that $x\equiv z$ if and only if $x-z\in I$. That is $I$ is an ideal if it 
+    can be identified with congruence on $V$. In terms of kernels this means that 
+    $I=(I^+,I^-)$ is an ideal of $V$ if there exists a homomorphism $h: V\ra W$ 
+    such that $(x,z)\in \ker(h)$ if and only if $x-z\in I$. That is $I$ is an ideal if it 
+    can be identified with the kernel of some homomorphism. 
+    
+    Furthermore we will define the quotient $V/I$ as the partitions of $V$ defined by the congruence 
+    corresponding to $I$. That is $V/I=(\{v+I^+|v\in V^+\},\{v+I^-|v\in V^-\})$
+\end{definition}
+We will henceforth associate congruences with their corresponding ideal, that is $\ker(h)=\{x\in V | h(x)=0_\sigma\}$.
+This gives us a special case of Noethers Isomorphism theorem 
+relating homomorphism, ideals and Quotients 
 \begin{prop}
-    The Kernel of a homomorphism $h:V\ra W$ of Jordan Pairs is equivalent to a sub-object of the Jordan Pair $V$. 
-    That is we may consider the $\ker(h)=\{x\in V | h(x)=0_\sigma\}$.
+    Let $I\se V$ then the following are equivalent
+    \begin{itemize}
+    \item $I$ is an ideal of $V$, which corresponds to a congruence.
+    \item $V/I$ is a Jordan Pair
+    \item $h:V\ra V/I$ is a epimorphism
+    \end{itemize}
 \end{prop}
 \begin{proof}
-    Notice that using the $k$-module structure we have that $x\equiv z \pmod h$ if and only if $x-z\equiv 0_\sigma \pmod h$.
-\end{proof}
-
-Now that we have our notion of a congruence or a kernel we can define an ideal 
-\begin{definition}
-    $I=(I^+,I^-)$ is an ideal of $V$ if $I$ is the kernel of some homomorphism $h: V\ra W$.
-\end{definition}
-This gives us a special case of Noethers Isomorphism theorem relating homomorphism, ideals and Quotients 
-\begin{prop}
-    $I=(I^+,I^-)$ is sub-object of $V$ such that nasty thing if and only if $V/I$ is a Jordan Pair and $H:V\ra V/I$ is a homomorphism
-\end{prop}
-\begin{proof}
 
 \end{proof}
+This allows us a characterization of Ideals of Jordan Pairs, and therefore homomorphism and therefore Jordan Pairs.
 
 \subsection{Step 3: Studying The Algebra}
 Now that we have created the algebra of Jordan Pairs we need to study it.
