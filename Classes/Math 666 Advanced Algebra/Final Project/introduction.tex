@@ -131,13 +131,13 @@ homomorphisms, congruences, quotients and ideals. None of the following are part
 
 
 \begin{definition}
-    Let $h=(h_+,h_-)$ be a homomorphism of Jordan Pairs then the kernel of $h$ is 
+    Let $h=(h_+,h_-)$ be a homomorphism of Jordan Pairs then the kernel of $h$ is the pair 
     $\ker(h)=(\{x\equiv z \pmod h | h_+(x)=h_+(z)\},\{x\equiv z \pmod h | h_-(x)=h_-(z)\})$
     More concisely we will write $\ker(h)=\{x\equiv z \pmod h | h(x)=h(z)\}\se V\times V$
 \end{definition}
 
 The kernel of a homomorphism $h:V\ra W$ is the resulting congruence on $V$ that relates elements by their outputs in the
-homomorphism. We know from Noether's Isomorphism theorem that the kernels of $V$ represent all the congruences on $V$.
+homomorphism $h$. We know from Noether's Isomorphism theorem that the kernels of $V$ represent all the congruences on $V$.
 
 
 Because of the underlying module structure of $V^\sigma$ we have the following observation for 
@@ -151,15 +151,18 @@ $\{x\in V | h_\sigma(x)=0_\sigma\}$.
 We will call this type of sub-object an Ideal of $V$.
 
 \begin{definition}
-    $I=(I^+,I^-)$ is an ideal of $V$ if there exists a congruence $\equiv$ on $\V$ 
+    $I=(I^+,I^-)$ is an ideal of $V$ if there exists a congruence $\equiv$ on $V$ 
     such that $x\equiv z$ if and only if $x-z\in I$. That is $I$ is an ideal if it 
-    can be identified with congruence on $V$. In terms of kernels this means that 
+    can be identified with some congruence on $V$. 
+    In terms of kernels this means that 
     $I=(I^+,I^-)$ is an ideal of $V$ if there exists a homomorphism $h: V\ra W$ 
     such that $(x,z)\in \ker(h)$ if and only if $x-z\in I$. That is $I$ is an ideal if it 
     can be identified with the kernel of some homomorphism. 
-    
-    Furthermore we will define the quotient $V/I$ as the partitions of $V$ defined by the congruence 
-    corresponding to $I$. That is $V/I=(\{v+I^+|v\in V^+\},\{v+I^-|v\in V^-\})$
+\end{definition}
+\begin{definition}
+    Let $V$ be a Jordan Pair and $I$ an ideal then then quotient 
+    $V/I$ is the partitions of $V$ defined by the congruence 
+    corresponding to $I$. That is $V/I=(V^+/I^+,V^-/I^-)=(\{v+I^+|v\in V^+\},\{v+I^-|v\in V^-\})$
 \end{definition}
 We will henceforth associate congruences with their corresponding ideal, that is $\ker(h)=\{x\in V | h(x)=0_\sigma\}$.
 This gives us a special case of Noethers Isomorphism theorem 
@@ -167,15 +170,15 @@ relating homomorphism, ideals and Quotients
 \begin{prop}
     Let $I\se V$ then the following are equivalent
     \begin{itemize}
-    \item $I$ is an ideal of $V$, which corresponds to a congruence.
+    \item $I$ is an ideal of $V$
     \item $V/I$ is a Jordan Pair
-    \item $h:V\ra V/I$ is a epimorphism
+    \item $h:V\ra V/I$ is a epimorphism with $\ker(h)=I$
     \end{itemize}
 \end{prop}
-\begin{proof}
-
-\end{proof}
-This allows us a characterization of Ideals of Jordan Pairs, and therefore homomorphism and therefore Jordan Pairs.
+This allows us a characterization of Ideals of Jordan pairs
+\begin{prop}
+$I\se V$ is an ideal of $V$ if and only if $Q_\sigma(I^\sigma)V^{-\sigma}+Q_\sigma(V^\sigma)I^{-\sigma}+\{V^\sigma,V^{-\sigma},U^\sigma\}\se U^\sigma$
+\end{prop}
 
 \subsection{Step 3: Studying The Algebra}
 Now that we have created the algebra of Jordan Pairs we need to study it.
