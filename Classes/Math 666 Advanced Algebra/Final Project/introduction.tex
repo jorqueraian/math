@@ -1,13 +1,15 @@
 \section{Introduction}
 This paper is meant as a way of documenting my understanding of 
 algebra with an emphasis on how and why algebra is the way it is, 
-and so may be obvious or even outright insulting to a trained algebraist.
-I've come to the conclusion the conclusion that Algebra is a 4 step process:
+and so this document may be obvious or even outright insulting to a trained algebraist.
+I've come to the conclusion the conclusion that Algebra is a 4+ step process:
 Step 1) Find example of algebra in the real word. 
-Step 2) Using your examples (a) find operators, or a grammar and (b) find laws that your operators seem to follow your examples. This step we create the "free" algebra
-Step 3) Study your newly built algebra by (a) studying the "simple" things. (b) study the "free" thing. (c) study the representations.
-step 4) idk study your examples again with new insights or don't.
+Step 2) Using your examples (a) find operators, or a grammar and (b) find laws that your operators seem to follow your examples. This step we create the "free" algebra. In this step will will also homomorphisms and ideals.
+Step 3) Study your newly built algebra by (a) Studying the ideal, homomorphism and other important object, this often involves studying the "simples" of your algebra. (b) Studying the "free" thing. (c) studying the representations.
+step 4) Study your examples again with new insights or build new algebra from the algebra you created in the previous steps
 
+
+This paper is roughly outlined to follow these steps for the following two algebraic structure, Jordan pairs and Jordan Algebra.
 \subsection{Step 1: A Motivating Example}
 Matrices are cool. Thats it! Thats all the motivation I need.
 Groups can be used to talk about the algebra of multiplying 
@@ -18,6 +20,7 @@ three algebra leave gaps, categories and groupoids can often be too broad, allow
 for partially defined multiplications while group are too narrow, allowing only 
 invertible matrices.
 
+\subsubsection*{A motivating example for Jordan Pairs}
 Often one may want to study rectangular matrices. For example Let $V^+$ be the 
 $k$-module of $q\times p$ matrices $M_{q,p}$ and $V^-$ be the 
 $k$-module of $p\times q$ matrices $M_{p,q}$. These matrices are clearly compatible under 
@@ -30,15 +33,16 @@ However notice with this simple triple product we have that $ABC$ is bilinear in
 under a transpose $(ABC)^t=C^tB^tA^t$ we have a commuting issue. And so instead we want to define an operator
 that is symmetric in $A$ and $C$. An easy way to do this is to define an operator $\{A,B,C\}=ABC+CBA$.
 
-
-A simpler example of this commuting issue is with symmetric(self-adjoint) matrices, where $A=A^t$ and $B=B^t$. 
+\subsubsection*{A motivating example for Jordan Algebras}
+A simpler example of this commuting issue is with symmetric(self-adjoint) matrices which is our second motivating example, where $A=A^t$ and $B=B^t$. 
 If we had a bilinear form: $\ip{x|y}=x^ty$ we could study the self adjoint elements $\ip{Ax|y}=\ip{x|A^ty}$. 
 But we run into the exact same problem: that symmetric matrices are generally not closed under multiplication
-$(AB)^t=B^tA^t=BA$. And restricting you study of matrices to commutative ones is not a reasonable ask! 
+$(AB)^t=B^tA^t=BA$. And restricting the study of matrices to commutative ones is not a reasonable ask! 
 So again the fix is to invent a new matrix multiplication that is symmetric and still does all the same things.
 
 
 \subsection{Step 2: Fumbling to a Definition}
+\subsubsection{Jordan Pairs}
 We are not saying Ottmar Loos Fumbled to the definitions we will present below 
 (They are simply too nice and also intricate for that to be the case) but at some point to do
 algebra you have to just fumble to something that looks good enough, and hopefully in retrospect you can convince yourself
@@ -175,10 +179,29 @@ relating homomorphism, ideals and Quotients
     \item $h:V\ra V/I$ is a epimorphism with $\ker(h)=I$
     \end{itemize}
 \end{prop}
-This allows us a characterization of Ideals of Jordan pairs
+This allows us a characterization of Ideals of Jordan pairs using the the equivalence of Ideals and Quotients being Jordan Pairs, and so we need only check the conditions needed on $I$ for $V/I$ to be a Jordan Pair.
 \begin{prop}
 $I\se V$ is an ideal of $V$ if and only if $Q_\sigma(I^\sigma)V^{-\sigma}+Q_\sigma(V^\sigma)I^{-\sigma}+\{V^\sigma,V^{-\sigma},U^\sigma\}\se U^\sigma$
 \end{prop}
+An important part of step 3, is the study of simples. As an important observation is that any Jordan Pair can be the image of some homomorphism, 
+or in other words any Jordan pair can be the quotient of another Jordan Pair. So the simple Jordan Pairs are those whose quotients do not result any any new Jordan pairs
+\begin{definition}
+    A non-zero Jordan pair $V$ is called simple if $(0_+,0_-)$ and $V$ are its only ideals.
+\end{definition}
+
+\subsubsection*{Jordan Algebras}
+
 
 \subsection{Step 3: Studying The Algebra}
+\subsubsection*{Jordan Pairs}
+To study our algebra it is often helpful to identify important objects in our examples, such as automorphisms.
+So we define 
+$\text{aut}(V)=\{h:V\ra V| h \text{ is a isomorphims}\}\leq \text{GL}(V^+)\times \text{GL}(V^-)$.  
+One important example of an automorphism of matrix modules is the transpose. However the standard transpose is not an automorphism of Jordan pairs.
+This follows from the fact that $(-)^t:V^+=M_{p,q}(k)\ra V^-=M_{q,p}(k)$ and vice versa.
+This however introduces the notion of an anti-homomorphism or twisted homomorphism.
+\begin{definition}
+    An antihomomorphism between Jordan pairs $V$ and $W$ is a homomorphism $\eta: (V^+,V^-)\ra(W^-,W^+)$, that is a pair of k-module homomorphisms $\eta_\sigma:V^\sigma\ra W^{-\sigma}$ such that
+    $\eta_\sigma (Q_\sigma(x)y)=(Q_{-\sigma}(\eta_\sigma(x))\eta_{-\sigma} (y))$. We often denote $W^{\text{op}}$ to be the Jordan Pair $W^{\text{op}}=(W^-,W^+)$ with quadratic maps $(Q_-,Q_+)$.
+\end{definition}
 Now that we have created the algebra of Jordan Pairs we need to study it.
