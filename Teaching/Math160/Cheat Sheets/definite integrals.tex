@@ -5,6 +5,7 @@
 
 \usepackage{graphicx, amsmath,anonchap,tabularx,multicol}
 \usepackage{wrapfig}
+\usepackage{vwcol}
 
 \usepackage{enumitem}
 \setlist{noitemsep}
@@ -32,7 +33,7 @@ MATH 160\\
 For a continuous function $f(x)$ on the interval $[a,b]$ the \textbf{Definite Integral} is defined by the limit of a Riemann sum
 $${\int_{a}^{b}f(x)\,dx=\lim_{n\rightarrow \infty}}\left(\sum_{i=0}^{n-1}f(x_i)\Delta x\right)$$\\
 Where $f(x)$ is called the \textit{integrand} and $a$ and $b$ are called the limits of integration.\\\\
-The units of a definite integral can be found by multiplying the units of the integrand (the units of $f(x)$) with the units of $dx$, the variable the integral is with respect to (the variable of integration).\\\\
+The \textbf{units} of a definite integral can be found by multiplying the units of the integrand (the units of $f(x)$) with the units of $dx$, the variable the integral is with respect to (the variable of integration).\\\\
 
 \textbf{The FUNdamental Theorem of Calculus:} If $f(t)$ is continuous on the interval $[a,b]$ and $\frac{d}{dt}[F(t)]=f(t)$ then
 $$\int_{a}^{b}f(t)\,dt=\int_{a}^{b}F'(t)\,dt=F(b)-F(a)$$
@@ -44,6 +45,20 @@ An \textbf{Antiderivative} of a function $f(x)$ is a function $F(x)$ such that $
     The \textbf{Family of Antiderivatives} of a function $f(x)$ are all up-down translations of $F(x)$. This is denoted as $F(x)+C$ where $C$ is any constant.
     \vspace{-.29in}
 \end{quote}
+\end{boxe}
+
+\subsection*{Interpreting Definite Integrals}
+\begin{boxe}
+    1) Definite Integrals compute \textbf{Total Net Change}. Integrals are one way we can undo derivatives: we can take quantities like velocity, rates of change, quantities that measure "how fast" somethings changes and get quantities that measure a total net change like displacement.
+    Ex. The displacement of an object between $t=a$ and $t=b$ whose velocity is $v(t)$ can be computed with the definite integral $\displaystyle{\int_{a}^bv(t) dt}$.\\\\    
+
+    \begin{minipage}{0.65\textwidth}
+    2) Definite Integrals compute \textbf{Signed Area} between a curve and the $x$-axis. This means definite integrals measure the area between a curve and the $x$-axis with area above the $x$-axis being positive and area below being negative. To the right is an example of the signed area between a curves and the $x$-axis on the interval $[a,b]$. 
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.2\textwidth}
+    \includegraphics[scale=.3]{300px-Integral_example.svg.png}
+    \end{minipage}
 \end{boxe}
 
 \subsection*{Properties of Definite Integrals}
