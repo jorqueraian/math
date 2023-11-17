@@ -34,6 +34,7 @@ under a transpose $(ABC)^t=C^tB^tA^t$ we have a commuting issue. And so instead 
 that is symmetric in $A$ and $C$. An easy way to do this is to define an operator $\{A,B,C\}=ABC+CBA$.
 
 \subsubsection*{A motivating example for Jordan Algebras}
+\label{sec:symmats}
 A simpler example of this commuting issue is with symmetric(self-adjoint) matrices which is our second motivating example, where $A=A^t$ and $B=B^t$. 
 If we had a bilinear form: $\ip{x|y}=x^ty$ we could study the self adjoint elements $\ip{Ax|y}=\ip{x|A^ty}$. 
 But we run into the exact same problem: that symmetric matrices are generally not closed under multiplication
@@ -189,7 +190,16 @@ or in other words any Jordan pair can be the quotient of another Jordan Pair. So
     A non-zero Jordan pair $V$ is called simple if $(0_+,0_-)$ and $V$ are its only ideals.
 \end{definition}
 
-\subsubsection*{Jordan Algebras}
+\subsubsection*{Jordan Algebras from Jordan Pairs}
+A closely related algebra to the Jordan pair is the Jordan algebra. A jordan pair $V=(V^+,V^-)$ 
+studies the interactions between two modules. Jordan algebras allow us to study each module somewhat independently.
+That is we can define the multiplication of the elements $x$ and $y$ in $V^\sigma$ as the triple 
+product $x\circ y:=\{xvy\}$ for some fixed $v$. This creates a symmetric but not necessarily associative multiplication
+
+\begin{definition}
+    Let $V=(V^+,V^-)$ be a Jordan pair with $v\in V^-$ then $V^+$ is Jordan algebra, denoted $V^+_v$ with squaring operation 
+    $x^2=Q_+(x)v=\frac{1}{2}\{xvx\}$  
+\end{definition}
 
 
 \subsection{Step 3: Studying The Algebra}
