@@ -1,0 +1,30 @@
+\subsection{Step 1: A Motivating Example}
+Matrices are cool. Thats it! Thats all the motivation I need.
+Groups can be used to talk about the algebra of multiplying 
+invertible matrices with common dimensions, with the General Linear group.
+Groupoids can be used to work with all square matrices. And a Category can be 
+used to study the behavior of matrix multiplication in general. However these 
+three algebra leave gaps, categories and groupoids can often be too broad, allowing
+for partially defined multiplications while group are too narrow, allowing only 
+invertible matrices.
+
+\subsubsection*{A motivating example for Jordan Pairs}
+Often one may want to study rectangular matrices. For example Let $V^+$ be the 
+$k$-module of $q\times p$ matrices $M_{q,p}$ and $V^-$ be the 
+$k$-module of $p\times q$ matrices $M_{p,q}$. These matrices are clearly compatible under 
+multiplication but there is a problem! If $A\in V^+$ and $B\in V^-$, then their product is in neither
+of the original modules. This requires a new operator, a trinary operation where if $A,C\in V^+$ and $B\in V^-$
+then $ABC\in V^+$ and vice-versa. In fact this trinary operator would be tri-linear.
+This would give us a nice algebra, but it has a problem, it does not behave nicely with geometry.
+Geometry often looks at bilinear forms which can often be defined by a transpose. 
+However notice with this simple triple product we have that $ABC$ is bilinear in $A$ and $C$ but notice that 
+under a transpose $(ABC)^t=C^tB^tA^t$ we have a commuting issue. And so instead we want to define an operator
+that is symmetric in $A$ and $C$. An easy way to do this is to define an operator $\{A,B,C\}=ABC+CBA$.
+
+\subsubsection*{A motivating example for Jordan Algebras}
+\label{sec:symmats}
+A simpler example of this commuting issue is with symmetric(self-adjoint) matrices which is our second motivating example, where $A=A^t$ and $B=B^t$. 
+If we had a bilinear form: $\ip{x|y}=x^ty$ we could study the self adjoint elements $\ip{Ax|y}=\ip{x|A^ty}$. 
+But we run into the exact same problem: that symmetric matrices are generally not closed under multiplication
+$(AB)^t=B^tA^t=BA$. And restricting the study of matrices to commutative ones is not a reasonable ask! 
+So again the fix is to invent a new matrix multiplication that is symmetric and still does all the same things.

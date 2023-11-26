@@ -1,0 +1,101 @@
+\subsection{Step 3: Studying The Algebra}
+\subsubsection*{Jordan's Web}
+Now that we have created the algebra of Jordan Pairs we need to study it. An important notion to study is that of invertibility.
+At first glance this may be tricky as Jordan Pairs have no classical binary product. Instead Jordan Pairs have quadratic map $Q_\sigma(x)y$
+that acts as a two-sided product: the product of $x$ on both sides of $y$, at least this is the intuition that our example gives us.
+This gives us a notion of inverses, that of inverting the two-sided product $Q_\sigma(x)$.
+Furthermore an inverse $x^{-1}$ of an element $x$ should satisfy $Q_{-\sigma}(x^{-1})Q_\sigma(x)y=y$.
+And Using JP3 we can determine that $Q_\sigma(x)y=Q_\sigma(x)Q_{-\sigma}(x^{-1})Q_\sigma(x)y=Q_\sigma(Q_\sigma(x)x^{-1})y$.
+ And so $Q_\sigma(x)x^{-1}=x$ and therefore we have the following definition
+
+\begin{definition}
+    Let $V$ be a Jordan Pairs then an element $u\in V^\sigma$ is called invertible if 
+    quadratic product $Q_\sigma(u):V^{-\sigma}\ra V^{\sigma}$ is invertible. In this case 
+    $u^{-1}=Q_\sigma(u)^{-1}(u)$
+\end{definition}
+
+In which case we have that $Q_\sigma(u)^{-1}=Q_{-\sigma}(u^{-1})$ as desired and $(u^{-1})^{-1}$.
+Invertible elements are generally rare in Jordan Pairs but have a nice correspondence with unital Jordan Algebras
+
+\begin{prop}
+    Let $V$ be a Jordan Pair with invertible element $v\in V^{-}$ and $u=v^{-1}\in V^{+}$. Then the 
+    corresponding Jordan Algebras $J=V^{+}_v$ and $J'=V^-_u$ are unital with units $u$ 
+    and $v$ respectively. Furthermore $J$ and $J'$ are isomorphism with $Q_-(v):J\ra J'$ and inverse $Q_+(u):J'\ra J$. Additionally
+    the map $(\text{Id}_J, Q_{-}(v)):(J,J)\ra (V^+,V^-)$ is an isomorphism of Jordan Pairs.
+\end{prop}
+
+This gives a powerful connection between the study of Jordan Pairs with invertible elements
+and Unital Jordan Algebras.
+
+
+\subsubsection{Centering in on the Numbers}
+A common technic in the study of algebra is that of extending coefficients.
+As an example consider a $\Omega$-module $V$, where $\Omega$ has no required structure, given by the action of 
+$\cdot:\Omega\times V\ra V$ that respects the structure of $V$. However $\Omega$ may not
+represent all the actions of $V$ and so often it is helpful to extent $\Omega$ to include all the actions of $V$ that respect the structure of $V$ and the action of $\Omega$.
+Notice also that actions that preserve the original actions of $\Omega$ commute, and so such an extension of scalar comes down to a collection of commuting requirements.
+These new scalars are the endomorphisms $\text{End}(_\Omega V)$ endowing $V$ with a $\text{End}(_\Omega V)$-module with nicer properties.
+%The motivation is that often in the study of algebraic structure you may start 
+%with an important collection of scalars but 
+
+
+Let $V=(V^+,V^-)$ be a Jordan pair over $k$, where each $V^\sigma$ is a $k$-module. 
+Consider first $\text{End}(V^+)\times\text{End}(V^-)$, the endomorphisms of each $V^\sigma$ preserving the $k$-module structures,
+which contains all automorphism of $V$.
+However for a map $a=(a_+,a_-)\in\text{End}(V^+)\times\text{End}(V^-)$ to respect the structure of $V$ we would need the following commuting requirements
+First we need that the action of $a$ commutes with the two-sided quadratic map in the sense that 
+$a_\sigma Q_\sigma(x)y=Q_\sigma(x)a_{-\sigma}(y)$. Similarly we need that 
+$a_\sigma(\{x,y,z\})=\{x,y,a_\sigma(z)\}$. These requirements define what is know as the centroid.
+
+\begin{definition}
+    Let $V$ be a Jordan Pair over $k$. The Centroid of $V$ denoted as $Z(V)$ is 
+    the collection of elements $a=(a_+,a_-)\in\text{End}(V^+)\times\text{End}(V^-)$ such that
+    \begin{equation}
+        \tag{Z1}
+        a_\sigma Q_\sigma(x)y=Q_\sigma(x)a_{-\sigma}(y)
+    \end{equation}
+    \begin{equation}
+        \tag{Z2}
+        a_\sigma(\{x,y,z\})=\{x,y,a_\sigma(z)\}
+    \end{equation}
+    \begin{equation}
+        \tag{Z3}
+        Q_{\sigma}(a_{\sigma}(x))=a_{\sigma}^2Q_{\sigma}(x)
+    \end{equation}
+\end{definition}
+Notice that requirement Z3 is only needed in the case of characteristic $2$, otherwise Z3 follows from Z2 and the symmetry of the trilinear operator. And likewise the identities
+$a_\sigma(\{x,y,z\})=\{a_\sigma(x),y,z\}$ and $a_\sigma(\{x,y,z\})=\{x,a_{-\sigma}(y),z\}$ follow from the above.
+
+The centroid represents the possible actions on $V$ that preserve its structure, 
+meaning the centroid may be an extension of the underlying scalars from $k$. To see this
+Notice that any scalar $\lambda\in k$ has the corresponding element $(\lambda\text{Id},\lambda\text{Id})\in Z(V)$ 
+which is exactly that of scalar multiplication from $k$. This suggests that $Z(V)$ 
+knows about the additional scalars that may exist for $V$.
+
+\begin{definition}
+    A Jordan Pair $V$ is called central if every $a\in Z(V)$ is of the form $a=(\lambda\text{Id},\lambda\text{Id})$ for some $\lambda\in k$
+\end{definition}
+Central Jordan Pairs are Jordan Pairs where $k$ already contains all the scalars or actions on $V$ that preserve the structure.
+
+
+Although $Z(v)$ can bring in new scalars or new actions on $V$ the resulting algebra may no longer be a Jordan Pair. 
+$Z(V)$ is often not commutative or even a subalgebra of $\text{End}(V^+)\times\text{End}(V^-)$, meaning $Z(V)$ may not be a scalar extension of $k$.
+% recal that Jordan Pair needs k to be commutative unital ring
+% why does this matter. Is there something critically important that this breaks when Z(V) isnt commutative 
+
+\begin{prop}
+    Let $V$ be a Jordan Pair with $Z(V)$ a commutative subalgebra of 
+    $\text{End}(V^+)\times\text{End}(V^-)$. Then $V$ can be a Jordan Pair over the 
+    extension $Z(V)$. % im not sure what i am saying.
+\end{prop}
+
+Furthermore the structure of $Z(V)$ depends on the structure of $V$, specifically the ideals of $V$.
+
+% other prop. but i dont understand it. it may have a typo but also maybe they are just defining things different and if it 
+% is a typo this next prop is enough.
+
+\begin{prop}
+    Let $V$ be a Jordan Pair. If $V$ is simple then $Z(V)$ is an extension field of $k$.
+\end{prop}
+
+\subsection{Pseudo-Inverses} And application to differential geometry I assume? or some other flavor of geometry

@@ -1,0 +1,178 @@
+\subsection{Step 2: Fumbling to a Definition}
+\subsubsection{Jordan Pairs}
+We are not saying Ottmar Loos Fumbled to the definitions we will present below 
+(They are simply too nice and also intricate for that to be the case) but at some point to do
+algebra you have to just fumble to something that looks good enough, and hopefully in retrospect you can convince yourself
+why your algebra is a good one.
+
+As mentioned above we want to create an algebra that looks at how pairs of modules interact, through a symmetric 
+trilinear operator that we will think about as being our triple matrix product symmetricified.
+So we need to define our two $k$-modules with our trilinear operator that goes between them
+
+\begin{align*}\ip{\ip{V^+}}::&= 0_+ \\
+                             &| \ip{V^+}+\ip{V^+} \\
+                             &| -\ip{V^+} \\
+                             &| \ip{k}\cdot \ip{V^+}\\ 
+                             &| \{\ip{V^+}, \ip{V^-}, \ip{V^+}\}\end{align*}
+\begin{align*}\ip{\ip{V^-}}::&= 0_- \\
+    &| \ip{V^-}+\ip{V^-} \\
+    &| -\ip{V^-} \\
+    &| \ip{k}\cdot \ip{V^-} \\
+    &| \{\ip{V^-}, \ip{V^+}, \ip{V^-}\}\end{align*}
+ 
+And then we can define the grammar for the algebra of the pair of modules. This is the signature for a Jordan pair over $k$
+
+\[\ip{\ip{\text{JP}_k}}::= \ip{V^+} | \ip{V^-}\]
+
+Now that we know what operators we have in our world we need laws to tell us what these operators mean and how we can rewrite expressions.
+First we need the laws that tell us that $V^+$ and $V^-$ are in fact $k$-modules.
+And we also need the laws that tell about our triple product, that $\{-,-,-\}:V^\sigma\times V^{-\sigma}\times V^\sigma\ra V^\sigma$ is a trilinear operator and symmetric in the first and third terms. 
+
+From these laws we can create additional operators: for $\sigma=\pm$ let
+\[Q_\sigma:V^\sigma\ra \hom(V^{-\sigma},V^{\sigma})\text{ be quadratic maps given by }2Q_\sigma(x)y = \{xyx\}\]
+We can also create their corresponding symmetric bilinear maps 
+$Q_\sigma:V^\sigma\times V^\sigma\ra \hom(V^{-\sigma},V^{\sigma})$ which are given by 
+$Q_\sigma(x,z)=Q_\sigma(x+z)-Q_\sigma(x)-Q_\sigma(z)$. %TODO make sure this actually works. I think i might have an off by 1/2 or 2.
+Finally we will create the bilinear maps $D_\sigma(x,y)z=Q_\sigma(x,z)y$
+Notice that in the example in the section above we would have that $Q_\sigma(x)y=xyx$.
+
+Now that we have our algebra with some initial laws we need to build some more laws using the formulas of $\text{JP}_k$.
+These laws are created to mirror the behavior of our motivating examples.
+We will build the following laws:
+\begin{equation}
+    \tag{JP1}
+    \{x,y,Q_\sigma(x)z\}=Q_\sigma(x)\{y,x,z\}
+\end{equation}
+\begin{equation}
+    \tag{JP2}
+    \{Q_\sigma(x)y,y,z\}=\{x,Q_{-\sigma}(y)x,z\}
+\end{equation}
+\begin{equation}
+    \tag{JP3}
+    Q_{\sigma}(Q_{\sigma}(x)y)z=Q_{\sigma}(x)(Q_{-\sigma}(y)(Q_{\sigma}(x)z))
+\end{equation}
+
+
+Combining these laws we have the following definition of a Jordan Pair
+
+\begin{definition}
+    The pair $V=(V^+,V^-)$ is called a Jordan pair if $V\vDash_{\text{JP}_k}\mathcal{L}$ where $\mathcal{L}$ 
+    are the laws outlined above. More Concisely we may say that a pair $V=(V^+,V^-)$ of $k$-modules
+    along with a pair of quadratic maps $(Q_+,Q_-)$, which define the trilinear operator $\{-,-,-\}$, 
+    is called a Jordan pair if JP1-JP3 hold in all scalar extensions of $V$
+    \begin{equation}
+        \tag{JP1}
+        \{x,y,Q_\sigma(x)z\}=Q_\sigma(x)\{y,x,z\}
+    \end{equation}
+    \begin{equation}
+        \tag{JP2}
+        \{Q_\sigma(x)y,y,z\}=\{x,Q_{-\sigma}(y)x,z\}
+    \end{equation}
+    \begin{equation}
+        \tag{JP3}
+        Q_{\sigma}(Q_{\sigma}(x)y)z=Q_{\sigma}(x)(Q_{-\sigma}(y)(Q_{\sigma}(x)z))
+    \end{equation}
+\end{definition}
+Note that we will often represent an element of a Jordan Pair as $x\in V$ without directly 
+specifying which module $x$ is a member of. And in general a pair of objects signifies that 
+objects may come from either of terms as in ...
+Now that we have a definition for our algebra we can define what it means to have sub-objects, 
+homomorphisms, congruences, quotients and ideals. None of the following are particularly surprising (You see what I did there? Im acting like a trained algebraist)
+\begin{definition}
+    A homomorphism $h:V\ra W$ of Jordan Pairs is a pair of maps $(h_+,h_-)$ such that $h_\sigma:V^\sigma\ra W^\sigma$ is a 
+    $k$-module homomorphism such that the following holds
+    \begin{equation}
+        h_{\sigma}(\{x,y,z\})=\{h_{\sigma}(x),h_{-\sigma}(y),h_{\sigma}(z)\}
+    \end{equation}
+    This condition is equivalent to 
+    \begin{equation}
+        h_{\sigma}(Q_{\sigma}(x)y)=Q_{\sigma}(h_{\sigma}(x))h_{-\sigma}(y)
+    \end{equation}
+\end{definition}
+
+
+\begin{definition}
+    Let $h=(h_+,h_-)$ be a homomorphism of Jordan Pairs then the kernel of $h$ is the pair 
+    $\ker(h)=(\{x\equiv z \pmod h | h_+(x)=h_+(z)\},\{x\equiv z \pmod h | h_-(x)=h_-(z)\})$
+    More concisely we will write $\ker(h)=\{x\equiv z \pmod h | h(x)=h(z)\}\se V\times V$
+\end{definition}
+
+The kernel of a homomorphism $h:V\ra W$ is the resulting congruence on $V$ that relates elements by their outputs in the
+homomorphism $h$. We know from Noether's Isomorphism theorem that the kernels of $V$ represent all the congruences on $V$.
+
+
+Because of the underlying module structure of $V^\sigma$ we have the following observation for 
+congruence of $V$: that $x\equiv z \Leftrightarrow x-z\equiv 0_\sigma$. 
+This means that congruences of Jordan Pairs can be identified with the sub-object 
+$()\{x\in V | x\equiv 0_\sigma\},\{x\in V | x\equiv 0_\sigma\})\se V$ up to univalence. 
+In the context of kernels this means that
+$(x,z)\in\ker(h)$ if and only if $h_\sigma(x-z)=0_\sigma$.
+This means the Kernel of a homomorphism of Jordan Pairs can be identified with 
+$\{x\in V | h_\sigma(x)=0_\sigma\}$.
+We will call this type of sub-object an Ideal of $V$.
+
+\begin{definition}
+    $I=(I^+,I^-)$ is an ideal of $V$ if there exists a congruence $\equiv$ on $V$ 
+    such that $x\equiv z$ if and only if $x-z\in I$. That is $I$ is an ideal if it 
+    can be identified with some congruence on $V$. 
+    In terms of kernels this means that 
+    $I=(I^+,I^-)$ is an ideal of $V$ if there exists a homomorphism $h: V\ra W$ 
+    such that $(x,z)\in \ker(h)$ if and only if $x-z\in I$. That is $I$ is an ideal if it 
+    can be identified with the kernel of some homomorphism. 
+\end{definition}
+\begin{definition}
+    Let $V$ be a Jordan Pair and $I$ an ideal then then quotient 
+    $V/I$ is the partitions of $V$ defined by the congruence 
+    corresponding to $I$. That is $V/I=(V^+/I^+,V^-/I^-)=(\{v+I^+|v\in V^+\},\{v+I^-|v\in V^-\})$
+\end{definition}
+We will henceforth associate congruences with their corresponding ideal, that is $\ker(h)=\{x\in V | h(x)=0_\sigma\}$.
+This gives us a special case of Noethers Isomorphism theorem 
+relating homomorphism, ideals and Quotients 
+\begin{prop}
+    Let $I\se V$ then the following are equivalent
+    \begin{itemize}
+    \item $I$ is an ideal of $V$
+    \item $V/I$ is a Jordan Pair
+    \item $h:V\ra V/I$ is a epimorphism with $\ker(h)=I$
+    \end{itemize}
+\end{prop}
+This allows us a characterization of Ideals of Jordan pairs using the the equivalence of Ideals and Quotients being Jordan Pairs, and so we need only check the conditions needed on $I$ for $V/I$ to be a Jordan Pair.
+\begin{prop}
+$I\se V$ is an ideal of $V$ if and only if $Q_\sigma(I^\sigma)V^{-\sigma}+Q_\sigma(V^\sigma)I^{-\sigma}+\{V^\sigma,V^{-\sigma},U^\sigma\}\se U^\sigma$
+\end{prop}
+An important part of step 3, is the study of simples. As an important observation is that any Jordan Pair can be the image of some homomorphism, 
+or in other words any Jordan pair can be the quotient of another Jordan Pair. So the simple Jordan Pairs are those whose quotients do not result any any new Jordan pairs
+\begin{definition}
+    A non-zero Jordan pair $V$ is called simple if $(0_+,0_-)$ and $V$ are its only ideals.
+\end{definition}
+
+To study our algebra it is often helpful to identify important objects in our examples, such as automorphisms, possibly including twisted automorphisms.
+So we define 
+$\text{aut}(V)=\{h:V\ra V| h \text{ is a isomorphims}\}\leq \text{GL}(V^+)\times \text{GL}(V^-)$.  
+One important example of an automorphism of matrix modules is the transpose. However the standard transpose is not an automorphism of Jordan pairs.
+This follows from the fact that $(-)^t:V^+=M_{p,q}(k)\ra V^-=M_{q,p}(k)$ and vice versa.
+This however introduces the notion of an anti-homomorphism or twisted homomorphism.
+\begin{definition}
+    An antihomomorphism between Jordan pairs $V$ and $W$ is a homomorphism $\eta: (V^+,V^-)\ra(W^-,W^+)$, that is a pair of k-module homomorphisms $\eta_\sigma:V^\sigma\ra W^{-\sigma}$ such that
+    $\eta_\sigma (Q_\sigma(x)y)=(Q_{-\sigma}(\eta_\sigma(x))\eta_{-\sigma} (y))$. We often denote $W^{\text{op}}$ to be the Jordan Pair $W^{\text{op}}=(W^-,W^+)$ with quadratic maps $(Q_-,Q_+)$.
+    Furthermore a twisted automorphism $\eta$ is called an involution if $\eta_{-\sigma}\eta_\sigma$ is the identity map on $V^\sigma$.
+\end{definition}
+There are many important examples of involutions in Jordan pairs one being a transpose.
+
+\subsubsection*{Jordan Algebras from Jordan Pairs}
+A closely related algebra to the Jordan pair is the Jordan algebra. A jordan pair $V=(V^+,V^-)$ 
+studies the interactions between two modules. Jordan algebras allow us to study each module somewhat independently (Although there is a rich study of Jordan Algebras unrelated to Jordan Pairs).
+That is we can define the multiplication of the elements $x$ and $y$ in $V^\sigma$ as the triple 
+product $x\circ y:=\{xvy\}$ for some fixed $v$. This creates a symmetric but not necessarily associative multiplication
+
+\begin{definition}
+    Let $V=(V^+,V^-)$ be a Jordan pair with $v\in V^-$ then $V^+$ is Jordan algebra, denoted $V^+_v$ with
+    Jordan Product $x\bullet y=\{xvy\}$ squaring operation 
+    $x^2=Q_+(x)v=\frac{1}{2}\{xvx\}$ and quadratic $U$-operator 
+    $U_x=Q_+(x)Q_-(v)$
+\end{definition}
+And likewise a definition for $V^-_v$ can be given through $V^{op}$. 
+In Jordan algebras with a unit $1$ we have that $x^2=U_x(1)$, but this is generally rare in Jordan algebra that result from Jordan Pairs.
+This construction provides a powerful connection between the study of Jordan pairs and quadratic Jordan algebras.
+
+A homomorphism $h:V\ra W$ of Jordan Pairs induces a homomorphism $h_\sigma:V_v^\sigma\ra W^\sigma_{h_{-\sigma}(v)}$ on the 
