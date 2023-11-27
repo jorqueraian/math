@@ -23,14 +23,17 @@
 
 \begin{document}
 \begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}l l}
-\textbf{Properties and Applications of Definite Integrals} \\
+\textbf{Definite and Indefinite Integrals} \\
 MATH 160\\
 %\textbf{Due Friday, 10/22/18} & MATH 157\\
 \hline\hline
 \end{tabular*}\\
+\subsection*{Definite Integrals}
 \begin{boxe}
-\textbf{The FUNdamental Theorem of Calculus:} If $f(t)$ is continuous on the interval $[a,b]$ and $F(t)$ is an antiderivative of $f(t)$, meaning $\frac{d}{dt}[F(t)]=f(t)$ then
-$$\int_{a}^{b}f(t)\,dt=F(x)\big\vert_a^b=F(b)-F(a)$$
+An \textbf{Antiderivative} of a function $f(x)$ is a function $F(x)$ such that $\frac{d}{dx}[F(x)]=f(x)$.\\\\
+
+\textbf{The FUNdamental Theorem of Calculus:} If $f(x)$ is continuous on the interval $[a,b]$ and $F(x)$ is an antiderivative of $f(x)$, meaning $\frac{d}{dx}[F(x)]=f(x)$ then
+$$\int_{a}^{b}f(x)\,dx=F(x)\big\vert_a^b=F(b)-F(a)$$
 The units of a definite integral can be found by multiplying the units of the integrand (the units of $f(x)$) with the units of $dx$, the variable the integral is with respect to (the variable of integration).\\\\
 \textbf{Limits of Integration}:\\ Splitting: $\displaystyle{\int_{a}^{b}f(x)\,dx=\int_{a}^{c}f(x)\,dx+\int_{c}^{b}f(x)\,dx}$\\
 Flipping : $\displaystyle{\int_{a}^{b}f(x)\,dx=-\int_{b}^{a}f(x)\,dx}$\\
@@ -41,16 +44,22 @@ If $f(x)$ is an \textbf{even function} (meaning $f(-x)=f(x)$) then $\displaystyl
 If $f(x)$ is an \textbf{odd function} (meaning $f(-x)=-f(x)$) then $\displaystyle{\int_{-a}^{a}f(x)\,dx=0}$
 \end{boxe}
 
+\subsection*{Indefinite Integrals}
 \begin{boxe}
+The \textbf{Family of Antiderivatives} of a function $f(x)$ is the collection of all antiderivatives of $f(x)$. 
+These are the up-down translations of any single antiderivative $F(x)$. The family of antiderivatives is 
+denoted as an \textbf{Indefinite Integral} where $C$ is any constant.\\
+ \[\int f(x) dx = F(x)+C \;\;\;\text{    where $C$ is any constant.}\]
+ A particular choice of $C$ can be determined by an initial value.\\
 \textbf{Constant Multiples}: $\displaystyle{\int cf(x)\,dx=c\int f(x)\,dx}$\\
-\textbf{Adding Definite Integrals}: $\displaystyle{\int f(x)\pm g(x)\,dx=\int f(x)\,dx\pm \int g(x)\,dx}$\\
+\textbf{Addition Subtraction}: $\displaystyle{\int f(x)\pm g(x)\,dx=\int f(x)\,dx\pm \int g(x)\,dx}$\\
 \textbf{``Power Rule'' for integrals: } For $n\neq -1$ a real number, and $k$ a real number\\
 $\displaystyle{\int x^n\,dx=\frac{1}{n+1}x^{n+1}+C}$\;\;\;\;\; $\displaystyle{\int k\,dx=kx+C}$\\
 \textbf{Exponent Rules: } $\displaystyle{\int e^{kx}\,dx=\frac{1}{k}e^{kx}+C}$\;\;\;\;\; $\displaystyle{\int a^{kx}\,dx=\frac{1}{k\ln(a)}a^{kx}+C}$\\
 \textbf{One over $x$: } $\displaystyle{\int \frac{1}{x}\,dx=\ln |x|+C}$\\
 \textbf{Trig: } $\displaystyle{\int \sin(kx)\,dx=-\frac{1}{k}\cos(kx)+C}$\;\;\;\;\; $\displaystyle{\int \cos(kx)\,dx=\frac{1}{k}\sin(kx)+C}$\\ \;\;\;$\displaystyle{\int \sec^2(kx)\,dx=\frac{1}{k}\tan(kx)+C}$
 \end{boxe}
-\subsection*{Applications of Definite Integrals}
+\iffalse\subsection*{Applications of Definite Integrals}
 \begin{boxe}
 \textbf{Area Between Curves}: If $f(x)\leq g(x)$ (meaning $g(x)$ is above $f(x)$) on the interval $[a,b]$ then the area between the curves $f$ and $g$ on the interval $[a,b]$ is $\displaystyle{\int_{a}^{b}g(x)-f(x)\,dx}$.\\
 \begin{quote}
@@ -67,6 +76,7 @@ $\displaystyle{\int x^n\,dx=\frac{1}{n+1}x^{n+1}+C}$\;\;\;\;\; $\displaystyle{\i
 
 \textbf{Average values}: The average value of a function $f(x)$ on the interval $[a,b]$ can be computed with the definite integral $\displaystyle{\frac{1}{b-a}\int_{a}^{b}f(x)\,dx}$
 \end{boxe}
+\fi
 
 
 
