@@ -11,14 +11,14 @@
    \item[1.] One $\sigma$-algebra containing $\{a,b\}$ is the algebra of all subsets of $\{a,b,c,d,e\}$.
              The smallest $\sigma$-algebra containing $\{a,b\}$ would be 
              $\{\emptyset, \{a,b,c,d,e\}, \{a,b\}, \{c,d,e\}\}$
-             As this contains the empty set and the entire as well as $\{a,b\}$ and its compliment.
+             As this contains the empty set and the entire set as well as $\{a,b\}$ and its compliment.
 
 
    \item[2.] Let $X=\{H,T\}^3$ which represents the possible ways to flip a coin $3$ times. 
              Consider the algebra of all subsets of these strings. let $E=\{HHH\}$ representing
              the only possibility of having heads three times.
-             Let $\mu(A)=|A|/2^3$ which defines a measure on the algebra of all subsets. In this case
-             the probability of event $E$ is $\mu(E)$.
+             Let $p(A)=|A|/2^3$ which defines a measure on the algebra of all subsets of $X$. In this case
+             the probability of event $E$ is $p(E)$.
 
 
    \item[3.]
@@ -27,22 +27,23 @@
     We need only show that they cover $\R$ as any subset would be covered by $\R$ 
     and therefore by a sequence of open intervals. Consider the sequence $\{(-n,n)\}_{n=1}^\infty$, 
     and notice that for any element $k\in \R$ we know there exists an integer 
-    $n$ such that $|k|<n$ in which case $k\in (-n,n)$. so $\R\se \bigcup_{n=1}^\infty (-n,n)$.
+    $n$ such that $|k|<n$ in which case $k\in (-n,n)$. So $\R\se \bigcup_{n=1}^\infty (-n,n)$.
 
     \item[ii.] Now we will show that 
     $\mu^*(A)=\inf\left\{\lambda(O) | O \text{ is open and } A\se O\right\}$ is an outer 
     measure. Notice that $\lambda$ is non-negative for any open set and so $\mu*(A)$ must also be nonnegative.
-    Now consider two set $A\se B$. Given a sequential cover for $B\se \{E_n\}_{n=1}^\infty$, we know
-    that $\se$ is transitive so $A\se \{E_n\}_{n=1}^\infty$. Finally let $A_k\se X$ for each $k$.
-    For each $k$ consider a sequential cover $A_k\se \{E_{kn}\}_{n=1}^\infty$ Notice that the union
+    Now consider two sets $A\se B$. Given a sequential cover for $B\se \{E_n\}_{n=1}^\infty$, we know
+    that $\se$ is transitive so $A\se \{E_n\}_{n=1}^\infty$ meaning $\mu^*(A)\leq \mu^*(B)$. Finally let $A_k\se X$ for each $k$.
+    For each $k$ consider a sequential cover $A_k\se \{E_{kn}\}_{n=1}^\infty$. Notice that the union
     of all sequential covers $\bigcup_{k=1}^\infty\{E_{kn}\}_{n=1}^\infty$ is its self a sequential cover
-    as it is the countable union of countable sequences. And so $\mu^*$ is an outer measure
+    as it is the countable union of countable sequences which is countable by HW 1. And so $\mu^*$ is an 
+    outer measure.
                
    \end{itemize} 
    \item[4.] Let $f:E\ra \R$ be a measurable function and $B$ a Borel set.
-             As per the hint in the book first Consider the set $S=\{E\se \R | f^{-1}(E)\text{ is measurable}\}$.
+             As per the hint in the book first consider the set $S=\{E\se \R | f^{-1}(E)\text{ is measurable}\}$.
              First we will show that $S$ is a $\sigma$-algebra. Notice that 
-             both $f^{\R}(\R)$ and $f^{-1}(\emptyset)$ are measurable so $\R\in S$ and $\emptyset\in S$.
+             both $f^{-1}(\R)=E$ and $f^{-1}(\emptyset)=\emptyset$ are measurable so $\R\in S$ and $\emptyset\in S$.
              Furthermore notice that for any $E\in S$ we have that $f^{-1}(E^c)=f^{-1}(\R)-f^{-1}(E)$ and so is measurable, as the preimage is additive. 
              Finally consider the set $E_k\in S$ for all $k$. Notice that $f^{-1}(\bigcup_{k=1}^\infty E_k)=\bigcup_{k=1}^\infty f^{-1}(E_k)$
              which is measurable, as the preimage is countably additive, meaning that $\bigcup_{k=1}^\infty E_k\in S$.
@@ -59,8 +60,7 @@
     \begin{itemize}
         \item[i.] Assume that $f\equiv 0$ on $E$ meaning $f$ is a simple function on $E$. Notice also that $E=\bigcup_{k=1}^{\infty}(E\cap(-k,k))$ This means
               \[\int_E f d\mu= \lim_{n\ra \infty}\int_{\bigcup_{k=1}^{n}(E\cap(-k,k))} f d\mu=\lim_{n\ra \infty}0\cdot\mu\left(\bigcup_{k=1}^{n}(E\cap(-n,n))\right)=\lim_{n\ra \infty} 0\]
-              which is case even when $\mu(E)=\infty$.
-              by definition $0\cdot \mu(E)=0$
+              which is case even when $\mu(E)=\infty$. % Im not super happy with this argument
         \item[ii.] It suffices to only consider the case of $f\equiv \infty$ on $E$ as in this case for any non-negative 
         measurable function $g(x)$ we have that $0\leq g(x)\leq f(x)$ everywhere on $E$ and so $\int_E g d\mu\leq \int_E f d\mu$
 
@@ -70,7 +70,7 @@
         This must mean that 
         \[\int_E f d\mu=\sup\left\{\int_E s d\mu\right\} = \sup\left\{\sum_{i=1}^m a_i\mu(A_i)=0\right\}=0\]
         It seems like the inconsistency with the dirac delta function is that the dirac delta function would not be
-        an extended real valued function. That is even over the extended real number we would not have $\delta(0)=\infty$. 
+        an extended real valued function. That is, over the extended real number we would not have $\delta(0)=\infty$. 
 
     \end{itemize}
 
@@ -82,8 +82,17 @@
     $\int_X f_n d\mu = -\frac{1}{n}\mu(x)=-\infty$. and so $\lim_{n\ra \infty}\int_X f_n d\mu =-\infty$
 
 
-    \item[7.] idk
-              idk
+    \item[7.] Let $f:\R\ra\R$ be a Lebesgue integrable function. And let $f_n(x)=f(x)e^{-|x|^2/n}$
+              First notice that $e^{-|x|^2/n}\leq 1$ for all $x$ meaning 
+              $|f_n(x)|=|f(x)e^{-|x|^2/n}|\leq |f(x)|$ for all $x$
+              Now we will show that $f_n\ra f$ point wise. To see this let $x\in \R$ and notice
+              that for $\epsilon>0$ that for all $n>-|x|^2/\ln(1-\epsilon/f(x))$ we have that 
+              $0\leq f(x)-f(x)e^{-|x|^2/n}=f(x)(1-e^{-|x|^2/n})<\epsilon$.
+              Finally notice that $f_n$ is measurable its self. This follows from the fact that both
+              $f(x)$ and $e^{-|x|^2/n}$ are measurable and products of measurable functions are measurable
+              by proposition 17.1.7 in the book.
+              Finally because $|f_n(x)|\leq |f(x)|$ where $|f(x)|$ is a non-negative integrable function, we have that
+              \[\lim_{n\ra \infty}\int_\R f_nd\mu = \int_\R \lim_{n\ra \infty}f_nd\mu = \int_\R f d\mu\]
 \end{itemize}
 
 % note for self: review 10.6 in book and 10.8
