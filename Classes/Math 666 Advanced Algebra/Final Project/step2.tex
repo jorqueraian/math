@@ -28,12 +28,14 @@ Now that we know what operators we have in our world we need laws to tell us wha
 First we need the laws that tell us that $V^+$ and $V^-$ are in fact $k$-modules.
 And we also need the laws that tell about our triple product, that $\{-,-,-\}:V^\sigma\times V^{-\sigma}\times V^\sigma\ra V^\sigma$ is a trilinear operator and symmetric in the first and third terms. 
 
-From these laws we can create additional operators: for $\sigma=\pm$ let
-\[Q_\sigma:V^\sigma\ra \hom(V^{-\sigma},V^{\sigma})\text{ be quadratic maps given by }2Q_\sigma(x)y = \{xyx\}\]
-We can also create their corresponding symmetric bilinear maps 
-$Q_\sigma:V^\sigma\times V^\sigma\ra \hom(V^{-\sigma},V^{\sigma})$ which are given by 
-$Q_\sigma(x,z)=Q_\sigma(x+z)-Q_\sigma(x)-Q_\sigma(z)$. %TODO make sure this actually works. I think i might have an off by 1/2 or 2.
-Finally we will create the bilinear maps $D_\sigma(x,y)z=Q_\sigma(x,z)y$
+From these laws we can create additional operators. From the equivalence of symmetric bilinear maps and quadratic maps
+we can define two quadratic map for $\sigma=\pm$ where
+\[Q_\sigma(-):V^\sigma\ra \hom(V^{-\sigma},V^{\sigma})\text{ which are given by }2Q_\sigma(x)y = \{xyx\}\]
+We can also create their corresponding symmetric bilinear maps (which recover the original $\{-,-,-\}$ product.)
+$Q_\sigma(-,-):V^\sigma\times V^\sigma\ra \hom(V^{-\sigma},V^{\sigma})$ which are given by 
+$Q_\sigma(x,z)=Q_\sigma(x+z)-Q_\sigma(x)-Q_\sigma(z)$.. %TODO make sure this actually works. I think i might have an off by 1/2 or 2.
+Finally we will create the bilinear maps $D_\sigma(x,y)z=Q_\sigma(x,z)y=\{x,y,z\}$. Although these new operators are
+unnecessarily they help which much of the theory of Jordan Pairs in a more concise way.
 Notice that in the example in the section above we would have that $Q_\sigma(x)y=xyx$.
 
 Now that we have our algebra with some initial laws we need to build some more laws using the formulas of $\text{JP}_k$.

@@ -1,25 +1,28 @@
-\subsection{Step 1: A Motivating Example}
+\subsection{Step 1: A Motivating Example: Matrices with Geometry}
 Matrices are cool. Thats it! Thats all the motivation I need.
 Groups can be used to talk about the algebra of multiplying 
 invertible matrices with common dimensions, with the General Linear group.
 Groupoids can be used to work with all square matrices. And a Category can be 
 used to study the behavior of matrix multiplication in general. However these 
 three algebra leave gaps, categories and groupoids can often be too broad, allowing
-for partially defined multiplications while group are too narrow, allowing only 
+for partially defined multiplications while groups and groupoids are too narrow, allowing only 
 invertible matrices.
 
 \subsubsection*{A motivating example for Jordan Pairs}
 Often one may want to study rectangular matrices. For example Let $V^+$ be the 
-$k$-module of $q\times p$ matrices $M_{q,p}$ and $V^-$ be the 
-$k$-module of $p\times q$ matrices $M_{p,q}$. These matrices are clearly compatible under 
+$k$-module of $q\times p$ matrices $M_{q,p}(k)$ and $V^-$ be the 
+$k$-module of $p\times q$ matrices $M_{p,q}(k)$. These matrices are clearly compatible under 
 multiplication but there is a problem! If $A\in V^+$ and $B\in V^-$, then their product is in neither
 of the original modules. This requires a new operator, a trinary operation where if $A,C\in V^+$ and $B\in V^-$
 then $ABC\in V^+$ and vice-versa. In fact this trinary operator would be tri-linear.
 This would give us a nice algebra, but it has a problem, it does not behave nicely with geometry.
-Geometry often looks at bilinear forms which can often be defined by a transpose. 
-However notice with this simple triple product we have that $ABC$ is bilinear in $A$ and $C$ but notice that 
+Geometry often looks at bilinear forms which can be defined by a transpose. For an multiplication operator to
+"behave nicely" often means that that the transpose respects multiplication (that is the transpose and the 
+triple multiplication should be commuting operators).
+However notice with this simple triple product, we have that $ABC$ is bilinear in $A$ and $C$ but notice that 
 under a transpose $(ABC)^t=C^tB^tA^t$ we have a commuting issue. And so instead we want to define an operator
-that is symmetric in $A$ and $C$. An easy way to do this is to define an operator $\{A,B,C\}=ABC+CBA$.
+that is symmetric in $A$ and $C$. An easy way to do this is to define an operator $\{A,B,C\}=ABC+CBA$. This gives us
+$\{A,B,C\}C^tB^tA^t+=A^tB^tC^t=\{A^t,B^t,C^t\}$ as desired.
 
 \subsubsection*{A motivating example for Jordan Algebras}
 \label{sec:symmats}
