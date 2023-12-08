@@ -77,7 +77,7 @@ Combining these laws we have the following definition of a Jordan Pair
 \end{definition}
 Note that we will often represent an element of a Jordan Pair as $x\in V$ without directly 
 specifying which module $x$ is a member of. And in general a pair of objects signifies that 
-objects may come from either of terms as in ...
+objects may come from either of the $k$-modules.
 Now that we have a definition for our algebra we can define what it means to have sub-objects, 
 homomorphisms, congruences, quotients and ideals. None of the following are particularly surprising (You see what I did there? Im acting like a trained algebraist)
 \begin{definition}
@@ -140,7 +140,7 @@ relating homomorphism, ideals and Quotients
 \end{prop}
 This allows us a characterization of Ideals of Jordan pairs using the the equivalence of Ideals and Quotients being Jordan Pairs, and so we need only check the conditions needed on $I$ for $V/I$ to be a Jordan Pair.
 \begin{prop}
-$I\se V$ is an ideal of $V$ if and only if $Q_\sigma(I^\sigma)V^{-\sigma}+Q_\sigma(V^\sigma)I^{-\sigma}+\{V^\sigma,V^{-\sigma},U^\sigma\}\se U^\sigma$
+$I\se V$ is an ideal of $V$ if and only if $Q_\sigma(I^\sigma)V^{-\sigma}+Q_\sigma(V^\sigma)I^{-\sigma}+\{V^\sigma,V^{-\sigma},I^\sigma\}\se I^\sigma$
 \end{prop}
 An important part of step 3, is the study of simples. As an important observation is that any Jordan Pair can be the image of some homomorphism, 
 or in other words any Jordan pair can be the quotient of another Jordan Pair. So the simple Jordan Pairs are those whose quotients do not result any any new Jordan pairs
@@ -169,7 +169,7 @@ product $x\circ y:=\{xvy\}$ for some fixed $v$. This creates a symmetric but not
 
 \begin{definition}
     Let $V=(V^+,V^-)$ be a Jordan pair with $v\in V^-$ then $V^+$ is Jordan algebra, denoted $V^+_v$ with
-    Jordan Product $x\bullet y=\{xvy\}$ squaring operation 
+    Jordan Product $x\circ y=\{xvy\}$ squaring operation 
     $x^2=Q_+(x)v=\frac{1}{2}\{xvx\}$ and quadratic $U$-operator 
     $U_x=Q_+(x)Q_-(v)$
 \end{definition}
