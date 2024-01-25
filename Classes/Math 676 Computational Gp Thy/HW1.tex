@@ -1,0 +1,54 @@
+\documentclass[12pt]{amsart}
+\usepackage{preamble}
+\DeclareRobustCommand{\ammaG}{\text{\reflectbox{$\setminus$}}}
+
+\begin{document}
+\begin{center}
+   \textsc{Math 676 Computational Group Theory. HW 1\\ Ian Jorquera}
+\end{center}
+\vspace{1em}
+
+\begin{itemize}
+   \item[1.]
+   Let $S,T$ be subgroups of a group $G$ and consider the double 
+   cosets of $S$,
+
+   \item[2.] Let $G=\ip{a=(1,2,\dots,100), b= (1,2)}=S_{100}$. The representatives, 
+   using the algorithm from class would be as follows: the representative for $2$ would
+    be $(1,2,\dots,100)$ and more generally the representative for $k$ would be
+    $(1,2,\dots,100)^{k-1}$. A generating set which shorter representations could be 
+    $\ip{a=(1,2,\dots,100), b= (1,33), c=(1,66)}$ in which case no representative would
+    have more then $34$ multiplications, while in the previous generating set the 
+    number of multiplication would be much longer.
+   
+    \item[3.] Assume that $G$ is a finite group. And let $M_1$ be a maximal subgroup of $G$
+               where we know that $[G:M_1]\geq 2$. Pick an element $m_1\in G$ 
+               such that $m_1\not\in M_1$. We can repeat this process inductively on a
+               chain of maximum subgroups $M_{k}\leq M_{k-1}$ by
+               picking an element $m_k\in M_{k-1}$ where $m_k\not\in M_k$. Each maximal subgroup has
+               index $\geq 2$ meaning there are most $\log_2(|G|)$ steps in this process, 
+               meaning there are at most $\log_2(|G|)$ elements, all of which generate $G$.
+
+   \item[4.] 
+   \begin{itemize}
+      \item[a. ] The probability that any single element is in $U$ is $\frac{1}{n}$ and 
+      because each element is chosen randomly the probability that all $k$ elements are in $U$
+      is $\frac{1}{n^k}$.
+      \item[b. ] Because conjugacy classes partition a group $G$ and are all the same size 
+                 the probability that a random given element is in a specific conjugacy class
+                 is $\frac{1}{n}$. For $k$ random elements, the first element determines which
+                 specific conjugacy class the other element need to also be in. And so the 
+                 probability of $k$ element falling into the same conjugacy class is $\frac{1}{n^{k-1}}$.
+                 %also if k is bigger then size of U and all distinct then prob is zero
+      \item[c. ]  id
+   \end{itemize}
+   \item[5.] Let $G=\ip{g}$ be a cyclic group. Notice that for any $w\in \Omega$  that $w^g$
+   
+            the orbit of any element $w\in\Omega$ has size $|w^G|=1$ 
+            if no group element moves $w$ or $|w^G|=|G|$. This follows from the fact that 
+            if $w^{g^k}=w$ for some $k$ then 
+
+\end{itemize}
+
+% note for self: review 10.6 in book and 10.8
+\end{document}
