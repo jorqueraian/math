@@ -1,6 +1,6 @@
 \documentclass[12pt]{amsart}
 \usepackage{preamble}
-\DeclareRobustCommand{\ammaG}{\text{\reflectbox{$\setminus$}}}
+%\DeclareRobustCommand{\flippedSlash}{\text{\reflectbox{$\setminus$}}}
 
 \begin{document}
 \begin{center}
@@ -9,11 +9,15 @@
 \vspace{1em}
 
 \begin{itemize}
-   \item[1.]
+   \item[(1)]
    Let $S,T$ be subgroups of a group $G$ and consider the double 
-   cosets of $S$,
+   cosets of $S$. Consider a double coset $SgT$ and notice that this is equal to the 
+   orbit of the coset $Sg$ acted on by multiplication by $T$. This is the 
+   case because $(Sg)^T=\{Sgt | t\in T\}=SgT$.
+   
+   
 
-   \item[2.] Let $G=\ip{a=(1,2,\dots,100), b= (1,2)}=S_{100}$. The representatives, 
+   \item[(2)] Let $G=\ip{a=(1,2,\dots,100), b= (1,2)}=S_{100}$. The representatives, 
    using the algorithm from class would be as follows: the representative for $2$ would
     be $(1,2,\dots,100)$ and more generally the representative for $k$ would be
     $(1,2,\dots,100)^{k-1}$. A generating set which shorter representations could be 
@@ -21,7 +25,7 @@
     have more then $34$ multiplications, while in the previous generating set the 
     number of multiplication would be much longer.
    
-    \item[3.] Assume that $G$ is a finite group. And let $M_1$ be a maximal subgroup of $G$
+    \item[(3)] Assume that $G$ is a finite group. And let $M_1$ be a maximal subgroup of $G$
                where we know that $[G:M_1]\geq 2$. Pick an element $m_1\in G$ 
                such that $m_1\not\in M_1$. We can repeat this process inductively on a
                chain of maximum subgroups $M_{k}\leq M_{k-1}$ by
@@ -29,24 +33,42 @@
                index $\geq 2$ meaning there are most $\log_2(|G|)$ steps in this process, 
                meaning there are at most $\log_2(|G|)$ elements, all of which generate $G$.
 
-   \item[4.] 
+   \item[(4)] 
    \begin{itemize}
-      \item[a. ] The probability that any single element is in $U$ is $\frac{1}{n}$ and 
+      \item[(a)] The probability that any single element is in $U$ is $\frac{1}{n}$ and 
       because each element is chosen randomly the probability that all $k$ elements are in $U$
       is $\frac{1}{n^k}$.
-      \item[b. ] Because conjugacy classes partition a group $G$ and are all the same size 
-                 the probability that a random given element is in a specific conjugacy class
-                 is $\frac{1}{n}$. For $k$ random elements, the first element determines which
-                 specific conjugacy class the other element need to also be in. And so the 
-                 probability of $k$ element falling into the same conjugacy class is $\frac{1}{n^{k-1}}$.
-                 %also if k is bigger then size of U and all distinct then prob is zero
-      \item[c. ]  id
+      \item[(b)] Consider the group action of $G$ acting on the subgroups of $G$ by conjugation.
+                 In this case The orbit of $U$ is the conjugates of $U$. And the stabilizer
+                 is the normalizer of $U$ in $G$. And so by orbit-stabilizer $|U^G|=[g:N_G(U)]$. Furthermore 
+                 because $U\leq N_G(U)$ we know that $|U^G|=[G:N_G(U)]\leq [G:U] =n$. And 
+                 because the conjugated of $U$ are subgroup of the same size as $U$ the probability 
+                 of any $k$ elements being in any single conjugate of $U$ is $\frac{1}{n^k}$ 
+                 but because there are at most $n$ conjugates the probability of all $k$ elements 
+                 being in the same conjugate is $\leq n\cdot\frac{1}{n^k}=\frac{1}{n^{k-1}}$.
+
+
+      \item[(c)]  Notice first that the conjugacy classes of the maximal subgroups is a partition 
+      and from part (b) we can determine that for any conjugacy class the probability 
+      of any $k$ elements being in the same conjugate in that conjugacy class is 
+      $\frac{1}{n^{k-1}}\leq \frac{1}{2^{k-1}}$ where $n$ is the index. 
+      And so because there are $m$ conjugacy classes that partition the maximal subgroups
+      the probability that $k$ elements are in any single maximal subgroup is $\leq m\frac{1}{2^{k-1}}$.
+      Notice that if $k$ elements are not contained in any maximal subgroups they must generate all of $G$
+      so the probability that $k$ elements generate $G$ is $\geq 1-m\frac{1}{2^{k-1}}$. And so if $2^{k-2}>m$
+      the probability that $k$ elements generate $G$ is $\geq 1-m\frac{1}{2^{k-1}}\geq 1-\frac{1}{2}=2$.
+
+
    \end{itemize}
-   \item[5.] Let $G=\ip{g}$ be a cyclic group. Notice that for any $w\in \Omega$  that $w^g$
-   
-            the orbit of any element $w\in\Omega$ has size $|w^G|=1$ 
-            if no group element moves $w$ or $|w^G|=|G|$. This follows from the fact that 
-            if $w^{g^k}=w$ for some $k$ then 
+   \item[(5)] Let $G=\ip{g}$ be a cyclic group. We know that the number of non-trivial 
+   Schreier generators is $|w^G|\cdot (|\underbar{g}|-1)+1=1$. This makes sense because in the
+   algorithm there is only one generator and so the step $\gamma\in \Delta$ only occurs 
+   once when $g^kw=w$ for some minimal non-zero $k$ which closes the orbit and all elements 
+   in $\Delta$ have been iterated over. So the else clause only happens once.
+
+   \item[(6)] I've installed GAP on WSL for Debian
+   %Note i needed to apt-get install gcc g++ clang make m4 libzmq3-dev libgmp-dev -y before running config and make and stuff
+   %Need to rebuild shit.
 
 \end{itemize}
 

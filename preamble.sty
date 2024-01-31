@@ -139,3 +139,13 @@
 % i dont know what this does
 \setlist[enumerate,1]{topsep=1em,leftmargin=1.8em, itemsep=0.5em, label=\textup{(}\arabic*\textup{)}}
 \setlist[enumerate,2]{topsep=0.5em,leftmargin=3em, itemsep=0.3em}
+
+
+\newcommand\IansSUperAwesomeSymbolThatICreated{%
+\mathrel{\text{\begin{tikzpicture}[yscale=0.6,xscale=0.5]
+    \draw (0ex,3ex) to (1ex,2ex) {};
+    \draw (1ex,2ex) to (3ex,2ex) {};
+    \draw (0ex,0ex) to (1ex,1ex) {};
+    \draw (1ex,1ex) to (3ex,1ex) {};
+\end{tikzpicture}}}
+}
