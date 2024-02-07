@@ -1,0 +1,147 @@
+% packages
+\usepackage{graphicx}
+\usepackage{setspace}
+\usepackage{amssymb,amsmath,amsthm,amsfonts,amscd}
+\usepackage{hyperref}
+\usepackage{color}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{enumitem}
+\usepackage[retainorgcmds]{IEEEtrantools}
+\usepackage[notref,notcite,final]{showkeys}
+\usepackage[final]{pdfpages}
+\usepackage{fancyhdr}
+\usepackage{upgreek}
+\usepackage{multicol}
+\usepackage{fancyvrb}
+\usepackage{listings}
+\usepackage{bussproofs}
+\usepackage{fontawesome}
+\usepackage{halloweenmath}
+\usepackage{ytableau}
+\usepackage{mathtools}
+\usepackage{parskip}
+
+% this package allows conditionals on content. see part B/combo project for example
+\usepackage{etoolbox}
+
+% set margin as 0.75in
+\usepackage[margin=.75in]{geometry}
+
+% tikz-related settings
+\usepackage{tikz}
+\usepackage{tikz-cd}
+\usetikzlibrary{cd}
+%% For tables
+\usepackage{tikz}
+\usetikzlibrary{tikzmark}
+
+% theorem environments with italic font
+\newtheorem{thm}{Theorem}[section]
+\newtheorem*{thm*}{Theorem}
+\newtheorem{lemma}[thm]{Lemma}
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem{claim}[thm]{Claim}
+\newtheorem{corollary}[thm]{Corollary}
+\newtheorem{conjecture}[thm]{Conjecture}
+\newtheorem{question}[thm]{Question}
+\newtheorem{procedure}[thm]{Procedure}
+\newtheorem{assumption}[thm]{Assumption}
+
+% theorem environments with roman font (use lower-case version in body
+% of text, e.g., \begin{example} rather than \begin{Example})
+\newtheorem{Definition}[thm]{Definition}
+\newenvironment{definition}
+{\begin{Definition}\rm}{\end{Definition}}
+\newtheorem{Example}[thm]{Example}
+\newenvironment{example}
+{\begin{Example}\rm}{\end{Example}}
+
+\theoremstyle{definition}
+\newtheorem{remark}[thm]{\textbf{Remark}}
+
+% special sets
+\newcommand{\A}{\mathbb{A}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\cals}{\mathcal{S}}
+\newcommand{\ZZ}{\mathbb{Z}_{\ge 0}}
+%\newcommand{\cala}{\mathcal{A}}
+%\newcommand{\la}{\mathbf{a}}
+%\newcommand{\lgl}{\mathfrak{gl}}
+%\newcommand{\lsl}{\mathfrak{sl}}
+%\newcommand{\lieg}{\mathfrak{g}}
+
+% math operators
+\DeclareMathOperator{\kernel}{\mathrm{ker}}
+\DeclareMathOperator{\image}{\mathrm{im}}
+%\DeclareMathOperator{\rad}{\mathrm{rad}}
+%\DeclareMathOperator{\id}{\mathrm{id}}
+%\DeclareMathOperator{\hum}{[\mathrm{Hum}]}
+%\DeclareMathOperator{\eh}{[\mathrm{EH}]}
+\DeclareMathOperator{\lcm}{\mathrm{lcm}}
+\DeclareMathOperator{\Aut}{\mathrm{Aut}}
+\DeclareMathOperator{\Inn}{\mathrm{Inn}}
+\DeclareMathOperator{\Out}{\mathrm{Out}}
+\DeclareMathOperator{\Gal}{\mathrm{Gal}}
+\DeclareMathOperator{\Real}{\mathrm{Re}}
+\DeclareMathOperator{\Imag}{\mathrm{Im}}
+\DeclareMathOperator{\res}{\mathrm{res}}
+\DeclareMathOperator{\Ind}{\mathrm{Ind}\hspace{-.8mm}\uparrow}
+\DeclareMathOperator{\Res}{\mathrm{Res}\hspace{-.8mm}\downarrow}
+\DeclareMathOperator{\tr}{\mathrm{tr}}
+\DeclareMathOperator{\spark}{\mathrm{spark}}
+\DeclareMathOperator{\rank}{\mathrm{rank}}
+
+
+% frequently used shorthands
+\newcommand{\ra}{\rightarrow}
+\newcommand{\se}{\subseteq}
+\newcommand{\ip}[1]{\left\langle #1 \right\rangle} % broken???
+\newcommand{\abs}[1]{\left\vert #1 \right\vert}
+\newcommand{\norm}[1]{\abs{\hspace{-.06cm}\abs{#1}\hspace{-.06cm}}}
+
+% better matrix
+\makeatletter
+\renewcommand*\env@matrix[1][*\c@MaxMatrixCols c]{%
+  \hskip -\arraycolsep
+  \let\@ifnextchar\new@ifnextchar
+  \array{#1}}
+\makeatother
+
+%my stupid commands
+\newcommand{\overbar}[1]{\overline{#1}}
+
+% dark mode. use:
+%\def\darktheme{}
+\ifx \darktheme\undefined
+\else
+\pagecolor[rgb]{0.2,0.231,0.302}%{0.23,0.258,0.321}
+\color[rgb]{1,1,1}
+\fi
+
+% nicer looking empty set
+\let\oldemptyset\emptyset
+\let\emptyset\varnothing
+
+%the var phi gang
+\let\oldphi\phi
+\let\phi\varphi
+
+%nice epsilon
+
+\let\oldepsilon\epsilon
+\let\epsilon\varepsilon
+
+% projective space with /P
+\let\PP\P
+\newcommand{\PPt}{\mathbb{P}}
+\let\P\PPt
+
+% i dont know what this does
+\setlist[enumerate,1]{topsep=1em,leftmargin=1.8em, itemsep=0.5em, label=\textup{(}\arabic*\textup{)}}
+\setlist[enumerate,2]{topsep=0.5em,leftmargin=3em, itemsep=0.3em}

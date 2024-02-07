@@ -1,0 +1,64 @@
+\documentclass[12pt]{amsart}
+\usepackage{preamble}
+%\DeclareRobustCommand{\flippedSlash}{\text{\reflectbox{$\setminus$}}}
+\DeclareRobustCommand{\rchi}{{\mathpalette\irchi\relax}}
+\newcommand{\irchi}[2]{\raisebox{\depth}{$#1\chi$}} % inner command, used by \rchi
+
+\begin{document}
+\begin{center}
+   \textsc{Math 617. HW 1\\ Ian Jorquera}
+\end{center}
+\vspace{1em}
+
+\begin{itemize}
+   \item[(1)] 
+   %this doesnt work. need all functions to be cont. 
+   Let $g(x)=\begin{cases}
+    x-1/2 & 1/2\leq x\leq 3/4\\
+    -x+1 & 3/4< x\leq 1\\
+    0 & \text{otherwise}
+   \end{cases}$ and let $f_n(x)=n^2g(nx)$. First notice that $g(x)$ is continuous on $\R$ and so for any $n$ $f_n(x)$ is continuous.
+   We also know that $\int_0^1f_n(x)dx=\frac{1}{2}(\frac{n^2}{4})(\frac{1}{2n})=\frac{n}{16}$. And so 
+   $\lim_{n\ra\infty}\int_0^1f_n(x)dx=\lim_{n\ra\infty}\frac{n}{16}=\infty$
+   However notice that for any $x\in(0,1]$ we know that for all $n>1/x$ we have that $f_n(x)=0$, meaning that on 
+   $(0,1]$ the sequence $f_n\ra 0$. Furthermore for any $n$ the function $f_n(0)=0$, meaning
+   $f_n\ra 0$ on $[0,1]$. However notice that $\int_0^1 0 dx=0\neq \lim_{n\ra\infty}\int_0^1f_n(x)dx$
+
+    \item[(2)] 
+    \begin{enumerate}[label= (\alph*)]
+        \item Notice first that $O = \bigcup_{k=1}^{\infty} (r_k-\frac{1}{2^k}, r_k+\frac{1}{2^k})$ 
+    is the countable union of open sets meaning it is open. Therefore its compliment $F\R-O$ is closed.
+        \item Let $I$ be a non-empty interval contained in $F$. Let $x\in I$ and notice that for any 
+              $\epsilon\neq0$ the element $x+\epsilon\not\in I$. This must be the case as there exists some
+              $r_k\in \Q$ such that $r_k$ is between $x$ and $x+\epsilon$ meaning $I$ does not contain the interval
+              between $x$ and $x+\epsilon$. So $x$ must be the only element in $I$.
+
+        \item This follows from the fact that the measure of $O$ is finite. This follows from the fact 
+        that 
+        \[\abs{\bigcup_{k=1}^{\infty} \left(r_k-\frac{1}{2^k}, r_k+\frac{1}{2^k}\right)}
+        \leq \sum_{k=1}^{\infty} \abs{\left(r_k-\frac{1}{2^k}, r_k+\frac{1}{2^k}\right)}
+        = \sum_{k=1}^{\infty} \frac{1}{2^{k-1}}\leq \infty\]
+        which is a converging series. So $|F|=|\R|-|O|$ and because $|O|$ is finite, $|F|=\infty$
+    \end{enumerate}
+    \item[(3)] Consider the Borel measure space on $[0,1]$ and let $V$ be a Vitali set on $[0,1]$ and let 
+    $f(x)=2\cdot\rchi_V-1$. Notice that $f$ is not Borel-measurable but $|f(x)|=1$ and so the function $|f|$ its
+    Borel Measurable. 
+
+    \item[(4)] Colabs: Conner
+    
+    Consider the trivial measurable space $(X=\{0,1\}, \mathcal{S}=\{\emptyset, X\})$ and the function 
+    $f:X\ra \R$ such that $f(0)=-\infty$ and $f(1)=\infty$. Notice that for any $a\in\R$ that
+    $f^{-1}((a,\infty))=\emptyset\in\mathcal S$. However notice that $f$ is not an $\mathcal S$-measurable function.
+    Consider the set $\{\infty\}$ which is a Borel set because $\{\infty\}\cap \R=\emptyset\not\in\mathcal B$ and
+    notice that $f^{-1}(\{\infty\})=\{1\}\not\in \mathcal S$.
+    %This is true, because it is 2.52 in the book.
+    %Let $\mathcal T$ be the set of subsets $A\se [-\infty,\infty]$ such that 
+    %$f^{-1}(A)\in \mathcal{S}$. And we will show that the Borel Sets are contained in $\mathcal T$, that is 
+    %we will show that $\mathcal T$ is a $\sigma$-algebra and that it contains the open sets.
+    %First we will show $\mathcal T$ is a $\sigma$-algebra. Notice first that $f^{-1}({\emptyset})=\emptyset$ and
+    %$f^{-1}([-\infty,\infty])=X$. Now let $\{B_k\}_k\se \mathcal S$ be a sequence of sets.
+    %Also need compliment, which is easy i guess
+    
+\end{itemize}
+
+\end{document}
