@@ -27,7 +27,7 @@
     \item[(2)] 
     \begin{enumerate}[label= (\alph*)]
         \item Notice first that $O = \bigcup_{k=1}^{\infty} (r_k-\frac{1}{2^k}, r_k+\frac{1}{2^k})$ 
-    is the countable union of open sets meaning it is open. Therefore its compliment $F\R-O$ is closed.
+    is the countable union of open sets meaning it is open. Therefore its compliment $F=\R-O$ is closed.
         \item Let $I$ be a non-empty interval contained in $F$. Let $x\in I$ and notice that for any 
               $\epsilon\neq0$ the element $x+\epsilon\not\in I$. This must be the case as there exists some
               $r_k\in \Q$ such that $r_k$ is between $x$ and $x+\epsilon$ meaning $I$ does not contain the interval
@@ -37,11 +37,11 @@
         that 
         \[\abs{\bigcup_{k=1}^{\infty} \left(r_k-\frac{1}{2^k}, r_k+\frac{1}{2^k}\right)}
         \leq \sum_{k=1}^{\infty} \abs{\left(r_k-\frac{1}{2^k}, r_k+\frac{1}{2^k}\right)}
-        = \sum_{k=1}^{\infty} \frac{1}{2^{k-1}}\leq \infty\]
+        = \sum_{k=1}^{\infty} \frac{1}{2^{k-1}}< \infty\]
         which is a converging series. So $|F|=|\R|-|O|$ and because $|O|$ is finite, $|F|=\infty$
     \end{enumerate}
     \item[(3)] Consider the Borel measure space on $[0,1]$ and let $V$ be a Vitali set on $[0,1]$ and let 
-    $f(x)=2\cdot\rchi_V-1$. Notice that $f$ is not Borel-measurable but $|f(x)|=1$ and so the function $|f|$ its
+    $f(x)=2\cdot\rchi_V-1$. Notice that $f$ is not Borel-measurable but $|f(x)|\equiv 1$ and so the function $|f|$ its
     Borel Measurable. 
 
     \item[(4)] Colabs: Conner
