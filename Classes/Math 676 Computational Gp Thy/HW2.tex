@@ -25,7 +25,7 @@
       which is in bijection with $\{1,\dots, \sum_{j=1}^kp_j\}$. Let 
       $g=(1^1,p_1^1)(1^2,2^2,p_2^2)\cdots (1^m,\dots,p_j^j)$. Notice that $\ip{g}$ 
       has an irreducible base of $\{1^1,1^2,\dots, 1^m\}$ of $m$ elements. Now 
-      let $\ell=sum_{j=1}^{m-k+1}p_j$ and let $h=(1^\ell,2^\ell,\dots,\ell^\ell)$
+      let $\ell=\sum_{j=1}^{m-k+1}p_j$ and let $h=(1^\ell,2^\ell,\dots,\ell^\ell)$
       Notice that $\ip{gh}$ acts on $\Omega\cup\{1^\ell,2^\ell,\dots,\ell^\ell\}$
       And has the irreducible base $\{1^1,1^2,\dots, 1^m\}$ of $m$ elements as before
       but also has an irreducible base of $\{1^\ell,1^{m-k+1},\dots, 1^m\}$ of size $k$.
@@ -34,7 +34,7 @@
    \end{enumerate}
    \item[(8)] Let $b$ be the minimum base length and $B=\{\beta_1,\dots,\beta_b\}$ a base such 
    that $|B|=b$ with $n=|\Omega|$ and $m$ the minimum degree. Let $\Delta_g=\{w\in\Omega| w^g=w\}$ for any 
-   $g\in G$. Notice that for any $x\in G$ if $B^x\cap \Delta_g=\{\beta_1^x,\dots^x,\beta_b^x\}\cap\Delta_g=\emptyset$
+   $g\in G$. Notice that for any $x\in G$ if $B^x\cap \Delta_g=\{\beta_1^x,\dots,\beta_b^x\}\cap\Delta_g=\emptyset$
    this means that for all $j$ that $(\beta^x)^g=\beta^x$ and so $\beta^{xgx^{-1}}=\beta$ which must
    imply that $xgx^{-1}=1$ and so $g=1$. Therefore for any $1\neq g\in G$ in must be the case 
    $\Delta_g\cap B^x\neq \empty$. Now consider some $\alpha\in \Omega$ in which case because $G$
@@ -52,23 +52,70 @@
    $G=\ip{(1,2,4),(2,3,4)}$ with base $[1,2]$\\
    Orbit: $|1^G|=\{1,2,4,3\}$\\
    Transversal: $[(),(1,2,4), (1,2,4)^2, (1,2,4)(2,3,4)]$\\
-   Stabilizer: $\ip{g_2,e,g_1^2g_2g_1^{-1},g_1g_2g_1g_2^{-1}g_1^{-1},g_1g_2^2g_1^{-2}}=\ip{g_2}$\\
+   Stabilizer: $\ip{g_2,e,g_1^2g_2g_1^{-1},g_1^2g_2g_1^{-1},g_1g_2g_1g_2^{-1}g_1^{-1},g_1g_2^2g_1^{-2}}=\ip{g_2}$\\
       \hspace*{.5in}Orbit: $|2^{G}|=\{2,3,4\}$\\
       \hspace*{.5in}Transversal $[(),g_2,g_2^2]$\\
       \hspace*{.5in}Stabilizer: $\ip{()}$  
 
       Now consider the base image [4,1]. First consider the element $f_1=g^2_1=(1,2,4)^2=(1,4,2)$ 
       that maps $1\ra 4$.
-      Then consider the element $f_2=()$ that maps $2\ra 2=1^{(f_1^{-1})}$ and notice that the element
-      $f_2f_1=g_2^2g_1=$ idk this isnt possible.
+      Then consider the element $f_2=()$ that maps $2\ra 2=1^{(f_1^{-1})}$ and notice that the resulting element
+      $f_2f_1=g_1^2=(1,2,4)$ which does not solve the puzzle meaning that this state is not possible and The
+      algorithm would return an error.
 
-      Now consider the base image [2,1]. First consider the element $f_1=g^2_1=(1,2,4)$ 
+      Now consider the base image [2,1]. First consider the element $f_1=g_1=(1,2,4)$ 
       that maps $1\ra 2$.
       Then consider the element $f_2=g_2^2$ that maps $2\ra 4=1^{(f_1^{-1})}$ and notice that the element
-      $f_2f_1=g_2^2g_1=(1,2)(3,4)$.
+      $f_2f_1=g_2^2g_1=(1,2)(3,4)$. This solves the puzzle.
 
 
    \item[(10)]
+   \begin{enumerate}[label= (\alph*)]
+      \item First notice that for any subgroup $S\leq G$ that $G$ acts on the cosets of $S$ 
+      transitively by multiplication. This means to compute representatives of the cosets
+      we could design an algorithm that follows the same idea as the orbit algorithm but 
+      stores only the representatives for the cosets in $\Delta$ and when checking if a new element $\gamma$
+      is a representative of pre-existing coset we could use a stabilizer chain for $S$ 
+      that allows us to check it if $\gamma \delta^{-1}\in S$ for all $\delta$.
+
+      \item The kernel is the intersection of all the stabilizers $Stab_G(gS)$ for all $g\in G$. This
+           means that any element $x$ in the kernel must satisfy $xgS=gS$ for all $g$ which is equivalent
+           to the $g^{-1}xg\in S$ which is equivalent to $x\in gSg^{-1}=S^g$ for all $g\in G$. This converse is also true
+           meaning the kernel is equal to the core.
+
+      \item This is just the process of completing the stabilizer chain. So the intersection of all the 
+      stabilizers is the bottom level in the stabilizer chain.
+
+      \item
+   \end{enumerate}
+
+   \item[(11)]
+   \begin{enumerate}
+      \item First we will show that this is a necessary condition. 
+      Let $\phi:\underbar{g}\ra H$ extends to a homomorphism $\phi:G\ra H$. 
+      In which case if $g_{i_1}g_{i_2}\cdots g_{i_k}=1$ then it must be 
+      the case that $\phi(1)=\phi(g_{i_1}g_{i_2}\cdots g_{i_k})=h_{i_1}h_{i_2}\cdots h_{i_k}=1$.
+
+      To see that this is a sufficient condition notice assume that if 
+      $g_{i_1}g_{i_2}\cdots g_{i_k}=1$ then $h_{i_1}h_{i_2}\cdots h_{i_k}=1$. Now let $\phi:\underbar{g}\ra H$
+      and extend to a map $\phi: G\ra H$ by group products. Now let $g\in G$ such that 
+      $\phi(g_{i_1}g_{i_2}\cdots g_{i_k})=h_{i_1}h_{i_2}\cdots h_{i_k}$ and notice 
+      that $\phi(gg^{-1})=\phi(g_{i_1}g_{i_2}\cdots g_{i_k}g^{-1}_{i_{k}}g^{-1}_{i_{k-1}}\cdots g^{-1}_{i_1})=h_{i_1}h_{i_2}\cdots h_{i_k}h^{-1}_{i_{k}}h^{-1}_{i_{k-1}}\cdots h^{-1}_{i_1}$
+      and because $g_{i_1}g_{i_2}\cdots g_{i_k}g^{-1}_{i_{k}}g^{-1}_{i_{k-1}}\cdots g^{-1}_{i_1}=1$
+      then $h_{i_1}h_{i_2}\cdots h_{i_k}h^{-1}_{i_{k}}h^{-1}_{i_{k-1}}\cdots h^{-1}_{i_1}=1$ so $\phi(g^{-1}=)h^{-1}_{i_{k}}h^{-1}_{i_{k-1}}\cdots h^{-1}_{i_1}=\phi(g)^{-1}$.
+      Additionally $\phi$ preserves group multiplication by construction.
+      
+      \item $\Rightarrow$) Let $\phi:\underbar{g}\ra H$ extends to a homomorphism $\phi:G\ra H$
+            and let $(a,b)\in Stab_S(\Omega_G)$ which means that $w^{(a,b)}=w$ for all $w\in\Omega_G$.
+            This means that $w^a=w$ for all $w\in\Omega_G$ and if $a=1$.% this may not be true? I think this really means a is in the kernel of the action
+             Using part (a) this must mean
+            that $\phi(a)=b=1$ so $(a,b)=1$.
+
+            $\Leftarrow$) Let $\phi:\underbar{g}\ra H$ and assume that $Stab_S(\Omega_G)=\ip{1}$ 
+            which means that for any $a=g_{i_1}g_{i_2}\cdots g_{i_k}=1$ we know that $w^a=w^1=w$ for all 
+            $w\in\Omega_G$. And so $w^{(a,\phi(a))}=w$ for all $w\in \Omega_G$, therefore 
+            $(a,\phi(a))\in Stab_S(\Omega_G)$ and so $\phi(a)=h_{i_1}h_{i_2}\cdots h_{i_k}=1$. And by part (a) this proves the claim.
+   \end{enumerate}
 \end{itemize}
 
 \end{document}
