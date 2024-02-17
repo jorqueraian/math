@@ -23,7 +23,7 @@
       \item Let $k<m$ and let $p_1=2,p_2=3,\dots, p_m$ be $m$ distinct primes. For 
       simplicity of writing let $\Omega=\bigcup_{j=1}^m\{1^j,2^j,\dots,p_j^j\}$ 
       which is in bijection with $\{1,\dots, \sum_{j=1}^kp_j\}$. Let 
-      $g=(1^1,p_1^1)(1^2,2^2,p_2^2)\cdots (1^m,\dots,p_j^j)$. Notice that $\ip{g}$ 
+      $g=(1^1,p_1^1)(1^2,2^2,p_2^2)\cdots (1^m,\dots,p_m^m)$. Notice that $\ip{g}$ 
       has an irreducible base of $\{1^1,1^2,\dots, 1^m\}$ of $m$ elements. Now 
       let $\ell=\sum_{j=1}^{m-k+1}p_j$ and let $h=(1^\ell,2^\ell,\dots,\ell^\ell)$
       Notice that $\ip{gh}$ acts on $\Omega\cup\{1^\ell,2^\ell,\dots,\ell^\ell\}$
@@ -86,11 +86,11 @@
       \item This is just the process of completing the stabilizer chain. So the intersection of all the 
       stabilizers is the bottom level in the stabilizer chain.
 
-      \item
+      \item This is just using the normal closure algorithm.
    \end{enumerate}
 
    \item[(11)]
-   \begin{enumerate}
+   \begin{enumerate}[label= (\alph*)]
       \item First we will show that this is a necessary condition. 
       Let $\phi:\underbar{g}\ra H$ extends to a homomorphism $\phi:G\ra H$. 
       In which case if $g_{i_1}g_{i_2}\cdots g_{i_k}=1$ then it must be 
@@ -102,12 +102,12 @@
       $\phi(g_{i_1}g_{i_2}\cdots g_{i_k})=h_{i_1}h_{i_2}\cdots h_{i_k}$ and notice 
       that $\phi(gg^{-1})=\phi(g_{i_1}g_{i_2}\cdots g_{i_k}g^{-1}_{i_{k}}g^{-1}_{i_{k-1}}\cdots g^{-1}_{i_1})=h_{i_1}h_{i_2}\cdots h_{i_k}h^{-1}_{i_{k}}h^{-1}_{i_{k-1}}\cdots h^{-1}_{i_1}$
       and because $g_{i_1}g_{i_2}\cdots g_{i_k}g^{-1}_{i_{k}}g^{-1}_{i_{k-1}}\cdots g^{-1}_{i_1}=1$
-      then $h_{i_1}h_{i_2}\cdots h_{i_k}h^{-1}_{i_{k}}h^{-1}_{i_{k-1}}\cdots h^{-1}_{i_1}=1$ so $\phi(g^{-1}=)h^{-1}_{i_{k}}h^{-1}_{i_{k-1}}\cdots h^{-1}_{i_1}=\phi(g)^{-1}$.
+      then $h_{i_1}h_{i_2}\cdots h_{i_k}h^{-1}_{i_{k}}h^{-1}_{i_{k-1}}\cdots h^{-1}_{i_1}=1$ so $\phi(g^{-1})=h^{-1}_{i_{k}}h^{-1}_{i_{k-1}}\cdots h^{-1}_{i_1}=\phi(g)^{-1}$.
       Additionally $\phi$ preserves group multiplication by construction.
       
       \item $\Rightarrow$) Let $\phi:\underbar{g}\ra H$ extends to a homomorphism $\phi:G\ra H$
             and let $(a,b)\in Stab_S(\Omega_G)$ which means that $w^{(a,b)}=w$ for all $w\in\Omega_G$.
-            This means that $w^a=w$ for all $w\in\Omega_G$ and if $a=1$.% this may not be true? I think this really means a is in the kernel of the action
+            This means that $w^a=w$ for all $w\in\Omega_G$ and so $a=1$ because $G$ being a permutation group and so it acts faithfully on $\Omega_G$.% this may not be true? I think this really means a is in the kernel of the action
              Using part (a) this must mean
             that $\phi(a)=b=1$ so $(a,b)=1$.
 
