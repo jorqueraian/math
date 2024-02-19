@@ -1,0 +1,51 @@
+\documentclass[12pt]{amsart}
+\usepackage{preamble}
+%\DeclareRobustCommand{\flippedSlash}{\text{\reflectbox{$\setminus$}}}
+\DeclareRobustCommand{\rchi}{{\mathpalette\irchi\relax}}
+\newcommand{\irchi}[2]{\raisebox{\depth}{$#1\chi$}} % inner command, used by \rchi
+
+\begin{document}
+\begin{center}
+   \textsc{Math 617. HW 2\\ Ian Jorquera}
+\end{center}
+\vspace{1em}
+
+\begin{itemize}
+   \item[(1)] 
+   \item[(2)] Let $A$ be a Lebesgue Measurable set. That is there is a Borel 
+   set $B$ such that $|A-B|=0$. Notice that because $t+(A-B)=(t+A)-(t+B)$ and
+   becasue the outer measure is translation invariant we have that 
+   $0=|A-B|=|t+(A-B)|=|(t+A)-(t+B)|$. We also know that the Borel sets are 
+   translation invariant the set $t+B$ is Borel. And so $t+A$ is Lebesgue.
+   
+   \item[(3)] First notice that the cantor function is Riemann integrable as 
+   it continuous all all $x\not\in C$ where $C$ is the cantor set. And so the 
+   Riemann integral will agree with the Lebesgue integral
+   Notice that $\int_{[0,1]}\Lambda d\lambda = \int_{C}\Lambda d\lambda+ \int_{[0,1]-C}\Lambda d\lambda$
+   and because $\lambda(C)=0$ we have that $\int_{[0,1]}\Lambda d\lambda = \int_{[0,1]-C}\Lambda d\lambda$
+   where $[0,1]-C=\bigcup_{j=1}^{\infty}G_j$ by the definition of $C$ in the book.
+   Consider the functions $g_k:[0,1]-C\ra \R$ by $g_k(x)=\lambda(x)$ 
+   if $x\in \bigcup_{j=1}^{k}G_j$ and $g_k(x)=0$ otherwise. Notice that each $g_k$ is a 
+   simple function as $\Lambda$ takes on finitely many values on each set $G_j$ as each
+   $G_j$ is the finite union of open intervals. Notice also that 
+   $g_k(x)\leq g_{k+1}(x)$ and each $g_k$ is a Lebesgue measurable function 
+   and $\Lambda=\lim_{k\ra \infty}g_k$ for all $x\in [0,1]-C$.
+   So with the monotone convergence theorem we have that
+   \[\int_{\bigcup_{j=1}^{\infty}G_j}\Lambda d\lambda=
+   \lim_{k\ra \infty}\int_{\bigcup_{j=1}^{\infty}G_j}g_k=
+   \lim_{k\ra \infty}\int_{\bigcup_{j=1}^{k}G_j}g_k = 
+   \lim_{k\ra \infty}\sum_{j=1}^{k}|G_j|\frac{1}{2}=\frac{1}{2}\]
+   Where the second to last equality follows from the fact that the outer measure 
+   $|G_n|=\frac{2^{n-1}}{3^n}$ and the Cantor function on each $G_n$ is symmetric 
+   and has an average value of $1/2$.
+
+   \item[(4)] Consider the function $g_k:[0,1]\ra \R$ where $g_k(x)=\frac{x}{x^2+\frac{1}{k}}$
+               Notice that $g_k(x)$ is continuous on $[0,1]$ for all $k$ and that
+               $\lim_{k\ra \infty}g_k(x)=0$ when $x=0$ and 
+               $\lim_{k\ra \infty}g_k(x)=\frac{1}{x}$ when $x\neq 0$.
+
+   
+   \item[(5)]
+\end{itemize}
+
+\end{document}
