@@ -1,0 +1,145 @@
+\documentclass[12pt]{article}
+
+\usepackage[left=.6in, right=.6in, top=1in, bottom=1in]{geometry}
+\setlength\parindent{0pt}
+
+\usepackage{graphicx, amsmath,anonchap,tabularx, multicol,array,graphbox,url,tcolorbox}
+\usepackage{cancel,mdwlist}
+\usepackage{enumitem,verbatim}
+\setlist{noitemsep}
+
+%Snell's law diagram stuff
+% Author: Jimi Oke
+\usepackage{tikz}
+\usetikzlibrary{arrows,shapes,positioning}
+\usetikzlibrary{decorations.markings}
+\tikzstyle arrowstyle=[scale=1]
+\tikzstyle directed=[postaction={decorate,decoration={markings,
+    mark=at position .65 with {\arrow[arrowstyle]{stealth}}}}]
+\tikzstyle reverse directed=[postaction={decorate,decoration={markings,
+    mark=at position .65 with {\arrowreversed[arrowstyle]{stealth};}}}]
+
+%\setlist{nolistsep}
+
+%\usepackage{draftwatermark}
+%\SetWatermarkText{DRAFT}
+%\SetWatermarkScale{5}
+%\SetWatermarkColor[rgb]{0.8,0.8,0.8}
+
+\begin{document}
+
+\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}l l}
+\textbf{Module 11 Written Homework Due 11/3}  &Calculus Thinker: \rule{4cm}{0.5pt} \\
+\textbf{Standards: T1, L4, L5, D8, D9, D10, D11, I3} & MATH 160 section: \\
+\hline\hline
+\end{tabular*} \\
+ 
+% \vspace{.1in}
+\small
+
+%%%Standards:
+{\renewcommand{\arraystretch}{2}%
+\begin{tabular}{ |p{5in}| c | c |} \hline
+\textbf{Standards Assessed }& \textbf{Question} & \textbf{Grade} \\ \hline
+T1: I can apply mathematical definitions. & Q\ref{std:L4} & E M P NG  \\ \hline
+L4: I can evaluate limits as $x$ approaches positive or negative infinity and make conclusions about end behavior. & Q\ref{std:L4} & E M P NG  \\ \hline
+L5: I can identify limits in indeterminate forms and choose appropriate strategies to evaluate the limit. & Q\ref{std:L4} & E M P NG  \\ \hline
+D8: I can compute derivatives using multiple rules in combination. & Q\ref{std:D8} & E M P NG  \\ \hline
+D9: I can compute derivatives of implicitly defined functions. & Q\ref{std:D9} & E M P NG  \\ \hline
+D10: I can find the equation of the line tangent to a function at a point and use this line as a linear approximation to estimate the value of a function at nearby points. & Q\ref{std:D10} & E M P NG  \\ \hline
+D11: I can use derivatives to solve optimization problems. & Q\ref{std:D11} & E M P NG  \\ \hline
+I3: I can estimate the value of a definite integral using a table, Riemann sum, or technology.  & Q\ref{std:I3} & E M P NG  \\ \hline
+
+\end{tabular}}
+
+\vskip .1in 
+
+You may print the file to answer questions on paper or use your own paper and write down the questions by hand, or write answers digitally. Take special care to write neatly and in complete sentences. Write your name on every page. If your instructor asks you to submit your homework digitally on Canvas, it must be ONE file in pdf format. If you need help with this, ask your instructor or visit the Calculus Center.
+
+\vspace{.1in}
+Resources: You are strongly encouraged to consult your notes, any materials from class and the textbook, and visit the Calculus Center and work with classmates. If you get help in the calculus center, you can discuss concepts, but any specific problems must be different from what is on the assignment. If you work with a classmate, make sure that any writing or drawings you submit are your own work.  You instructor may ask you to explain verbally any work on your written work, so make sure you understand what you've written down well enough to do this. You are not authorized to upload this document or images of this document to any online tutoring or AI service. 
+\vspace{.1in}
+
+Honor code:  
+
+By signing below, you acknowledge the academic integrity stipulations around this assignment.
+\vskip .2in
+I, \rule{6cm}{0.5pt}, certify that I will not give,
+receive, or use
+any unauthorized assistance.
+
+
+
+\normalsize
+
+\subsection*{Hints and Notes on Grading and Definitions}
+Please see the companion documents for the homework called {\bf Mod 11 Definitions and Rubrics} and {\bf D11 Thoughts}.
+
+\newpage
+\begin{enumerate}
+
+
+\item  \label{std:D9} \label{std:D10}  {\em  D9, D10}  \vskip .1in
+ 
+    
+    Snell's Law or the Law of Refraction describes the behavior of light as it 
+    travels between two substances, telling us how light bends.
+    \begin{multicols}{2}
+
+    Snell's law tells us about the relationship between the angle of incidence $\theta_1$
+    and the angle of refraction $\theta_2$ as a ray of light travels from one medium 
+    to another and depends on the refraction indices $n_1$ and $n_2$ of both of 
+    the substance.
+
+    \begin{center}
+        \textbf{Snell's Law}
+    \end{center}
+    \[n_1\sin(\theta_1)=n_2\sin(\theta_2)\]
+    \vfill \;
+
+        %Snell's law diagram stuff
+        % Author: Jimi Oke
+        \begin{tikzpicture}
+
+            % define coordinates
+            \coordinate (O) at (0,0) ;
+            \coordinate (A) at (0,4) ;
+            \coordinate (B) at (0,-4) ;
+            
+            % media
+            \fill[blue!25!,opacity=.1] (-4,0) rectangle (4,4);
+            \fill[blue!60!,opacity=.2] (-4,0) rectangle (4,-4);
+            \node[right] at (1.5,2) {Air ($n_1$)};
+            \node[left] at (-1.5,-2) {Glass ($n_2$)};
+        
+            % axis
+            \draw[dash pattern=on5pt off3pt] (A) -- (B) ;
+        
+            % rays
+            \draw[black,ultra thick,reverse directed] (O) -- (130:5.2);
+            \draw[black,directed,ultra thick] (O) -- (-70:4.24);
+        
+            % angles
+            \draw (0,1) arc (90:130:1);
+            \draw (0,-1.4) arc (270:290:1.4) ;
+            \node[] at (280:1.8)  {$\theta_{2}$};
+            \node[] at (110:1.4)  {$\theta_{1}$};
+        \end{tikzpicture}
+    \end{multicols}
+
+\begin{enumerate}
+        \item (D9) Use Implicit differentiation to compute $\displaystyle{\frac{d\theta_2}{d\theta_1}}$
+        \item The refraction index of air is $n_1=1$ and the refraction index of glass is $n_2=1.52$. 
+        If the angle of incidence is $\theta_1=20^\circ$ verify that the angle 
+        of refraction is approximately $\theta_2\approx 13^\circ$. 
+        (Make sure you calculator is in degrees mode)
+        \item (D10) Find an equation for the tangent line when $\theta_1=20^\circ$ and $\theta_2= 13^\circ$
+        \item (D10) Use your tangent line to approximate the value of $\theta_2$ when $\theta_1=21^\circ$
+\end{enumerate}
+
+
+
+ \end{enumerate}
+
+\newpage
+\end{document}

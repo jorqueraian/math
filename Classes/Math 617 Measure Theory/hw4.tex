@@ -1,0 +1,99 @@
+\documentclass[12pt]{amsart}
+\usepackage{preamble}
+%\DeclareRobustCommand{\flippedSlash}{\text{\reflectbox{$\setminus$}}}
+\DeclareRobustCommand{\rchi}{{\mathpalette\irchi\relax}}
+\newcommand{\irchi}[2]{\raisebox{\depth}{$#1\chi$}} % inner command, used by \rchi
+
+\begin{document}
+\begin{center}
+   \textsc{Math 617. HW 4\\ Ian Jorquera}
+\end{center}
+\vspace{1em}
+
+\begin{itemize}
+   \item[(1)] % ahhh
+   We can prove this by induction. First recall that the Lebesgue 
+   measure $\lambda$ for $\R$ is translation invariant.
+   Now fix $n>1$ and recall we know that because $\R^n$ with the Lebesgue 
+   measure $\lambda_n$ is $\sigma$-finite we know that $\lambda_n$ is the product measure and
+   is uniquely defined to be 
+   \[\lambda_n(E)=\int_{\R^{n-1}}\int_{\R^{1}}\rchi_{E}(x,y)d\lambda_1(x)d\lambda_{n-1}(y)\]
+   Notice that 
+   \[\lambda_n(t+E)=\int_{\R^{n-1}}\int_{\R^{1}}\rchi_{t+E}(x,y)d\lambda_1(x)d\lambda_{n-1}(y)
+   = \int_{\R^{n-1}}\lambda_1([t+E]^y) d\lambda_{n-1}(y)\]
+   And because $\lambda_1$ is translational invariant we know that for any fixed $y\in\R^{n-1}$ that 
+   $[t+E]^y\in \R^n$ is Lebesgue measurable, and so $\lambda_1([t+E]^y)$ is measurable function idk
+
+   \item[(2)] % fucked but done
+   Recall that $\ell^1=\{(a_1,a_2,\dots) : \norm{(a_1,a_2,\dots)}_1<\infty \}$. We can prove this 
+   statement using $6.41$ from the book. Let $g^1,g^2,\dots $ be a sequence in $\ell^1$ such that 
+   $\sum_{k=1}^\infty\norm{g^k}_1<\infty$ where each $g^k=(g^k_n)_{n=1}^\infty$. 
+   Let $g=\lim_{m\ra\infty}\sum_{k=1}^m g^k$.
+   Notice also that
+   \[\lim_{m\ra\infty}\sum_{k=1}^m\norm{g^k}_1=\lim_{m\ra\infty}\sum_{k=1}^m\sum_{n=1}^\infty |g^k_n|
+   =\lim_{m\ra\infty}\sum_{n=1}^\infty \sum_{k=1}^m|g^k_n|
+   =\sum_{n=1}^\infty \lim_{m\ra\infty}\sum_{k=1}^m|g^k_n|<\infty\]
+   where the last equality follows from the monotone convergence theorem. This show us that for any fixed $n$ 
+   that $\lim_{m\ra\infty}\sum_{k=1}^m|g^k_n|<\infty$ meaning the limit of elements in 
+   $\F$ converges: $\lim_{m\ra\infty}\sum_{k=1}^m g^k_n=\sum_{k=1}^\infty g^k_n$ because $\F$ is a Banach space.
+   This means that $g=\lim_{m\ra\infty}\sum_{k=1}^m g^k$ converges component wise. Furthermore we know that $g\in\ell^1$ by construction, more explicitly we can see 
+   \[\norm{g}_1=\sum_{n=1}^\infty|\sum_{k=1}^{\infty}g^k_n|\leq\sum_{n=1}^\infty\sum_{k=1}^{\infty}|g^k_n|=\sum_{k=1}^\infty\norm{g^k}_1<\infty\]
+
+
+
+   Now notice that for $m>1$ we have that 
+   \[\norm{\sum_{k=1}^\infty g^k-\sum_{k=1}^m g^k}=\norm{\sum_{k=m}^\infty g^k}\leq \sum_{k=m}^\infty\norm{g^k}\]
+   which can be made arbitrary small for large enough $m$, showing that the limit of partial sums converges to the component wise limit in the norm.
+    
+   \item[(3)] We can prove this statement using $6.41$ from the book.
+   Let $V$ be a finite dimensional vector space with basis $\{e_1,\dots,e_n\}$
+   and norm $\norm{\cdot}$. Let $T_\ell:V\ra \F$ be a linear functional that is the projection onto the $\ell$th basis element. 
+   Consider a sequence $v_1,v_2,\dots$ in $V$ such that $\sum_{k=1}^\infty \norm{v_k} < \infty$
+   Notice that this must mean that 
+   \[\lim_{m\ra \infty}\sum_{k=1}^m \norm{T_\ell v_k}\leq\lim_{m\ra \infty}\sum_{k=1}^m \norm{T_\ell}\norm{v_k}
+   =\norm{T_\ell}\lim_{m\ra \infty}\sum_{k=1}^m \norm{v_k}<\infty\]
+   And because $\F$ is complete we know that $\lim_{m\ra \infty}\sum_{k=1}^m T_\ell v_k =\sum_{k=1}^\infty T_\ell v_k$ converges in $F$
+   So let $f=(f_1,\dots,f_n)\in V$ where each $f_\ell=\sum_{k=1}^\infty T_\ell v_k$.
+
+   Now we want to show that $\lim_{m\ra \infty}\norm{\sum_{k=1}^m v_k-f}=0$. By the triangle inequality we 
+   have that $\norm{\sum_{k=1}^m v_k-f}\leq \sum_{\ell=1}^n \norm{T_\ell(\sum_{k=1}^m v_k-f)}$ and so it
+   suffices to show $\lim_{m\ra \infty}\norm{\sum_{k=1}^m T_\ell v_k-T_\ell f}=0$ for each component or each basis element.
+   Notice that 
+   \[\lim_{m\ra \infty}\norm{\sum_{k=1}^m T_\ell v_k-T_\ell f}=\lim_{m\ra \infty}\norm{\sum_{k=1}^m T_\ell v_k- \sum_{k=1}^\infty T_\ell v_k}=\norm{T_\ell}\lim_{m\ra \infty}\norm{\sum_{k=m}^\infty v_k}\leq\norm{T_\ell}\lim_{m\ra \infty}\sum_{k=m}^\infty\norm{ v_k}\]
+   which can be made arbitrary small for large enough $m$, showing that the limit of partial sums converges to the component wise limit in the norm.
+
+   \item[(4)] % Done
+   Let $\Phi:V\ra V''$ be a linear maps such that $(\Phi f)\phi= \phi(f)$. Notice that by definition we know 
+   that 
+   \[\norm{\Phi f}=\sup\left\{|(\Phi f)\phi| :\phi\in V' \text{ and }\norm{\phi}=1\right\}
+   =\sup\left\{|\phi(f)| :\phi\in V' \text{ and }\norm{\phi}=1\right\}\]
+   Recall also from 6.72 that for $f\in V$ we have that $\norm{f}=\sup\{|\phi(f)|: \phi\in V'\text{ and } \norm{\phi}=1\}$ and so 
+   $\norm{\Phi f}=\norm{f}$
+
+   \item[(5)] % Done
+   We will prove the forward direction first. 
+   Let $T:V\ra W$ is a bounded linear map between the Banach spaces $V$ and $W$. 
+   Now assume that $T$ is bounded below meaning there exists some $0<c<\infty$ 
+   such that $\norm{f}\leq c\norm{Tf}$ for all $f\in V$. Notice that for any 
+   $f\neq 0$ we have that $0<\norm{f}\leq c\norm{Tf}$ meaning $Tf\neq 0$ by the 
+   positive-definiteness of norms and so $\ker T=0$. To see that $\image T$ is closed 
+   in $W$ let $w_1=Tv_1,w=2Tv_2,\dots$ be a sequence in $\image T$ where each $v_k\in V$ 
+   such that the sequences converges to $w\in W$. Consider the sequences $v_1, v_2,\dots$ 
+   which we will show is a Cauchy sequence because 
+   $\norm{v_k-v_\ell}\leq\norm{T(v_k-v_\ell)}\leq \norm{Tv_k-Tv_\ell}=\norm{w_k-w_\ell}$ 
+   and because the sequence $(w_k)_{k=1}^\infty$ is a Cauchy sequence. And because $V$ 
+   is a Banach space we know that the sequence $(v_k)_{k=1}^\infty$ converges to some $v\in V$
+   Notice that this means that $\lim_{k\ra\infty} \norm{Tv_k-Tv}=\lim_{k\ra\infty} \norm{T(v_k-v)}=\lim_{k\ra\infty} \norm{T}\norm{v_k-v}=0$
+   because $T$ is bounded.
+
+
+
+   Now for the other direction. Assume $T:V\ra W$ is a bounded linear map between the Banach spaces $V$ and $W$ such that
+   $\ker T=0$ and $\image T$ is closed in $W$.
+   Notice that this means that $\image T$ is its self a Banach space meaning that map 
+   $T:V\ra\image W$ is invertible and so by the bounded inverse theorem we know that 
+   $T^{-1}:\image V \ra V$ is a bounded linear map. This means that $c:=\norm{T^{-1}}<\infty$ 
+   and notice that for any $f\in V$ we have that $f=T^{-1}Tf$ and $\norm{f}=\norm{T^{-1}Tf}\leq \norm{T^{-1}}\norm{Tf}$.
+\end{itemize}
+
+\end{document}
