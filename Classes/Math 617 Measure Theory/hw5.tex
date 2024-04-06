@@ -1,0 +1,70 @@
+\documentclass[12pt]{amsart}
+\usepackage{preamble}
+%\DeclareRobustCommand{\flippedSlash}{\text{\reflectbox{$\setminus$}}}
+\DeclareRobustCommand{\rchi}{{\mathpalette\irchi\relax}}
+\newcommand{\irchi}[2]{\raisebox{\depth}{$#1\chi$}} % inner command, used by \rchi
+
+\begin{document}
+\begin{center}
+   \textsc{Math 617. HW 4\\ Ian Jorquera}
+\end{center}
+\vspace{1em}
+
+\begin{itemize}
+   \item[(1)] Consider the measure space $(X=\{1,\dots,n\},\mathcal S=2^X)$ with the counting measure 
+   as $\mu$. Notice that $\mu(X)=n$. Then consider $\mathcal L^1 (X,\mathcal S, \mu)=\{(a_1,\dots,a_n)|a_k\in \F\}$
+   equip with the norm $\norm{(a_1,\dots,a_n)}_1=\sum_{k=1}^{n}|a_k|$.
+   
+   Likewise consider $\mathcal L^5 (X,\mathcal S, \mu)=\{(a_1,\dots,a_n)|a_k\in \F\}$ equip with the 
+   norm $\norm{(a_1,\dots,a_n)}_1=\left(\sum_{k=1}^{n}|a_k|^5\right)^{1/5}$.
+
+   From 7.10 we know that $\norm{(a_1,\dots,a_n)}_1\leq \mu(X)^{(5-1)/5}\norm{(a_1,\dots,a_n)}_5$ and so for 
+   $(a_1,\dots,a_n)$ a sequence of positive numbers we have that
+   \[\left(\sum_{k=1}^{n}a_k\right)^5=\norm{(a_1,\dots,a_n)}_1^5\leq \mu(X)^{4}\norm{(a_1,\dots,a_n)}_5^5=n^4\sum_{k=1}^{n}a_k^5\]
+
+
+   \item[(2)] 
+   \item[(3)]
+   \begin{enumerate}[label=(\alph*)]
+    \item Let $(a^n_1,a^n_2,\dots)_{n=1}^{\infty}$ be a convergent sequence in $c_0$, that converges 
+    to a sequence $(a_1,a_2,\dots)$. Meaning for all $\epsilon>0$ there exists some $N>0$ such that for all $n>N$ we have that
+    $\norm{(a_k)_k-(a^n_k)_k}_\infty<\epsilon$. Because $\norm{\cdot}_\inft$ is the supremum this means that
+    for all $k$ that $|a_k-a_k^n|<\epsilon$.
+    Now to show that $(a_1,a_2,\dots)\in c_0$ consider the limit
+    \[\lim_{k\ra\infty}|a_k|=\lim_{k\ra\infty}|a_k-a^n_k+a^n_k|\leq\lim_{k\ra\infty}|a_k-a^n_k|+|a^n_k|\]
+
+    Notice that for big enough $n$ we have that $|a_k-a_k^n|<\epsilon_1$ for all $k$. And likewise because $(a^n_1,a^n_2,\dots)\in c_0$ we know that
+    for large enough $k$ that $|a^n_k|<\epsilon_2$ so $|a_k-a^n_k|+|a^n_k|<\epsilon_1+\epsilon_2$. And so we have that $\lim_{k\ra\infty}|a_k|=0$.
+
+    So $(a_1,a_2,\dots)\in c_0$, meaning $c_0$ is a closed 
+    subspace of $\ell^\infty$ and so is a Banach space.
+
+
+
+    \item Consider the map $\Phi:\ell^1\ra c_0'$ that takes an element $b=(b_1,b_2,\dots)\in \ell^1$ to the linear functional $\phi_b:c_0\ra \F$ by 
+    $\phi_b(a)=\sum_{k=1}^\infty a_k b_k$. First we will show that $\phi_b$ is well defined linear functional. 
+    This follows from simple comparison test on $\phi_b(a)=\sum_{k=1}^\infty a_k b_k$ removing the first so many terms where $a_k\geq 1$. IDK write up better late
+
+    Now we want to show that $\Phi$ is an isomorphims. Need to show its linear and bijection
+
+    Let $e_k\in c_0$ be the sequence of all $0$s except the $k$-th term is $1$. 
+    If $\phi_b\equiv 0$ and we have that $\phi_b(e_k)=b_k=0$ meaning $b=(0,0,\dots)$ and so the kernel of $\Phi$ is trivial, meaning $\Phi$ is injective.
+
+    Now consider any $\phi\in c_0'$ we can define the sequence $b=(b_1,b_2,\dots)$ such that $b_k=\phi(e_k)$. 
+    Notice that for any $a=(a_1,a_2,\dots)\in c_0$ we have
+    that
+
+   \end{enumerate}
+
+   \item[4]
+   \item[(5)] 
+      \begin{enumerate}
+         \item Notice that $\int|f\overline{g}|d\mu\leq\frac{1}{2}\int(|f|^2+|g|^2)d\mu \leq \frac{1}{2}\int|f|^2d\mu +\frac{1}{2}\int|g|^2d\mu <\infty$ 
+         because $f,g\in L^2(\mu)$ so the integral exists. Futhermore $\ip{f,g}=\int f\overline{g} d\mu$ is an inner product. It is a triviality to show all but positive-definiteness.
+         This follows from $\ip{f,f}=\norm{f}_2$ being a norm.
+
+         \item Cauchy-Schwarz tells us $|\int f\overline g d\mu|=|\ip{f,g}|\leq\norm{f}_2\norm{g}_2$ and because $
+      \end{enumerate}
+\end{itemize}
+
+\end{document}

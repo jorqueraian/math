@@ -12,7 +12,41 @@
 
 \begin{itemize}
    \item[(1)] % ahhh
-   We can prove this by induction. First recall that the Lebesgue 
+   I more or less followed the proof of 5.41. First notice that $\mathcal B_n$ is closed under translation. % should i prove? explicitly show that t+A\times B = (t_1)
+   First we will show that $\lambda_n(t+E)=\lambda(E)$ is true on measurable rectangles. We will do this 
+   inductively on $n$. For $n=1$ we already know that $\lambda_1$ is translational invariant.
+   Then recall that $\lambda_n=\lambda_1\times\lambda_n$ and so 
+   $\lambda_n(a+(A\times B))=\lambda_1(a_1+A)\lambda_{n-1}((a_k)_{k=2}^n + B)=\lambda_1(A)\lambda_{n-1}(B)$
+   for $A\times B\in \mathcal B_1\times \mathcal B_{n-1}$. 
+   Now consider the set $\mathcal E_m = \{E\in\mathcal B_n : E\se C_m\text{ and }\lambda_n(t+E)=\lambda(E)\}$.  
+   Where $C_m$ is the open cube of radius $m$
+   Next we need to show that 
+   $\mathcal E_m$ is a $\sigma$-algebra on $C_m$, which we will do by the Monotone class theorem.
+
+   Consider an increasing sequence $E_k\in\mathcal E_m$ where $E_k\se E_{k+1}$ and notice that
+   by 2.59 \[\lambda_n\left(a+\bigcup_{k=1}^\infty E_k\right)=\lambda_n\left(\bigcup_{k=1}^\infty a+E_k\right)=\lim_{k\ra\infty}\lambda_n(a+E_k)=\lim_{k\ra\infty}\lambda_n(E_k)=\lambda_n\left(\bigcup_{k=1}^\infty E_k\right)\]
+
+   Likewise consider an decreasing sequence $E_k\in\mathcal E_m$ where $E_{k+1}\se E_{k}$ and notice that
+   by 2.60 and the fact that $\lambda_n(C_m)=4m^2$ we have
+   \[\lambda_n\left(a+\bigcap_{k=1}^\infty E_k\right)=\lambda_n\left(\bigcap_{k=1}^\infty a+E_k\right)=\lim_{k\ra\infty}\lambda_n(a+E_k)=\lim_{k\ra\infty}\lambda_n(E_k)=\lambda_n\left(\bigcap_{k=1}^\infty E_k\right)\]
+
+   This shows that $\mathcal E_m$ is the smallest monotone class containing the measurable rectangles in $C_m$. 
+   Next we need to show that it is an algebra which follows from 5.13a.
+   And by the monotone class theorem this means that $\mathcal E_m$ is the smallest 
+   $\sigma$-algebra containing the measurable rectangles in $C_m$. Finally consider 
+   any $E\in \mathcal B_n$ and notice that by 2.59 and because $(E\cap C_m)_{m}$ 
+   is an increasing sequence where $\cup_{m=1}^\infty E\cap C_m=E$ we have that
+
+   \begin{align*}
+      \lambda_n\left(a+E\right)&=\lambda_n\left(a+\bigcup_{m=1}^\infty (E\cap C_m)\right)
+   =\lambda_n\left(\bigcup_{m=1}^\infty a+(E\cap C_m)\right)\\
+   &=\lim_{m\ra\infty}\lambda_n(a+(E\cap C_m))=\lim_{m\ra\infty}\lambda_n((E\cap C_m))
+   =\lambda_n\left(\bigcup_{m=1}^\infty (E\cap C_m)\right)\\
+   &=\lambda_n\left(E\right)
+\end{align*}
+
+
+   \iffalse We can prove this by induction. First recall that the Lebesgue 
    measure $\lambda$ for $\R$ is translation invariant.
    Now fix $n>1$ and recall we know that because $\R^n$ with the Lebesgue 
    measure $\lambda_n$ is $\sigma$-finite we know that $\lambda_n$ is the product measure and
@@ -22,7 +56,9 @@
    \[\lambda_n(t+E)=\int_{\R^{n-1}}\int_{\R^{1}}\rchi_{t+E}(x,y)d\lambda_1(x)d\lambda_{n-1}(y)
    = \int_{\R^{n-1}}\lambda_1([t+E]^y) d\lambda_{n-1}(y)\]
    And because $\lambda_1$ is translational invariant we know that for any fixed $y\in\R^{n-1}$ that 
-   $[t+E]^y\in \R^n$ is Lebesgue measurable, and so $\lambda_1([t+E]^y)$ is measurable function idk
+   $[t+E]^y\in \R^n$ is Lebesgue measurable, and so $\lambda_1([t+E]^y)$ is measurable function idk\fi
+
+
 
    \item[(2)] % fucked but done
    Recall that $\ell^1=\{(a_1,a_2,\dots) : \norm{(a_1,a_2,\dots)}_1<\infty \}$. We can prove this 
@@ -45,6 +81,8 @@
    \[\norm{\sum_{k=1}^\infty g^k-\sum_{k=1}^m g^k}=\norm{\sum_{k=m}^\infty g^k}\leq \sum_{k=m}^\infty\norm{g^k}\]
    which can be made arbitrary small for large enough $m$, showing that the limit of partial sums converges to the component wise limit in the norm.
     
+
+
    \item[(3)] We can prove this statement using $6.41$ from the book.
    Let $V$ be a finite dimensional vector space with basis $\{e_1,\dots,e_n\}$
    and norm $\norm{\cdot}$. Let $T_\ell:V\ra \F$ be a linear functional that is the projection onto the $\ell$th basis element. 
@@ -62,6 +100,8 @@
    \[\lim_{m\ra \infty}\norm{\sum_{k=1}^m T_\ell v_k-T_\ell f}=\lim_{m\ra \infty}\norm{\sum_{k=1}^m T_\ell v_k- \sum_{k=1}^\infty T_\ell v_k}=\norm{T_\ell}\lim_{m\ra \infty}\norm{\sum_{k=m}^\infty v_k}\leq\norm{T_\ell}\lim_{m\ra \infty}\sum_{k=m}^\infty\norm{ v_k}\]
    which can be made arbitrary small for large enough $m$, showing that the limit of partial sums converges to the component wise limit in the norm.
 
+
+
    \item[(4)] % Done
    Let $\Phi:V\ra V''$ be a linear maps such that $(\Phi f)\phi= \phi(f)$. Notice that by definition we know 
    that 
@@ -69,6 +109,8 @@
    =\sup\left\{|\phi(f)| :\phi\in V' \text{ and }\norm{\phi}=1\right\}\]
    Recall also from 6.72 that for $f\in V$ we have that $\norm{f}=\sup\{|\phi(f)|: \phi\in V'\text{ and } \norm{\phi}=1\}$ and so 
    $\norm{\Phi f}=\norm{f}$
+
+
 
    \item[(5)] % Done
    We will prove the forward direction first. 
