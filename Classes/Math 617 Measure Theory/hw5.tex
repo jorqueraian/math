@@ -23,12 +23,16 @@
    \[\left(\sum_{k=1}^{n}a_k\right)^5=\norm{(a_1,\dots,a_n)}_1^5\leq \mu(X)^{4}\norm{(a_1,\dots,a_n)}_5^5=n^4\sum_{k=1}^{n}a_k^5\]
 
 
-   \item[(2)] 
+   \item[(2)] Consider the function $f(x)=\log(x)$ when $0<x\leq 1$ and $f(0)=0$. Notice that for ayn $r>0$ we have that for any $x\in(0,e^{-r})$ that $|\log(x)|>r$. 
+   And because $\lambda(0,e^{-r})>0$ we know that $\norm{f}_\infty>r$ for all $r$ and so $f\not\int L^\infty([0,1])$.
+   However we can determine with a quiz computation on mathematica or integral-calculator that for any $p>0$ that
+   \[\int_{0}^1f d\mu=\Gamma(1+p)<\infty\]
+   and so $f\in \bigcap_{0<p<\infty}L^p([0,1])$.
    \item[(3)]
    \begin{enumerate}[label=(\alph*)]
     \item Let $(a^n_1,a^n_2,\dots)_{n=1}^{\infty}$ be a convergent sequence in $c_0$, that converges 
     to a sequence $(a_1,a_2,\dots)$. Meaning for all $\epsilon>0$ there exists some $N>0$ such that for all $n>N$ we have that
-    $\norm{(a_k)_k-(a^n_k)_k}_\infty<\epsilon$. Because $\norm{\cdot}_\inft$ is the supremum this means that
+    $\norm{(a_k)_k-(a^n_k)_k}_\infty<\epsilon$. Because $\norm{\cdot}_\infty$ is the supremum this means that
     for all $k$ that $|a_k-a_k^n|<\epsilon$.
     Now to show that $(a_1,a_2,\dots)\in c_0$ consider the limit
     \[\lim_{k\ra\infty}|a_k|=\lim_{k\ra\infty}|a_k-a^n_k+a^n_k|\leq\lim_{k\ra\infty}|a_k-a^n_k|+|a^n_k|\]
@@ -56,14 +60,30 @@
 
    \end{enumerate}
 
-   \item[4]
+   \item[4] First recall that $(\ell^1)'\cong \ell^\infty$ meaning the $\Phi:\ell^1\ra (\ell^1)''$ 
+   can be reinterpreted as $\Phi:\ell^1\ra (\ell^\infty)'$ where $\Phi f = \phi_f$ where $\phi_f((b_k))=\sum b_k f_k$ as these are exactly the linear functionals on $\ell^1$.
+   Consider the subspace $S=\{(a_k)\in\ell^\infty| \lim_{k\ra\infty}a_k\in\F\}$ 
+   Notice that this is what is needed for Hahn-Banach. So consider the linear functional
+   $T:S\ra\F$ where $T((a_k))=\lim_{k\ra \infty}$ Notice that $\norm{T}=1$. This means
+   by the Hanh-Banach theorem this extends to a linear function on $T:\ell^\infty\ra \F$.
+   Now assume that there exists an element $f\in\ell^1$ where $T((b_k))=\sum_{k=1}^\infty b_kf_k$
+   Notice that for $r>0$ construct an element $(b_k)$ where $b_k=1$ for $k\leq r$ and $0$ everywhere else.
+   This shows that $\sum_{k=1}^r f_k = 0$ and so $f_k=0$ for all $k$. However this is a contradiction as this would mean $\norm{T}=0$ but it was assumed to be $1$.
    \item[(5)] 
       \begin{enumerate}
-         \item Notice that $\int|f\overline{g}|d\mu\leq\frac{1}{2}\int(|f|^2+|g|^2)d\mu \leq \frac{1}{2}\int|f|^2d\mu +\frac{1}{2}\int|g|^2d\mu <\infty$ 
+         \item Notice that $|f-g|^2=(f-g)(\overline{f}-\overline{g})=|f|^2+|g|^2-2|f\overline{g}|$ and So
+              $2|f\overline{g}|+|f-g|^2=|f|^2+|g|^2$ and because $|f-g|^2\geq 0$ that
+              $2|f\overline{g}|\leq|f|^2+|g|^2$
+         
+         
+         Notice that with this result we have that $\int|f\overline{g}|d\mu\leq\frac{1}{2}\int(|f|^2+|g|^2)d\mu \leq \frac{1}{2}\int|f|^2d\mu +\frac{1}{2}\int|g|^2d\mu <\infty$ 
          because $f,g\in L^2(\mu)$ so the integral exists. Futhermore $\ip{f,g}=\int f\overline{g} d\mu$ is an inner product. It is a triviality to show all but positive-definiteness.
          This follows from $\ip{f,f}=\norm{f}_2$ being a norm.
 
-         \item Cauchy-Schwarz tells us $|\int f\overline g d\mu|=|\ip{f,g}|\leq\norm{f}_2\norm{g}_2$ and because $
+         \item Notice that 
+         \[\norm{fg}_1=\int|fg|d\mu =\int |f||g|d\mu = \ip{|f|,|g|}\]
+         and with Cauchy-Schwars we have that
+         \[\ip{|f|,|g|}\leq \norm{|f|}_2\norm{|g|}_2=\norm{f}_2\norm{g}_2\]
       \end{enumerate}
 \end{itemize}
 
