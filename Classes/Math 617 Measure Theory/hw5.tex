@@ -11,7 +11,8 @@
 \vspace{1em}
 
 \begin{itemize}
-   \item[(1)] Consider the measure space $(X=\{1,\dots,n\},\mathcal S=2^X)$ with the counting measure 
+   \item[(1)] % DONE
+   Consider the measure space $(X=\{1,\dots,n\},\mathcal S=2^X)$ with the counting measure 
    as $\mu$. Notice that $\mu(X)=n$. Then consider $\mathcal L^1 (X,\mathcal S, \mu)=\{(a_1,\dots,a_n)|a_k\in \F\}$
    equip with the norm $\norm{(a_1,\dots,a_n)}_1=\sum_{k=1}^{n}|a_k|$.
    
@@ -23,14 +24,16 @@
    \[\left(\sum_{k=1}^{n}a_k\right)^5=\norm{(a_1,\dots,a_n)}_1^5\leq \mu(X)^{4}\norm{(a_1,\dots,a_n)}_5^5=n^4\sum_{k=1}^{n}a_k^5\]
 
 
-   \item[(2)] Consider the function $f(x)=\log(x)$ when $0<x\leq 1$ and $f(0)=0$. Notice that for ayn $r>0$ we have that for any $x\in(0,e^{-r})$ that $|\log(x)|>r$. 
-   And because $\lambda(0,e^{-r})>0$ we know that $\norm{f}_\infty>r$ for all $r$ and so $f\not\int L^\infty([0,1])$.
-   However we can determine with a quiz computation on mathematica or integral-calculator that for any $p>0$ that
+   \item[(2)] % DONE
+   Consider the function $f(x)=\log(x)$ when $0<x\leq 1$ and $f(0)=0$. Notice that for any $r>0$ and any $x\in(0,e^{-r})$ that $|\log(x)|>r$. 
+   And because $\lambda(0,e^{-r})>0$ we know that $\norm{f}_\infty>r$ for all $r$ and so $f\not\in L^\infty([0,1])$.
+   However we can determine with a quick computation on mathematica or integral-calculator that for any fixed $p>0$ that
    \[\int_{0}^1f d\mu=\Gamma(1+p)<\infty\]
    and so $f\in \bigcap_{0<p<\infty}L^p([0,1])$.
    \item[(3)]
    \begin{enumerate}[label=(\alph*)]
-    \item Let $(a^n_1,a^n_2,\dots)_{n=1}^{\infty}$ be a convergent sequence in $c_0$, that converges 
+    \item % DONE
+    Let $(a^n_1,a^n_2,\dots)_{n=1}^{\infty}$ be a convergent sequence of sequences in $c_0$, that converges 
     to a sequence $(a_1,a_2,\dots)$. Meaning for all $\epsilon>0$ there exists some $N>0$ such that for all $n>N$ we have that
     $\norm{(a_k)_k-(a^n_k)_k}_\infty<\epsilon$. Because $\norm{\cdot}_\infty$ is the supremum this means that
     for all $k$ that $|a_k-a_k^n|<\epsilon$.
@@ -45,7 +48,8 @@
 
 
 
-    \item Consider the map $\Phi:\ell^1\ra c_0'$ that takes an element $b=(b_1,b_2,\dots)\in \ell^1$ to the linear functional $\phi_b:c_0\ra \F$ by 
+    \item % IDK HOW TO DO
+    Consider the map $\Phi:\ell^1\ra c_0'$ that takes an element $b=(b_1,b_2,\dots)\in \ell^1$ to the linear functional $\phi_b:c_0\ra \F$ by 
     $\phi_b(a)=\sum_{k=1}^\infty a_k b_k$. First we will show that $\phi_b$ is well defined linear functional. 
     This follows from simple comparison test on $\phi_b(a)=\sum_{k=1}^\infty a_k b_k$ removing the first so many terms where $a_k\geq 1$. IDK write up better late
 
@@ -60,8 +64,10 @@
 
    \end{enumerate}
 
-   \item[4] First recall that $(\ell^1)'\cong \ell^\infty$ meaning the $\Phi:\ell^1\ra (\ell^1)''$ 
-   can be reinterpreted as $\Phi:\ell^1\ra (\ell^\infty)'$ where $\Phi f = \phi_f$ where $\phi_f((b_k))=\sum b_k f_k$ as these are exactly the linear functionals on $\ell^1$.
+   \item[(4)] First recall that $(\ell^1)'\cong \ell^\infty$ by 
+   $(\phi:\ell^1\ra \F)\mapsto(\phi(e_k))_k$ where $e_k$ is all zero except for the $k$th entry which is $1$.
+   Likewise the other direction $(b_k)_k\mapsto \phi_b(a)=\sum_ka_kb_k$. This means that $\Phi:\ell^1\ra (\ell^1)''$ 
+   can be reinterpreted as $\Phi:\ell^1\ra (\ell^\infty)'$ where for $f\in\ell^1$ we have $\Phi f ((b_k)_k)=\sum b_k f_k$ as these are exactly the linear functionals on $\ell^1$.
    Consider the subspace $S=\{(a_k)\in\ell^\infty| \lim_{k\ra\infty}a_k\in\F\}$ 
    Notice that this is what is needed for Hahn-Banach. So consider the linear functional
    $T:S\ra\F$ where $T((a_k))=\lim_{k\ra \infty}$ Notice that $\norm{T}=1$. This means
