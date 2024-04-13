@@ -48,49 +48,103 @@
 
 
 
-    \item % IDK HOW TO DO
-    Consider the map $\Phi:\ell^1\ra c_0'$ that takes an element $b=(b_1,b_2,\dots)\in \ell^1$ to the linear functional $\phi_b:c_0\ra \F$ by 
+    \item 
+    We can model off the proof of 7.26. That is we will define the map $\Phi:\ell^1\ra c_0'$ that takes an 
+    element $b=(b_1,b_2,\dots)\in \ell^1$ to the linear functional $\phi_b:c_0\ra \F$ by 
     $\phi_b(a)=\sum_{k=1}^\infty a_k b_k$. First we will show that $\phi_b$ is well defined linear functional. 
-    This follows from simple comparison test on $\phi_b(a)=\sum_{k=1}^\infty a_k b_k$ removing the first so many terms where $a_k\geq 1$. IDK write up better late
+    This follows from a comparison on $\phi_b(a)=\sum_{k=1}^\infty a_k b_k$ with $\sum_{k=1}^\infty b_k$ removing the first so many terms where $a_k\geq 1$.
 
-    Now we want to show that $\Phi$ is an isomorphims. Need to show its linear and bijection
+    Now we want to show that $\Phi$ is a norm preserving isomorphims.
 
     Let $e_k\in c_0$ be the sequence of all $0$s except the $k$-th term is $1$. 
     If $\phi_b\equiv 0$ and we have that $\phi_b(e_k)=b_k=0$ meaning $b=(0,0,\dots)$ and so the kernel of $\Phi$ is trivial, meaning $\Phi$ is injective.
 
     Now consider any $\phi\in c_0'$ we can define the sequence $b=(b_1,b_2,\dots)$ such that $b_k=\phi(e_k)$. 
     Notice that for any $a=(a_1,a_2,\dots)\in c_0$ we have
-    that
+    that $a=\sum a_ke_k$ because which converges in the $\ell^\infty$ norm because $\lim_{k\ra\infty}{a_ke_k}=0$ % idk. but its just true i guess
+    This means that 
+    \[\phi(a)=\phi(\sum a_ke_k)=\sum \phi(a_ke_k)=\sum a_k\phi(e_k)=\sum a_kb_k\] 
+    which follows from $\phi$ being continuous.
+    Finally we need to show that $b\in \ell^1$. Consider the counting measure $\mu_n$ on $\{1,2,\dots,n\}$ for a fixed $n\in\Z^+$
+    and the space $L^\infty(\mu_n)$ as a subspace of $c_0$ because any sequence $(a_1,\dots,a_n)\in L^\infty(\mu_n)$
+    can be identified with the sequence $(a_1,\dots,a_n,0,0,\dots)\in c_0$. Now consider the linear functional $\phi|_{L^\infty(\mu_n)}$ which is such that
+    \[\phi|_{L^\infty(\mu_n)}((a_1,\dots,a_n))=\phi((a_1,\dots,a_n,0,0,\dots))=\sum_{k=1}^n a_kb_k\]
+    By 7.25 we have a norm preserving map from $L^1(\mu_n)$ into $(L^\infty(\mu_n))'$ by $(c_1,\dots,c_n)\mapsto\sum_{k=1}^n a_kc_k$ that means 
+    $\norm{(b_1,\dots,b_n)}_1=\norm{\phi|_{L^\infty(\mu_n)}}\leq \norm{\phi}$ and so 
+    $\lim_{n\ra \infty}\norm{(b_1,\dots,b_n)}_1=\norm{(b_1,b_2,\dots)}_1\leq \norm{\phi}<\infty$ and so 
+    $(b_k)_k\in \ell^1$. Ans so by constructions $\phi_b=\phi$. Showing the map is surjective.
 
    \end{enumerate}
 
-   \item[(4)] First recall that $(\ell^1)'\cong \ell^\infty$ by 
+   \item[(4)] % help from: https://djalil.chafai.net/blog/2022/10/10/little-ell-p/
+   First recall that $(\ell^1)'\cong \ell^\infty$ by 
    $(\phi:\ell^1\ra \F)\mapsto(\phi(e_k))_k$ where $e_k$ is all zero except for the $k$th entry which is $1$.
    Likewise the other direction $(b_k)_k\mapsto \phi_b(a)=\sum_ka_kb_k$. This means that $\Phi:\ell^1\ra (\ell^1)''$ 
-   can be reinterpreted as $\Phi:\ell^1\ra (\ell^\infty)'$ where for $f\in\ell^1$ we have $\Phi f ((b_k)_k)=\sum b_k f_k$ as these are exactly the linear functionals on $\ell^1$.
-   Consider the subspace $S=\{(a_k)\in\ell^\infty| \lim_{k\ra\infty}a_k\in\F\}$ 
-   Notice that this is what is needed for Hahn-Banach. So consider the linear functional
-   $T:S\ra\F$ where $T((a_k))=\lim_{k\ra \infty}$ Notice that $\norm{T}=1$. This means
-   by the Hanh-Banach theorem this extends to a linear function on $T:\ell^\infty\ra \F$.
-   Now assume that there exists an element $f\in\ell^1$ where $T((b_k))=\sum_{k=1}^\infty b_kf_k$
-   Notice that for $r>0$ construct an element $(b_k)$ where $b_k=1$ for $k\leq r$ and $0$ everywhere else.
-   This shows that $\sum_{k=1}^r f_k = 0$ and so $f_k=0$ for all $k$. However this is a contradiction as this would mean $\norm{T}=0$ but it was assumed to be $1$.
+   can be reinterpreted as $\Phi:\ell^1\ra (\ell^\infty)'$ where for $f\in\ell^1$ and $(b_k)_k\in\ell^\infty$ we have $\Phi f ((b_k)_k)=\sum b_k f_k$ as these are exactly the linear functionals on $\ell^1$.
+   Consider the subspace $S=\{(a_k)_k\in\ell^\infty| \lim_{k\ra\infty}a_k\in\F\}$. 
+   And consider the linear functional
+   $T:S\ra\F$ where $T((a_k)_k)=\lim_{k\ra \infty}a_k$. Notice that $\norm{T}=1$. This means
+   by the Hanh-Banach theorem this extends to a linear functional $T:\ell^\infty\ra \F$.
+   Now assume that there exists an element $f\in\ell^1$ such that $T((b_k))=\sum_{k=1}^\infty b_kf_k$
+   or in other words $T$ comes from an element of $\ell^1$. Notice that for $r>0$ we may 
+   construct an element $(b_k)_k$ where $b_k=1$ for $k\leq r$ and $0$ everywhere else.
+   This shows that $\sum_{k=1}^r f_k = 0$ and so $f_k=0$ for all $k$. 
+   However this is a contradiction as this would mean $\norm{T}=\norm{0}=0$ but it 
+   was assumed to be $1$.
+
+
    \item[(5)] 
-      \begin{enumerate}
-         \item Notice that $|f-g|^2=(f-g)(\overline{f}-\overline{g})=|f|^2+|g|^2-2|f\overline{g}|$ and So
-              $2|f\overline{g}|+|f-g|^2=|f|^2+|g|^2$ and because $|f-g|^2\geq 0$ that
+      \begin{enumerate}[label=(\alph*)]
+         \item Notice that $|f-g|^2=(f-g)(\overline{f}-\overline{g})=|f|^2+|g|^2-2|f\overline{g}|$ and so
+              $2|f\overline{g}|+|f-g|^2=|f|^2+|g|^2$ and because $|f-g|^2\geq 0$ we have that
               $2|f\overline{g}|\leq|f|^2+|g|^2$
          
          
-         Notice that with this result we have that $\int|f\overline{g}|d\mu\leq\frac{1}{2}\int(|f|^2+|g|^2)d\mu \leq \frac{1}{2}\int|f|^2d\mu +\frac{1}{2}\int|g|^2d\mu <\infty$ 
-         because $f,g\in L^2(\mu)$ so the integral exists. Futhermore $\ip{f,g}=\int f\overline{g} d\mu$ is an inner product. It is a triviality to show all but positive-definiteness.
-         This follows from $\ip{f,f}=\norm{f}_2$ being a norm.
+         Notice that with this result we have that 
+         \[\int|f\overline{g}|d\mu\leq\frac{1}{2}\int(|f|^2+|g|^2)d\mu \leq \frac{1}{2}\int|f|^2d\mu +\frac{1}{2}\int|g|^2d\mu <\infty\]
+         because $f,g\in L^2(\mu)$ so the last two integrals exists. Futhermore $\ip{f,g}=\int f\overline{g} d\mu$ is an inner product. 
+         It is clear that it is linear in the first term and semi-linear in the second. And is positive definite which follows from $\ip{f,f}=\norm{f}_2$ being a norm.
 
          \item Notice that 
          \[\norm{fg}_1=\int|fg|d\mu =\int |f||g|d\mu = \ip{|f|,|g|}\]
-         and with Cauchy-Schwars we have that
+         and with Cauchy-Schwarz we have that
          \[\ip{|f|,|g|}\leq \norm{|f|}_2\norm{|g|}_2=\norm{f}_2\norm{g}_2\]
+         and so 
+         \[\norm{fg}_1\leq\norm{f}_2\norm{g}_2\]
       \end{enumerate}
+
+   \item[(6)] 
+   \begin{enumerate}[label=(\alph*)]
+      \item Consider the Banach Space $C([0,1])$ with the norm $\norm{\cdot}=\sup_{[0,1]}|f|$ norm. 
+      Consider the normed subspace $B=\{f\in C([0,1])|f(0)=0\}$ with the same norm. 
+      We will first show that this is a closed subspace which means it itself is a Banach Space.
+      So consider a sequence $f_1,f_2,\dots$ of functions in $B$ that converge to some function $f\in C([0,1])$
+      This means that for all $\epsilon>0$ there exists some $N>0$ where for all $n>N$ we have that 
+      $\norm{f_n-f}<\epsilon$. This means that $|f(0)-f_n(0)|<\epsilon$ and so $f(0)=0$ meaning $f\in B$. 
+      Therefore $B$ is a Banach space.
+   
+      Now consider the linear functional $\phi(f)=\int_0^1f d\lambda$ where 
+      for any $f\in B$ such that $\norm{f}=1$ we have that $|f(x)|\leq 1$ for 
+      all $x$ meaning $\left|\int_0^1fd\lambda\right|\leq \int_0^1|f|d\lambda\leq 1$. 
+      
+      Furthermore fix $r>0$ and consider the function $g_r(x)=\frac{rx}{rx+1}\in B$ 
+      and notice that $\lim_{r\ra\infty}\int_0^1g_r(x)d\lambda=\frac{-ln(r+1)+r}{r}=1$.
+      Meaning $\norm{\phi}=1$.
+   
+      Consider any $f\in B$ such that $\norm{f}=1$ and because $f$ is continuous 
+      we know that there exists some $\epsilon>0$ where
+      $|f(x)|\leq\frac{1}{2}$ on $[0,\epsilon]$. This means 
+      that 
+      \[\left|\int_0^1fd\lambda\right|\leq \int_0^1|f|d\lambda\leq \frac{\epsilon}{2}+\int_\epsilon^1|f|d\lambda=\frac{\epsilon}{2}+(1-\epsilon)< 1\]
+      And so $|\phi(f)|<\norm{\phi}\norm{f}$.
+      \item If $V$ is a Hilbert space with $\phi:V\ra\R$ a linear functional 
+      then by the Riesz representation theorem 
+      there exists a unique $h\in V$ such that $\phi(f)=\ip{f,h}$ with $\norm{\phi}=\norm{h}$.
+      And Cauchy-Schwarz tells us that $|\phi(f)|=|\ip{f,h}|\leq\norm{f}\norm{h}$ 
+      with equality when $f,h$ are scalar multiples.
+
+   \end{enumerate}
+
 \end{itemize}
 
 \end{document}
