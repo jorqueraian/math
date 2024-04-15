@@ -1,0 +1,46 @@
+\documentclass[12pt]{amsart}
+\usepackage{preamble}
+%\DeclareRobustCommand{\flippedSlash}{\text{\reflectbox{$\setminus$}}}
+\DeclareRobustCommand{\rchi}{{\mathpalette\irchi\relax}}
+\newcommand{\irchi}[2]{\raisebox{\depth}{$#1\chi$}} % inner command, used by \rchi
+
+\begin{document}
+\begin{center}
+   \textsc{Math 617. HW 6\\ Ian Jorquera}
+\end{center}
+\vspace{1em}
+
+\begin{itemize}
+    \item[(1)] We can use the Riesz representation theorem(revisited). 
+    Consider the finite dimensional inner product space $V$ spanned by 
+    \[\{e_1=P_0(2x-1),e_2=\sqrt{3}P_1(2x-1),e_3=\sqrt{5}P_2(2x-1),e_4=\sqrt{7}P_3(2x-1),e_5=\sqrt{9}P_4(2x-1)\}\] where $P_n$ is the $n$th 
+    Legendre polynomial according to Wikipedia with $L^2([0,1])$ inner product $\ip{f,g}=\int_0^1fg$.
+    Now consider the linear functional $T:V\ra\R$ such that $T(f)=f(\frac{1}{2})$.
+    With the Riesz representation theorem we have that 
+    \[g=\sum_{k=0}^4T(e_k)e_k\]
+    \[g=1+\frac{-5}{2}P_2(2x-1)+\frac{27}{8}P_4(2x-1)\]
+    \[g=\frac{15120x^4-30240x^3+18480x^2-3360x+120}{64}\]
+    such that $T(f)=\ip{f,g}$, meaning $f(\frac{1}{2})=\int_0^1fg$ for all degree $4$ polynomials $f$
+    \item[(2)] 
+    \begin{enumerate}[label=(\alph*)]
+        \item m
+        \item Let $X=\Z^+$ and $\mathcal{S}=2^X$. Notice that for any measure $\mu$
+        on $\S$ we need only define $\mu(\{k\})$ for all $k\in \Z^+$ as 
+        all other sets in $\mathcal S$ would follow from additivity.
+        So let $\mu_k$ me the measure such that $\mu(\{k\})=1$ and 
+        $\mu(\{j\})=0$ for $k\neq j\in\Z^+$ in which case the closure of the 
+        set $\{\mu_k | k\in\Z^+\}$ is $\mathcal M_\F(\mathcal S)$
+
+    \end{enumerate}
+    \item[(3)] consider the sets $\{\emptyset, A, X-A, X\}$ Consider two real measures 
+    $\mu,\nu$ such that $\mu(A)=1$ $\mu(X-A)=-2$, $\nu(A)=-3$ and $\nu(X-A)=-4$
+    Notice that $\norm{\mu}=3$ and $\norm(\nu)=7$ and $\norm{\mu+\nu}=8$ and $\norm{\mu-\nu}=6$
+    Notice that $8^2+6^2\neq 2\cdot 3^2+2\cdot 7^2$. This shows that the total variation norm fails the parallelogram identity.
+    This is an example but can be extended to the solution need to just more in depth explain what im doing. I think id need 
+
+    \item[(4)] Let $\mu$ be a positive finite measure on $(X,\mathcal S)$. 
+    Let $h\in\mathcal L^1(\mu)$ be a nonnegative function. We know that $hd\mu\ll\mu$
+
+\end{itemize}
+
+\end{document}

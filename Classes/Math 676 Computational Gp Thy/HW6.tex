@@ -1,0 +1,36 @@
+\documentclass[12pt]{amsart}
+\usepackage{preamble}
+%\DeclareRobustCommand{\flippedSlash}{\text{\reflectbox{$\setminus$}}}
+
+\begin{document}
+\begin{center}
+   \textsc{Math 676 Computational Group Theory. HW 6\\ Ian Jorquera}
+\end{center}
+\vspace{1em}
+
+\begin{itemize}
+    \item[(27)] 
+    \begin{enumerate}[label=(\alph*)]
+        \item we will start with rewriting rules $x^3\ra 1$, $y^3\ra 1$ and 
+        $(xy)^3\ra 1$.
+        Now we will consider the words that are combinations of left hand 
+        sides of rewriting rules. Consider the word $xxxyxyxy$ which reduces 
+        in two ways to $yxyxy$ and $xx$ giving the rewriting rule $yxyxy\ra xx$.
+        Then consider the word $xyxyxyyy$ which reduces 
+        in two ways to $yy$ and $xyxyx$ giving the rewriting rule $xyxyx\ra yy$.
+        Then consider the word $yyyxyxy$ which reduces 
+        in two ways to $xyxy$ and $yyxx$ giving the rewriting rule $yyxx\ra xyxy$.
+        The consider the word $yxyxyyy$ which reduces 
+        in two ways to $xxyy$ and $yxyx$ giving the rewriting rule $yxyx\ra xxyy$.
+        All other words reduce to the same word. Meaning the confluent rewritting system is
+        $x^3\ra 1$, $y^3\ra 1$, $(xy)^3\ra 1$, $yxyxy\ra xx$, $xyxyx\ra yy$, $yyxx\ra xyxy$, $yxyx\ra xxyy$
+
+        \item Notice that the word $(xxyyxy)^k$ is normal form for all $k$, meaning there 
+        are infinitly many different words in normal form, so $M$ is infinte.
+    \end{enumerate}
+    \item[(29)] $\{1,x\}$ where $x^2=x$, or $\ip{x|x^2=x}$
+    \item[(30)] 
+\end{itemize}
+
+
+\end{document}
