@@ -23,23 +23,52 @@
     such that $T(f)=\ip{f,g}$, meaning $f(\frac{1}{2})=\int_0^1fg$ for all degree $4$ polynomials $f$
     \item[(2)] 
     \begin{enumerate}[label=(\alph*)]
-        \item m
+        \item Consider the delta measure for a fixed $x\in \R$ where 
+        for $E\in\mathcal B$ the measure $\delta_x$ is 
+        defined to be $\delta_x(E)=1$ when $x\in E$ and 
+        $\delta_x(E)=0$ when $x\not\in E$. Notice that when $x\neq y$ we have that
+         $\norm{\delta_x-\delta_y}=2$. This means that the set $\{B(\delta_x,1)|x\in R\}$ is a 
+         set of uncountable many disjoint open balls. So $\mathcal M_\R(\mathcal B)$ is not seperable.
         \item Let $X=\Z^+$ and $\mathcal{S}=2^X$. Notice that for any measure $\mu$
         on $\S$ we need only define $\mu(\{k\})$ for all $k\in \Z^+$ as 
         all other sets in $\mathcal S$ would follow from additivity.
         So let $\mu_k$ me the measure such that $\mu(\{k\})=1$ and 
         $\mu(\{j\})=0$ for $k\neq j\in\Z^+$ in which case the closure of the 
-        set $\{\mu_k | k\in\Z^+\}$ is $\mathcal M_\F(\mathcal S)$
+        set $\{r\mu_k | k\in\Z^+, r\in\Q[i]\}$ is $\mathcal M_\C(\mathcal S)$ and
+        the closure of the 
+        set $\{r\mu_k | k\in\Z^+, r\in\Q\}$ is $\mathcal M_\R(\mathcal S)$ both of which are countable.
 
     \end{enumerate}
-    \item[(3)] consider the sets $\{\emptyset, A, X-A, X\}$ Consider two real measures 
-    $\mu,\nu$ such that $\mu(A)=1$ $\mu(X-A)=-2$, $\nu(A)=-3$ and $\nu(X-A)=-4$
-    Notice that $\norm{\mu}=3$ and $\norm(\nu)=7$ and $\norm{\mu+\nu}=8$ and $\norm{\mu-\nu}=6$
-    Notice that $8^2+6^2\neq 2\cdot 3^2+2\cdot 7^2$. This shows that the total variation norm fails the parallelogram identity.
-    This is an example but can be extended to the solution need to just more in depth explain what im doing. I think id need 
+    \item[(3)] Let $(X,\mathcal S)$ be a measurable space with 
+    $\mathcal S\neq \{\emptyset, X\}$, meaning there exists some set $A\in \mathcal S$ such 
+    that the sets $\{\emptyset, A, X-A, X\}\se \mathcal S$. Consider two positive measures 
+    $\mu,\nu$ such that $\mu(A)=3$, $\mu(X-A)=1$,  $\nu(A)=1$ and $\nu(X-A)=4$.
+    Notice that this means that $\norm{\mu}=4$ and $\norm{\nu}=5$ and 
+    \[\norm{\mu+\nu}=|\mu+\nu|(X)\geq |(\mu+\nu)(A)|+|(\mu+\nu)(X-A)|=9\] 
+    and that
+    \[\norm{\mu-\nu}=|\mu-\nu|(X)\geq |(\mu-\nu)(A)|+|(\mu-\nu)(X-A)|=5\]
+    This means that 
+    \[\norm{\mu+\nu}^2+\norm{\mu-\nu}^2\geq 9^2+5^2=106 > 82=2\cdot 4^2+2\cdot 5^2=2\norm{\mu}^2+2\norm{\nu}^2\]
+    This shows that the total variation norm fails the parallelogram identity and therefore can not come from a inner product.
+
 
     \item[(4)] Let $\mu$ be a positive finite measure on $(X,\mathcal S)$. 
-    Let $h\in\mathcal L^1(\mu)$ be a nonnegative function. We know that $hd\mu\ll\mu$
+    Let $h$ be a nonnegative function in $\mathcal L^1(\mu)$. Meaning $hd\mu\ll d\mu$.
+    We will show that $d\mu\ll hd\mu$ if and only if $h$ is non-zero almost everywhere with respect to $\mu$.
+    
+    We will show the forward direction by contrapositive. So assume that the set
+    $E:=\{x\in X| h(x)=0\}\in\mathcal S$ has non-zero measure, that is $\mu(E)> 0$.
+    The notice that $\int_{E}h d\mu=0$ while $\mu(E)\neq 0$ meaning $d\mu\not\ll hd\mu$
+
+    
+    First assume that $h$ is non-zero almost everywhere. Meaning for any $E\in\mathcal S$ 
+    such that $\mu(E)\neq 0$, let $A=\{x\in E| h(x)=0\}$ and $B=\{x\in E| h(x)\neq 0\}$ 
+    and it must be the case that $\mu(B)=\mu(E)$ meaning we
+    have that $\int_E h d\mu= \int_A h d\mu+\int_B h d\mu=\int_B h d\mu>0$ and 
+    so $h d\mu(E)\neq 0$ when ever $\mu(E)\neq 0$
+    This show that $d\mu\ll hd\mu$
+
+    \item[(5)]
 
 \end{itemize}
 
