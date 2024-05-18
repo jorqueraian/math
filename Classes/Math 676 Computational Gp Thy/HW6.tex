@@ -29,7 +29,22 @@
         are infinitly many different words in normal form, so $M$ is infinte.
     \end{enumerate}
     \item[(29)] $\{1,x\}$ where $x^2=x$, or $\ip{x|x^2=x}$
-    \item[(30)] 
+    \item[(30)] Notice that because $N\cong C_2^2$ we can consider it to be the 
+    vector space $\F_2^2$ with basis $\{p=(2,6)(3,4),q=(1,5)(3,4)\}$. Now we want to come up with
+    elements in $G$ that could act like $G/N$ so consider two possible such element $an$ and $bm$ 
+    and we will look at the relations of $G/N$. Where $c^3=1$ tells us that 
+    $(an)^3= ananan=a^2n^anan=a^3n^{aa}n^an=a^3n^{a^2+a+1}$ giving us the linear equation
+    \[a^3=()=\begin{bmatrix}0& 0\end{bmatrix}=\begin{bmatrix}n_1& n_2\end{bmatrix}\begin{bmatrix}0& 0\\0&0\end{bmatrix}\]
+    which gives us nothing. Now the relation $b^2=1$ tells us that 
+    $(bm)^3= bmbm=b^2m^bm=b^2m^{b+1}$ giving us the linear equation
+    \[-b^2=()=\begin{bmatrix}0& 0\end{bmatrix}=\begin{bmatrix}m_1& m_2\end{bmatrix}\begin{bmatrix}0& 0\\0&0\end{bmatrix}\]
+    which gives us nothing
+    Finally the relation $cd=dc$ give us that $anbm=bman$ which simplifies to $abn^bm=bam^an$
+    which is $a^{-1}b^{-1}abn^bm=m^an$ which gives us the following linear equation
+    \[\begin{bmatrix}0& 1\end{bmatrix}+\begin{bmatrix}n_1& n_2\end{bmatrix}I_2+\begin{bmatrix}m_1& m_2\end{bmatrix}=\begin{bmatrix}m_1& m_2\end{bmatrix}\begin{bmatrix}1& 1\\1&0\end{bmatrix}\]
+    which tells us that $\begin{bmatrix}m_1& m_2\end{bmatrix}=\begin{bmatrix}1& 1\end{bmatrix}$.
+    So $m=pq$ and $n$ can be any element in $N$
+     
 \end{itemize}
 
 
