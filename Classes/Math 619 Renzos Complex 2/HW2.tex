@@ -1,0 +1,57 @@
+\documentclass[12pt]{amsart}
+\usepackage{preamble}
+\DeclareMathOperator{\stab}{\mathrm{stab}}
+
+\begin{document}
+\begin{center}
+    \textsc{Math 601. HW 2\\ Ian Jorquera}
+\end{center}
+\vspace{1em}
+\begin{itemize}
+\item[(3.3)] Let $\oldphi_{21}=\phi_{2}\circ \phi_1^{-1}$ and consider an element 
+             $x_0\in(\phi_1(U_1\cap U_2),x)=\C-\{0\}$
+             The map $\phi_1^{-1}$ takes a point $x_0\neq 0$ on the $x$ axis and maps it the line $\ell$ 
+             through the origin 
+             that contains the point $(x_0,1)$, which is the line that intersection the line $Y=1$ 
+             at an $x$ value of $x_0$. The the map $\phi_2$ takes this line $\ell$ and maps it the the $y$ value
+             at the intersection of $\ell$ and the line $X=1$, that is a point of the form $(1,y_0)$ which has 
+             the value $y_0=\frac{1}{x_0}$. So $\oldphi_{21}(z)=\frac{1}{z}$ for all $z\neq 0$. 
+
+
+\item[(4.2)] Let $f:\C\P^1\ra \C$ be a meramorphic function meaning with both 
+charts $f\circ \phi^{-1}_j:\C\ra \C$ is meramorphic for $j=1,2$.
+Consider first the zeros of $f\circ \phi^{-1}_j$, the collection 
+$\{x\in \C | f\circ \phi^{-1}_j(x)=0\}$. We know that either $f\equiv 0$ or the
+set of zeros is discrete. And because $\C\P^1$ is compact we know that under $\phi^{-1}_1$ that 
+$\{\phi^{-1}_1(x)\in \C | f\circ \phi^{-1}_1(x)=0\}$ must therefore be finite, 
+as the only discrete sets are the finite sets. %\idjtodo{why does discrete in $\C$ imply that they would also be discrete in $\C\P^1$}
+This is also true for the poles of $f$ as the poles must also be discrete and so there can only be 
+finitely many poles.
+
+Because $f\circ\phi_1^{-1}$ has finitely many poles and zeros we know we factor out the zeros and poles as 
+\[f\circ\phi_1^{-1}(x)=\frac{\displaystyle{\prod^n_{i=1}(x-a_i)}}{\displaystyle{\prod_{j=1}^m(x-b_j)}}h(x)\]
+where $h(x)$ is a holomorphic function on $\C$ with no zeros. 
+Under the transition function we know that
+\[f\circ\phi_1^{-1}\left(\frac{1}{x}\right)=\frac{\displaystyle{\prod^n_{i=1}(1-a_iy)}}{\displaystyle{\prod_{j=1}^m(1-b_jy)}}h\left(\frac{1}{y}\right)\]
+where $h\left(\frac{1}{y}\right)$ is holomorphic everywhere except possible $y=0$.
+Because $f\circ \phi_2^{-1}(y)$ is meromorphic we know that it can not have an essential singularity at $y=0$ 
+and so $h\left(\frac{1}{y}\right)$ can not have an essential singularity at $y=0$.
+Furthermore $y=0$ can not be a pole as if it were we could factor out a $\frac{1}{y^k}$ which would 
+correspond to $x^k$ in the affine coord $x$. But this cant be the case as we have already factored out 
+all the zeros. So
+$y=0$ is a removable singularity, meaning we can add that point and then $h\left(\frac{1}{y}\right)$ 
+would be holomorphic on both the affine coordinates of $x$ and $y$, meaning $h$ must be constant by problem (4.1).
+So 
+\[f\circ\phi_1^{-1}(x)=c\cdot\frac{\displaystyle{\prod^n_{i=1}(x-a_i)}}{\displaystyle{\prod_{j=1}^m(x-b_j)}}\]
+
+To get an equivalent interpretation we can homogenize using the fact that the affine coordinate $x$
+was defined as $x=X/Y$ which gives us
+
+\[f(X:Y)=c\cdot\frac{\displaystyle{\prod^n_{i=1}(X/Y-a_i)}}{\displaystyle{\prod_{j=1}^m(X/Y-b_j)}}=c\cdot\frac{\displaystyle{Y^m\prod^n_{i=1}(X-a_iY)}}{\displaystyle{Y^n\prod_{j=1}^m(X-b_jY)}}\]
+Notice also that this means that both the top and bottom are degree $n+m$ homogenous polynomials. 
+We can further simplify, but the degree of the top and bottom will be the same.
+
+\end{itemize}
+
+\end{document}
+

@@ -1,0 +1,204 @@
+\documentclass[12pt]{amsart}
+\usepackage{preamble}
+\DeclareMathOperator{\stab}{\mathrm{stab}}
+
+\begin{document}
+\begin{center}
+    \textsc{Math 601. HW 2\\ Ian Jorquera}
+\end{center}
+\vspace{1em}
+\begin{itemize}
+    % 4 + % 8 points = 12 points + 3 points = 15 points
+    \item[(1)] % 1 point
+    Let $\lambda=(5,4,1)$, then the element of $S^\lambda V$
+    \[
+        (e_1\wedge e_3 \wedge e_4)\otimes (e_1\wedge e_3)\otimes (e_2 \wedge e_4)\otimes (e_2 \wedge e_4)\otimes e_4 =
+        \begin{ytableau}
+            4 \\
+            3 & 3 & 4& 4\\
+            1 & 1 & 2& 4&4
+            \end{ytableau}
+    \]
+    \item[(2)] % 3 points
+    Because the SSYT with the elementary vectors as the filling form a basis, the dimension of 
+    $V^{(k,k)}$ is the number of SSYT of shape $(k,k)$ where the entries can be no greater then $3$, one for 
+    each elementary vector.
+    So we need to count the number of SSYT. If the bottom row is all $1$s then the top would be all 
+    $2$s or part $2$s and part $3$s, meaning there are $k+1$ ways to fill the top row with $2$s then 
+    $3$s possible with no $2$s or $3$s. Notice that it is not possible for there to be any $3$s on the bottom
+    so we need only consider the case where there are $1$s and $2$s. If there are $r$ $1$s on the bottom and 
+    $k-r$ $2$s this would for there to be $3$s above each $2$, and above the ones there could be a combination 
+    of $1$s and $2$s, of which there would be $r+1$ ways to have $1$s then $2$ above the $1$s. Putting this 
+    together
+    \[\dim V^{(k,k)} = \sum_{r=0}^k r+1=\frac{(k+1)(k+2)}{2}\]
+    where we are iterating of there being $r$ $1$s on the bottom row.
+    
+    \item[(3)] % 3 points
+    We can follow the algorithm from class, utilizing the equivalence of ant filling with the sum of all the column swaps
+    \begin{align*}\begin{ytableau}
+        5&6\\
+        4&3\\
+        1&2
+        \end{ytableau}&=
+        \begin{ytableau}
+            5&6\\
+            3&4\\
+            2&1
+            \end{ytableau}
+        -\begin{ytableau}
+            5&6\\
+            4&3\\
+            1&2
+        \end{ytableau}+
+        \begin{ytableau}
+            4&6\\
+            3&5\\
+            2&1
+            \end{ytableau}\\
+        &= (\begin{ytableau}
+            5&6\\
+            3&4\\
+            1&2
+            \end{ytableau}
+            -
+            \begin{ytableau}
+                5&6\\
+                2&4\\
+                1&3
+            \end{ytableau}
+            -
+            \begin{ytableau}
+                3&6\\
+                2&5\\
+                1&4
+            \end{ytableau})-(
+            \begin{ytableau}
+                4&6\\
+                3&5\\
+                1&2
+            \end{ytableau}-
+            \begin{ytableau}
+                4&6\\
+                2&5\\
+                1&3
+            \end{ytableau}
+            +
+            \begin{ytableau}
+                3&6\\
+                2&5\\
+                1&4
+            \end{ytableau}
+            )+
+            \begin{ytableau}
+                3&6\\
+                2&5\\
+                1&4
+            \end{ytableau}\\
+            &=
+            \begin{ytableau}
+                5&6\\
+                3&4\\
+                1&2
+                \end{ytableau}
+                -
+                \begin{ytableau}
+                    5&6\\
+                    2&4\\
+                    1&3
+                \end{ytableau}
+                -
+                \begin{ytableau}
+                    3&6\\
+                    2&5\\
+                    1&4
+                \end{ytableau}-
+                \begin{ytableau}
+                    4&6\\
+                    3&5\\
+                    1&2
+                \end{ytableau}+
+                \begin{ytableau}
+                    4&6\\
+                    2&5\\
+                    1&3
+                \end{ytableau}
+    \end{align*}
+
+    %\item[(4)] % no completed
+    %We wil show this with induction on $k$ maybe?
+    %            Let $k=0$ in which case there is only one way to exchange $0$ columns, so $\det(N)\det(M)=\det(N)\det(M)$
+    %            Now let $k>0$ and let $k$ columns of $N$ be denoted ${n_j}_{j=1}^k$. First from induction we know that 
+
+    
+    \item[(6)] % 2 points
+    First notice that with the commutator bracket we have that $[Y,X]=YX-XY=-(XY-YX)=-[X,Y]$ and so is skew symmetric.
+    Notice also that 
+    \begin{align*}
+        &[X,[Y,Z]]+[Y,[Z,X]]+[Z,[X,Y]]\\
+        &=X[Y,Z]-[Y,Z]X+Y[Z,X]-[Z,X]Y+Z[X,Y]-[X,Y]Z\\
+        &=X(YZ-ZY)-(YZ-ZY)X+Y(ZX-XZ)-(ZX-XZ)Y+Z(XY-YX)-(XY-YX)Z\\
+        &=XYZ-XZY -YZX+ZYX +YZX-YXZ -ZXY+XZY +ZXY-ZYX -XYZ+YXZ\\
+        &= 0 \\
+    \end{align*}
+    which shows that this commutator satisfies the Jacobi Identity.
+
+
+    \item[(7)] % 4 points
+    \begin{itemize}
+        \item[(a)] Recall that the lie group $SO_n(\C)$ was defined as 
+        $SO_n(\C)=\{M| \det(M)=1, A^\dagger A=I\}$ where $(-)^\dagger$ 
+        is the standard transpose (Not the conjugate transpose).
+        Using the $\epsilon$ method we have that 
+        $\mathfrak{so}_n(\C)=\{X: \det(I+\epsilon X)=1, (I+\epsilon X)^\dagger (I+\epsilon X)=I\}$.
+        The condition $\det(I+\epsilon X)=1$ is equivalent to $\tr(X)=0$ and 
+        the condition $I=(I+\epsilon X)^\dagger (I+\epsilon X)=I+\epsilon X+\epsilon X^\dagger$ and 
+        so the matrices that satisfy this condition are the skew symmetric matrices, the matrices 
+        satisfying $X=-X^\dagger$ so $\mathfrak{so}_n(\C)=\{X: \tr{X}=0, X^\dagger = -X\}$. Also notice that 
+        if $X^\dagger = -X$ then the diagonal entries must all be zero, and so the $\tr(X)=0$ condition is guaranteed.
+        \[\mathfrak{so}_n(\C)=\{X: X^\dagger = -X\}\]
+
+
+        \item[(b)] Recall that the lie group $Sp_{2n}(\C)$ was defined as $Sp_{2n}(\C)=\{M\in GL_n(\C)| M^\dagger\Omega M=\Omega\}$.
+        Using the $\epsilon$ method we have that 
+        $\mathfrak{sp}_{2n}(\C)=\{X: (I+\epsilon X)^\dagger\Omega (I+\epsilon X)=\Omega\}$.
+        The condition $\Omega = (I+\epsilon X)^\dagger\Omega (I+\epsilon X)=\Omega+\epsilon X^\dagger\Omega+\epsilon\Omega X$ 
+        and so the matrices that satisfy this condition are the ? matrices, the matrices 
+        satisfying $X^\dagger\Omega=-\Omega X$ so \[\mathfrak{sp}_n(\C)=\{X: X^\dagger\Omega=-\Omega X\}\]
+        
+
+        \item[(c)] Recall that the lie group $T_n(\C)$ were the invertible diagonal matrices.
+        Using the $\epsilon$ method we have that 
+        $\mathfrak{t}_n(\C)=\{X:, I+\epsilon X\text{ is invertable diagonal matrix}\}\cong (\C^*)^n$.
+        The condition of inevitability puts no requirements on $X$ and 
+        the condition $I+\epsilon X$ being diagonal requires that $X$ is diagonal. 
+        So \[\mathfrak{t}_n(\C)=\{X: X\text{ is diagonal}\}\cong \C^n\]
+        
+
+        \item[(d)] Recall that the lie group $B_n(\C)$ were the invertible upper 
+        triangular matrices.
+        Using the $\epsilon$ method we have that 
+        $\mathfrak{b}_n(\C)=\{X:, I+\epsilon X\text{ is invertable upper triangular matrix}\}$.
+        The condition of inevitability puts no requirements on $X$ and 
+        the condition $I+\epsilon X$ being upper triangular requires that $X$ is upper triangular. 
+        So \[\mathfrak{b}_n(\C)=\{X: X\text{ is upper triangular}\}\]
+    \end{itemize}
+
+    \item[(8)] % 2 points
+    First recall that $\mathfrak{so}_n(\C)=\{X: X^\dagger = -X\}$.
+    Now recall that the lie group $O_n(\C)$ was defined as 
+        $O_n(\C)=\{M| A^\dagger A=I\}$ where $(-)^\dagger$ 
+        is again the standard transpose.
+        Using the $\epsilon$ method we have that 
+        $\mathfrak{o}_n(\C)=\{X:(I+\epsilon X)^\dagger (I+\epsilon X)=I\}$.
+        The condition $I=(I+\epsilon X)^\dagger (I+\epsilon X)=I+\epsilon X+\epsilon X^\dagger$ and 
+        so the matrices that satisfy this condition are the skew symmetric matrices, the matrices 
+        satisfying $X=-X^\dagger$ so $\mathfrak{o}_n(\C)=\{X: X^\dagger = -X\}$. And because in both cases
+        the Lie bracket is the commutator we know that this two lie algebras are equal, and therefore isomorphic.
+
+        This does contradict the bijection correspondence because the matrices satisfying $A^\dagger A=I$ 
+        must satisfy $(\det(A))^2=1$ which is only the case when $\det(A)=\pm 1$ because we are looking at the standard
+        transpose and not the conjugate transpose. Meaning $O_n(\C)$ is not a connected Lie group.
+\end{itemize}
+
+\end{document}
+

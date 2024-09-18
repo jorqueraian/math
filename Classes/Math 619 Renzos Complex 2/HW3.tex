@@ -1,0 +1,50 @@
+\documentclass[12pt]{amsart}
+\usepackage{preamble}
+\DeclareMathOperator{\stab}{\mathrm{stab}}
+
+\begin{document}
+\begin{center}
+    \textsc{Complex Geometry. HW 2\\ Ian Jorquera}
+\end{center}
+\vspace{1em}
+\begin{itemize}
+\item[(5.4)] Notice that if this statement is true it is enough to show that an automorphism $\Phi$ is uniquely 
+determined by three points $P_1,P_2,P_3$ being sent to $[1:0],[0:1],[1,1]$ as any general automorphism mapping
+$P_1,P_2,P_3$ to $Q_1,Q_2,Q_3$, can be written first as a map sending $P_1,P_2,P_3$ to $[1:0],[0:1],[1,1]$ then 
+composed with a map sending $[1:0],[0:1],[1,1]$ to $Q_1,Q_2,Q_3$ and this second automorphism is the inverse of 
+the map that sends $Q_1,Q_2,Q_3$ to $[1:0],[0:1],[1,1]$.
+
+From the previous problems we know that every automorphism is a Mobius transformation $\Phi(X:Y)=[aX+bY:cX+dY]$.
+To construct a map that takes $P_1,P_2,P_3$ to $[1:0],[0:1],[1,1]$. Looking at the requirement that $P_1\mapsto[0:1]$
+we get the equation $0=cX(P_1)+dY(P_1)$ and looking at $P_2\mapsto[1:0]$ we get $0=aX(P_2)+bY(P_2)$. And finally
+from $P_3\mapsto[1:1]$ we get that $aX(P_3)+bY(P_3)=cX(P_3)+dY(P_3)$. Notice that each of these equations is invariant 
+under scaling of the homogeneous coordinates.
+
+This gives use the matrix 
+\[\begin{bmatrix}
+    0&0&X(P_1)&Y(P_1)\\
+    X(P_2)&Y(P_2)&0&0\\
+    X(P_3)&Y(P_3)&-X(P_3)&Y(P_3)
+\end{bmatrix}\]
+Whose kernel are vectors of the form $(a,b,c,d)^\dagger$ that define(for non-zero vectors) automorphism as desired.
+Notice that the rank of this matrix is $3$ by the assumption that the points are distinct. and so the kernel is 
+$1$-dimension. The solutions are therefore all scaling of any non-zero vector, and because Mobius transformation 
+are equivalent under scaling this means we have 1 unique solution.
+
+Notice that fixing three points would have a unique solution and one possible automorphism that fixes 3 points is the
+ identity so this must be the unique solution.\\
+
+
+ \item[(6.3)] Let $F:\C\P^1\ra \C\P^r$ be a regular map, meaning $F=(P_0(X:Y):P_1(X:Y):\dots:P_r(X:Y))$ where each 
+ $P_j$ is a polynomial of the same degree for all $j$.
+ Now assume that the degree of each $P_j$ is $d$, then with the intersection of a general hyperplane 
+ $\alpha_0P_0(X:Y)+\alpha_1P_1(X:Y)+\dots+\alpha_rP_r(X:Y)=0$ we know that this is a degree $d$ homogeneous 
+ polynomial of degree $d$ in two variables, and so by the fundamental theorem of 
+ algebra we know there are $d$ solution up to multiplicity.
+ And so the number of intersection of $F(\C\P^1)$ with a general hyper plane is $\leq d$.
+ Notice that the case of strict inequality happens when each polynomial $P_j(X:Y)$ shares a 
+ common root, and so the common root can be factored out reducing the degree of the polynomials by $1$.
+\end{itemize}
+
+\end{document}
+

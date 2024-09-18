@@ -1,0 +1,115 @@
+\documentclass[12pt]{amsart}
+\usepackage{preamble}
+\DeclareMathOperator{\stab}{\mathrm{stab}}
+
+\begin{document}
+\begin{center}
+    \textsc{Math 601. HW 1\\ Ian Jorquera}
+\end{center}
+\vspace{1em}
+\begin{itemize}
+%\item[(1)] % 5 points but ill skip
+%           Let $G$ be a finite group and $V$ a finite dimensional vector space such that $\rho:G\ra GL(V)$ is a 
+%           $G$-representation, meaning $\rho$ is a group homomorphism. Notice that this defines a group action 
+%           $G\times V\ra V$ where $g\cdot v= \rho(g)v$. Notice that this is an action because 
+%           $g\cdot(h\cdot v)= g\cdot(\rho(h)v)= \rho(g)\rho(h)v= \rho(gh)v$. This action also preserves the 
+%           vector space structure, $g\cdot(rv+u)= \rho(g)(rv+u)= r\rho(g)v+ \rho(g)u=r g\cdot v+g\cdot u$. \idjtodo{need to show action by 1 is good}
+%           
+%           Now notice that a group action $G\times V\ra V$ that preserves the vector space structure is equivalent 
+%           to $V$ being a $\C G$ modules. We only need to check compatibility with scalars. 
+%           Let $r,k\in\C$ and $rg+kh\in \C G$ and consider the action 
+%           %$(rg+kh)\cdot v=r(g\cdot v)+k(h\cdot v)=r\rho(g)v+k\rho(h)v=\rho(g)rv+\rho(h)kv=g\cdot rv+h\cdot kv$
+%           \idjtodo{what is this? the formal linear combination work out because of "formality"? IDK here.}
+%           Finally we will show that a $\C G$-module $V$ gives a representation, 
+%           Let $\phi:G\ra GL(V)$ map $g\mapsto (v\mapsto g\cdot v)$ \idjtodo{show this is hom.}
+%
+%           \idjtodo{this is so tedeous}
+
+\item[(2)] % 2 points
+           Let $B_2$ be the upper triangular matrices in $GL_2(\C)$. First to show that there is not decomposition 
+           notice that the matrices $\begin{bmatrix}1 & 2\\ 0 & 1\end{bmatrix}$ and 
+           $\begin{bmatrix}2 & 2\\ 0 & 1\end{bmatrix}$ do not share both of their eigenvectors and therefore 
+           $V$ can not be decomposed as a G module. 
+           
+           However notice we can act on the 1-dim subspace spanned by $\begin{bmatrix}1\\ 0 \end{bmatrix}$ 
+           and the action is closed on this subspace as this vector is a common eigenvector for all upper triangular matrices
+           meaning this repn on 
+           $B_2$ is reducible.
+
+\item[(3)] % 3 points
+           Notice that $B_n$ acts on $\C^n$. However notice that for $1\leq \ell < n$ the group
+           $B_n$ also acts on the $\ell$-dimensional space spanned by the first $\ell$ elementary vectors.
+           This follows from $B_n$ being the upper triangular matrices, and so action by 
+           $B_n$ only add the rows of the vector upward
+           Therefore every space spanned by the first $\ell$ elementary vectors is a subrepresentation.
+
+\item[(5)] % 4 points
+            Consider the permutation representation of $S_3\ra GL_3(\C)$.
+
+            Because the image of this representation are the permutation matrices, we know that the all $1$s vector
+            is an eigenvector.
+            This means with a change of basis matrix $\begin{pmatrix}
+                1 & -2 & 1 \\
+                -2 & 1 & 1 \\
+                1 & 1 & 1
+            \end{pmatrix}$ which will isolate the eigenvector in the third component with  
+            the other two columns being orthogonal, we can block diagonalize each matrix 
+            in our representation to get the following decomposed representation.
+            Computations done using a computer
+
+            $()\mapsto\begin{pmatrix}[cc|c]
+                1 & 0 & 0 \\
+                0 & 1 & 0 \\
+                \hline
+                0 & 0 & 1
+            \end{pmatrix}$ $(1,2)\mapsto\begin{pmatrix}[cc|c]
+                0 & 1 & 0 \\
+                1 & 0 & 0 \\
+                \hline
+                0 & 0 & 1
+            \end{pmatrix}$
+
+            $(1,3)\mapsto\begin{pmatrix}[cc|c]
+                1 & 0 & 0 \\
+                -1 & -1 & 0 \\
+                \hline
+                0 & 0 & 1
+            \end{pmatrix}$ $(2,3)\mapsto\begin{pmatrix}[cc|c]
+                -1 & -1 & 0 \\
+                0 & 1 & 0 \\
+                \hline
+                0 & 0 & 1
+            \end{pmatrix}$
+
+            $(1,2,3)\mapsto\begin{pmatrix}[cc|c]
+                -1 & -1 & 0 \\
+                1 & 0 & 0 \\
+                \hline
+                0 & 0 & 1
+            \end{pmatrix}$ $(1,3,2)\mapsto\begin{pmatrix}[cc|c]
+                0 & 1 & 0 \\
+                -1 & -1 & 0 \\
+                \hline
+                0 & 0 & 1
+            \end{pmatrix}$
+
+\item[(7)]
+Let $G$ be a Lie Group. Let $N$ be an open neighborhood(or an open set really.) containing $e$. 
+Consider any element $g\in G$ which defines a diffeomorphism $g\cdot - :G\ra G$, therefore a homeomorphism. Notice
+that this means that for any $n\in\ip N$ we have that $n\cdot N$ is an open set as $N$ was open. 
+Notice also that $n\cdot N$ is contained in $\ip{N}$.
+This means that for an $n\in \ip N$ there is an open set $n\cdot N\se \ip N$ containing $n$ and so 
+$\ip N$ is open. Equivalently this means $\ip N = \bigcup_{n\in\ip N} nN$ and is therefore open.
+
+Now we will show that $\ip N$ is closed or $\ip N^c$ is open. Consider a $p\in\ip N^c$, then $p\cdot N$ is open.
+Notice also that it is distinct from $\ip N$ as if there existed an element $x\in p\cdot N\cap \ip N$ then $
+x=p\cdot n_0=\prod^k_{i=1}n_i$ in which case $p=\prod^k_{i=1}n_i n_0^{-1}\in\ip N$ which is not the case. 
+So every point $p$ is contained in an open set $p\cdot N$ contained in $\ip N^c$ so $\ip N ^c$ is open.
+
+Finally because $\ip N$ is both open and closed, contains $e$ and $G$ is connected we know $\ip N= G$ 
+
+
+\end{itemize}
+
+\end{document}
+

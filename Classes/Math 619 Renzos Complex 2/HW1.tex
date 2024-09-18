@@ -1,0 +1,34 @@
+\documentclass[12pt]{amsart}
+\usepackage{preamble}
+\DeclareMathOperator{\stab}{\mathrm{stab}}
+
+\begin{document}
+\begin{center}
+    \textsc{Math 601. HW 1\\ Ian Jorquera}
+\end{center}
+\vspace{1em}
+\begin{itemize}
+\item[(1.4)] Let $\C\sqcup\C=\{(1,z) |z\in C\}\cup\{(z,1) |z\in C\}$. Consider the map 
+             $\pi_3:\C\sqcup\C\ra \text{Set}(\C\P^1)$ where $(z,1)$ maps to the line spanned by 
+             $(z,1)$, $\text{span}{(z,1)}$
+             and likewise $(1,z)\mapsto \text{span}{(1,z)}$. 
+             
+             Notice that this map is surjective as 
+             for any line $\ell=\text{span}(a,b)$ 
+             we can rescale the vector $(a,b)$ to be either $(a/b, 1)$ or $(1,0)$ which then maps to $\ell$ 
+             with $\pi_3$. Finally we can look
+             at the quotient space of $\C\sqcup\C$ where we identify inputs that share the same output, 
+             which is the equivalence relation 
+             $(z,1)\tilde (1,1/z)$.
+
+
+\item[(2.5)] As shown in Exercise 2.4 we have that $S^2$ is homeomorphic to $\C\P^1$. 
+             Likewise by definition of the quotient topology we have a surjective continuous 
+             function $\pi_2:S^3\ra\C\P^1\cong S^2$. Let $\ell\in \C\P^1\cong S^2$ and consider an element of the preimage 
+             $p\in \pi_2^{-1}(\ell)\se S^4\se \C^2$. 
+             We also know from 1.3 that any point $e^{i\theta}p\mapsto \ell$. And so the entire preimage 
+             $\pi_2^{-1}(\ell)\cong S^1$ by the map $e^{i \theta}\mapsto e^{i \theta} p$.
+\end{itemize}
+
+\end{document}
+
