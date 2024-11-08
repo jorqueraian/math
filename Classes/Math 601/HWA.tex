@@ -7,8 +7,142 @@
     \textsc{Math 601. HW A\\ Ian Jorquera}
 \end{center}
 \vspace{1em}
-\begin{itemize}
-    \item[(1)]
+\begin{itemize} % Still need to do 3(good enough), 7a, and 5(SLn so tr=0)
+    \item[(1)] Consider the square embedded in $R^2$ or $C^2$ with coordinates
+     $(1,1)$, $(1,-1)$, $(-1,-1)$, and $(-1,1)$. Notice that this defines the representation $\rho:D_4\ra GL(\C^2)$
+     \[r\mapsto\begin{bmatrix}
+        0 & 1\\
+        -1 & 0
+     \end{bmatrix}\;\;\;\;\;\;\; s\mapsto\begin{bmatrix}
+        -1 & 0\\
+        0 & 1
+     \end{bmatrix}\]
+     Where $r$ is the clockwise rotation and $s$ the rotation around the $y$ axis.
+     Notice that the eigenvectors of $\rho(s)$ are the elementary vector $e_1$ and $e_2$ 
+     with eigenvalues $-1$ and $1$ respectively. Notice that regardless of the underlying 
+     vector space $\C^2$ or $\R^2$ the matrix $\rho(r)$ does not share either of these eigenvalues.
+     This means that the matrices $\rho(r)$ and $\rho(s)$ are no simultaneously 
+     diagonalizable. And so this is an irreducible representation.\\
+
+
+     \item[(2)] % DONE 
+     % See: https://kconrad.math.uconn.edu/blurbs/linmultialg/minpolyandappns.pdf
+     % thm 5.1 and cor 4.13
+     Let $G$ be a finite Abelian Group and consider a representation $\rho:G\ra GL(V)$ where $\dim(V)=n$. 
+      
+     %There are two things to show
+     %that these matrices are diagonalizable in the first place and that commuting diagonalize 
+     %matrices are simultaneously diagonalizable. First lets show that every $\rho(g)$ is diagonalizable.
+     Let $g\in G$ where $g^{|G|}=1$, meaning as a matrix $\rho(g)^{|G|}-I=0$, meaning the 
+     minimal polynomial of $\rho(g)$, $m_{\rho(g)}(x)$ divides $x^{|G|}-1$, which has 
+     $n$ distinct roots in $\C$, meaning $m_{\rho(g)}(x)$ has all distinct roots, and so $\rho(g)$ is diagonalizable.
+     %Now we want to show that commuting diagonalizable matrices are simultaneously diagonalizable. 
+     %We will show this with induction on the number of commuting matrices. As a base case if there is 
+     %$1$ diagonalizable matrix, then it is trivially simultaneously diagonalizable. Now assume 
+     %the collection $\{\rho(g): g\in G\}$ has $r$ distinct matrices that all commute and are diagonalizable.
+     %From the above we know that $\rho(g)$ has $n$ distinct eigenvectors, which form a basis for $V$.
+     %Let $v$ be an eigenvector of $\rho(g)$ with $\rho(g)v=\lambda v$. This means that for any 
+     %$h\in G$ that $\rho(g)(\rho(h)v)=\rho(h)(\rho(g)v)=\lambda\rho(h)v$, meaning $\rho(h)v$ is an 
+     %eigenvector of $\rho(g)$ with the same eigen value. Because the Eigen
+     %Its enough to show $AB=BA$ implies that $A$ and $B$ are simultaneously diagnolizable as JCF or soemthing, 
+     %which is unique diagnolizable up to permutations
+     %Let $AB=BA$ where $A$ and $B$ are both diagonalizable. Meaning $A$ has $n$ distinct 
+     %eigenvectors which form a basis for $V$. Let Let $v$ be an eigenvector of $A$ with $Av=\lambda v$. 
+     %This means that $A(Bv)=B(Av)=\lambda B v$, meaning $Bv$ is an eigenvector of $A$ with the same eigenvalue.
+     %This means B maps eigenvectors of $A$ with eigenvalue $\lambda$ to eigenvectors of $A$ with eigenvalue $\lambda$.
+     %So we need only show that $B$ acts diagonalizable on each of the spaces of eigenvectors with eigenvalue $\lambda$, 
+     %and then because linear combinations of eigenvectors with the same eigenvalue are 
+     %again eigenvectors with that same eigenvalue. Ill leave this here for Now
+     Because $G$ is Abelian we know that for $g,h\in G$ that $\rho(g)\rho(h)=\rho(h)\rho(G)$, meaning every matrix 
+     in our representation commutes, and so every matrix is 
+     simultaneously diagnolizable. Which means they all share eigenvectors which form a basis for $V$. 
+     This gives a change of basis for each matrix into diagonal matrices, and so the representation 
+     $\rho$ is decomposable into dimension $1$ representations that are the spans of each of the 
+     distinct eigenvectors. Therefore the only irreducible representations are dimension $1$ as otherwise 
+     there is a decomposition into dimension one irreducible.\\
+
+     \item[(3)] Let $\rho:G\ra GL(\C^m)$ and $\sigma:G\ra GL(\C^n)$ be representations. 
+     We can define the tensor product of these two representation by how $G$ acts on $\C^{m}\otimes\C^{n}$ which
+     has as a basis $\{v_j\otimes w_k | 1\leq j\leq m \text{ and }1\leq k\leq n\}$ where 
+     $v_j$ represents the $j$th elementary vector of $\C^m$ and $w_k$ represents the $k$th elementary vector of $\C^n$.
+     This means that $\C^m\otimes \C^n\cong \C^{nm}$. Furthermore we will define an ordering on the basis elements as follows
+     $(j,k)\leq (j',k')$ if $j<j'$ or $j=j'$ and $k\leq k'$. 
+     We then define the action of $G$ as $g\cdot(v\otimes w)= gv\otimes gw$. 
+     And the way $g$ acts on $v$ is as a matrix $\rho(g)v$, so
+     $gv\otimes gw= \rho(g)v\otimes \sigma(g)w$. Now consider a group element $g\in G$ and let 
+     $A=\rho(g)$ and $B=\rho(B)$. Now consider the particular basis element $v_j\otimes w_k$ and notice that 
+     $Av_j$ is just the $j$th column of $A$, and likewise $Bw_k$ is the $k$th column of $B$. This means that
+     $g(v_j\otimes w_k)$ is a linear combination of the basis element $\C^{m}\otimes \C^{n}$ where the 
+     coefficient of $v_{j'}\otimes w_{k'}$ is $a_{j'j}b_{kk'}$. And so repeating this for all basis element 
+     gives us that $g$ maps to the matrix $A\otimes B$.
+     \\
+      
+     
+     %Define $\rho\otimes\sigma:G\ra GL(\C^{m}\otimes\C^{n})$ by $g\mapsto 
+
+
+     \item[(4)] First notice that the dimension of the tensor product space $(\C^n)^{\otimes k}$ is $n^k$. 
+     Notice also that for any partition $\lambda$ of size $k$ having at most $n$ parts, the space $V_\lambda$ is spanned by a 
+     basis indexed by the SYT of shape $\lambda$. Likewise the space $V^{\lambda}$ is spanned by basis elements indexed by SSYT of shape $\lambda$.
+     This means that basis elements of $V_\lambda\otimes V^{\lambda}$ are indexed by pairs $(P,Q)$ 
+     where $P$ is a SSYT and Q is a SYT, both of the same shape $\lambda$, with fillings of $P$ being the numbers $1,2,\dots, n$
+     By the RSK bijection this gives we know that pairs of such tablaux are in bijection with words of length $k$ with letters $1,\dots, n$ with repeats.
+     We can count the number of words as $n^k$ as there are $k$ digits each with $n$ options.\\
+
+
+
+     \item[(5)] Recall that the lie group $B_n(\C)$ are the invertible upper 
+     triangular matrices. Specifically we want to consider the ones whose determinant is $1$ meaning the product of 
+     the diagonal is $1$
+     Using the $\epsilon$ method we have that 
+     $\mathfrak{b}_n(\C)=\{X:, I+\epsilon X\text{ is invertable upper triangular matrix with }\det(I+\epsilon X)=1\}$.
+     The condition of the determinant puts the requirements that $X$ has $\text{tr}(X)=0$.
+     the condition $I+\epsilon X$ being upper triangular requires that $X$ is upper triangular. 
+     So \[\mathfrak{b}_n(\C)=\{X: X\text{ is upper triangular and }\text{tr}(X)=0\}\]
+
+     \item[(6)] Here we can use the Clebsch-Gordan which gives us that $V^3\oplus V^5=V^{8}\oplus V^{6}\oplus V^{4}\oplus V^{2}$.\\
+     
+
+     \item[(7)] 
+     \begin{enumerate}[label= (\alph*)]
+      \item Recall that the represtnation $(V^1)^{\otimes n}$ can be written as the sum of irreducibles, and 
+      that the number of irreducibles is counted by the ballot words of $1$s and $2$s of length $n$. 
+      We now need to come up with a way of counting the number of irreducibles. Consider the formal character 
+      $\rchi_{V^1}(q)=q+q^{-1}$. And so $\rchi_{V^1}(q)=(q+q^{-1})^n$. 
+      Notice that when $n$ is even every term of the formal character will have an even power, and when $n$ is odd every 
+      term in the formal character will have an odd power. We can see this with induction and that multiplying the 
+      formal character by $(q+q^{-1})$ will result in the degree of every term being $\pm 1$ of the degree of the 
+      original terms, and so changed the oddness or evenness. if $n$ is even this would mean that every irreducible factor 
+      would have a weight $0$ vector, meaning the number of irreducibles is counting by the dimension of the $0$ weight space.
+      And likewise if $n$ is even then every irreducible factor would have a weight $-1$ factor meaning the number of irreducibles 
+      is counted by the dimension of the $-1$ weight spaces.
+
+      Now let $n$ be a positive integer and consider the even numner $2n$ and notice that the number of irreducible 
+      factors of $(V^1)^{\otimes 2n}$ is counted by the weight $0$ weight space, or the coefficient of the $q^0$ factor 
+      of the formal character $(q+q^{-1})^{2n}$ which is the binomial coefficient ${2n \choose n}$. Likewise consider 
+      the odd numner $2n+1$ and notice that the number of irreducible 
+      factors of $(V^1)^{\otimes 2n+1}$ is counted by the weight $-1$ weight space, or the coefficient of the $q^{-1}$ factor 
+      of the formal character $(q+q^{-1})^{2n+1}$ which is the binomial coefficient ${2n+1 \choose n+1}$
+
+
+      \item We know that in $V_1^{\otimes k}$ the highest weight vectors correspond to ballot words of $1$s and $2$s of length $k$.
+      And each highest weight vector gives an irreducible representation in the decomposition of $V_1^{\otimes k}$ into irreducibles.
+      So the number of irreducibles in the decomposition of $V_1^{\otimes 2n}$ is counted by the number of 
+      ballot words of length $2n$, of which there are ${2n \choose n}$ ballot words. And so there are ${2n \choose n}$ irreducibles in the decomposition.
+      Likewise this means there are ${2n+1 \choose n+1}$ irreducibles in the decomposition of $V_1^{\otimes 2n+1}$
+     \end{enumerate}
+
+     \item[(8)]
+     We get the following
+     \[\begin{tikzcd}[row sep=1cm, column sep=.65cm]
+     \begin{smallmatrix}1&2&2&1&1&1&2&2&1&2&1&1&1&1\end{smallmatrix}\arrow[d, "F", shift left]\\
+     \begin{smallmatrix}1&2&2&1&1&1&2&2&1&2&1&1&1&2\end{smallmatrix}\arrow[d, "F", shift left]\arrow[u, "E", shift left]\\
+     \begin{smallmatrix}1&2&2&1&1&1&2&2&1&2&1&1&2&2\end{smallmatrix}\arrow[d, "F", shift left]\arrow[u, "E", shift left]\\
+     \begin{smallmatrix}1&2&2&1&1&1&2&2&1&2&1&2&2&2\end{smallmatrix}\arrow[d, "F", shift left]\arrow[u, "E", shift left]\\
+     \begin{smallmatrix}1&2&2&1&1&2&2&2&1&2&1&2&2&2\end{smallmatrix}\arrow[d, "F", shift left]\arrow[u, "E", shift left]\\
+     \begin{smallmatrix}2&2&2&1&1&2&2&2&1&2&1&2&2&2\end{smallmatrix}\arrow[u, "E", shift left]\\
+    \end{tikzcd}\]
+     
 \end{itemize}
 
 \end{document}

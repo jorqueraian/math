@@ -1,0 +1,151 @@
+\documentclass[12pt]{amsart}
+\usepackage{preamble}
+\DeclareMathOperator{\stab}{\mathrm{stab}}
+
+\begin{document}
+\begin{center}
+    \textsc{Math 601. HW 3\\ Ian Jorquera}
+\end{center}
+\vspace{1em}
+\begin{itemize}
+    % 15 points points completed
+    \item[(1)] % 5 points 
+    For $\mathfrak{sl_2}$ representation, with weight spaces corresponding to words of $1$'s and $2$s, a word 
+    to be lowest weight means that the lowering operator $F$ sends the word to $0$ this is precisely the case 
+    where the word is anti-ballot, where for all prefixes of the words the number of $2$s is greater than or 
+    equal to the number of $1$s. To see that this is in fact lowest weight let $w=w_1w_2\dots w_n$ 
+    be a word of $1$s and $2$s that is anti-ballot. 
+    Meaning every prefix has at least as many $2$s as $1$s. Notice that this 
+    means that for every prefix, every $1$ will be paired with a $2$. 
+    This means that there are no unpaired $1$s Applying $F$ would then result in $0$.
+    Now assume that $w$ is a word that is not anti-ballot. Meaning there is a prefix 
+    $w_1\dots w_i$ that contains more $1$s then $2$s. We may assume that 
+    $w_i=1$ and this suffix is of minimal length 
+    in which case $w_i$ would be the left most unpaired $1$, as there are less 
+    $2$s then $1$s 
+    in the prefix. This means that $Fw=w_1w_2\dots w_{i-1}2w_{i+1}\dots w_n$ and 
+    so $w$ did not represent a lowest weight vector.
+
+
+    For $\mathfrak{sl_3}$ representation, with weight spaces corresponding to words of $1$'s $2$s and $3$s, a word 
+    to be lowest weight means that the lowering operators $F_1$, and $F_2$ both send the word to $0$ 
+    this is precisely the case 
+    where the word is anti-ballot in both $1$s and $2$s ignoring $3$s and anti-ballot in $2$s and $3$s ignoring the $1$s,
+    where for all prefixes of the words the number of $2$s is greater than or 
+    equal to the number of $1$s and the number of $3$s is greater than or 
+    equal to the number of $2$s. To see that this is in fact lowest weight let $w=w_1w_2\dots w_n$ 
+    be a word of $1$s, $2$s, and $3$s that is anti-ballot. 
+    Meaning every prefix has at least as many $2$s as $1$s and $3$s as $2$. Notice that this 
+    means that for every prefix, every $1$ will be paired with a $2$ and every $2$ will be paired with a $3$. 
+    This means that there are no unpaired $1$s. Applying $F_1$ would then result in $0$.
+    This also means that there are no unpaired $2$s. Applying $F_2$ would then result in $0$.
+    Now assume that $w$ is a word that is not anti-ballot. Meaning there is a prefix 
+    $w_1\dots w_i$ that contains more $1$s then $2$s or more $2$s then $3$s. Applying $F_1$ or $F_2$ 
+    would result in the first unpaired $1$ or $2$ being switched to a $2$ or $3$ respectively.
+    In either case this would mean that $w$ did not represent a lowest weight vector.\\
+
+
+    \item[(2)] % 3 points
+    For $\mathfrak{sl}_3$ tableau crystals, the possible tableau will have shape 
+    $\lambda={\lambda_1,\lambda_2,\lambda_3}$ where the first $\lambda_1$ columns of will 
+    have $3$ rows and will be filled with content $3,2,1$ reading down. The next  $\lambda_2-\lambda_1$ columns
+    will have $2$ rows and will be filled with content $3,2$ reading down. 
+    Finally the remaining columns $\lambda_3-\lambda_2$ will all have $1$ row and be filled with $3$s.
+    These are the lowest weight Tableau, as there would be no unpaired $2$s or unpaired $1$s in the reading words.
+
+    This means that irreducible $\mathfrak{sl}_3$ representations have unique lowest weights 
+    because any irreducible representation have weight spaces corresponding to a particular shape $\lambda$ 
+    which has a unique filling as described above.\\
+
+    \item[(3)] % 2 points 
+    First we will order the basis $\mathfrak{sl}_3$ in the following way 
+    $E_{12},E_{13},E_{23},E_{21},E_{31},E_{32},H_{12},H_{23}$
+    In which case we compute the following commutators:
+    $[E_{12},E_{2k}]=E_{1k}$ when $k\neq 1$. We also have that $[E_{12}, E_{31}]=-[E_{31}, E_{12}]=-E_{32}$
+    and 
+    $[E_{12},E_{\ell k}]=0$ for all other cases $\ell\neq 2$.
+    $[E_{12},E_{21}]=H_{12}$
+    And $[E_{12},H_{12}]=-2E_{12}$ and $[E_{12},H_{23}]=E_{12}$
+    This all gives us the following matrix. 
+    missing 
+
+    
+    \begin{tikzpicture}
+        \matrix [column sep=1mm]
+        {
+            \node { };        &[2mm] \node{$E_{12}$}; &[-1mm] \node{$E_{13}$}; &[-1mm] \node {$E_{23}$}; &[-1mm] \node {$E_{21}$}; &[-1mm] \node {$E_{31}$}; &[-1mm] \node {$E_{32}$}; &[-1mm] \node {$H_{12}$}; &[-1mm] \node {$H_{23}$}; \\
+            \node {$E_{12}$}; &[2mm] \node(a){0}; &              \node {0}; &              \node {0}; &              \node {0}; &              \node {0}; &              \node {0}; &              \node {-2}; &              \node (b) {1}; \\
+            \node {$E_{13}$}; &[2mm] \node   {0}; &              \node {0}; &              \node {1}; &              \node {0}; &              \node {0}; &              \node {0}; &              \node {0}; &              \node {0}; \\
+            \node {$E_{23}$}; &[2mm] \node   {0}; &              \node {0}; &              \node {0}; &              \node {0}; &              \node {0}; &              \node {0}; &              \node {0}; &              \node {0}; \\
+            \node {$E_{21}$}; &[2mm] \node   {0}; &              \node {0}; &              \node {0}; &              \node {0}; &              \node {0}; &              \node {0}; &              \node {0}; &              \node {0}; \\
+            \node {$E_{31}$}; &[2mm] \node   {0}; &              \node {0}; &              \node {0}; &              \node {0}; &              \node {0}; &              \node {0}; &              \node {0}; &              \node {0}; \\
+            \node {$E_{32}$}; &[2mm] \node   {0}; &              \node {0}; &              \node {0}; &              \node {0}; &              \node {-1}; &              \node {0}; &              \node {0}; &              \node {0}; \\
+            \node {$H_{12}$}; &[2mm] \node   {0}; &              \node {0}; &              \node {0}; &              \node {1}; &              \node {0}; &              \node {0}; &              \node {0}; &              \node {0}; \\
+            \node {$H_{23}$}; &[2mm] \node(c){0}; &              \node {0}; &              \node {0}; &              \node {0}; &              \node {0}; &              \node {0}; &              \node {0}; &              \node (d){0}; \\
+        };
+        \draw [thick] (-2.5,2.2) to [square right brace] (-2.5, -2.8);
+        \draw [thick] (3.8,2.2) to [square left brace] (3.8, -2.8);
+      \end{tikzpicture}\\
+
+
+    \item[(4)] % 2 points
+    Consider the embedding $\iota:\mathfrak{sl}_2\hookrightarrow\mathfrak{sl}_3$
+    Notice first that this map is a linear map which is clearly an embedding. idk maybe show but that would be tedious
+    So we must only show that the map respects the lie for the basis elements of $\mathfrak{sl}_2$
+    Notice that 
+    \[[\iota(E),\iota(F)]=\begin{bmatrix}
+        0&1&0\\0&0&0\\0&0&0
+    \end{bmatrix}\begin{bmatrix}
+        0&0&0\\1&0&0\\0&0&0
+    \end{bmatrix}-\begin{bmatrix}
+        0&0&0\\1&0&0\\0&0&0
+    \end{bmatrix}\begin{bmatrix}
+        0&1&0\\0&0&0\\0&0&0
+    \end{bmatrix} =\begin{bmatrix}
+        1&0&0\\0&-1&0\\0&0&0
+    \end{bmatrix} =\iota(H) = \iota([\iota(E),\iota(F)])\]
+
+    \[[\iota(H),\iota(F)]=\begin{bmatrix}
+        1&0&0\\0&-1&0\\0&0&0
+    \end{bmatrix}\begin{bmatrix}
+        0&0&0\\1&0&0\\0&0&0
+    \end{bmatrix}-\begin{bmatrix}
+        0&0&0\\1&0&0\\0&0&0
+    \end{bmatrix}\begin{bmatrix}
+        1&0&0\\0&-1&0\\0&0&0
+    \end{bmatrix}=\begin{bmatrix}
+        0&0&0\\-2&0&0\\0&0&0
+    \end{bmatrix} =\iota(-2F) = \iota([\iota(H),\iota(F)])\]
+
+    \[[\iota(H),\iota(E)]=\begin{bmatrix}
+        1&0&0\\0&-1&0\\0&0&0
+    \end{bmatrix}\begin{bmatrix}
+        0&1&0\\0&0&0\\0&0&0
+    \end{bmatrix}-\begin{bmatrix}
+        0&1&0\\0&0&0\\0&0&0
+    \end{bmatrix}\begin{bmatrix}
+        1&0&0\\0&-1&0\\0&0&0
+    \end{bmatrix}=\begin{bmatrix}
+        0&2&0\\0&0&0\\0&0&0
+    \end{bmatrix} =\iota(2E) = \iota([\iota(H),\iota(E)])\]
+
+    All other products are accounted for by properties of the Lie Bracket, because the lie bracket is bilinear 
+    and anti-symmetric, with every element lie bracketed with itself being zero.\\
+
+    \item[(7)] % 3 points
+    \begin{enumerate}[label=(\alph*)]
+        \item %1 point
+        The homogenous symmetric function $h_d(x_1,\dots, x_n)$ corresponds to the schur function 
+        $S_{(d)}(x_1,\dots,x_n)$ because the SSYT of shape $(d)$ allows repeats 
+        \item %2 points
+        Recall that the formal character of the irreducible representation 
+        $V^{(a,b)}$ is the schur polynomial on $x_1,x_2,x_3$ for tableau of shape $\lambda$. Meaning
+        $V^{(\mu_1,0)}$ has as its character $S_{(\mu_1)}(x_1,x_2,x_3)=h_{\mu_1}(x_1,x_2,x_3)$.
+        And because the character of a tensor product is the product of the characters we have that 
+        the character of $V^{(\mu_1,0)}\otimes V^{(\mu_2,0)}\otimes \dots \otimes V^{(\mu_k,0)}$
+        is $h_{\mu_1}(x_1,x_2,x_3)\cdot h_{\mu_2}(x_1,x_2,x_3)\cdots h_{\mu_k}(x_1,x_2,x_3)= h_\mu(x_1,x_2,x_3)$
+    \end{enumerate}
+\end{itemize}
+
+\end{document}
+

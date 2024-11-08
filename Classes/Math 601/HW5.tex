@@ -1,0 +1,156 @@
+\documentclass[12pt]{amsart}
+\usepackage{preamble}
+\DeclareMathOperator{\stab}{\mathrm{stab}}
+
+\begin{document}
+\begin{center}
+    \textsc{Math 601. HW 3\\ Ian Jorquera}
+\end{center}
+\vspace{1em}
+\begin{itemize} % 14 point completed
+    \item[(1)] % 3 points
+    Let $w$ be a word of $1$s and $2$s. Let $b$ be the position of some $2$ in the word. 
+    And consider the case where the $2$ is not paired with some $1$. This must also mean there 
+    are no unpaired $2$s to the left of position $b$. So the removal of $b$ does not unbracket any $1$s.
+    Now consider the case that the $2$ at position $b$ was paired with a $1$ at position $c>b$. 
+    In which case we must consider a few cases. 
+
+    First assume that the only $2$s to the left of $b$ are also bracketed with a $1$ also to the left of $b$. 
+    In this case removing the $2$ at $b$ will result in the $1$ at $c$ being unbracketed but no others, 
+    and no $2$ bracketing with the $1$ at $c$.
+    
+    next assume that there exists an unbracketed $2$ at 
+    position $a$ to the left of $b$, such that $a$ is also the first $2$ to the left of $b$ that is not bracketed
+    with a $1$ also to the left of $b$. In this case the removal of $b$ will result in the $2$ at $a$ 
+    bracketing with the $1$ at $c$. So no new $1$s are unbracketed.
+    
+    Finally assume that there is a $2$ at position $a<b$ 
+    which is paired with a $1$ at position $d>c$ such that $a$ is the first such $2$ to the left of $b$.
+    Notice that the removal of $b$ will result in the $2$ at $a$ pairing with the $1$ at $c$. And if 
+    there is another $2$ (minimally) to the left of $a$ not paired with a $1$ to the left of $a$ then 
+    that $2$ would pair with the $1$ at $d$. If that $2$ was itself paired with a $1$ to the right of $d$ 
+    then this process would repeat in an inductive fashion, otherwise it wouldn't be paired with a 
+    $1$ at all and there would be no new $1$s
+    left unpaired. If there wasn't an unpaired $2$ to the left of $a$ then $d$ would be a new unpaired $1$ 
+    but no other $1$s would be unpaired.
+
+    This also shows that at most one new $1$ will be unpaired with the removal of any $2$.\\
+
+    \item[(2)] % 1 point
+    For word crystals, $\phi_i$ counts the number of 
+    $i+1$s that are not paired with an $i$. And likewise $\epsilon_i$ counts
+    the number of $i$s that are not paired with $i+1$.
+    This means word crystals are seminormal, because $\phi_i(w)$ counts the number of 
+    unpaired $i+1$s which means we can apply the operator $E_i$ that many times. Likewise 
+    $F_i$ can be applied for each unpaired $i$ of which there are $\epsilon_i(w)$.\\
+
+    \item[(3)] % 2 points
+    Recall first that the $wt:B\ra \Z\ip{L_1,L_2,\dots, L_n}/(L_1+\dots+L_n)$ is the function that maps any 
+    word $w\mapsto(\#1s, \#2s,\dots,\#ns)$. Notice that if $x,y$ are two words such that $e_i(x)=y$ and $x=f_i(y)$
+    Notice that $x$ is equal to the word $y$ but with the right most $i$ not paired with an $i+1$ 
+    changed to an $i+1$. Notice that the weight functions would be as follows, if $wt(x)=(w_1, w_2,\dots,w_n)$ then
+    $wt(y)=(w_1, w_2,\dots,w_i+1,w_{i+1}-1,w_n)=w(x)+\alpha_i$ Notice also that because word crystals satisfy axiom S0,
+    we also know that this means $\epsilon_i(y)=\epsilon_i(x)-1$ and $\phi_i(y)=\phi_i(x)+1$. This shows that Word crystals satisfy K1.
+    
+    Now to see word crystals satisfy K2, let $x$ be a word. Recall that $wt(x)=(\#1s, \#2s,\dots,\#ns)$. 
+    Notice that because the weights classes formed by the relation $L_1+\dots+L_n=0$, let
+    $k$ be the number of paired $i+1$ with an $i$ in which case we have that $wt(x)=(\#1s-k, \#2s-k,\dots-k,\#ns-k)$
+    where $wt(x)_i$ represents the number of $i$s that are not paired with a $i+1$, or in other words $\phi_i(x)$
+    and $wt(x)_{i+1}$ represents the number of $i+1$s that are not paired with a $i$, or in other words $\epsilon_i(x)$.
+    So we have $wt(x)_i-wt(x)_{i+1}=wt(x)_i-wt(x)_{i+1}=(\# is-k) - (\# i+1s-k)$ which is closed under the 
+    relation of adding or subtraction a constant to each of the terms in the weight. This proves that word crystal Satisfy K1 and K2.\\
+
+    \item[(4)] % 3 points
+    Using the above for $\phi_i$ and $\epsilon_i$ for word crystal of words consisting 
+    of $1,\dots,n$ we can consider the length axiom (a).
+    let $|i-j|>1$ and assume $y=e_i(x)$ which means $y$ is the word after applying $E_i$ to the word $x$, 
+    which changes the left most unpaired $i+1$ to an $i$. Notice that because $|i-j|>1$ this can only have affected 
+    the number of paired and unpaired $i-1$s and $i+1$s, and not the number of $j$s. 
+    So $\epsilon_j(x)=\epsilon_j(y)$ and $\phi_j(x)=\phi_j(y)$ as desired.
+    For axiom (b) consider the case where $|i-j|=1$ and specifically when $j=i+1$ in which case
+    $y=e_i(x)$ is the word $x$ with the left most unpaired $i+1=j$ changed to an $i$, 
+    considering pairing of $j$s with $i$s. Notice there are two cases if $j$ was paired with some $j+1$ or not.
+    If it was then the number of $j$ that are unpaired with a $j+1$ does not change, 
+    but this makes it so there are 1 addition $j+1$ that is unpaired, 
+    so $\phi_j(x)=\phi_j(y)$ and $\epsilon_j(x)+1=\epsilon_j(y)$. In the other case if $j$ was 
+    not paired with some $j+1$, then the number $j$s that are unpaired would decrease by $1$ but the number 
+    of $j+1$s that are unpaired would not change as no pairings were broken in the removal of the $j$. 
+    So $\phi_j(x)-1=\phi_j(y)$ and $\epsilon_j(x)=\epsilon_j(y)$
+
+    Finally notice that the case where $j=i-1$.
+    $y=e_i(x)$ is the word $x$ with the left most unpaired $i+1$ changed to an $i$, 
+    considering pairing of $i+1$s with $i$s. Notice there are two cases if 
+    the new $i$ pairs with some $j$ or not.
+    If it pairs with a $j$ then the number of $j+1=i$s, unpaired with a $j$ does not change, 
+    but this makes it so there is 1 addition $j$ that is now paired, so the number of unpaired $j$s decreases by one, 
+    so $\phi_j(x)-1=\phi_j(y)$ and $\epsilon_j(x)=\epsilon_j(y)$. In the other case 
+    if the new $i$ does not pairs with a $j$ then the number of $j+1=i$s, unpaired with a $j$ increases by 1, 
+    but no additional $j$ are now paired or unpaired, so the number of unpaired $j$s does not change, 
+    so $\phi_j(x)=\phi_j(y)$ and $\epsilon_j(x)+1=\epsilon_j(y)$.\\
+
+    %\item[(6)] % 3 points 
+    %First we will show that Type A Kashiwara crystals are graded posets with the covering 
+    %relation given by the $f_i$ arrows. That means $y$ covers $x$ if $f_i(y)=x$. This suggests that the
+    %rank function is probably the $\sum \phi_i$. 
+
+    %Lets prove a little lemma.. im not sure what to do here
+    
+    %From K2 we have that 
+    %$\sum_{i=1}^n\phi_i(x)=\sum_{i=1}^n\epsilon_i(x)+\text{wt}(x)_1-\text{wt}(x)_{n}$.
+    \item[(7)] 
+    \begin{itemize}
+        \item[(a)] % 3 points
+        Assume that $w$ and $v$ are knuth equivalent, 
+        and that they differ by at most one knuth move. 
+        We may also assume that both words are made up of distinct characters, 
+        as if they were not we can relabel with in the following way 
+        $iij\dots\mapsto i(i+1)(j+1)\dots$ where for any consecutive 
+        numbers we keep the first the same and add $1$ to all remaining characters.
+        Let $a$ be the smallest character in the words $w$ and $v$.
+        We will consider the possible knuth moves, considering the removal of 
+        this smallest letter $a$.
+
+        First consider the case where the smallest letter $a$ occurs in $w$ and 
+        $v$ in the same place, outside of any knuth move. 
+        Meaning the knuth move(or possible no move at all) making $w$ and $v$ 
+        equivalent is not affected by the removal of $a$. And so with the removal of $a$
+        the two words are still equivalent.
+
+        Now assume again $a$ is the smallest letter and for $a<b<c$ that 
+        $w=\dots acb\dots$ and $v=\dots cab\dots$ then removal of $a$ would result in
+        $w'=\dots cb\dots$ and $v'=\dots cb\dots$, meaning $w$ and $v$ with the removal of 
+        $a$ are the same word, and so would be knuth equivalent.
+
+        Now assume for $a$, the smallest letter and for $a<b<c$ that 
+        $w=\dots bac\dots$ and $v=\dots bca\dots$ then removal of $a$ would result in
+        $w'=\dots bc\dots$ and $v'=\dots bc\dots$, meaning $w$ and $v$ with the removal of 
+        $a$ are the same word, and so would be knuth equivalent.\\
+
+        % this is important because knuth equivalence have the same insertion tableau
+
+        \item[(b)] % 2 points 
+        In order for the concatenated reading word $\text{rw}(S)\text{rw}(T)$ to be ballot
+        every suffix has to be ballot. And because $\text{rw}(T)$ is a suffix, it must be ballot.
+        SSYT that have ballot reading words are highest weight tableau.
+        
+        Now notice that if we had the pair $(T,T)$ of tableau of of shape $\mu$ 
+        that are height weight, the RSK bijection would standardize the right tableau to 
+        be of the formed of counting from $1$ to $|\mu|$ starting from bottom left 
+        reading right then moving up a row. Then we would unbump according to tht tableau, and
+        at every step we would have a suffix that is ballot, because taking out a letter $j$ 
+        from the unstandardized tableau would require that we first had to 
+        unbump a letter from all rows below it.
+        The un-standardizing would then gives the unique weakly increasing word 
+        of the content $\mu$.\\
+
+        \item[(c)(iii)] % 1 point
+        This map is well defined because RSK is a bijection, meaning the two 
+        line arrow created in 7b is uniquely determined by the tableau $T$. And then the process of
+        inserting the bottom row of the two line array also unique determines the resulting tableau by RSK,
+        so then the resulting skew tableau must be well-defined as 
+        the letters $a_1,\dots, a_{|\mu|}$ are unique determined. 
+    \end{itemize}
+\end{itemize}
+
+\end{document}
+

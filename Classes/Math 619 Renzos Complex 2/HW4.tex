@@ -1,2 +1,27 @@
 % not sure where to put this: https://www.math.colostate.edu/~renzo/teaching/Toric18/Linebundles.pdf
 % https://www.math.colostate.edu/~renzo/teaching/Toric18/sheaves.pdf
+\documentclass[12pt]{amsart}
+\usepackage{preamble}
+\DeclareMathOperator{\stab}{\mathrm{stab}}
+
+\begin{document}
+\begin{center}
+    \textsc{Complex Geometry. HW 2\\ Ian Jorquera}
+\end{center}
+\vspace{1em}
+\begin{itemize}
+    \item[(7.5)] Let $x=x_0$ be a point in $\C\P^1$ such that $x_0\neq 0$ and so $y=\frac{1}{x_0}$. 
+    In this case we can consider the fibers of this point in both charts. Notice that 
+    $\pi^{-1}(x_0)=\{(x=x_0, u)|u\in \C\}$ and like wise $\pi^{-1}(1/x_0)=\{(y=1/x_0, v)|v\in \C\}$.
+    From the transition function we know that the point $(x=x_0,u=u_0)=(y=y_0,u_0/x_0^{d})$ 
+    which gives a linear isomorphism from the $u$ coordinate to the $v$ coordinate: $v=u/x_0^{d}$.
+
+    \item[(8.6)] Let $s_j:\C\P^1\ra\mathcal O_{\C\P^1}(d)$ be a section for the line bundle 
+    $\pi:\mathcal O_{\C\P^1}(d)\ra \C\P^1$ for all $j=0,\dots r$. From (8.4) we know that if $d\geq 0$ that every section 
+    is equivalent to a homogenous polynomial $F_j(X:Y)$ of degree $d$, and so this defines the map
+    $[F_0(X:Y):F_1(X:Y):\dots:F_r(X:Y)]$ which is a regular map from $\C\P^1\ra\C\P^r$.
+
+\end{itemize}
+
+\end{document}
+

@@ -1,0 +1,35 @@
+% not sure where to put this: https://www.math.colostate.edu/~renzo/teaching/Toric18/Linebundles.pdf
+% https://www.math.colostate.edu/~renzo/teaching/Toric18/sheaves.pdf
+\documentclass[12pt]{amsart}
+\usepackage{preamble}
+\DeclareMathOperator{\stab}{\mathrm{stab}}
+
+\begin{document}
+\begin{center}
+    \textsc{Complex Geometry. HW 7\\ Ian Jorquera}
+\end{center}
+\vspace{1em}
+\begin{itemize}
+    \item[(11.3)] Let $\text{Pic}(\C\P^1)$ be the equivalence classes of isomorphic 
+    line bundles of $\C\P^1$. We already know that every line bundle is isomorphic to $\mathcal O_{\C\P^1}(d)$
+    for some $d\in \Z$, so these can be the representatives of the elements of the Picard Group. 
+    We also know that the tensor product is a binary operator on $\text{Pic}(\C\P^1)$.
+    Consider the following surjective map $\Phi:\Z\ra \text{Pic}(\C\P^1)$ by 
+    $d\mapsto [\mathcal{O}_{\C\P^1}(d)]$ the class of line bundles isomorphic to $\mathcal{O}_{\C\P^1}(d)$
+    We show that this is a group isomorphism, showing that the picard group is a group and is isomorphic to $\Z$.
+
+    Notice that $\phi(d_1+d_2)= [\mathcal O_{\C\P^1}(d_1+d_2)]=[\mathcal O_{\C\P^1}(d_1)\otimes \mathcal O_{\C\P^1}(d_2)]=[\mathcal O_{\C\P^1}(d_1)]\otimes [\mathcal O_{\C\P^1}(d_2)]= \phi(d_1)+\phi(d_2)$
+    Also notice that $\phi(0)=[\mathcal O_{\C\P^1}(0)]$ which acts as an identity on $\text{Pic}(\C\P^1)$ with tensoring.
+    Finally notice that $\phi(-d)=[\mathcal O_{\C\P^1}(-d)]$ which acts as the inverse to $\phi(d)=[\mathcal O_{\C\P^1}(d)]$ under tensoring.
+    Finally notice that $\phi$ is injective by previous problems, showing if $\mathcal O_{\C\P^1}(d_1)\cong \mathcal O_{\C\P^1}(d_2)$
+    then $d_1=d_2$. \\
+
+    \item[(12.4)]  $H^0(\C\P^1, \mathcal O_{\C\P^1}(d))$ was defined to be the kernel of the map $\delta$. Notice that 
+    if $(s_1,s_2)\in \ker\delta$ then $s_1|_{U_0\cap U_1}\equiv s_2|_{U_0\cap U_1}$. And because $s_1$ is holomorphic 
+    at $0$, and $s_2$ is holomorphic at $\infty$, it must be the case that $s_1$ has no 
+    worse then a removable singularity at $\infty$ and likewise $s_2$ has a removable singularity at $0$. This means with 
+    these two points $s_1\equiv s_2$ and so are equal and holomorphic everywhere.
+\end{itemize}
+
+\end{document}
+

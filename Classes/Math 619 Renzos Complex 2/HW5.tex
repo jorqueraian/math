@@ -1,0 +1,37 @@
+% not sure where to put this: https://www.math.colostate.edu/~renzo/teaching/Toric18/Linebundles.pdf
+% https://www.math.colostate.edu/~renzo/teaching/Toric18/sheaves.pdf
+\documentclass[12pt]{amsart}
+\usepackage{preamble}
+\DeclareMathOperator{\stab}{\mathrm{stab}}
+
+\begin{document}
+\begin{center}
+    \textsc{Complex Geometry. HW 5\\ Ian Jorquera}
+\end{center}
+\vspace{1em}
+\begin{itemize}
+    \item[(9.2)] Consider two meromorphic function from $\C\P^1$ to $\C$, the function 
+    $F(X:Y)=\frac{\prod^n(a_iX-b_iY)}{\prod^n(c_iX-d_iY)}$ and 
+    $G(X:Y)=\frac{\prod^n(e_iX-f_iY)}{\prod^n(g_iX-g_iY)}$. Notice that their product
+    $F(X:Y)G(X:Y)=\frac{\prod^n(a_iX-b_iY)}{\prod^n(c_iX-d_iY)}\frac{\prod^n(e_iX-f_iY)}{\prod^n(g_iX-g_iY)}$
+    added the zeros of $FG$ are precisely the zeros from $F$ and $G$ separately. Likewise the poles
+    of $FG$ are precisely the poles from $F$ and $G$ separately. This means the the divisor is
+    $div(FG)=div(F)+div(G)$
+
+    \item[(9.4)] Let $s:\C\P^1\ra L$ be a section for the line bundle $\pi:L\ra \C\P^1$. 
+    Let the $supp(div(s))$ be the points with non-zero coefficient in the divisor, 
+    meaning this are precisely the zeros and poles of $s$. This gives us a natural bijection, 
+    that trivializes the line bundle for all fibers other then the one in the support.
+
+    Consider the map $T_s:\pi^{-1}(\C\P^1-supp(div(s)))\ra (\C\P^1-supp(div(s)))\times \C$
+    that maps $p\in \pi^{-1}(\C\P^1-supp(div(s)))$ and maps it to the point $(\pi(p), \frac{p}{s(\pi(p))})$ 
+    where because both $p$ and $s(\pi(p))$ live in the same fiber, $\pi^{-1}(\pi(p))$ we can interpret 
+    $\frac{p}{s(\pi(p))}$ as an element of $\C$, where we relate $p$ with a value in $\C$ with 
+    the corresponding non-canonical linear isomorphism, and $s(\pi(p))$ with the same linear isomorphism. 
+    It is then the case that $\frac{p}{s(\pi(p))}$ is invariant under the choice on non-canonical isomorphism 
+    and is defined for all points $p$ not in the fibers of the support of the divisor. This is invertible precisely 
+    because we divide by a non-zero complex number $s(\pi(p))$
+\end{itemize}
+
+\end{document}
+
