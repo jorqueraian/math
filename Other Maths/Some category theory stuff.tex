@@ -1,0 +1,167 @@
+\documentclass[12pt]{amsart}
+\usepackage{preamble}
+
+\begin{document}
+\begin{center}
+    \textsc{Category Theory Notes\\ Ian Jorquera}
+\end{center}
+\vspace{1em}
+\section{What is Category theory?}
+
+\section{First there were morphisms and then there were objects}
+
+
+\section{Objectless Categories: An even more Abstract definition for an already abstract concept}
+
+\section{Functors as homomorphism of Categories}
+
+\subsection{When is a functor Inner? and what does that even mean}
+As far as I can tell this is an idea I invented. And it may not actually be that helpful but what ever. 
+For some motivation lets look at the term "Inner"
+in the context of groups to get some motivation for why we might want a similar term in 
+the world of categories. 
+
+A group automorphism $\phi:G\ra G$ is called an inner automorphism if $\phi(g)=x^{-1}gx$ for 
+some fixed element $x\in G$. Inner automorphisms are the automorphisms that are really coming 
+from conjugation. A Group $G$ can act on its self by conjugation, and for each element the actions 
+by elements give us the inner automorphisms. These are very special automorphisms because they come 
+from with\textit{in} the group. In a sense the group already knew about these particular automorphisms.
+Furthermore conjugation in groups often looks like relabeling. For example consider the permutation $(1,5)(2,4,7,8)$
+conjugated by $(1,2,3,4)$, which would be 
+\[(1,2,3,4)^{-1}\cdot(1,5)(2,4,7,8)\cdot(1,2,3,4)=(4,3,2,1)\cdot(1,5)(2,4,7,8)\cdot(1,2,3,4)=(1,7,8,3)(2,5)=(2,5)(3,1,7,8)\]
+We can see that the structure hasn't changed drasticly but we have relabeled $1,2,3$ and $4$.
+
+These are really the key idea behind the term "Inner", they refer to things that are coming from within 
+the algebraic object you are studying, and dont change the underlying structure is a significant way. 
+So how does this apply to functors? We lets look at some diagrams 
+and try to deduce what inner could possible mean.
+
+Consider a functor $F:C\ra C$ that maps a morphism $f$ to the morphism $Ff$
+\begin{center}
+    \begin{tikzcd}
+        \cdot \arrow[r, "f"]
+        & \cdot \\
+        \cdot \arrow[r, "Ff"]
+        & \cdot
+    \end{tikzcd}
+\end{center}
+
+To call this functor inner, it should have more or less the same idea as in the case of groups. Where the 
+morphism $f\in C$ is related to morphism $Ff\in C$ by some sort of "conjugation". And this conjugation should 
+more or less behave like a relabeling, and should affect the underlying structure in a significant way.
+But we have to be a bit more careful here as what ever we choose to do will depend on the sources and 
+targets of the morphism $f$, as they determine when we can and cant compose with $f$. So we may want to enforce that the functor
+maps morphism according to other morphisms already in the category $C$. Lets add in objects to help contextualize what is going one here.
+
+
+Out functor $F$ is a mapping a morphism $f:a\ra b$ to the morephims $Ff:Fa\ra Fb$ but now we will enforce that for the object $a$ and $b$, 
+the sources and targets of $f$, that there are morphisms $\phi_a:a\ra Fa$ and $\phi_b:b\ra Fb$ that create the following commuting square
+
+ 
+\begin{center}
+    \begin{tikzcd}
+        a \arrow[r, "f"]\arrow[d, "\phi_a"]
+        & b \arrow[d, "\phi_b"]\\
+        Fa \arrow[r, "Ff"]
+        & Fb
+    \end{tikzcd}
+\end{center}
+
+algebraically this is telling us about a commuting $\phi_b \circ f = Ff \circ \phi_a$. In a sense this is telling us 
+that the morphism $f$ is equivalent to the morphism $Ff$ up to some morphisms applied to the source and target, and 
+we can think about this as being similar to just relabeling the sources and targets. Infact if $\phi_a$ was invertible 
+this would give us an explicit conjugation $\phi_b \circ f \circ \phi_a^{-1}= Ff$.
+
+So now we can define what inner will mean in the context of categories. An \textbf{inner endofunctor} is a functor $F: C \ra C$ 
+along with a collection of maps $\{\phi_a | a\text{ an object of }C\}$ for each object(each source and target) 
+such that for every morphism $f:a\ra b$ we have
+\begin{center}
+    \begin{tikzcd}
+        a \arrow[r, "f"]\arrow[d, "\phi_a"]
+        & b \arrow[d, "\phi_b"]\\
+        Fa \arrow[r, "Ff"]
+        & Fb
+    \end{tikzcd}
+\end{center}
+
+Again this is really telling us that the morphisms $f$ and $Ff$ agree is some way internal to the category, by other morphism of the category.
+
+May i will give an object free definition.
+
+%If we thought about this in terms of databases, this is basically saying that the functor F is in a sense just 
+%relabeling according to the morphisms $\{\phi_a\}$ and the actual information of the morphisms is unchanged.
+
+\subsection{When is a natural transformation? and what makes it natural? A abstract mathematical perspective}
+This notion of inner can be used to define an important idea in categories, that of the notion of natural.
+What does it mean for a map to be natural? or as we will see soon, what does it mean for a family of maps to be natural?
+First it is important to recognize that what it means to be natural should and will depend on the greater context of the maps you're looking at.
+If you want a group homomorphism to be called natural you better have a definition that does so in that context, the context of group homomorphisms. This immediately 
+points towards categories as a possible way of doing this, and maybe suggests that what ever we end up doing should also be internal (or "Inner") 
+to the context or the category. 
+
+
+It is almost important to note that this notation of natural, that we are about to define, is primarily used in the context of objects. I may 
+later comment on how it applies to object free categories but often a different starting point is taken.
+That is to say I will unfortunately go against my belief that categories don't need objects and use the objects. But historically that is how natural transformations 
+came into existence.
+
+To call a map natural, it should exist broadly. A single morphism between isolated objects is definitely not natural.
+This suggests that a map being natural should require that it exists, in some way, for all objects, hence natural maps should really be a collection of maps.
+For example we often want to make claims like "Every group is naturally isomorphic to its opposite group" or "the determinant is a natural map".
+Lets consider the determinant example to build a bit more intuition. For this to be natural we first need to determine the context in which it exists. 
+Often the determinant is thought of as a group homomorphism between the groups of invertible matrices $GL_n(R)$ over some ring $R$ and the ring of units $R^*$.
+So our context will be the category of group homomorphisms.
+This is a bit tricky as the determinant isnt a map defined for all the objects in the category of group homomorphisms. 
+But the object we care about (the groups $GL_n(R)$ and $R^*$) 
+are special, they come from the images of Functors, the functors $GL_n(-)$ and $(-)^*$. This suggests that natural transformations need not be a collection of morphisms 
+for all objects but should be a collection of morphisms for
+all objects coming from some special functors (or equivalently the should be parameterized by the domain of the functors). 
+In this example the determinant is going to be a natural transformation, meaning it will be a collection of maps defined on each
+matrix group $GL_n(R)$ or equivalently the underlying commutative ring, as each commutative rings gives us the matrix group through the functor
+$\det = \{\det_R:GL_n(R)\ra R^* | R\text{ a commutative ring}\}$
+This is why many authors will define a natural transformation as a morphism between functors, in this case its its between the functors $GL_n(-)$ and $(-)^*$
+as these parameterize the sources and targets of our collection of maps.
+
+So lets get to a definition!
+Let $F,G:C\ra D$ be two functors, then a natural transformations $\alpha$ is a collection of maps $\alpha=\{\alpha_a:Fa\ra Gb | a\text{ an object of }C\}$
+That defines a functor $A:F(C)\ra G(C)$ on the images of the the functors mapping $Ff$ to $Gf$, that is also inner with respect to $\alpha$, 
+meaning we have the following commuting square for every morphism $f\in C$
+\begin{center}
+    \begin{tikzcd}
+        Fa \arrow[r, "Ff"]\arrow[d, "\alpha_a"]
+        & Fb \arrow[d, "\alpha_b"]\\
+        Ga \arrow[r, "Gf"]
+        & Gb
+    \end{tikzcd}
+\end{center}
+
+
+All this goes to say that a natural transformation can be though of as a functor on the images of the functors $F$ and $G$, 
+that is also "Inner" in the greater category in which the images live.%, ie its just "relabeling" and not affecting the structure of the data.
+
+
+\subsection*{Natural Transformations as algorithms}
+Breath first tree traversal is a natural way the flatten a tree to a list. This is an obvious fact, 
+in the sense that any programmer, without a definition for "natural" would agree.
+Also this tells you a way of relating two ways of storing the "same" data, as either 
+a list or a tree. And a BFS traversal gives a way to translate from one to the other.
+But there are multiple ways to do a flattening from a tree to a list, we could also have done a depth first tree tranversal,
+which would have also flattened the tree in a "natural" way. So one may ask: are these flattening methods in a sense related, 
+can we get from one flattening method to another. This is an important question in computer science because you may have two 
+algorithms that do something to the same data structure but you may not know which one you want to use, this higher 
+level relation can answer that, or it can tell you that methods are equivalent.
+
+natural is a way of translating data, in such a way that it wont affect the possible functions i may want to work with in the future. 
+One key idea here is that "structure" comes from the functions that exists in your 
+world and if you program a way of translating data then its should preserve the data in your world, ie the function on that data.
+
+So this tells us we need to answer a few questions, first what are the data structures i care about, and what is the data i am allowing to change.
+(one idea maybe ill add later is if the structure you care about is order, then breath first 
+search would not preserve that data but depth first would. But to impose this condition you would need a category where the objects 
+have an ordering, ie ordered types.)
+
+Ok lets get into it. First we need to ask what is a functor to a programmer? Well from an 
+objects point of view they are data structure. You may have a function on your data $A$ that translates it to $B$.
+A functor is this a map
+\end{document}
+

@@ -1,0 +1,92 @@
+\documentclass[12pt]{amsart}
+\usepackage{preamble}
+\DeclarePairedDelimiter\bra{\langle}{\rvert}
+\DeclarePairedDelimiter\ket{\lvert}{\rangle}
+
+
+
+\begin{document}
+\begin{center}
+    \textsc{Reading Group on Jordan Algebras and Jordan Pairs\\ Ian Jorquera}
+\end{center}
+\vspace{1em}
+
+\section*{A Pitch}
+The archetypical example of a Jordan Algebra is that of symmetric(Hermitian, or self-adjoint) matrices: 
+$\{A\in \R^{n\times n}| A^\intercal=A\}$. But a problem immediately arises: multiplication does not 
+preserve the symmetricness. For symmetric matrices $A$ and $B$ it is generally the case that
+$(AB)^\intercal=B^\intercal A^\intercal = BA\neq AB$. But we can work around this by 
+introducing new(but still ``natural'') forms of multiplication $A\bullet B= AB+BA$ or 
+$U_A(B)=ABA$, which do preserve the symmetry and have physical significance. Hermitian Matrices 
+come up everywhere in mathematics and in physics.
+
+Jordan Algebras can also teach you literal magic: ``every Jordan Algebraist is equipped 
+with a magic wand which can convert any element to $1$ upon uttering the magic word ``isotope'' ''(McCrimmon)
+
+For me personally, I often work with rectangular short and wide matrices that are 
+``tight'' meaning $\Phi\Phi^\intercal\Phi=c\Phi$, which is an example of a quasi-inverse.
+Jordan Pairs were developed partially in order to study this exact situation.
+Additionally open problems in my field can be equivalently stated as open problems in terms of
+finding a special basis for particular Jordan Algebras(and also Lie algebras)
+
+And a final reason to study Jordan algebras is that they are a very non-standard algebraic 
+structure that requires a lot of unique approaches and solutions.
+\section*{Main Resources}
+\begin{itemize}
+    \item[] (Taste) \href{https://link.springer.com/book/10.1007/b97489}{A Taste of Jordan Algebras}, McCrimmon
+        \begin{itemize}
+            \item This book is structured through a historical lens, and seem to include many motivating examples
+        \end{itemize}
+    \item[] (Loos) \href{https://link.springer.com/book/10.1007/BFb0080843}{Jordan Pairs}, Ottmar Loos
+        \begin{itemize}
+            \item Notation is rough in this book and there aren't many motivating examples. But this book is a complete theory on the subject.
+        \end{itemize}
+    \item[] (Jcb) \href{https://pub.deadnet.se/Books_and_manuals_on_various_stuff/Mathematics/Algebra/Structure%20and%20Representation%20of%20Jordan%20Algebras%20-%20N.%20Jacobson.pdf}{Structure and Representations of Jordan Algebras}, Jacobson
+        \begin{itemize}
+            \item Notation is rough in this book, examples are hard to come by.
+        \end{itemize}
+\end{itemize}
+
+\section*{General Topics}
+\subsection*{Below is an overly ambitious list of possible topics to cover}
+\begin{enumerate}
+    \item The Basics, with heavy number of motivating examples (Taste Part 1: Ch 1, 2, 3, 4, Part 2: Ch 3, 5, 6, 7)
+    \begin{itemize}
+        \item Origins and Motivating Examples: ``Quantum Mechanics'', Full Algebras, Hermitian Algebras and Spin Factors (Part 1 Ch 1, 2.5)
+        \item A brief connection to Lie Algebras (Part 1 Ch 2.4)
+        \item A brief introduction to Isotopes (Part 1 Ch 3.2)
+        \item Quadratic Jordan Algebras, which unlocks part 2 of Taste(Part 1 Ch 4), 
+        inverses(Part 1 Ch 4.5, Part 2 Ch 6), Isotopes(Part 1 Ch 4.6, Part 2 Ch 7), and
+        revisiting motivating examples(Part 2 Ch 3)
+        \item Classification of semi-simple Jordan Algebras (Ch 1.11, 2.13, 3.10, 5.2)
+    \end{itemize}
+    \item Representation Theory, and ``Classical Methods'' (Taste Part 1: Ch 6, Part 2: Ch 8, 9, 10)
+    \begin{itemize}
+        \item Universal Enveloping algebras
+        \item Peirce Decompositions and Coordinatization(Part 1 Ch 6, Part 2: Ch 8)
+    \end{itemize}
+    \item Jordan Pairs (Loos)
+    \begin{itemize}
+        \item The Basics(Loos Ch 1 Sections 1,2,3,4): ``From several points of view, Jordan pairs are the most natural Jordan systems''(McCrimmon)
+        \item Quasi-inverses (Ch 1 Section 3) and Jacobson Radicals (Ch 1 Section 4)
+        \item Universal Enveloping algebras(Ch 4 Section 13) Peirce Decompositions and Coordinatizations (Ch 1 Section 5)
+        \item Connections to Lie Algebras: ``... if you open up a Lie algebra and look inside, 9 times out of 10 there is a Jordan algebra (or pair)  which makes it tick''(McCrimmon)
+        \item Finite Dimensional Jordan Pairs over fields (Ch 4 Sections 14,15)
+    \end{itemize}
+    \item Applications (by buzz word)
+    \begin{itemize}
+        \item Differential Geometry: Inverses and Isotopy
+        \item Lie Theory
+        \item Metric geometry?: Riemannian symmetric spaces, and Hermitian symmetric spaces
+        \item Quasi-inverses: $MM^\#M=M$
+        \item Projective Geometry: Projective planes, Moufang planes
+    \end{itemize}
+\end{enumerate}
+
+\section*{Even More Topics}
+\href{https://mathoverflow.net/questions/230159/applications-of-jordan-algebras}{applications of jordan algebras on mathoverflow} And 
+\href{https://www.ams.org/journals/bull/1978-84-04/S0002-9904-1978-14503-0/S0002-9904-1978-14503-0.pdf}{Jordan Algebras and Their Applications}. Also \href{https://link.springer.com/article/10.1007/BF02099265}{Schrodinger equations and Jordan Pairs}.
+
+%\section*{An Outline (10-12 weeks)}
+
+\end{document}
