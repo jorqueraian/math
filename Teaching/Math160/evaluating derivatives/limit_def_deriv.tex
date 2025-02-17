@@ -1,0 +1,54 @@
+\documentclass[12pt]{article}
+\usepackage[left=0.5in, right=0.5in, top=0.75in, bottom=0.5in]{geometry}
+\usepackage{epsfig,graphics,amsmath,color,multicol,enumitem,tabularx,pbox,url}
+\usepackage{cancel}
+%\usepackage[firstpage]{draft watermark}
+
+\setlist{noitemsep}
+\setlist{nolistsep}
+
+\pagestyle{empty}
+
+\newenvironment{boxe}
+    {\begin{center}
+    \begin{tabular}{|p{0.9\textwidth}|}
+    \hline\\
+    }
+    { 
+    \\\hline
+    \end{tabular} 
+    \end{center}
+    }
+
+\begin{document}
+
+
+\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}l l}
+\textbf{Limit Definition of the Derivative}  &  Name: \hrulefill \\
+%\textbf{\today} & MATH 157, Hogwart's House: \rule{4cm}{0.5pt}  \\
+\textbf{Math 160 } & Favorite Animal:\hspace{2cm} \\
+\hline\hline
+\end{tabular*} 
+
+
+\normalsize 
+
+\vspace{.4cm}
+\begin{boxe}  \textbf{The Definition of a Derivative:} The derivative of $f(x)$ at $x=a$, is defined as 
+    $$f'(a)=\frac{d}{dx}\left[f(x)\right]_{x=a}=\frac{df}{dx}\big|_{x=a}=\lim_{h\to 0}\frac{f(a+h)-f(a)}{h}$$
+    The derivative function of $f(x)$ is defined as
+    $$f'(x)=\dot{f}(x)=\frac{d}{dx}\left[f(x)\right]=\frac{df}{dx}(x)=\lim_{h\to 0}\frac{f(x+h)-f(x)}{h}$$
+\end{boxe}
+For each: Use the limit definition of the derivative, and make sure to add parenthesis when needed!
+\begin{enumerate}
+    \item Let $R(q)=q^2-3q$. Find $R'(7)$
+    \vspace{3.5in}
+    \item Verify that $\frac{d}{dx}\left[\sqrt{x}+1\right]_{x=9}=\frac{1}{6}$
+    \newpage
+    \item Using the limit definition of a derivative to verify that $\frac{d}{dx}\left[3\sqrt{x}+1\right]=\frac{3}{2}x^{-1/2}$
+    \vspace{6in}
+    %\item $\displaystyle{f(x)=\sqrt{\frac{(x+1)^{10}}{(2x+1)^5}}}$. Find $f'(x)$
+    \item Using the power rule ($\frac{d}{dx}[x^n]=nx^{n-1}$) to compute $\displaystyle{\frac{d}{dx}\left[\frac{1}{\sqrt[3]{x}}\right]=}$
+\end{enumerate}
+
+\end{document}
