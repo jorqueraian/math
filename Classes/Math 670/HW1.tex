@@ -1,0 +1,154 @@
+\documentclass[11pt]{article}
+\usepackage{fullpage}
+\usepackage{amsmath,amsthm, amssymb, amsfonts, amscd}
+\usepackage[mathscr]{eucal}
+\usepackage{graphicx}
+\usepackage{psfrag}
+\usepackage[usenames,dvipsnames]{color}
+\usepackage{subfigure}
+
+%       Theorem environments
+
+%% \theoremstyle{plain} %% This is the default
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{ax}{Axiom}
+\newtheorem{conjecture}[theorem]{Conjecture}
+
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}[section]
+
+\theoremstyle{definition}
+\newtheorem{remark}[theorem]{Remark}
+
+
+
+\input epsf
+
+%Math Definitions
+
+
+\newcommand{\Q}{{\mathbb Q}}
+\newcommand{\Z}{{\mathbb Z}}
+\newcommand{\R}{{\mathbb R}}
+\newcommand{\C}{{\mathbb C}}
+\newcommand{\N}{{\mathbb N}}
+
+\newcommand{\RP}{{\mathbb{RP}}}
+\newcommand{\CP}{{\mathbb{CP}}}
+
+
+
+\newcommand{\sgn}{\operatorname{sgn}}
+\newcommand{\dx}{\,\mathrm{d}x}
+\newcommand{\dy}{\mathrm{d}y}
+\newcommand{\dz}{\mathrm{d}z}
+\newcommand{\inv}{\operatorname{inv}}
+\newcommand{\I}{\mathbf{i}}
+\newcommand{\J}{\mathbf{j}}
+\newcommand{\K}{\mathbf{k}}
+\newcommand{\SO}{\operatorname{SO}}
+\newcommand{\dt}{\operatorname{dt}}
+\newcommand{\tw}{\operatorname{tw}}
+\newcommand{\ds}{\operatorname{ds}}
+\newcommand{\st}{\operatorname{st}}
+\newcommand{\sech}{\operatorname{sech}}
+\newcommand{\range}{\operatorname{range}}
+\newcommand{\nul}{\operatorname{null}}
+\newcommand{\spa}{\operatorname{span}}
+\newcommand{\quat}{\mathbb{H}}
+\renewcommand{\Re}{\operatorname{Re}}
+\renewcommand{\Im}{\operatorname{Im}}
+\newcommand{\from}{\co\!\!}
+
+
+\newcommand{\Field}{\mathbb{F}}
+
+\usepackage{xcolor}
+\definecolor{linkblue}{HTML}{003d73}
+\definecolor{linkgreen}{HTML}{006161}
+\definecolor{linkred}{HTML}{a11950}
+\usepackage{hyperref}
+\hypersetup{
+	pdftitle={Math 670 HW \#1},
+	pdfauthor={Clayton Shonkwiler},
+	pdfsubject={differential geometry},
+	pdfkeywords={differential geometry, homework, Math 670},
+	colorlinks=true,
+	linkcolor=linkblue,
+	citecolor=linkgreen,
+	urlcolor=linkred
+}
+% \pagestyle{empty}
+\def\co{\colon}
+
+\begin{document}
+\begin{center}
+{\Large\textbf{Math 670 HW \#1}}\\
+Due 11:59 PM Friday, February 21
+\end{center}
+
+
+
+
+\begin{enumerate}	
+	
+	\item A smooth manifold $M$ is called \emph{orientable} if there exists a collection of coordinate charts $\{(U_\alpha, \phi_\alpha)\}$ so that, for every $\alpha, \beta$ such that $\phi_\alpha(U_\alpha) \cap \phi_\beta(U_\beta) = W \neq \emptyset$, the differential of the change of coordinates $\phi_\beta^{-1} \circ \phi_\alpha$ has positive determinant.
+	
+	\begin{enumerate}
+		\item Show that for any $n$, the sphere $S^n$ is orientable.
+		\begin{proof}
+            
+        \end{proof}		
+		\item Prove that, if $M$ and $N$ are smooth manifolds and $f: M \to N$ is a local diffeomorphism at all points of $M$, then $N$ being orientable implies that $M$ is orientable. Is the converse true?
+        \begin{proof}
+            Becasue $N$ is orientable, there is an atlas $\{(V_\beta,\psi_\beta)\}$ for $N$ such that any change of variables has positive determinant. 
+            Now we will consider an atlas $\{(U_\alpha,\phi_\alpha)\}$ for $M$.
+            Any point $p\in M$, there exists chart $(U,\phi)$ and $(V,\psi)$ where $p\in\phi(U)$ and $f(p)\in\psi(V)$ and $f:\phi(U)\rightarrow\psi(V)$ is a diffeomorphism.
+            Now consider a second chart $(U_2,\phi_2)$ containing the point $p$. Now we want to show that $\phi_2^{-1}\circ\phi$ defined on $U\cap U_2$ 
+            has positive determinant. Let $(V_2,\psi_2)$ be a chart containing $f(\phi_2(U_2))$. Notice that from chasing diagrams we have that 
+            \[\phi_2^{-1}\circ\phi=\phi_2^{-1}\circ f^{-1} \circ \psi_2\circ\psi_2^{-1}\circ\psi\circ\psi^{-1}\circ f \circ\phi\]
+            on $U\cap U_2$ in which case 
+            \[\det(\phi_2^{-1}\circ\phi)=\det(\phi_2^{-1}\circ f^{-1} \circ \psi_2)\det(\psi_2^{-1}\circ\psi)\det(\psi^{-1}\circ f \circ\phi)\]
+            And becasue 
+
+
+
+
+        \end{proof} 
+    \end{enumerate}
+	
+	
+	
+	\item Supply the details for the proof that, if $F \from \operatorname{Mat}_{d \times d}(\C) \to \EuScript{H}(d)$ is given by $F(U) = UU^*$ (where $U^*$ is the conjugate transpose [a.k.a., Hermitian adjoint] of $U$), then the unitary group
+	\[
+		U(d) = F^{-1}(I_{d \times d})
+	\]
+	is a submanifold of $\operatorname{Mat}_{d \times d}(\C)$ of dimension $d^2$. (Hint: it may be helpful to remember that a Hermitian matrix $M$ can always be written as $M = \frac{1}{2}(M + M^*)$.)
+	
+    \begin{proof}
+        
+    \end{proof}
+
+	\item Let $M$ be a compact manifold of dimension $n$ and let $f:M \to \R^n$ be a smooth map. Prove that $f$ must have at least one critical point.
+	
+	
+	\item Prove that, if $X, Y$, and $Z$ are smooth vector fields on a smooth manifold $M$ and $a,b \in \R$, $f,g \in C^\infty (M)$, then
+	\begin{enumerate}
+		\item $[X,Y] = -[Y,X]$ (anticommutivity)
+		\item $[aX+bY,Z] = a[X,Z]+b[Y,Z]$ (linearity)
+		\item $[[X,Y],Z] + [[Y,Z],X] + [[Z,X],Y] = 0$ (Jacobi identity)
+		\item $[fX,gY] = fg[X,Y] + f(Xg)Y - g(Yf)X$.
+	\end{enumerate}
+	
+		 
+\end{enumerate}
+
+
+	
+	
+
+
+\end{document}
