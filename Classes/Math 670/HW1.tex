@@ -129,21 +129,63 @@ Due 11:59 PM Friday, February 21
 	is a submanifold of $\operatorname{Mat}_{d \times d}(\C)$ of dimension $d^2$. (Hint: it may be helpful to remember that a Hermitian matrix $M$ can always be written as $M = \frac{1}{2}(M + M^*)$.)
 	
     \begin{proof}
-        
+        Notice first that $\text{Mat}_{d\times d}(\C)$ is a real manifold with dimension $2d^2$. Likewise $\mathcal H(d)$ is a real manifold with with dimension $d$, 
+		this can be computed by directly entries that satisfy $M=M^*$, where the diagonal has to be all real entries. Next recall that 
+		$T_I\text{Mat}_{d\times d} \cong \text{Mat}_{d\times d}$. We can also use the a defining equation $M=\frac{1}{2}(M+M^*)$ to determine that any curve 
+		$\alpha(t)$ that satisfies this relation would have a derivative at $t=0$ equal to 
+		$\frac{d}{dt}|_{t=0}\left[\alpha(t)\right]=\frac{d}{dt}|_{t=0}\left[\frac{1}{2}(\alpha(t)+\alpha^*(t))\right]=\frac{1}{2}(\alpha'(0)+\alpha'(t)^*)$
+		and so $T_I\mathcal H(d)\cong \mathcal H(d)$
+
+		Here we want to use the level set theorem. So we will show that $I\in\mathcal H(d)$ is a regular point. Notice that $F(I)=I$. To show $I$ is regular
+		we will show that the differential $dF_I:T_I \text{Mat}_{d\times d}\rightarrow T_I\mathcal H(d)$ is surjective.
+		Consider a smooth curve $\alpha(t)$ through $I$ with velocity $v$ in $\text{Mat}_{d\times d}$. This would give us the curve $\beta(t)=F\circ\alpha(t)=\alpha(t)\alpha(t)^*$.
+		Where the derivative at $t=0$ is $\frac{d}{dt}|_{t=0}\left[\beta(t)\right]=\alpha'(0)\alpha(0)^*+\alpha(0)\alpha'(0)^*=v+v^*$.
+		This shows that for any $v\in T_I\mathcal H(d)\cong \mathcal H(d)$ we have that the tangent vector $\frac{1}{2}v$ would map to the tangent vector $v$.
+		This shows that $dF_I$ is surjective.
+
+		So from the level set theorem we have that $F^{-1}(I)=\{UU^*=1\}=U(d)$ is a submanifold of dimension $d^2$. 
     \end{proof}
 
 	\item Let $M$ be a compact manifold of dimension $n$ and let $f:M \to \R^n$ be a smooth map. Prove that $f$ must have at least one critical point.
-	
+	First notice that $f(M)\subseteq \R^n$ is compact because $f$ is continuous and $M$ is compact. This means the image $f(M)$ is closed and bounded.
+	Let $q$ be a point of the boundary of $f(M)$, and $p$ and point that maps to $q$. Notice that this means that there is a direction $v$ in the tangent space
+	$T_q\R^n$ that would point out of $f(M)$, meaning any curve $\beta(t)$ through $q$ with velocity $v$ would leave $f(M)$. So $v$ is not in the image of the differential
+	$df_p$ and so the differential is not surjective. And so $p$ is a critical point.
 	
 	\item Prove that, if $X, Y$, and $Z$ are smooth vector fields on a smooth manifold $M$ and $a,b \in \R$, $f,g \in C^\infty (M)$, then
 	\begin{enumerate}
 		\item $[X,Y] = -[Y,X]$ (anticommutivity)
+		\item \begin{proof}
+			$[X,Y]=XY-YX=-(YX-XY)=-[X,Y]$
+		\end{proof}
 		\item $[aX+bY,Z] = a[X,Z]+b[Y,Z]$ (linearity)
+		\item 
+		\begin{proof}
+		Let $a,b\in\R$ then notice that because $\mathcal X(M)$ is a $\R$-module and $XY$ is well 
+		defined(as a distributive product on vector fields that gives back a differential operator) we have that 
+		$[aX+bY,Z]=(aX+bY)Z-Z(aX+bY)=aXZ+bYZ-aZX-bZY=a[X,Z]+b[Y,Z]$	
+		\end{proof}
 		\item $[[X,Y],Z] + [[Y,Z],X] + [[Z,X],Y] = 0$ (Jacobi identity)
+		\begin{proof}
+			\begin{multline*}
+				[[X,Y],Z] + [[Y,Z],X] + [[Z,X],Y] &= [XY-YX,Z] + [YZ-ZY,X] + [ZX-XZ,Y]\\
+				&= (XY-YX)Z-Z(XY-YX) + (YZ-ZY)X-X(YZ-ZY) + (ZX-XZ)Y-Y(ZX-XZ)\\
+				&= XYZ-YXZ-ZXY-ZYX + YZX-ZYX-XYZ-XZY + ZXY-XZY-YZX-YXZ\\
+				&= 0
+			\end{multline*}
+		\end{proof}
 		\item $[fX,gY] = fg[X,Y] + f(Xg)Y - g(Yf)X$.
+		\begin{proof}
+			This follows from the fact that $X$ is a first order differential operator, and so we can utilize the product rule in the case 
+			$X(gY(h))=X(g)Y(h)+gX(Y(h))$ where $h\in C^\infty(M)$ and so we can simply write $X(gY)=(Xg)Y+gXY$ which gives us
+			\begin{multline*}
+				[fX,gY] &= fX(gY)-gY(fX)\\
+				&= f(Xg)Y+fgXY-g(Yf)X-gfYX\\
+				&= fg[X,Y] + f(Xg)Y - g(Yf)X
+			\end{multline*}
+		\end{proof}
 	\end{enumerate}
 	
-		 
 \end{enumerate}
 
 
