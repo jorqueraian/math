@@ -1,0 +1,29 @@
+\documentclass{article}
+\usepackage{preamble}
+
+\title{Math 670 Final Project Proposal}
+\author{Ian Jorquera}
+
+\begin{document}
+
+\maketitle
+
+I hope to read though and understand sections 1,2, and 4 of the paper \emph{Three proofs of the Benedetto-Fickus theorem}, written by Shonkwiler et. al. and create a write up of my understanding. If I have time, I would also like to write some python code(or in another language) implementing some of the ideas in the paper.
+I believe that this paper can give some insight into different geometrical strategies to working with unit norm tight frames that can be used in other areas of Frame theory.
+
+Unit norm tight frame are generalizations of orthonormal bases, in the sense that they are a collection of spanning vectors in a finite $d$-dimensional Hilbert space $\mathcal H$ in which a generalization of the pythagorean theorem holds. This is equivalent to the standard definition, that $\Phi\in \mathcal H^n$ is a \textbf{unit norm tight frame} if $\norm{\phi_j}=1$ for all columns of $\Phi$ and $\Phi\Phi^\dagger= \frac{n}{d}I_d$, where $\Phi^\dagger$ is the adjoint with respect to the underlying inner product of $\mathcal H$.
+
+We will assume that $\mathcal H=C^d$, and an important observation is that these unit norm tight frames live in the manifold $S(d,n)$ of $d\times n$ complex matrices with columns having unit norm. And that unit norm tight frames are the minimizers of the \textbf{frame potential} 
+$\text{FP}(\Phi)=\norm{\Phi^*\Phi}_F^2=\tr(\Phi^*\Phi\Phi^*\Phi)$.
+The Benedetto-Fickus theorem then tells us that $S(d,n)$ has no spurious local minimizers.
+
+To complete this project I will need to learn how to use Lagrange multipliers, to talk about first order and second order critical points and what the Wirtinger gradient and how it can be used to get the gradient of a function. 
+I also want to look through section 4 on geometric invariant theory. This section seems to investigate the case where a unit norm tight frame has full spark, or the size of the smallest linear dependence set of the columns is as large as possible, $d+1$.
+
+This topic related to Math 670 as it seems as though many of the technics used can be used more generally on Riemannian Manifolds.
+
+%\nocite{*}
+%\bibliographystyle{plain}
+%\bibliography{books}
+
+\end{document}
