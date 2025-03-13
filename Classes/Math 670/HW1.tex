@@ -112,21 +112,17 @@ Due 11:59 PM Friday, February 21
         \end{proof}		
 		\item Prove that, if $M$ and $N$ are smooth manifolds and $f: M \to N$ is a local diffeomorphism at all points of $M$, then $N$ being orientable implies that $M$ is orientable. Is the converse true?
         \begin{proof}
-            Becasue $N$ is orientable, there is an atlas $\{(V_\beta,\psi_\beta)\}$ for $N$ such that any change of variables has differential with 
+			First we know that any point $p\in M$, there exists open sets $U_p$ and $V_{p}$ where $p\in U_p$ and 
+			$f(p)\in V_p$ and $f:U\rightarrow V$ is a diffeomorphism.
+            Because $N$ is orientable, there is a collection of charts $\{(U_\alpha,\psi_\alpha)\}$ for $N$ such that any change of variables has differential with 
             positive determinant. 
-            Now we will consider an atlas $\{(U_\alpha,\phi_\alpha)\}$ for $M$.
-            Any point $p\in M$, there exists chart $(U,\phi)$ and $(V,\psi)$ where $p\in\phi(U)$ and $f(p)\in\psi(V)$ and $f:\phi(U)\rightarrow\psi(V)$ is a diffeomorphism.
-            Now consider a second chart $(U_2,\phi_2)$ containing the point $p$. Now we want to show that the differential of
-            $\phi_2^{-1}\circ\phi$ defined on $U\cap U_2$ 
-            has positive determinant. 
-            Let $(V_2,\psi_2)$ be a chart containing $f(\phi_2(U_2))$. Notice that from chasing diagrams we have that 
-            \[\phi_2^{-1}\circ\phi=\phi_2^{-1}\circ f^{-1} \circ \psi_2\circ\psi_2^{-1}\circ\psi\circ\psi^{-1}\circ f \circ\phi\]
-            on $U\cap U_2$ in which case we can determine that the differential at any point $p\in U\cap U_2$ is
-            e 
+            Now we will construct a collection of charts considering all $\alpha$ and $p\in M$, $\{(V_\alpha\cap \psi_\alpha^{-1}(V_p),f^{-1}\circ\psi_\alpha|_{V_\alpha\cap\psi_\alpha^{-1}(V_p)})\}$ for $M$.
+			Notice that by construction these collections of charts will cover all of $M$ and the change of variables when restricted to $V_\alpha\cap \psi_\alpha^{-1}(V_p)$ will be
+			\[(f^{-1}\circ\psi_\alpha)\circ (f^{-1}\circ\psi_\alpha)=\psi_\alpha^{-1}\circ f\circ f^{-1}\circ\psi_\alpha=\psi_\alpha^{-1}\circ \psi_\alpha\] 
+			And so the differential must also have positive determinant.
 
-
-
-
+			The converse is not true. Consider two manifolds $M$,$N$ such that $M$ is orientable and $N$ is not, 
+			and consider the inclusion map of $M\rightarrow M\times N$, which satisfies the assumptions but $M\times N$ is not orientable.
         \end{proof} 
     \end{enumerate}
 	
