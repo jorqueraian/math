@@ -1,0 +1,39 @@
+\documentclass[12pt]{amsart}
+\usepackage{preamble}
+\usepackage{rotating}
+\DeclareMathOperator{\stab}{\mathrm{stab}}
+
+\begin{document}
+\begin{center}
+    \textsc{Math 670. HW 2\\ Ian Jorquera}
+\end{center}
+\vspace{1em}
+\begin{itemize} %
+    \item[(1)]
+    \begin{itemize}
+        \item[(a)] Tedious but easy 
+        \item[(b)] % DONE
+        This follows from part (a), in that a linear maps $A^*:W^*\ra V^*$ induced a well defined map $\bigwedge^k(W^*)\ra \bigwedge^k(V^*)$ where $\eta_1\wedge\dots\wedge \eta_k\mapsto A^*(\eta_1)\wedge\dots\wedge A^*(\eta_k)$.
+        \item[(c)] Wow this is super tedious. Maybe I assume that $e_1\wedge\dots\wedge e_k\mapsto e_1\wedge\dots\wedge e_k$. Also wasn't this in the notes? It literally was! See page 53
+    \end{itemize}
+    \item[(2)] % DONE
+    This follows from the definition of alternating, that $x\wedge x=0$. Notice that if $v_1,\dots,v_k$ are linearly dependent then WLOG we can write $v_1=\sum_{j=2}^n \alpha_j v_j$ and so 
+    \[v_1\wedge\dots\wedge v_k= \left(\sum_{j=2}^n \alpha_j v_j\right)\wedge v_2\wedge\dots\wedge v_k=\sum_{j=2}^n\left( \alpha_j v_j\wedge v_2\wedge\dots\wedge v_k\right)=0\]
+    \item[(3)]
+    \begin{itemize}
+        \item[(a)]
+        \item[(b)]
+    \end{itemize}
+    \item[(4)]
+    \begin{itemize}
+        \item[(a)] I think this is in the notes but its fairly easy, just show basis on each of the components on the grading.
+        \item[(b)] Not sure what this is asking 
+    \end{itemize}
+    \item[(5)] % DONE
+    From HW 1 problem 3 we know that every smooth map $f:M\ra \R^n$ on a compact $n$-dimensional manifold has at least one critical point. A close reading of the proof shows that this is also true for any smooth map $f:M\ra \R$, for the same reason.
+    Let $p\in M$ be a critical point then $df_p: T_pM\ra T_{f(p)}\R=\R$ is not surjective which means that the image must be $\{0\}$, so there are no $v\in T_pM$ that satisfy $df_p(v)\neq 0$.
+    This shows that every exact $1$-form has at least one point which is zero for all tangent vectors.
+\end{itemize}
+
+\end{document}
+
