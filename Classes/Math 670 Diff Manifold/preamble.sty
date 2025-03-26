@@ -25,8 +25,7 @@
 \usepackage{etoolbox}
 
 % set margin as 0.75in
-%\usepackage[margin=.75in]{geometry}
-\usepackage{geometry}
+\usepackage[margin=.75in]{geometry}
 
 % tikz-related settings
 \usepackage{tikz}
@@ -35,30 +34,37 @@
 %% For tables
 \usepackage{tikz}
 \usetikzlibrary{tikzmark}
+\usetikzlibrary{calc}
 
-% theorem environments with italic font
-\newtheorem{thm}{Theorem}[section]
-\newtheorem*{thm*}{Theorem}
-\newtheorem{lemma}[thm]{Lemma}
-\newtheorem{prop}[thm]{Proposition}
-\newtheorem{claim}[thm]{Claim}
-\newtheorem{corollary}[thm]{Corollary}
-\newtheorem{conjecture}[thm]{Conjecture}
-\newtheorem{question}[thm]{Question}
-\newtheorem{procedure}[thm]{Procedure}
-\newtheorem{assumption}[thm]{Assumption}
+%idfk
+\tikzset{
+    ncbar angle/.initial=90,
+    ncbar/.style={
+        to path=(\tikztostart)
+        -- ($(\tikztostart)!#1!\pgfkeysvalueof{/tikz/ncbar angle}:(\tikztotarget)$)
+        -- ($(\tikztotarget)!($(\tikztostart)!#1!\pgfkeysvalueof{/tikz/ncbar angle}:(\tikztotarget)$)!\pgfkeysvalueof{/tikz/ncbar angle}:(\tikztostart)$)
+        -- (\tikztotarget)
+    },
+    ncbar/.default=0.5cm,
+}
 
-% theorem environments with roman font (use lower-case version in body
-% of text, e.g., \begin{example} rather than \begin{Example})
-\newtheorem{Definition}[thm]{Definition}
-\newenvironment{definition}
-{\begin{Definition}\rm}{\end{Definition}}
-\newtheorem{Example}[thm]{Example}
-\newenvironment{example}
-{\begin{Example}\rm}{\end{Example}}
+\tikzset{square left brace/.style={ncbar=0.5cm}}
+\tikzset{square right brace/.style={ncbar=-0.5cm}}
 
 \theoremstyle{definition}
-\newtheorem{remark}[thm]{\textbf{Remark}}
+\newtheorem{defn}{Definition}
+\newtheorem{rem}[defn]{Remark}
+\newtheorem{note}[defn]{Note}
+\newtheorem{lem}[defn]{Lemma}
+\newtheorem{ex}[defn]{Example}
+\newtheorem{conj}[defn]{Conjecture}
+%\newtheorem{numex}[defn]{Numerical Example}
+
+\theoremstyle{plain}
+\newtheorem{thm}[defn]{Theorem}
+\newtheorem{prop}[defn]{Proposition}
+\newtheorem{cor}[defn]{Corollary}
+\newtheorem{question}[defn]{Question}
 
 % special sets
 \newcommand{\A}{\mathbb{A}}
@@ -79,6 +85,7 @@
 % math operators
 \DeclareMathOperator{\kernel}{\mathrm{ker}}
 \DeclareMathOperator{\image}{\mathrm{im}}
+\newcommand{\im}{\operatorname{Im}}
 %\DeclareMathOperator{\rad}{\mathrm{rad}}
 %\DeclareMathOperator{\id}{\mathrm{id}}
 %\DeclareMathOperator{\hum}{[\mathrm{Hum}]}
@@ -103,6 +110,7 @@
 \newcommand{\se}{\subseteq}
 \newcommand{\ip}[1]{\left\langle #1 \right\rangle} % broken???
 \newcommand{\abs}[1]{\left| #1 \right|}
+\newcommand{\bracs}[1]{\left[ #1 \right]}
 \newcommand{\norm}[1]{\abs{\hspace{-.06cm}\abs{#1}\hspace{-.06cm}}}
 
 % better matrix
@@ -140,3 +148,10 @@
 % i dont know what this does
 \setlist[enumerate,1]{topsep=1em,leftmargin=1.8em, itemsep=0.5em, label=\textup{(}\arabic*\textup{)}}
 \setlist[enumerate,2]{topsep=0.5em,leftmargin=3em, itemsep=0.3em}
+
+
+\newcommand{\idj}[1]{\marginpar{$\leftarrow$\fbox{I}}\footnote{\sf {\color{blue}Ian: \emph{#1}}}}
+\newcommand{\idjtodo}[1]{{\color{blue}[Ian: \emph{#1}]}}
+
+\DeclareRobustCommand{\rchi}{{\mathpalette\irchi\relax}}
+\newcommand{\irchi}[2]{\raisebox{\depth}{$#1\chi$}} % inner command, used by \rchi
