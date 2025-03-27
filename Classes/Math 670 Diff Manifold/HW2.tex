@@ -11,17 +11,46 @@
 \begin{itemize} %
     \item[(1)]
     \begin{itemize}
-        \item[(a)] Tedious but easy 
-        \item[(b)] % DONE
+        \item[(a)] Let $A:V\ra V$ be a linear map. Consider an element 
+        \item[(b)] 
         This follows from part (a), in that a linear maps $A^*:W^*\ra V^*$ induced a well defined map $\bigwedge^k(W^*)\ra \bigwedge^k(V^*)$ where $\eta_1\wedge\dots\wedge \eta_k\mapsto A^*(\eta_1)\wedge\dots\wedge A^*(\eta_k)$.
-        \item[(c)] Wow this is super tedious. Maybe I assume that $e_1\wedge\dots\wedge e_k\mapsto e_1\wedge\dots\wedge e_k$. Also wasn't this in the notes? It literally was! See page 53
+        \item[(c)] Consider the identity map $I:V\ra V$ which induces a map $\phi=\bigwedge^n V\ra \bigwedge^n(V)$ such that $v_1\wedge\dots\wedge v_k\mapsto v_1\wedge\dots\wedge v_k=\alpha e_1\wedge\dots\wedge e_k$, where we will show that $\alpha=\det[v_1,\dots,v_k]$. THis was worked out in the notes which I am following
+        \begin{align*}
+            \phi(v_1\wedge\dots\wedge v_k)&=v_1\wedge\dots\wedge v_k\\
+            &=\left(\sum_{j_1}^n a_{1j_1}e_{j_1}\right)\wedge\dots\wedge \left(\sum_{j_n}^n a_{nj_n}e_{j_n}\right)\\
+            &= \sum_{j_1,\dots,j_n=1}^n a_{1j_1}\dots a_{nj_n}(e_{j_1}\wedge\dots\wedge e_{j_n})\\
+            &= \left[\sum_{\sigma\in S_n}\text{sgn}(\sigma)\prod_{i=1}^na_{i\sigma(i)} \right](e_1\wedge\dots\wedge e_n)\\
+            &=\det[v_1,\dots,v_k]e_1\wedge\dots\wedge e_n
+        \end{align*}
+        
     \end{itemize}
     \item[(2)] % DONE
     This follows from the definition of alternating, that $x\wedge x=0$. Notice that if $v_1,\dots,v_k$ are linearly dependent then WLOG we can write $v_1=\sum_{j=2}^n \alpha_j v_j$ and so 
     \[v_1\wedge\dots\wedge v_k= \left(\sum_{j=2}^n \alpha_j v_j\right)\wedge v_2\wedge\dots\wedge v_k=\sum_{j=2}^n\left( \alpha_j v_j\wedge v_2\wedge\dots\wedge v_k\right)=0\]
+    For the other direction if $v_1\wedge\dots\wedge v_k=0$, Consider first a $k$-dimensional subspace $W\se V$ that contains $v_1,\dots,v_k$ with a basis $e_1,\dots,e_k$. In this case we can consider a map $\phi:\bigwedge^k(W)\ra\bigwedge^k(W)$ that fixes $e_1\wedge\dots\wedge e_k$. In this case each $v_j$ can be considered as a $k$-dimensional vector under the basis of $e_j$s and in this case $\phi(v_1\wedge\dots\wedge v_k)=\det[v_1,\dots,v_k]e_1\wedge\dots\wedge e_k=0$ so the vectors $\{v_j\}$ must be linearly dependent.
+
     \item[(3)]
     \begin{itemize}
-        \item[(a)]
+        \item[(a)] % DONE 
+        The necessary and sufficient condition is if $x,y,v,w$ are linearly dependent, or that $x\wedge y\wedge v\wedge w=0$.
+        First assume that $x,y,v,w$ are linearly dependent meaning WLOG $v=\alpha_ww+\alpha_xx+\alpha_yy$.
+        In which case 
+        \begin{align*}
+            v\wedge w+x\wedge y &= (\alpha_ww+\alpha_xx+\alpha_yy)\wedge w+x\wedge y\\
+            &= \alpha_xx\wedge w+\alpha_yy\wedge w+x\wedge y\\
+            &= x\wedge(\alpha_x w+y)+\alpha_yy\wedge w+0\\
+            &= x\wedge(\alpha_x w+y)+\alpha_yy\wedge w+\alpha_y\alpha_xw\wedge w\\
+            &= x\wedge(\alpha_x w+y)+\alpha_y(y+\alpha_xw)\wedge w\\
+            &= (x+ \alpha_y w)\wedge(\alpha_x w+y)\\
+        \end{align*}
+        Alteratively, we may consider
+        \begin{align*}
+            (v\wedge w+x\wedge y)\wedge (v\wedge w+x\wedge y) &= 
+            v\wedge w\wedge v\wedge w + v\wedge w\wedge x\wedge y + x\wedge y\wedge v\wedge w + x\wedge y\wedge x\wedge y\\
+            &= v\wedge w\wedge x\wedge y + x\wedge y\wedge v\wedge w\\
+            &= 2(x\wedge y\wedge v\wedge w)
+        \end{align*}
+        which is in general not zero but if $v\wedge w+x\wedge y$ was decomposable, we would have that $v\wedge w+x\wedge y=\alpha\wedge\beta$ and that $\alpha\wedge\beta\wedge \alpha\wedge\beta=0$, meaning $x\wedge y\wedge v\wedge w=0$.
         \item[(b)]
     \end{itemize}
     \item[(4)]
