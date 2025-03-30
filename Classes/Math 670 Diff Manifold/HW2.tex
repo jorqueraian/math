@@ -11,10 +11,10 @@
 \begin{itemize} %
     \item[(1)]
     \begin{itemize}
-        \item[(a)] Let $A:V\ra V$ be a linear map. Consider an element 
+        \item[(a)] Let $A:V\ra V$ be a linear map.
         \item[(b)] 
         This follows from part (a), in that a linear maps $A^*:W^*\ra V^*$ induced a well defined map $\bigwedge^k(W^*)\ra \bigwedge^k(V^*)$ where $\eta_1\wedge\dots\wedge \eta_k\mapsto A^*(\eta_1)\wedge\dots\wedge A^*(\eta_k)$.
-        \item[(c)] Consider the identity map $I:V\ra V$ which induces a map $\phi=\bigwedge^n V\ra \bigwedge^n(V)$ such that $v_1\wedge\dots\wedge v_k\mapsto v_1\wedge\dots\wedge v_k=\alpha e_1\wedge\dots\wedge e_k$, where we will show that $\alpha=\det[v_1,\dots,v_k]$. THis was worked out in the notes which I am following
+        \item[(c)] Consider the identity map $I:V\ra V$ which induces a map $\phi=\bigwedge^n V\ra \bigwedge^n(V)$ such that $v_1\wedge\dots\wedge v_k\mapsto v_1\wedge\dots\wedge v_k=\alpha e_1\wedge\dots\wedge e_k$, where we will show that $\alpha=\det[v_1,\dots,v_k]$. This was worked out in the notes which I am following
         \begin{align*}
             \phi(v_1\wedge\dots\wedge v_k)&=v_1\wedge\dots\wedge v_k\\
             &=\left(\sum_{j_1}^n a_{1j_1}e_{j_1}\right)\wedge\dots\wedge \left(\sum_{j_n}^n a_{nj_n}e_{j_n}\right)\\
@@ -51,12 +51,56 @@
             &= 2(x\wedge y\wedge v\wedge w)
         \end{align*}
         which is in general not zero but if $v\wedge w+x\wedge y$ was decomposable, we would have that $v\wedge w+x\wedge y=\alpha\wedge\beta$ and that $\alpha\wedge\beta\wedge \alpha\wedge\beta=0$, meaning $x\wedge y\wedge v\wedge w=0$.
-        \item[(b)]
+        \item[(b)] The forward direction follows from the alternating property.
+        For the other direction consider $w\in\bigwedge^2(\R^4)$ such that $w\wedge w=0$
+        We can write $w=\sum_{1\leq i<j\leq 4}a_{ij}e_i\wedge e_j$ a sum of six terms.
+        The assumption that 
+        $w\wedge w=0$ would mean that $a_{12}a_{34}+a_{14}a_{23}-a_{13}a_{24}=0$ and WLOG we will assume that $a_{24}\neq 0$. We can also rescale so that $a_{24}=1$ and so $a_{13}=(a_{12}a_{34}+a_{14}a_{23})$.
+        \begin{align*}
+        w &= a_{12}e_1\wedge e_2+(a_{12}a_{34}+a_{14}a_{23})e_1\wedge e_3+a_{14}e_1\wedge e_4+\dots\\
+        &= a_{12}e_1\wedge(e_2+a_{34} e_3)+a_{14}e_1\wedge (a_{23}e_3+ e_4)+a_{23}e_2\wedge e_3+0+e_2\wedge e_4+a_{34}e_3\wedge e_4\\
+        &= a_{12}e_1\wedge(e_2+a_{34} e_3)+a_{14}e_1\wedge (a_{23}e_3+ e_4)+a_{23}e_2\wedge e_3+a_{23}a_{34}e_3\wedge e_3+e_2\wedge e_4+a_{34}e_3\wedge e_4\\
+        &= a_{12}e_1\wedge(e_2+a_{34} e_3)+a_{14}e_1\wedge (a_{23}e_3+ e_4)+a_{23}(e_2+a_{34}e_3)\wedge e_3+e_2\wedge e_4+a_{34}e_3\wedge e_4\\
+        &= (a_{12}e_1+ a_{23}e_3)\wedge(e_2+a_{34} e_3)+a_{14}e_1\wedge (a_{23}e_3+ e_4)+e_2\wedge e_4+a_{34}e_3\wedge e_4\\
+        &= (a_{12}e_1+ a_{23}e_3)\wedge(e_2+a_{34} e_3)+a_{14}e_1\wedge (a_{23}e_3+ e_4)+(e_2+a_{34}e_3)\wedge e_4\\
+        &= (a_{12}e_1+ a_{23}e_3-e_4)\wedge(e_2+a_{34} e_3)+a_{14}e_1\wedge (a_{23}e_3+ e_4)\\
+        &= (a_{12}e_1+ a_{23}e_3-e_4)\wedge(e_2+a_{34} e_3)+a_{14}e_1\wedge (a_{23}e_3+ e_4)+a_{14}a_{12}e_1\wedge e_1\\
+        &= (a_{12}e_1+ a_{23}e_3-e_4)\wedge(e_2+a_{34} e_3)+a_{14}e_1\wedge (a_{12}e_1+a_{23}e_3- e_4)\\
+        &= (a_{12}e_1+ a_{23}e_3-e_4)\wedge(e_2+a_{34} e_3)+a_{14}e_1\wedge (a_{12}e_1+a_{23}e_3- e_4)\\
+        &= (a_{12}e_1+ a_{23}e_3-e_4)\wedge(a_{14}e_1+e_2+a_{34} e_3)\\
+        \end{align*}
+        I made a mistake somewhere because I had to flip a negative but im not really sure where. But it should theoretically have worked out.
+        
     \end{itemize}
     \item[(4)]
     \begin{itemize}
-        \item[(a)] I think this is in the notes but its fairly easy, just show basis on each of the components on the grading.
-        \item[(b)] Not sure what this is asking 
+        \item[(a)] 
+        from the notes we already know that a basis $e_1,\dots, e_n$ induces a basis for $\bigwedge(V)$ of the form $\{e_{i_1}\wedge\dots e_{i_k} | i_1<\dots <i_k, 1\leq k\leq n\}$. So we need only show that this is an orthonormal basis when the $e_j$s are an orthonormal basis for $V$. 
+        
+        By definition the inner product of elements of different degrees are zero. So consider two basis elements ${v_1}\wedge\dots {v_k}$, and ${w_1}\wedge\dots {w_k}$ in $\bigwedge^k(V)$ and notice that
+        \begin{align*}
+            \ip{{v_1}\wedge\dots {v_k},{w_1}\wedge\dots {w_k}}&=\det(\ip{{v_k},{w_\ell}})_{k,\ell}\\
+        \end{align*}
+        Because we have imposed an order on the original orthonormal basis, if ${v_1}\wedge\dots {v_k}\neq {w_1}\wedge\dots {w_k}$ then they must differ at some minimal index $j$ and if $v_j< w_j$ in this ordering then the elements $v_j$ can not occur in ${w_1}\wedge\dots {w_k}$ and so the $j$th row of the gram matrix $(\ip{{v_k},{w_\ell}})_{k,\ell}$ would be zero meaning the determinant would be zero.
+        And similarly if ${v_1}\wedge\dots {v_k}= {w_1}\wedge\dots {w_k}$ then the gram matrix would be the identity with determinant one.
+
+        \item[(b)] Consider the basis element $e_1\wedge\dots\wedge e_k$ and notice that 
+        \[\star\star(e_1\wedge\dots\wedge e_k)=\pm\star(e_{k+1}\wedge\dots\wedge e_n)=\pm\pm(-1)^{k(n-k)}e_1\wedge\dots\wedge e_k\]
+        Where the last equality comes from the fact that 
+        \[e_{k+1}\wedge\dots\wedge e_n\wedge\star(e_{k+1}\wedge\dots\wedge e_n)=e_{k+1}\wedge\dots\wedge e_n\wedge e_{1}\wedge\dots\wedge e_k\]
+        And that it takes $n-k$ flips to move $e_1$ to the first position, and likewise $n-k$ flips to move the $e_j$ into the $j$th position for $1\leq j\leq k$ of which there are $k$ elements, so there would be a total of $k(n-k)$ flips.
+        
+        We claim that this process is true for any basis element but with more indexing and so extends to every element by definition of $\star$ being a linear map.
+        % I see why. But i don't want to type it up. even though it would be only a little tedious.
+        \item[(c)]
+        Consider two basis elements $e_{i_1}\wedge\dots e_{i_k}, e_{j_1}\wedge\dots e_{j_k}\in \bigwedge^k(V)$ and notice that if they are different by part (a) there would be a an element $e_\ell$ which is element of the first but not the second. This means that $\star(e_{j_1}\wedge\dots \wedge e_{j_k})$ would contain $e_\ell$ as a term so $e_{i_1}\wedge\dots e_{i_k}\wedge \star(e_{j_1}\wedge\dots \wedge e_{j_k})=0$ be the alternating property so the star operator on this element would be zero. If instead they where equal $e_{i_1}\wedge\dots e_{i_k}=e_{j_1}\wedge\dots e_{j_k}$ we would have that 
+        \begin{align*}
+            \star(e_{i_1}\wedge\dots e_{i_k}\wedge \star(e_{j_1}\wedge\dots e_{j_k}))&=\star(e_{i_1}\wedge\dots e_{i_k}\wedge \star(e_{i_1}\wedge\dots e_{i_k}))\\
+            &=\star(\pm e_{i_1}\wedge\dots e_{i_k}\wedge e_{i_{k+1}}\wedge\dots e_{i_n})\\
+            &=\star(e_{1}\wedge\dots\wedge e_{n})=1
+        \end{align*}
+        And so the claim is true for all elements. The last equality follows from the symmetry of the inner product.
+        
     \end{itemize}
     \item[(5)] % DONE
     From HW 1 problem 3 we know that every smooth map $f:M\ra \R^n$ on a compact $n$-dimensional manifold has at least one critical point. A close reading of the proof shows that this is also true for any smooth map $f:M\ra \R$, for the same reason.
