@@ -1,0 +1,52 @@
+\documentclass[12pt]{amsart}
+\usepackage{preamble}
+\usepackage{rotating}
+\DeclareMathOperator{\stab}{\mathrm{stab}}
+
+\begin{document}
+\begin{center}
+    \textsc{Math 670. HW 2\\ Ian Jorquera}
+\end{center}
+\vspace{1em}
+\begin{itemize} %
+    \item[(1)]
+    \begin{itemize} %
+        \item[(a)] We need only show that the Lie derivative, or the bracket, of a right invariant vector field with respect to another right invariant vector field is still a right invariant vector field.
+        Let $R_g:G\ra G$ be the action of right multiplication.
+        Let $X,Y$ be right invariant vector fields, that is for $g,h\in G$ 
+        that $(dR_g X)f=X(f\circ R_g)$. Notice that for $f\in C^\infty(M)$ that
+        \[(dR_g) [X,Y](f)=dR_g (X(Yf)-Y(Xf))
+        =dR_g X(Yf)- dR_g Y(Xf)
+        =X(Yf\circ R_g)- Y(Xf\circ R_g)
+        =XY-YX(f\circ R_g)
+        \]
+
+        \item[(b)] Let $X$ be left invariant, meaning $(dL_g X)f=X(f\circ L_g)$
+        Notice $\text{inv}(g)=L_{g^{-1}}L_{g^{-1}}R_{g}$, and so for all $g\in G$ we have that
+        $(dL_{g^{-1}} X)f=X(f\circ L_{g^{-1}})=X(f\circ L_{g^{-1}})$
+        idk
+
+        \item[(c)] a bit tedious ngl
+    \end{itemize}
+
+    \item[(2)] Here we define the dual basis such that $\alpha_i(V_j)=\delta_{ij}$. Because $V_i$ is left invariant we know that $V_i(O)=A_iO$ where $O\in \text{SO}(4)$ and that
+    \[(d\alpha_i)_O=0 \]
+    Now we can consider an arbitrary $1$-form
+    $\omega=f_1V_1+f_2V_2+f_3V_3$
+    in which case notice that for $O\in SO(3)$ we have that
+    \[(d\omega)_O=(df_1\wedge dV_1+df_2\wedge dV_2+df_3\wedge dV_3)\]
+
+
+    \item[(3)]
+    \begin{itemize}
+        \item[(a)] We have the following, that $\ip{-,-}$ is an inner product on $\mathfrak{g}$ and satisfies $\ip{X,Y}=\ip{Ad_gX,Ad_gY}=\ip{(dC_g)_eX, (dC_g)_eY}$ for all $g\in G$. Define $\tau(X,Y,Z)=\ip{[X,Y], Z}$. In which case we will show it is alternating.
+        
+        Notice that $\tau(X,Y,Z)=\ip{[X,Y], Z}=\ip{-[Y,X],Z}=-\tau(Y,X,Z)$.
+        Likewise $\tau(X,Y,Z)=\ip{[X,Y], Z}$ idk what to do here
+
+        \item[] 
+    \end{itemize}
+
+\end{itemize}
+\end{document}
+

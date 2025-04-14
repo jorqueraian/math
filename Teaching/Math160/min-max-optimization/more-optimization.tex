@@ -1,0 +1,86 @@
+\documentclass[12pt]{article}
+
+\usepackage[left=.6in, right=.6in, top=0.75in, bottom=0.75in]{geometry}
+\setlength\parindent{0pt}
+
+\usepackage{graphicx, amsmath,anonchap,tabularx, multicol,array,graphbox}
+\usepackage{cancel}
+\usepackage{enumitem}
+\setlist{noitemsep}
+\setlist{nolistsep}
+\usepackage{float}
+\usepackage{multicol}
+ 
+%\usepackage{draftwatermark}
+%\SetWatermarkText{DRAFT}
+%\SetWatermarkScale{5}
+%\SetWatermarkColor[rgb]{0.8,0.8,0.8}
+\newenvironment{boxe}
+    {\begin{center}
+    \begin{tabular}{|p{0.9\textwidth}|}
+    \hline\\
+    }
+    { 
+    \\\\\hline
+    \end{tabular} 
+    \end{center}
+    }
+    
+\begin{document}
+
+\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}l l}
+
+\textbf{Math 160, Optimization 2}   \\
+\end{tabular*} \\
+
+\vspace{.1in}
+\small
+%\textbf{Key hint:} \textit{If you are using the EVT: Check the critical points AND the boundary points when you are looking for global max/min.}
+\vspace{.1in}
+\begin{enumerate}
+    \item Show that the $3x^4-4x^3$ has a local minimum of $-1$ on the interval $[-1,2]$. 
+    What $x$-value does this occur at?\\\\\\\\\\\\\\\\\\\\\\\\
+
+    \item Does the function $3x^4-4x^3$ have a global maximum on the interval $[0,2]$. 
+    What $x$-value does this occur at?\\\\\\\\\\\\\\
+
+    \item Consider the function $f(x)=x^3-ax$ on the interval $[-3,2]$ where $a$ is a constant.
+    \begin{itemize}
+        \item Find the critical points of $f(x)$ in terms of $a$.\\\\\\\\\\
+        %\item Will $f(x)$ always have a global maximum and minimum?\\\\\\
+        \item Find a value for $a$ such that there is a local maximum at $x=-2$.\\\\\\\\\\\\\\\\\\
+        %\item Find a value for $a$ such that there is a global maximum at $x=2$.\\\\\\\\\\\\
+        \item T/F: There is a value for $a$ such that there is a local minimum or maximum at $x=0$. (Hint: Can $x=0$ be a critical point? When it is, can it also be a local minimum or maximum?)
+    \end{itemize}
+   \newpage
+    \iffalse\item Sketch the graph of a continuous function having the following properties:
+	\begin{itemize}
+	\begin{multicols}{3}
+	\item $f(-3)=-2$
+	\item $f(0)=3$
+	\item $f(1)=0$
+	\item $f'(-3)=0$
+	\item $f'(0)=0$
+	\item $f'(1)$ is undefined
+	\item $f'(x)<0$ for $-\infty<x<-3$, $0<x<1$
+	\item $f'(x)>0$ for $-3<x<0$ and $1<x<\infty$
+	\item $f''(x)<0$ for $1<x<4$ 
+	\item $f''(x)>0$ for $4<x<\infty$ 
+	\end{multicols}
+	\end{itemize}
+	\begin{center}
+	\includegraphics[scale=0.5]{Axes2a.jpg}\end{center}
+    \fi
+
+    \item Create a Counterexample for the following statement: If $f(x)$ is concave down at $x = \i$, then $f(x)$ has a local maximum at $x = \pi$.\\\\\\\\\\\\\\\\\\\\\\\\\\
+    \item Create a Counterexample for the following statement: Given $f'(x) < 0$ for $x < -4$ and $f'(x) > 0$ for $x > -4$, then there must be a local minimum
+    at $x = -4$.
+    \\\\\\\\\\\\\\\\\\\\\\\\
+    \item Find the global maximum and minimum of the function $\displaystyle{f(t)=\frac{t}{1+t^2}}$ on $(-\infty,\infty)$ or explain why they don't exist. Hint: How could looking at the end behavior help?\\
+    
+    
+    
+\end{enumerate}
+
+
+\end{document}
