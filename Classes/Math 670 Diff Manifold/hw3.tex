@@ -15,36 +15,98 @@
         Let $R_g:G\ra G$ be the action of right multiplication.
         Let $X,Y$ be right invariant vector fields, that is for $g,h\in G$ 
         that $(dR_g X)f=X(f\circ R_g)$. Notice that for $f\in C^\infty(M)$ that
-        \[(dR_g) [X,Y](f)=dR_g (X(Yf)-Y(Xf))
-        =dR_g X(Yf)- dR_g Y(Xf)
-        =X(Yf\circ R_g)- Y(Xf\circ R_g)
-        =XY-YX(f\circ R_g)
-        \]
+        \begin{align*}
+            (dR_g) [X,Y](f)&=dR_g (X(Yf)-Y(Xf))\\
+        &=dR_g X(Yf)- dR_g Y(Xf)\\
+        &=X(Yf\circ R_g)- Y(Xf\circ R_g)\\
+        &=[X,Y](f\circ R_g)
+        \end{align*}\\
 
-        \item[(b)] Let $X$ be left invariant, meaning $(dL_g X)f=X(f\circ L_g)$
-        Notice $\text{inv}(g)=L_{g^{-1}}L_{g^{-1}}R_{g}$, and so for all $g\in G$ we have that
-        $(dL_{g^{-1}} X)f=X(f\circ L_{g^{-1}})=X(f\circ L_{g^{-1}})$
-        idk
+        \item[(b)] First we note that $R_{g^{-1}}\circ \text{inv}=\text{inv}\circ L_{g}$ which means we can see that at the point $g^{-1}$ we have that the tangent vector $(d\text{inv})_gX_g=(d\text{inv})_g(dL_g)_eX_e$, which follows from $X$ being a left invariant vector field.
+        This means 
+        \begin{align*}
+            (d\text{inv})_g(dL_g)_eX_e&=d(\text{inv}\circ L_g)_eX_e\\
+            &=d(R_{g^-1}\circ\text{inv})_eX_e\\
+            &=(dR_{g^{-1}})_e(d\text{inv})_eX_e.
+        \end{align*}
+        Showing that $(d\text{inv})X$ is right invariant.
+    
 
-        \item[(c)] a bit tedious ngl
+        To prove the last part. Consider some smooth path $\alpha(t)$ such that $\alpha(0)=e$ and notice that $\frac{d}{dt}|_{t=0} (\alpha(t))^{-1}=-\alpha(t)^{-2}\alpha'(t)|_{t=0}=-\alpha'(t)$. Meaning $(d\text{inv})_eX_e=-X_e$ for any vector field $X$.\\
+
+        \item[(c)] We we wish to show that $-d\text{inv}$ is a lie algebra homomorphism from left invariant vector fields.
+        Let $X,Y$ be left invariant vector fields which depend only on the tangent space at the identity, meaning we can consider 
+        \begin{align*}
+        -d\text{inv}([X_e,Y_e])&=-d\text{inv}(X_eY_e-Y_eX_e)\\
+        &=X_eY_e-Y_eX_e\\
+        &=(-d\text{inv}(X_e))(-d\text{inv}(Y_e))-(-d\text{inv}(Y_e))(-d\text{inv}(X_e))\\
+        &=[-d\text{inv}(X_e),-d\text{inv}(Y_e)]
+        \end{align*}
     \end{itemize}
+    This shows us that the map respects the Lie bracket, and is a lie algebra homomorphism from left invariant vector fields to right invariant vector fields. Finally we can see that this map is also an involution 
+    $-d\text{inv}\circ -d\text{inv}=d(\text{inv}\circ \text{inv})$ which is the identity. Therefore $-d\text{inv}$ is a lie algebra isomorphism.\\
 
-    \item[(2)] Here we define the dual basis such that $\alpha_i(V_j)=\delta_{ij}$. Because $V_i$ is left invariant we know that $V_i(O)=A_iO$ where $O\in \text{SO}(4)$ and that
-    \[(d\alpha_i)_O=0 \]
-    Now we can consider an arbitrary $1$-form
-    $\omega=f_1V_1+f_2V_2+f_3V_3$
-    in which case notice that for $O\in SO(3)$ we have that
-    \[(d\omega)_O=(df_1\wedge dV_1+df_2\wedge dV_2+df_3\wedge dV_3)\]
+    \item[(2)] 
+    Here we define the dual basis such that $\alpha_i(V_j)=\delta_{ij}$.
+    Using Cartan's magic formula we have that 
+    \[d\alpha_i(X,Y)=(\mathcal{L}_X\alpha_i)Y-d(\iota_X \alpha_i)Y=(\mathcal{L}_X\alpha_i)Y-d(\alpha_i(X))Y\]
+    Now looking at the basis $V_1,V_2,V_3$, let $i,j,k$ all be distinct values $1,2,3$ in which case
+    \[d\alpha_i(V_j,V_k)=(\mathcal{L}_{V_j}\alpha_i)V_k\]
+    because $\alpha_i(V_j)=0$ and if $i=j$ we have
+    \[d\alpha_i(V_i,V_k)=(\mathcal{L}_{V_i}\alpha_i)V_k-d(\alpha_i(V_1))V_k=(\mathcal{L}_{V_i}\alpha_i)V_k\]
+    because $\alpha_i(V_1)=1$ and so the differential is the zero map.
+    
+    Using the Leibniz rule we can determine that 
+    \[\mathcal{L}_U(\alpha_i(V_k))= (\mathcal{L}_U\alpha_i)(V_j)+\alpha_i(\mathcal{L}_UV_j)\]
+    And so for $i, j , k$ distinct we have 
+    $0=\mathcal{L}_{V_j}(\alpha_i(V_k))=(\mathcal{L}_{V_j}\alpha_i)(V_k)+\alpha_i(\mathcal{L}_{V_j}V_{V_k})$ 
+    so 
+    \[d\alpha_i(V_j,V_k)=(\mathcal{L}_{V_j}\alpha_i)(V_k)=-\alpha_i(\mathcal{L}_{V_j}V_{k})=\mp 1\] depending on if $j<k$ or $k<j$.
+    Now if $i=j$
+    $0=\mathcal{L}_{V_i}(\alpha_i(V_k))=(\mathcal{L}_{V_i}\alpha_i)(V_k)+\alpha_i(\mathcal{L}_{V_i}V_{k})$ 
+    so 
+    \[d\alpha_i(V_i,V_k)=(\mathcal{L}_{V_i}\alpha_i)(V_k)=-\alpha_i(\mathcal{L}_{V_i}V_{k})=0.\]
+    If $i=k$
+    $\mathcal{L}_{V_j}(\alpha_i(V_i))=(\mathcal{L}_{V_j}\alpha_i)(V_i)+\alpha_i(\mathcal{L}_{V_j}V_{V_i})$ 
+    so 
+    \[d\alpha_i(V_j,V_i)=(\mathcal{L}_{V_j}\alpha_i)(V_i)=\mathcal{L}_{V_j}(\alpha_i(V_i))-\alpha_i(\mathcal{L}_{V_j}V_{i})=\mathcal{L}_{V_j}(\alpha_i(V_i))=0\]\\
+    
 
 
     \item[(3)]
     \begin{itemize}
         \item[(a)] We have the following, that $\ip{-,-}$ is an inner product on $\mathfrak{g}$ and satisfies $\ip{X,Y}=\ip{Ad_gX,Ad_gY}=\ip{(dC_g)_eX, (dC_g)_eY}$ for all $g\in G$. Define $\tau(X,Y,Z)=\ip{[X,Y], Z}$. In which case we will show it is alternating.
         
-        Notice that $\tau(X,Y,Z)=\ip{[X,Y], Z}=\ip{-[Y,X],Z}=-\tau(Y,X,Z)$.
-        Likewise $\tau(X,Y,Z)=\ip{[X,Y], Z}$ idk what to do here
+        Notice that $\tau(X,Y,Z)=\ip{[X,Y], Z}=\ip{-[Y,X],Z}=-\tau(Y,X,Z)$, meaning $\tau(X,X,Z)=0$.
+        
+        Likewise consider a smooth curve $\alpha(t)$ such that $\alpha(0)=e$ and $\alpha'(0)=X$. in which case 
+        \[\ip{Y,Z}=\ip{Ad_{\alpha(t)}Y,Ad_{\alpha(t)}Z}\]
+        Differentiating with respect to $t$ gives
+        \[0=\frac{d}{dt}\ip{Ad_{\alpha(t)}Y,Ad_{\alpha(t)}Z}
+        =\ip{[X,Y],Ad_{\alpha(0)}Z}+\ip{Ad_{\alpha(0)}Y,[X,Z]}
+        =\ip{[X,Y],Z}+\ip{Y,[X,Z]}\]
 
-        \item[] 
+        In which case if $X=Z$ we have that $\ip{[X,Y],X}=0$.\\
+
+        \item[(b)]
+        From the definition we have that 
+        \[\tau_g(X,Y,Z)=\tau_e((dL_{g^{-1}})X,(dL_{g^{-1}})Y,(dL_{g^{-1}})Z)=\ip{[(dL_{g^{-1}})X, (dL_{g^{-1}})Y],(dL_{g^{-1}})Z}\]
+        Using that fact the inner product is Ad-invariant we have the following
+        \begin{align*}
+            \ip{[(dL_{g^{-1}})X, (dL_{g^{-1}})Y],(dL_{g^{-1}})Z}&=\ip{Ad_g[(dL_{g^{-1}})X, (dL_{g^{-1}})Y],Ad_g(dL_{g^{-1}})Z}\\
+            &=\ip{[Ad_g(dL_{g^{-1}})X, Ad_g(dL_{g^{-1}})Y],Ad_g(dL_{g^{-1}})Z}
+        \end{align*}
+        where the last equality follows from the fact that $Ad_g$ is a lie algebra automorphism and respect the lie bracket. Because $Ad_g=(dC_g)_e=(dR_{g^{-1}})_g(dL_{g})_e=d(R_{g^{-1}}\circ L_g)_e$ we have that 
+        \begin{align*}
+            &\ip{[Ad_g(dL_{g^{-1}})X, Ad_g(dL_{g^{-1}})Y],Ad_g(dL_{g^{-1}})Z}\\
+            &=\ip{[d(R_{g^{-1}}\circ L_g\circ L_{g^{-1}})_{g}X, d(R_{g^{-1}}\circ L_g\circ L_{g^{-1}})_{g}Y],d(R_{g^{-1}}\circ L_g\circ L_{g^{-1}})_{g}Z}\\
+            &=\ip{[d(R_{g^{-1}})_{g}X, d(R_{g^{-1}})_{g}Y],d(R_{g^{-1}})_{g}Z}
+        \end{align*}
+        
+        Showing that $\tau$ is conjugate invariant, and so bi-invariant.\\
+        \item[(c)]  We claim that $\tau=\ip{V_3,V_3}\alpha_1\wedge\alpha_2\wedge \alpha_3$. Because $\Omega^3(SO(3))$ is one dimensional we know $\tau$ and $\alpha_1\wedge\alpha_2\wedge \alpha_3$ are scalar multiples of each other. Because $(\alpha_1\wedge\alpha_2\wedge \alpha_3)(V_1,V_2,V_3)=1$ and $\tau(V_1,V_2,V_3)=\ip{[V_1,V_2],V_3}=\ip{V_3,V_3}$
+        $(\alpha_1\wedge\alpha_2\wedge \alpha_3)(V_3,V_2,V_1)=-1$ and $\tau(V_3,V_2,V_1)=\ip{[V_3,V_2],V_1}=\ip{-V_1,V_1}$
+        So this must require that $\ip{-,-}$ satisfies $\ip{V_1,V_1}=\ip{V_2,V_2}=\ip{V_3,V_3}$ which is true by the fact that the inner product is Ad invariant and each of the tangent vectors $A_1,A_2,A_3$ are conjugates of each other.
     \end{itemize}
 
 \end{itemize}

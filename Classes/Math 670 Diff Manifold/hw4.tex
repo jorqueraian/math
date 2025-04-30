@@ -1,0 +1,51 @@
+\documentclass[12pt]{amsart}
+\usepackage{preamble}
+\usepackage{rotating}
+\DeclareMathOperator{\stab}{\mathrm{stab}}
+
+\begin{document}
+\begin{center}
+    \textsc{Math 670. HW 124\\ Ian Jorquera}
+\end{center}
+\vspace{1em}
+\begin{itemize} %
+    \item[(1)] First consider the map $O(n)\ra F\ell(d_1,\dots, d_k)$ where for any orthogonal matrix $A$, we will let the span of the first $d_j$ columns be $V_j$ which gives us a flag in $F\ell(d_1,\dots, d_k)$
+    Notice that this map is surjective: for any flag $V_1\se\dots V_k=\R^n$, we can pick an orthonormal basis for $V_1$, in terms of the elementary basis on $\R^n$ of $n_1$ vectors, then extend this to an orthonormal basis for $V_2$ which adds $n_2$ vectors. Repeating this until we have an orthonormal basis for $\R^n$, whose first $d_j$ vectors span $V_j$. The basis vectors forms an orthogonal matrix, and under this map, maps to the original flag.
+
+    Now we want to look at the kernel of this map, or the fibers, consider two orthogonal matrices $A,B$ such that they map to the same flag $V_1\se\dots V_k=\R^n$, meaning the first $n_1$ columns of both A and B form an orthonormal basis for $V_1$, and so they differ by an orthogonal map on $V_1$ which correspond to a copy of $O(n_1)$. Now let $j>1$ and consider the first $d_j$ columns of both A and B which form an orthonormal basis for $V_j$. Consider the last $n_{j}$ of these vectors which form orthonormal bases for space orthogonal to $V_{j-1}$ in $V_j$, and so the the bases differ by an orthogonal map in $O(n_j)$. This means that the kernel of this map, or the fibers are $O(n_1)\times\dots\times O(n_k)$. So we have that 
+    \[O(n)/(O(n_1)\times\dots O(n_k))\]
+
+    \item[(2)] Consider a constant curve $\alpha(t)=p$ and a vector field along the curve $V(t)\in T_pM\cong \R^n$.
+    This means in local coordinates we can write $V(t)=\sum_{i}w_i(t)\frac{\partial}{\partial x_i}$.
+    From equation (4.5) in the notes we know that
+    \[\frac{DV}{dt}=\sum_{i,j,k}(\frac{d w_k}{dt}+\frac{d\alpha_i}{dt}w_j\Gamma_{ij}^k)\frac{\partial}{\partial x_k}=\sum_{i,j,k}(\frac{d w_k}{dt})\frac{\partial}{\partial x_k}=V'(t)\]
+    which follows from $\alpha$ being constant and so $\frac{d\alpha_i}{dt}=0$ for all $i$.
+
+    \item[(3)] %(Exercise 4.3.4) Show that an affine connection $\nabla$ is compatible with a Riemannian metric $g$ on $M$ if and only if, for any vector %fields $V$ and $W$ along a smooth curve $\alpha \from I \to M$, we have
+	%\[
+		%\left.\frac{d}{dt}\right|_{t=t_0} g_{\alpha(t)}(V(t),W(t)) = g_{\alpha(t_0)} \left(\frac{DV}{dt},W\right) + g_{\alpha(t_0)} \left(V,\frac{DW}{dt}\right).
+	%\]
+	%In other words, for compatible connections we can use the usual product rule to differentiate the inner product.
+    %=>
+    First we will assume that $\nabla$ is compatible with $g$, meaning for any smooth curve $\alpha$ and parallel vector fields $V,W$ (meaning $\frac{DV}{dt}=0=\frac{DW}{dt}$) along $\alpha$ we have that $g_{\alpha(t)}(V(t),W(t))$ is constant. Now let $V$, and $W$ be arbitrary vector fields along $\alpha$ and define 
+    case consider the derivative 
+    \[
+		\left.\frac{d}{dt}\right|_{t=t_0} g_{\alpha(t)}(V(t),W(t)) = 
+	\]
+
+
+    % <=
+    Now assume that we can use the product rule in the sense that
+    \[
+		\left.\frac{d}{dt}\right|_{t=t_0} g_{\alpha(t)}(V(t),W(t)) = g_{\alpha(t_0)} \left(\frac{DV}{dt},W\right) + g_{\alpha(t_0)} \left(V,\frac{DW}{dt}\right).
+	\]
+    For $V,W$ vector fields along a smooth curve $\alpha$
+    Let $V,W$ be parallel to $\alpha$ which means $\frac{DV}{dt}\equiv 0\equiv \frac{DW}{dt}$. Notice that this also means that
+    \[
+		\left.\frac{d}{dt}\right|_{t=t_0} g_{\alpha(t)}(V(t),W(t)) = g_{\alpha(t_0)} \left(0,W\right) + g_{\alpha(t_0)} \left(V,0\right)=0.
+	\]
+    So $g_{\alpha(t)}(V(t),W(t))$ must be a constant for all $t$.
+
+\end{itemize}
+\end{document}
+
