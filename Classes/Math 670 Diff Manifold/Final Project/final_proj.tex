@@ -1,0 +1,127 @@
+\documentclass{article}
+\usepackage{../preamble}
+\usepackage{geometry}
+
+
+\title{The Benedetto-Fickus Theorem}
+\author{Ian Jorquera}
+
+\begin{document}
+
+\maketitle
+\section{Introduction}
+This project aims to give an overview of the results and techniques in \emph{Three proofs of the Benedetto-Fickus theorem}, written by Shonkwiler et. al. This paper uses different techniques from differential geometry that can give some insight into different geometrical strategies to working with unit norm tight frames that are used through out the field of frame theory.
+
+Unit norm tight frame are generalizations of orthonormal bases, in the sense that they are a collection of spanning vectors in a finite $d$-dimensional Hilbert space $\mathcal H$ in which a generalization of the pythagorean theorem holds. This is equivalent to the standard definition, that $\Phi\in \mathcal H^n$ is a \textbf{unit norm tight frame} if $\norm{\phi_j}=1$ for all columns of $\Phi$ and $\Phi\Phi^\dagger= \frac{n}{d}I_d$, where $\Phi^\dagger$ is the adjoint with respect to the underlying inner product of $\mathcal H$. 
+
+We will assume that $\mathcal H=C^d$, and an important observation is that these unit norm tight frames live in the manifold $S(d,n)$ of $d\times n$ complex matrices with columns having unit norm. And that unit norm tight frames are the minimizers of the \textbf{frame potential} 
+$\text{FP}(\Phi)=\norm{\Phi^*\Phi}_F^2=\tr(\Phi^*\Phi\Phi^*\Phi)$.
+The Benedetto-Fickus theorem then tells us that $S(d,n)$ has no spurious local minimizers.
+
+Through out we wish to highlight many of the ideas in this paper in the real setting, but we will also highlight how this paper generalizes their results into the setting of complex frames, such as using the Wirtinger gradient.
+
+%geometric invariant theory. This section seems to investigate the case where a unit norm tight frame has full spark, or the size of the smallest linear dependence set of the columns is as large as possible, $d+1$.
+
+\section{The Manifolds in Question}
+Through out we will assume that $\F$ is either $\R$ or $\C$ and we will consider the matrices $\F^{d\times n}$ whose columns are unit norm, with respect to the dot product or conjugate dot product for $\F^d$. These matrices form the set 
+\[S_\F(d,n)=\{Z\in\F^{d\times n}|\norm{z_i}=1\}\se \F^{d\times n}\]
+where $z_i$ is the $i$th column of $Z$. Consider the function $f:\F^{d\times n}\ra \F^{n}$ by $Z\mapsto (\norm{z_1},\dots, \norm{z_n})$ where we can see that $f^{-1}((1,1,\dots, 1))=S(d,n)$. Notice also that the all ones vector is a regular value, which follows from the fact that the norm $\F^d\ra \R$ has $0$ as its only critical value and the zero vector the only critical point. Using the level set theorem this means
+\[\dim(S_\R(d,n))=(d-1)n\text{ and }\dim(S_\R(d,n))=(2d-1)n\]
+Alternatively, for $Z\in S(d,n)$ each column $z_j$ is a unit vector meaning it lives on the unit circle, $S$ in $\F^d$, which reaffirms the above dimension counting. This means that for any element $Z\in S(d,n)$ the tangent space can be interpreted column wise, where for each column $z_j$ the tangent space $T_{z_j}S=z_j^\bot$ is the orthogonal compliment of $z_j$. Meaning $T_ZS(d,n)$ are the matrices whose columns are orthogonal to the respective columns of $Z$.
+$S(d,n)$ and $\F^{d\times n}$ can both be considered to be Riemann manifold with Riemannian metric being the Frobinous inner product defined as
+\[\ip{A,B}_F=\tr(A^*B)\]
+for all $A,B\in\F^{d\times n}$.
+
+An important statistic on this manifold is that of the \textbf{frame potential}, $\text{FP}:S(d,n)\ra \R$ defined as 
+\[\text{FP}(\Phi)=\norm{\Phi^*\Phi}_F^2=\tr(\Phi^*\Phi\Phi^*\Phi)\]
+which can also be defined on $\F^{d\times n}$ and will be denoted as $\text{EP}:\F^{d\times n}\ra \R$. A well known result, known as the Welch bound, says that $\text{FP}(Z)\geq \frac{n^2}{d}$. Equality occurs when $Z$ is a \textbf{tight frame}, meaning $ZZ^*=\frac{n}{d}I$ or equivalently when the columns of $Z$ are an eigenvectors of the matrix $ZZ^*$ with eigenvalues $\frac{n}{d}$. We also note that tight frames are therefore critical points of the frame potential.
+
+Through out will will also be interested in the spanning properties of frames, namely the size of the smallest dependence set, which we will define the be the \textbf{spark}.
+\begin{defn}
+    \label{def:spark}
+    Let $Z\in\F^{d\times n}$ whose columns are vectors in $\F^d$ and will be denoted as $z_j$. Then 
+    the \textbf{spark} of $Z$ is defined as
+    \[\spark{Z}=\min\{m \;|\;(z_{j_k})_{k=1}^m 
+    \text{ is linearly dependent, } j_1<j_2<\dots < j_m\}\]
+    If $\spark(Z)=d+1$ then we say $Z$ is full spark.
+    \end{defn}
+    
+    A system of lines being full spark means any subset of $d$ vectors 
+    forms a basis for $\F^d$. 
+    In general $1\leq \spark(Z)\leq \rank(Z)+1$, which suggests that while the rank 
+    encapsulates the maximal (linear) independence of a collection of vectors the spark in a 
+    sense encapsulates the worst-case, or minimal dependence, of a collection of vectors. 
+    The spark captures a sense of how mutually redundant the vectors are. 
+    We also note that full spark frames are dense in $\C^{d\times n}$
+%When $n>d$ the unit norm tight frames form a sub-manifold of $S(d,n)$ of dimension $2dn-d^2$ when $\F=\C$ and $dn-\frac{d^2+d}{2}$ when $\F=\R$.
+
+\section{Gradient}
+The Benedetto-Fickus theorem then tells us that $S(d,n)$ has no spurious local minimizers, and therefore gradient descent would be an effective algorithm for numerically finding tight frames. So we need to first define a notion of gradient for optimization. First we will look at the euclidean gradient which can be defined on the greater space of all matrices $\F^{d\times n}$ and then we will look at a gradient intrinsic to the Riemannian manifold $S(d,n)$.
+For a euclidean space $\R^n$ with the standard dot product. The \textbf{euclidean gradient}, $\nabla f$, of a function $f:\R^n\ra \R$ can written as the vector field
+\[\nabla f=\sum_{j=1}^n\frac{\partial f}{\partial x_j}\frac{\partial}{\partial x_j}\]
+With the musical isomorphisms $(-)^\flat:X(\R^n)\ra \Omega^1(\R_n)$ , defined as $X^\flat(Y)=X\cdot Y$ we can see that $(\nabla f)^\flat (Y)=\nabla f\cdot Y=df(Y)$. In fact we will take this is the definition of the Riemmannian gradient which will will see later: the vector field which satisfies $(\nabla f)^\flat (Y)=df(Y)$, or likewise $(\nabla f)V=(df)^\sharp$. 
+
+In the complex setting it is helpful to define a similar notion of gradient in terms of the complex structure. For complex euclidean space with coordinates $z_1,\dots z_n$ we can define the function $g\R^n\times \R^n\ra \C^n$ defined so that $(x,y)\mapsto z+iy$. In this case we consider the complex coordinate to be combinations of real coordinates $x_1,\dots, x_n$ and $y_1,\dots, y_n$ where $z_j=x_j+iy_j$. We can then define the \textbf{Wirtinger gradient} to be
+\[\frac{\partial f}{\partial \bar{z}}:=\sum_{k=1}^n\frac{\partial f}{\partial {\bar{z}_k}}\frac{\partial f}{\partial \bar{z}}\]
+where
+\[\frac{\partial f}{\partial {\bar{z}_k}}:=\frac{1}{2}\left(\frac{\partial (f\circ g)}{\partial x_k}+i\frac{\partial (f\circ g)}{\partial y_k}\right)\circ g^{-1}\]
+is the \textbf{Wirtinger derivative}. It can be shown that that the euclidean gradient with respect to the real coordinates $\nabla f = 2\frac{\partial f}{\partial \bar{z}}$. We note that in general the Wirtinger derivatives can be computed by formally differentiating $f$ with respect to the complex conjugate ${\bar{z}_k}$ in the case where $f$ is a polynomial.
+
+\begin{ex}
+    Consider the function $f(x)=\norm{x}^2=x^*x$. In the case where $\F=\R$ we can show that $(\nabla f)(x)=\sum 2x_j\frac{\partial}{\partial x_j}$ and likewise when $\F=\C$ we can compute the Wirtinger derivatives: $\frac{\partial f}{\partial {\bar{z}_k}}=z_k$ which gives us that $(\nabla f)(z)=\sum 2z_j\frac{\partial}{\partial z_j}$
+\end{ex}
+
+This process of formal differentiation also helps us prove the following lemma, about the euclidean gradient of the frame potential in $\C^{d\times n}$.
+\begin{lem}
+    For $Z\in\C^{d,n}$ the euclidean gradient of the frame potential $\text{EP}:\C^{d\times n}\ra \R$ is $\nabla EF(Z)=4ZZ^*Z$
+\end{lem}
+\begin{proof}
+    
+\end{proof}
+
+
+It is important to note that the euclidean gradient will in general not respect the manifold structure of $S(d,n)$, and in general the euclidean gradient may not live in the tangent bundle $TS(d,n)$. In general for a Riemann manifold $M$ with metric $g$ we will define the Riemann gradient of a function $F:M\ra\R$ to be the vector field $\text{grad}f$ that satisfies $(\text{grad} f)^\flat (Y)=g(\text{grad}f, Y)=df(Y)$ for all vector fields $Y$ in the same sense as the euclidean gradient, but now using the intrinsic Riemannian metric. In the case where $M$ is imbedded in some larger euclidean space the Riemannian gradient at any point $p\in M$ is the orthogonal projection of the euclidean gradient onto the tangent space at $p$. Because the tangent spaces of $S(d,n)$ depend on the columns of $Z\in S(d,n)$, in constructing the Riemannian gradient, we can define it column wise. Consider a column $z_j$ of $Z\in S(d,n)$ and let $(\nabla f)(z_j)$ be the euclidean gradient, the Riemannian gradient would then be 
+\[(\text{grad}f)({z_j})=\text{Proj}_{T_{z_j}S}(\nabla f)({z_j})=\text{Proj}_{z_j^\bot}(\nabla f)({z_j})=(\nabla f)({z_j})-((\nabla f)({z_j})\cdot z_j)z_j.\] Therefore for $Z\in S(d,n)$ the Riemannian gradient would just be the euclidean gradient projected, columns-wise, in this way giving 
+\[(\text{grad }FP)(Z)= \text{Proj}_{T_ZS(d,n)}4ZZ^*Z\]
+
+We are now ready to state a strengthening of the Benedetto-Fickus Theorem, when $n>d$ 
+\begin{thm}
+    Fix positive integers $n>d$ and let $F:S(d,n)\times [0,\infty)\ra S(d,n)$ be the gradient flow, defined as the solution to the following differential equations
+    \[F(Z,0)=Z\;\;\;\;\;\; \frac{d}{dt}F(Z,t)=-\text{grad}FP(F(Z,t))\]
+    Then for $Z\in S(d,n)$ being full spark we have that $\lim_{t\ra \infty}F(Z,t)$ is a unit norm tight frame.
+\end{thm}
+We note that this proves the Benedetto-Fickus Theorem, stated in the intro, as for any critical point $Z_0$, and any neighborhood around $Z_0$ there would be a full spark frame, which would flow to a unit norm tight frame. So $Z_0$ would not be a local minimizer. 
+
+Although we will not provide a full proof of this theorem we will walk through the key parts which utilize ideas from geometric invariant theory.
+First we want to find a property on full spark frames of $S(d,n)$ which is invariant under gradient flow, such that no critical point that is not a unit norm tight frame satisfies this property. Let $V=(\C^d)^{\otimes n}$ and consider the action of $SL(d)$ such that $g\cdot (z_1\otimes \dots\otimes z_n)=(g\cdot z_1\otimes \dots\otimes g\cdot z_n)$. We can define the map $\tau(Z)=z_1\otimes \dots \otimes z_n$ and then we will say $Z$ is semi-stable if the closure of the orbit of $\tau(Z)$ under the action of $SL(d)$ contains zero, that is $\text{cl}(G\tau(Z))$ contain zero. 
+%The property of semi-stability, is invariant under gradient flow. Additionally 
+It can be shown that every full spark matrix is semi-stable and any critical point that is not a unit norm tight frame is not semi-stable.
+
+We then want to show that the property of semi-stability, is invariant under gradient flow, which can be done by showing the process of gradient flow, is an action by $SL(d)$ or more precisely that for any $t\in [0,\infty)$ the matrix $F(Z,t)$ is in the orbit of $Z$ under the action of $SL(d)\times (\C^\times)^n$. And every element in the closure of this orbit is semi-stable under $SL(d)$. Therefore the limit is semi-stable and so must be a critical point that is a unit norm tight frame.
+
+
+\begin{filecontents}{the_one_source.bib}
+    @incollection {MR4696784,
+AUTHOR = {Mixon, Dustin G. and Needham, Tom and Shonkwiler, Clayton and
+          Villar, Soledad},
+ TITLE = {Three proofs of the {B}enedetto-{F}ickus theorem},
+BOOKTITLE = {Sampling, approximation, and signal analysis---harmonic
+          analysis in the spirit of {J}. {R}owland {H}iggins},
+SERIES = {Appl. Numer. Harmon. Anal.},
+ PAGES = {371--391},
+PUBLISHER = {Birkh\"auser/Springer, Cham},
+  YEAR = {[2023] \copyright 2023},
+  ISBN = {978-3-031-41129-8; 978-3-031-41130-4},
+MRCLASS = {42C15 (46B15)},
+MRNUMBER = {4696784},
+MRREVIEWER = {Peter\ R.\ Massopust},
+   DOI = {10.1007/978-3-031-41130-4\_14},
+   URL = {https://doi.org/10.1007/978-3-031-41130-4_14},
+}
+\end{filecontents}
+
+\nocite{*}
+\bibliographystyle{plain}
+\bibliography{the_one_source}
+
+\end{document}

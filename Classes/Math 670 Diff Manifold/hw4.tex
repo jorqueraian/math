@@ -13,7 +13,7 @@
     Notice that this map is surjective: for any flag $V_1\se\dots V_k=\R^n$, we can pick an orthonormal basis for $V_1$, in terms of the elementary basis on $\R^n$ of $n_1$ vectors, then extend this to an orthonormal basis for $V_2$ which adds $n_2$ vectors. Repeating this until we have an orthonormal basis for $\R^n$, whose first $d_j$ vectors span $V_j$. The basis vectors forms an orthogonal matrix, and under this map, maps to the original flag.
 
     Now we want to look at the kernel of this map, or the fibers, consider two orthogonal matrices $A,B$ such that they map to the same flag $V_1\se\dots V_k=\R^n$, meaning the first $n_1$ columns of both A and B form an orthonormal basis for $V_1$, and so they differ by an orthogonal map on $V_1$ which correspond to a copy of $O(n_1)$. Now let $j>1$ and consider the first $d_j$ columns of both A and B which form an orthonormal basis for $V_j$. Consider the last $n_{j}$ of these vectors which form orthonormal bases for space orthogonal to $V_{j-1}$ in $V_j$, and so the the bases differ by an orthogonal map in $O(n_j)$. This means that the kernel of this map, or the fibers are $O(n_1)\times\dots\times O(n_k)$. So we have that 
-    \[O(n)/(O(n_1)\times\dots O(n_k))\]
+    \[O(n)/(O(n_1)\times\dots O(n_k))\cong F\ell(d_1,\dots, d_k)\]
 
     \item[(2)] Consider a constant curve $\alpha(t)=p$ and a vector field along the curve $V(t)\in T_pM\cong \R^n$.
     This means in local coordinates we can write $V(t)=\sum_{i}w_i(t)\frac{\partial}{\partial x_i}$.
@@ -27,12 +27,23 @@
 	%\]
 	%In other words, for compatible connections we can use the usual product rule to differentiate the inner product.
     %=>
-    First we will assume that $\nabla$ is compatible with $g$, meaning for any smooth curve $\alpha$ and parallel vector fields $V,W$ (meaning $\frac{DV}{dt}=0=\frac{DW}{dt}$) along $\alpha$ we have that $g_{\alpha(t)}(V(t),W(t))$ is constant. Now let $V$, and $W$ be arbitrary vector fields along $\alpha$ and define 
-    case consider the derivative 
-    \[
-		\left.\frac{d}{dt}\right|_{t=t_0} g_{\alpha(t)}(V(t),W(t)) = 
-	\]
+    First we will assume that $\nabla$ is compatible with $g$, meaning for any smooth curve $\alpha$ and parallel vector fields $V,W$ (meaning $\frac{DV}{dt}=0=\frac{DW}{dt}$) along $\alpha$ we have that $g_{\alpha(t)}(V(t),W(t))$ is constant. Now let $V$, and $W$ be arbitrary vector fields along $\alpha$ and let $\alpha(t_0)=p$, and pick local coordinates for the tangent space $X_1,\dots, X_n\in T_pM$ that are orthonormal basis and have Christoffel symbols being zero. Using parallel transport we can push these coordinates along the curve $\alpha$, and because the connection respects the metric, the coordinates will remain orthogonal at every point on the curve, meaning we get an orthonormal basis $X_1(t),\dots, X_n(t)\in T_{\alpha(t)}M$.
 
+    Now consider two vector fields along the curve alpha $V=\sum v_kX_k$ and $W=\sum w_kX_k$, where the covariant derivatives are $\frac{DV}{dt}=\sum\frac{dv_k}{dt}X_k$ and $\frac{DW}{dt}=\sum\frac{dw_k}{dt}X_k$ as the Christoffel symbols are zero.
+    Now using the orthogonality of the coordinates at every point on the curve we can see
+    \begin{align*}
+		\left.\frac{d}{dt}\right|_{t=t_0} g_{\alpha(t)}(V(t),W(t)) &= \left.\frac{d}{dt}\right|_{t=t_0} g_{\alpha(t)}(\sum v_kX_k,\sum w_kX_k)\\
+        &=\sum\left.\frac{d}{dt}\right|_{t=t_0} g_{\alpha(t)}(v_kX_k,w_kX_k)\\
+        &=\sum\left.\frac{d}{dt}\right|_{t=t_0} v_kw_k\\
+        &=\sum v'_kw_k+v_kw'_k\\
+	\end{align*}
+    And likewise we can see that 
+    \begin{align*}
+		g_{\alpha(t_0)} \left(\frac{DV}{dt},W\right) + g_{\alpha(t_0)} \left(V,\frac{DW}{dt}\right) &= g_{\alpha(t_0)} \left(\sum v'_kX_k,\sum w_kX_k\right) + g_{\alpha(t_0)} \left(\sum v_kX_k,\sum w'_kX_k\right)\\
+        &= \sum g_{\alpha(t_0)} \left( v'_kX_k, w_kX_k\right) + \sum g_{\alpha(t_0)} \left( v_kX_k,w'_kX_k\right)\\
+        &= \sum v'_k w_k + v_kw'_k
+	\end{align*}
+    Which shows that the product rule works for the metric.
 
     % <=
     Now assume that we can use the product rule in the sense that
