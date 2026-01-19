@@ -1,0 +1,67 @@
+\documentclass[12pt]{article}
+
+\usepackage[left=0.75in, right=0.75in, top=0.75in, bottom=0.75in]{geometry}
+\setlength\parindent{0pt}
+
+\usepackage{graphicx, amsmath,anonchap,tabularx,multicol}
+
+\usepackage{enumitem,pifont}
+\setlist{noitemsep}
+\setlist{nolistsep}
+
+%\pagestyle{empty}
+
+\begin{document}
+
+\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}l l}
+\textbf{Tolerance}  & Identifier: \rule{6cm}{0.5pt} \\
+MATH 160 & Section:\\
+\hline\hline
+\end{tabular*} \\
+
+\sf
+Aligns with Standard L1 and forms the basis of the definition of {\bf limit}.
+\rm
+
+\hrulefill
+
+\begin{itemize}
+
+\item[(1)]
+Let $f(x)=\begin{cases} -x+4 &   -2\leq x \leq 2  \\ -2\left(x-3\right)^{2}+4 & x>2 \end{cases}$ which is graphed below
+\begin{multicols}{2}
+\includegraphics[width=0.8\linewidth]{graphTol.png}
+
+Compute the following
+\begin{itemize}
+    \item[(a)] $f(0)=$\\
+    \item[(b)] $f(3)=$\\
+    \item[(c)] $f(2)=$\\
+    \item[(d)] $f(100)=$\\
+    \item[(e)] $f(-3)=$\\
+\end{itemize}
+\end{multicols}
+
+\item[(2)] This problem we will answer the following question: Find the largest interval of $x$-values around $x=2$ that guarantees that the outputs of $f(x)$ are no more than $1$ away from $2$.
+\begin{itemize}
+    \item[(a)] What is the interval of allowed output values? This is called the \textbf{output tolerance}. What is the maximum allowed $y$-value? what is the minimum? On the graph above sketch horizontal lines for the minimum and maximum $y$-values.\\\\\\\\
+    \item[(b)] Does $x=2$ give an output value that falls within the allowed output tolerance? Estimate the maximum $x$-value that gives an output within the output tolerance. Sketch a vertical line for this maximum.\\\\\\\\
+    \item[(c)] Explain why the following statement is correct or incorrect: All $x$-values on the interval $-1.4\leq x\leq 2$ have output values which stay within the output tolerance.\\\\\\\\
+    \item[(d)] Use the graph to estimate what the largest interval of $x$-values around $x=2$ that guarantees that the outputs of $f(x)$ are within the output tolerance.
+\end{itemize}
+\newpage
+
+\item[(3)] Now we will repeat what we did in (2), but using algebra (round to 3 decimal places, and make sure you round inward!)
+\begin{itemize}
+    \item[(a)] Set up an equation to solve for the maximum $x$-value.\\\\\\\\\\\\\\\\
+    \item[(b)] Set up an equation to solve for the minimum $x$-value.\\\\\\\\\\\\\\\\\\\\\\
+\end{itemize}
+
+\item[(4)] Consider the function $g(x)=\begin{cases} x^2-2 &  -2\leq x < 2 \\ -x+5 & x>2 \end{cases}$. Find the largest interval of $x$-values around $x=2$ that guarantees that the outputs of $g(x)$ are no more than $1$ away from $3$\\
+
+%\vspace{0.25in}
+
+\includegraphics[scale=0.7, trim=0 70 0 0,clip]{Axes.jpeg}\\
+\end{itemize}
+
+\end{document}
