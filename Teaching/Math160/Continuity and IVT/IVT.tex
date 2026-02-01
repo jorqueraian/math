@@ -1,0 +1,170 @@
+\documentclass[12pt]{article}
+
+\usepackage[left=0.75in, right=0.75in, top=0.75in, bottom=0.75in]{geometry}
+\setlength\parindent{0pt}
+
+\usepackage{graphicx, amsmath,anonchap,tabularx,multicol}
+
+\usepackage{enumitem,pifont}
+\setlist{noitemsep}
+\setlist{nolistsep}
+
+\newenvironment{boxe}
+    {\begin{center}
+    \begin{tabular}{|p{0.9\textwidth}|}
+    \hline\\
+    }
+    { 
+    \\\\\hline
+    \end{tabular} 
+    \end{center}
+    }
+
+\pagestyle{empty}
+
+\begin{document}
+
+\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}l l}
+\textbf{Counter Examples and the Intermediate Value Theorem}  & Middle Name: \rule{6cm}{0.5pt} \\
+MATH 160 & Section:\\
+\hline\hline
+\end{tabular*} \\
+
+\sf
+Learning Targets:
+\begin{itemize}
+\item[\ding{112}]  Identify the hypothesis/antecedent and conclusion/consequent parts of a theorem.
+\item[\ding{112}]  Construct a counterexample to a false statement and explain how the example satisfies the hypothesis but does not satisfy the conclusion.
+\item[\ding{112}]  Construct an example that does not satisfy the hypothesis but still satisfies the conclusion.
+\item[\ding{112}]  Quote the Intermediate Value Theorem.
+\item[\ding{112}]  Apply the Intermediate Value Theorem to explain why a given function must take on certain values and why certain equations must have solutions.
+\end{itemize}
+
+Aligns with Standard S1 (Counter Examples), adjacent to Standard L3 (Continuity).
+\rm
+
+\hrulefill
+
+\subsubsection*{Parts of a Theorem}
+
+If $x$ is a water-type pokemon then $x$ is weak to grass
+
+\textbf{Hypothesis}: $x$ is a water-type pokemon
+
+\textbf{Conclusion}: $x$ is weak to grass.\\
+
+\begin{itemize}
+\item[(1)] Identify the hypothesis and conclusion of the following equivalent theorem statements:
+\begin{itemize}
+\item[(a)] Suppose $x$ is a water-type pokemon then $x$ is weak to grass.\\\\
+
+\item[(b)] $x$ is weak to grass if $x$ is a water-type pokemon.\\\\
+\end{itemize}
+\item[(2)] Which of the following pokemon does the theorem apply to: Squirtle, Pikachu, Charmander, a tree.
+
+\vskip .6in
+
+
+\item[(3)] Theorems can have multiple parts in the hypothesis:
+Here is a theorem we will be working with in Math 160 called the Intermediate Value Theorem:
+
+\begin{boxe} Suppose f is continuous on a closed interval $[a,b]$. If $u$ is any number between $f(a)$ and $f(b)$, then there is at least one number $c$ in $[a,b]$ such that $f(c)=u$. \end{boxe}
+
+Which of the following belongs to the hypothesis? What is the subject of the theorem?
+
+\vskip .5in
+
+What is the conclusion of the Intermediate Value Theorem? \vskip .5in
+
+\end{itemize}
+
+
+\newpage
+\subsubsection*{Counterexamples}
+
+Take the statement: Fruit which are apples, are always red.
+
+Translate this into an If/Then statement: \vskip .3in
+
+
+What would it take to prove this statement is true? \vskip .3in
+
+What would it take to prove this statement is false?\vskip .3in
+
+
+Which of the following examples would prove the above statement false.
+\begin{multicols}{2}
+\begin{itemize}
+\item red apple
+\item green apple
+\item orange
+\item banana
+\item strawberry
+\item raspberry
+\end{itemize}
+\end{multicols}
+
+\subsubsection*{Now with 100\% more math}
+
+\begin{itemize}
+\item[(1)] Statement: If $f$ is defined at $x=c$ and $\displaystyle{\lim_{x\rightarrow c}f(x)}$ exists, then $\displaystyle{\lim_{x\rightarrow c}f(x)}=f(c)$.
+
+Use the following four examples to answer the next few parts
+\begin{itemize}[parsep=.2in]
+\item[i.] $f(x)=x$ at $x=2$
+\item[ii.] $f(x)=\dfrac{1}{x}$ at $x=0$
+\item[iii.] $f(x)=\sin(x)$ at $x=\pi$
+\item[iv.] $f(x)= \begin{cases} x & x \neq0 \\ 3 & x=0\\ \end{cases}$ at $x=0$.
+\end{itemize}
+\vskip.1in
+\begin{enumerate}
+\item Which functions satisfy the {\em hypothesis}?\\
+
+\vskip.3in
+
+\item What would need to be true for the conclusion to be false? Which of the functions satisfy the conclusion and which don't?
+
+\vskip 1in
+
+
+\item Which of the above functions, if any, satisfy the hypothesis but do NOT satisfy the conclusion?
+
+\end{enumerate}
+\end{itemize}
+\newpage
+
+\subsubsection*{Practice}
+
+\begin{itemize}
+\item[(2)] Use a counterexample to explain why the following is false: If $h(x)$ is a polynomial then it has at least one root (Recall: a root is an $x$-value where the function has an output of $0$. In informal words: a place where the function touches the $x$-axis).
+\vskip .2in
+
+Create a counterexample:
+
+\vskip 1.5 in
+
+Justify your counter example!  Clearly outline and explain how your example satisfies the hypothesis.  Then clearly outline how your example does NOT meet the conclusion. 
+
+\vskip 1.5in
+\item[(3)] True or False? If $\lim\limits_{x \to 8^+} f(x)$ exists, then $\lim\limits_{x \to 8} f(x)$ exists.
+
+\vfill Check list for grading: Does the work given
+
+\begin{itemize}
+\item[\ding{112}] Show/describe an adequate counterexample?
+\item[\ding{112}] Explain how the example satisfies all parts of the hypothesis? (Not just restating, but explaining!)
+\item[\ding{112}] Explain how the example satisfies the NEGATION of the conclusion? (Again, not just stating but explaining!)
+\end{itemize}
+\newpage
+
+\item[(4)] Use a counterexample to explain why the following is false: If $f(x)$ is defined for all $x$ on the interval $[1,5]$ such that $f(-1)=4$ and $f(5)=-3$ then $f$ has a root on the interval $[1,5]$.
+
+\vfill Check list for grading: Does the work given
+
+\begin{itemize}
+\item[\ding{112}] Show/describe an adequate counterexample?
+\item[\ding{112}] Explain how the example satisfies all parts of the hypothesis? (Not just restating, but explaining!)
+\item[\ding{112}] Explain how the example satisfies the NEGATION of the conclusion? (Again, not just stating but explaining!)
+\end{itemize}
+\end{itemize}
+\end{document}
